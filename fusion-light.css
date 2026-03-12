@@ -1,0 +1,150 @@
+/*
+ * ============================================================
+ *  Fusion Light — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Light + Amber
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette --- */
+    --bg-color: #ffffff;
+    --text-color: #2c2c2c;
+    --text-color-secondary: #5a5a5a;
+    --primary-color: #d97706;
+    --secondary-color: #6366f1;
+    --accent-color: #6366f1;
+    --border-color: #e0e0e0;
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #111;
+    --text-ui: #444;
+    --text-muted: #999;
+    --text-input: #222;
+
+    /* --- Surface Hierarchy --- */
+    --surface-1: #f5f5f5;
+    --surface-2: #ffffff;
+    --surface-3: #ebebeb;
+    --surface-input: #f0f0f0;
+    --surface-active: #e8e8e8;
+    --surface-deep: #f8f8f8;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #ccc;
+    --border-medium: #d5d5d5;
+    --border-input: #c0c0c0;
+
+    /* --- Overlay (black-based for light themes) --- */
+    --overlay-2: rgba(0, 0, 0, 0.02);
+    --overlay-3: rgba(0, 0, 0, 0.03);
+    --overlay-4: rgba(0, 0, 0, 0.04);
+    --overlay-5: rgba(0, 0, 0, 0.05);
+    --overlay-6: rgba(0, 0, 0, 0.06);
+    --overlay-8: rgba(0, 0, 0, 0.08);
+    --overlay-10: rgba(0, 0, 0, 0.1);
+    --overlay-15: rgba(0, 0, 0, 0.12);
+    --overlay-20: rgba(0, 0, 0, 0.15);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.03);
+    --shadow-10: rgba(0, 0, 0, 0.06);
+    --shadow-12: rgba(0, 0, 0, 0.08);
+    --shadow-15: rgba(0, 0, 0, 0.08);
+    --shadow-20: rgba(0, 0, 0, 0.1);
+    --shadow-25: rgba(0, 0, 0, 0.12);
+    --shadow-30: rgba(0, 0, 0, 0.15);
+    --shadow-40: rgba(0, 0, 0, 0.2);
+    --shadow-50: rgba(0, 0, 0, 0.25);
+    --shadow-60: rgba(0, 0, 0, 0.3);
+
+    /* --- Glow Effects --- */
+    --glow-color: rgba(217, 119, 6, 0.35);
+    --glow-shadow-text: 0 0 5px var(--glow-color);
+    --glow-shadow-box: 0 0 8px var(--glow-color);
+    --shadow-subtle: 0 1px 3px var(--shadow-10), 0 4px 12px var(--shadow-5);
+    --hover-background-color: #d97706;
+    --select-text-bg-color: rgba(217, 119, 6, 0.2);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #f5f5f5;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 88%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #111;
+    --item-hover-bg-color: rgba(217, 119, 6, 0.08);
+    --item-hover-text-color: #111;
+    --control-text-color: #444;
+    --control-text-hover-color: #111;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+    --h2-bg-image: radial-gradient(ellipse at center bottom, rgba(217, 119, 6, 0.08), transparent 70%);
+    --h2-bg-image-hover: radial-gradient(ellipse at center bottom, rgba(217, 119, 6, 0.15), transparent 70%);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #d5d5d5;
+    --panel-border-color: #d5d5d5;
+    --table-border-color: #e0e0e0;
+    --search-select-bg-color: rgba(217, 119, 6, 0.15);
+    --search-select-text-color: #111;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #f0f0f0;
+    --menu-divider-color: rgba(217, 119, 6, 0.1);
+
+    /* --- Code Highlighting (Light Dracula adaptation) --- */
+    --code-block-bg: #fafafa;
+    --code-text: #383a42;
+    --code-gutter-border: #e0e0e0;
+    --glass-border-color: rgba(0, 0, 0, 0.06);
+    --code-keyword: #d63384;
+    --code-variable: #383a42;
+    --code-function: #22863a;
+    --code-param: #e36209;
+    --code-string: #50a14f;
+    --code-comment: #a0a1a7;
+    --code-type: #0184bc;
+    --code-property: #4078f2;
+    --code-number: #986801;
+    --code-meta: #c18401;
+    --code-selected-bg: #d7d7d7;
+
+    /* --- Kbd --- */
+    --kbd-bg: #f0f0f0;
+    --kbd-border: #d0d0d0;
+    --kbd-border-top: #e0e0e0;
+    --kbd-border-bottom: #b0b0b0;
+    --kbd-shadow: #b0b0b0;
+
+    /* --- Alert Colors --- */
+    --alert-note: #7c3aed;
+    --alert-tip: #0891b2;
+    --alert-warning: #d97706;
+    --alert-caution: #dc2626;
+
+    /* --- Fonts --- */
+    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --font-monospace: "Cascadia Code";
+    --code-font: "Cascadia Code";
+
+    /* --- Content Area --- */
+    --max-width: 950px;
+    --texture-mask-color: #d97706;
+    --texture-opacity: 0.02;
+    --bg-style: radial-gradient(#000000 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #bbb;
+    --heading-char-color: #bbb;
+    --meta-content-color: #6b8fa3;
+    --blur-text-color: #aaa;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(245, 245, 245, 0.92);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(170, 170, 170, 0.2);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: default;
+}

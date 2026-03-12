@@ -1,0 +1,150 @@
+/*
+ * ============================================================
+ *  Fusion Dracula — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Full Dracula
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette (Dracula) --- */
+    --bg-color: #282a36;
+    --text-color: #f8f8f2;
+    --text-color-secondary: #6272a4;
+    --primary-color: #ff79c6;
+    --secondary-color: #bd93f9;
+    --accent-color: #bd93f9;
+    --border-color: #44475a;
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #f8f8f2;
+    --text-ui: #f8f8f2;
+    --text-muted: #6272a4;
+    --text-input: #f8f8f2;
+
+    /* --- Surface Hierarchy (Dracula) --- */
+    --surface-1: #21222c;
+    --surface-2: #282a36;
+    --surface-3: #343746;
+    --surface-input: #44475a;
+    --surface-active: #44475a;
+    --surface-deep: #191a21;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #191a21;
+    --border-medium: #44475a;
+    --border-input: #6272a4;
+
+    /* --- Overlay (white-based for dark themes) --- */
+    --overlay-2: rgba(255, 255, 255, 0.02);
+    --overlay-3: rgba(255, 255, 255, 0.03);
+    --overlay-4: rgba(255, 255, 255, 0.04);
+    --overlay-5: rgba(255, 255, 255, 0.05);
+    --overlay-6: rgba(255, 255, 255, 0.06);
+    --overlay-8: rgba(255, 255, 255, 0.08);
+    --overlay-10: rgba(255, 255, 255, 0.1);
+    --overlay-15: rgba(255, 255, 255, 0.15);
+    --overlay-20: rgba(255, 255, 255, 0.2);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.1);
+    --shadow-10: rgba(0, 0, 0, 0.2);
+    --shadow-12: rgba(0, 0, 0, 0.22);
+    --shadow-15: rgba(0, 0, 0, 0.25);
+    --shadow-20: rgba(0, 0, 0, 0.3);
+    --shadow-25: rgba(0, 0, 0, 0.35);
+    --shadow-30: rgba(0, 0, 0, 0.4);
+    --shadow-40: rgba(0, 0, 0, 0.5);
+    --shadow-50: rgba(0, 0, 0, 0.6);
+    --shadow-60: rgba(0, 0, 0, 0.7);
+
+    /* --- Glow Effects --- */
+    --glow-color: rgba(255, 121, 198, 0.4);
+    --glow-shadow-text: 0 0 5px var(--glow-color);
+    --glow-shadow-box: 0 0 8px var(--glow-color);
+    --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
+    --hover-background-color: #ff79c6;
+    --select-text-bg-color: rgba(255, 121, 198, 0.25);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #21222c;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #f8f8f2;
+    --item-hover-bg-color: rgba(255, 121, 198, 0.1);
+    --item-hover-text-color: #f8f8f2;
+    --control-text-color: #f8f8f2;
+    --control-text-hover-color: #f8f8f2;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+    --h2-bg-image: radial-gradient(ellipse at center bottom, rgba(255, 121, 198, 0.12), transparent 70%);
+    --h2-bg-image-hover: radial-gradient(ellipse at center bottom, rgba(255, 121, 198, 0.22), transparent 70%);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #44475a;
+    --panel-border-color: #44475a;
+    --table-border-color: #44475a;
+    --search-select-bg-color: rgba(255, 121, 198, 0.2);
+    --search-select-text-color: #f8f8f2;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #282a36;
+    --menu-divider-color: rgba(255, 121, 198, 0.1);
+
+    /* --- Code Highlighting (Dracula canonical) --- */
+    --code-block-bg: #282a36;
+    --code-text: #f8f8f2;
+    --code-gutter-border: #44475a;
+    --glass-border-color: rgba(255, 255, 255, 0.05);
+    --code-keyword: #ff79c6;
+    --code-variable: #f8f8f2;
+    --code-function: #50fa7b;
+    --code-param: #f1fa8c;
+    --code-string: #f1fa8c;
+    --code-comment: #6272a4;
+    --code-type: #8be9fd;
+    --code-property: #66d9ef;
+    --code-number: #bd93f9;
+    --code-meta: #ffb86c;
+    --code-selected-bg: #44475a;
+
+    /* --- Kbd --- */
+    --kbd-bg: #343746;
+    --kbd-border: #44475a;
+    --kbd-border-top: #6272a4;
+    --kbd-border-bottom: #21222c;
+    --kbd-shadow: #21222c;
+
+    /* --- Alert Colors (Dracula) --- */
+    --alert-note: #bd93f9;
+    --alert-tip: #8be9fd;
+    --alert-warning: #f1fa8c;
+    --alert-caution: #ff5555;
+
+    /* --- Fonts --- */
+    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --font-monospace: "Cascadia Code";
+    --code-font: "Cascadia Code";
+
+    /* --- Content Area --- */
+    --max-width: 950px;
+    --texture-mask-color: #ff79c6;
+    --texture-opacity: 0.02;
+    --bg-style: radial-gradient(#f8f8f2 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #44475a;
+    --heading-char-color: #44475a;
+    --meta-content-color: #6272a4;
+    --blur-text-color: #6272a4;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(25, 26, 33, 0.9);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(68, 71, 90, 0.2);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: dark;
+}
