@@ -79,8 +79,6 @@
     /* --- Headings --- */
     --h1-color: var(--text-color);
     --h1-underline-color: var(--primary-color);
-    --h2-bg-image: radial-gradient(ellipse at center bottom, rgba(130, 170, 255, 0.12), transparent 70%);
-    --h2-bg-image-hover: radial-gradient(ellipse at center bottom, rgba(130, 170, 255, 0.22), transparent 70%);
 
     /* --- Window & Panel --- */
     --window-border: 1px solid #3a3f58;
