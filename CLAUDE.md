@@ -19,7 +19,7 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css                  # 共享基础样式（~1382 行，所有主题复用）
+│   ├── base.css                  # 共享基础样式（~1545 行，所有主题复用）
 │   ├── CascadiaCode.woff2        # 内置等宽字体
 │   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
 ├── fusion-dark.css               # Dark + Orange 主题（变量层）
@@ -39,17 +39,19 @@ typora-fusion-dark-theme/
 ## 架构：变量层 + 基础样式层
 
 ```
-┌──────────────────────┐
-│  fusion-dark.css     │  ← 主题变量层（~131 行）
-│  fusion-dracula.css  │    仅定义 :root CSS 自定义属性
-│  fusion-nord.css     │    通过 @import 引入 base.css
-│  fusion-light.css    │
-│  fusion-material.css │
-└────────┬─────────────┘
+┌──────────────────────────┐
+│  fusion-dark.css         │  ← 主题变量层（~130 行）
+│  fusion-dracula.css      │    仅定义 :root CSS 自定义属性
+│  fusion-nord.css         │    通过 @import 引入 base.css
+│  fusion-light.css        │
+│  fusion-material.css     │
+│  fusion-solarized.css    │
+│  fusion-gruvbox.css      │
+└────────┬─────────────────┘
          │ @import url("fusion-dark/base.css")
          ▼
 ┌──────────────────────┐
-│  fusion-dark/base.css│  ← 共享基础样式层（~1382 行）
+│  fusion-dark/base.css│  ← 共享基础样式层（~1545 行）
 │                      │    所有选择器、布局、动画
 │                      │    颜色全部通过 var() 引用
 └──────────────────────┘
