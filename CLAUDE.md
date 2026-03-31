@@ -19,7 +19,7 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css                  # 共享基础样式（1484 行，所有主题复用）
+│   ├── base.css                  # 共享基础样式（~1472 行，所有主题复用）
 │   ├── CascadiaCode.woff2        # 内置等宽字体
 │   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
 ├── fusion-dark.css               # Dark + Orange 主题（变量层）
@@ -47,7 +47,7 @@ typora-fusion-dark-theme/
          │ @import url("fusion-dark/base.css")
          ▼
 ┌──────────────────────┐
-│  fusion-dark/base.css│  ← 共享基础样式层（1484 行）
+│  fusion-dark/base.css│  ← 共享基础样式层（~1472 行）
 │                      │    所有选择器、布局、动画
 │                      │    颜色全部通过 var() 引用
 └──────────────────────┘
@@ -78,7 +78,7 @@ typora-fusion-dark-theme/
 | 2 | Base | `html`、`body`、`::selection` |
 | 3 | Content Area Layout | `#write` 容器、纹理叠层、响应式断点 |
 | 4 | Paragraph | 段落字体与间距 |
-| 5 | Headings | H1–H6 各自独立样式 |
+| 5 | Headings | `.content-title` 与 H1 联合选择器 + H2–H6 独立样式 |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
 | 7 | Links | 图标前缀 + 霓虹悬停 |
 | 8 | Blockquote | 圆角卡片 + Emoji 装饰 |
@@ -113,7 +113,7 @@ typora-fusion-dark-theme/
 | 37 | Export Sidebar | 导出视图浮动侧栏 |
 | 38 | Caret & Selection | 光标颜色 |
 | 39 | Table Resize Popover | 插入表格网格弹窗 |
-| 40 | Print Styles | `@media print` 覆盖 |
+| 40 | Print Styles | `@media print` 覆盖（含强制浅色文字） |
 | 41 | Mobile Export | `@media screen` 窄视口适配 |
 
 ---
@@ -210,16 +210,27 @@ element:focus    { /* Typora 聚焦类 + 原生 focus */ }
 
 ### 动画约定
 
-`transition` 写在**默认状态**，**不要**写在 `:hover` 上。常用参数：
+`transition` 写在**默认状态**，**不要**写在 `:hover` 上。**禁止使用 `transition: all`**，必须列出具体属性：
 
 ```css
-transition: all 0.3s ease;
 transition: color 0.3s ease, transform 0.3s ease;
-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弹性 */
-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);  /* 平滑减速 */
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弹性 */
+transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);  /* 平滑减速 */
 ```
 
 优先使用 `transform` 和 `opacity` 做动画（GPU 合成层）。避免对 `width`、`height` 等布局属性做动画。
+如需缩放效果，使用 `transform: scaleX()` / `scaleY()` 代替 `width` / `height` 过渡。
+
+### 可访问性
+
+移除默认 `outline` 时，**必须**添加 `:focus-visible` 替代样式：
+
+```css
+element:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+}
+```
 
 ### `color-mix()` 用法
 
@@ -327,7 +338,9 @@ grep -n "========================" fusion-dark/base.css
 
 - **不得**手动添加浏览器厂商前缀 — Typora 内嵌 Chromium 已支持现代 CSS
 - **不得**修改字体文件路径，必须保持 `fusion-dark/FileName.ext` 格式
-- **不得**在 UI 外壳 Section 以外使用 `!important`（外壳 Section 需要覆盖 Typora 内置样式）
+- **不得**在 UI 外壳 Section 和 Print Styles 以外使用 `!important`（外壳 Section 需要覆盖 Typora 内置样式，Print 需强制覆盖深色文字）
 - **不得**引入 CSS 嵌套语法（`:is()`、`@layer` 等）— 保持与 Typora 内嵌 Chromium 版本的兼容性
+- **不得**使用 `transition: all` — 必须列出具体属性以避免意外属性参与过渡
+- **不得**使用 `word-wrap` — 使用标准属性 `overflow-wrap` 代替
 - **不得**在 base.css 中硬编码颜色值 — 所有颜色必须通过 `var()` 引用主题变量
 - **不得**只修改单个主题文件中的变量而忽略其他主题 — 新增变量需同步到所有 5 个主题文件
