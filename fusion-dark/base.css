@@ -85,6 +85,7 @@ content {
 #write h1 {
     margin: 20px 0;
     border-bottom: none;
+    counter-reset: h2 h3 h4 h5 h6;
     transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
 }
 #write h1:not(.md-focus):hover {
@@ -98,6 +99,7 @@ content {
     margin: 0 auto;
     padding: 24px 40px;
     padding-bottom: 100px;
+    counter-reset: h2 h3 h4 h5 h6;
     line-height: 1.85;
     color: var(--text-color);
     letter-spacing: 0.3px;
@@ -162,153 +164,61 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
 
 /* --- H1: 额外样式见上方 .content-title 合并定义 --- */
 
-/* --- H2: Glass morphism card --- */
-#write h2 {
-    font-size: 1.4rem;
-    width: fit-content;
-    margin: 1rem 0;
-    padding: 0 10px;
-    border-radius: 8px;
-    cursor: default;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    background-color: var(--overlay-2);
-    background-image: var(--h2-bg-image);
-    background-repeat: no-repeat;
-    border-top: 1px solid var(--overlay-8);
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: none;
-    transition: color 0.5s ease, background-image 0.5s ease, text-shadow 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
-}
-#write h2.md-focus,
-#write h2:focus,
-#write h2:hover {
-    color: var(--primary-color);
-    background-image: var(--h2-bg-image-hover);
-    text-shadow: var(--glow-shadow-text);
-    box-shadow: var(--shadow-subtle);
-    transform: translateY(-1px);
-}
-
-/* --- H3: Left accent bar --- */
-#write h3 {
+/* --- H2–H6: 统一左侧竖线 + CSS 计数器自动编号 --- */
+#write h2, #write h3, #write h4, #write h5, #write h6 {
     position: relative;
-    padding-left: 15px;
-    font-size: 1.25rem;
     margin: 1rem 0;
-    transition: padding-left 0.3s ease, color 0.3s ease;
-}
-#write h3::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 16px;
-    background: var(--primary-color);
-    border-radius: 2px;
-    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    opacity: 0.8;
-}
-#write h3.md-focus,
-#write h3:focus,
-#write h3:hover {
-    color: var(--primary-color);
-    padding-left: 18px;
-    text-shadow: var(--glow-shadow-text);
-}
-#write h3.md-focus::before,
-#write h3:focus::before,
-#write h3:hover::before {
-    height: 60%;
-    opacity: 1;
-    box-shadow: var(--glow-shadow-box);
+    padding-left: 14px;
+    border-left: 4px solid color-mix(in srgb, var(--primary-color), transparent 30%);
+    transition: color 0.3s ease, text-shadow 0.3s ease, border-left-color 0.3s ease, transform 0.3s ease;
 }
 
-/* --- H4: Filled dot marker (flex 用于 ::before 圆点与文字对齐) --- */
-#write h4 {
-    margin: 20px 0;
-    font-size: 1.15rem;
-    display: flex;
-    align-items: center;
-}
-#write h4::before {
-    content: "";
-    margin-right: 10px;
-    display: inline-block;
-    background-color: var(--primary-color);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#write h4.md-focus, #write h4:focus, #write h4:hover {
+/* Counter: 自增当前级别 & 重置所有下级计数器 */
+#write h2 { counter-increment: h2; counter-reset: h3 h4 h5 h6; font-size: 1.4rem; }
+#write h3 { counter-increment: h3; counter-reset: h4 h5 h6; font-size: 1.25rem; }
+#write h4 { counter-increment: h4; counter-reset: h5 h6; font-size: 1.15rem; }
+#write h5 { counter-increment: h5; counter-reset: h6; font-size: 1.1rem; }
+#write h6 { counter-increment: h6; font-size: 1.05rem; }
+
+/* Counter prefix: 自动编号文本 */
+#write h2::before { content: counter(h2) ". "; }
+#write h3::before { content: counter(h2) "." counter(h3) " "; }
+#write h4::before { content: counter(h2) "." counter(h3) "." counter(h4) " "; }
+#write h5::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " "; }
+#write h6::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " "; }
+
+/* Counter prefix 共用样式 */
+#write h2::before, #write h3::before, #write h4::before,
+#write h5::before, #write h6::before {
     color: var(--primary-color);
-    text-shadow: var(--glow-shadow-text);
-    transform: translateX(3px);
-}
-#write h4.md-focus::before, #write h4:focus::before, #write h4:hover::before {
-    transform: scale(1.2);
-    box-shadow: var(--glow-shadow-box);
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
 }
 
-/* --- H5: Circle outline marker (flex 用于 ::before 空心圆与文字对齐) --- */
-#write h5 {
-    margin: 20px 0;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-}
-#write h5::before {
-    content: "";
-    margin-right: 10px;
-    display: inline-block;
-    background-color: transparent;
-    border: 1.5px solid var(--primary-color);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#write h5.md-focus, #write h5:focus, #write h5:hover {
-    color: var(--primary-color);
-    text-shadow: var(--glow-shadow-text);
-    transform: translateX(3px);
-}
-#write h5.md-focus::before, #write h5:focus::before, #write h5:hover::before {
-    box-shadow: var(--glow-shadow-box);
-    transform: scale(1.2);
-}
-
-/* --- H6: Dash marker --- */
-#write h6 {
-    margin: 20px 0;
-    font-size: 1.1rem;
-    color: var(--text-color);
-}
-#write h6::before {
-    content: "-";
-    color: var(--primary-color);
-    margin-right: 7px;
-    display: inline-block;
-    font-weight: 700;
-    transition: text-shadow 0.3s ease, transform 0.3s ease;
-}
+/* Hover / Focus 统一交互 */
+#write h2.md-focus, #write h2:focus, #write h2:hover,
+#write h3.md-focus, #write h3:focus, #write h3:hover,
+#write h4.md-focus, #write h4:focus, #write h4:hover,
+#write h5.md-focus, #write h5:focus, #write h5:hover,
 #write h6.md-focus, #write h6:focus, #write h6:hover {
     color: var(--primary-color);
     text-shadow: var(--glow-shadow-text);
-    transform: translateX(3px);
+    border-left-color: var(--primary-color);
+    transform: translateX(2px);
 }
+#write h2.md-focus::before, #write h2:focus::before, #write h2:hover::before,
+#write h3.md-focus::before, #write h3:focus::before, #write h3:hover::before,
+#write h4.md-focus::before, #write h4:focus::before, #write h4:hover::before,
+#write h5.md-focus::before, #write h5:focus::before, #write h5:hover::before,
 #write h6.md-focus::before, #write h6:focus::before, #write h6:hover::before {
-    text-shadow: var(--glow-shadow-text);
-    transform: scaleX(1.5);
+    opacity: 1;
 }
 
-/* Heading focus label float (Zeus-style level badges) */
-h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+/* Heading focus label float (防止 Typora 内置标题标签干扰编号前缀) */
+h2.md-focus:before, h3.md-focus:before, h4.md-focus:before,
+h5.md-focus:before, h6.md-focus:before {
     float: unset;
     font-size: unset;
 }
