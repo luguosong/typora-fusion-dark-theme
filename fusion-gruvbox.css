@@ -12,7 +12,7 @@
     --bg-color: #282828;
     --text-color: #ebdbb2;
     --text-color-secondary: #d5c4a1;
-    --primary-color: #fe8019;
+    --primary-color: #d79921;
     --secondary-color: #83a598;
     --accent-color: #83a598;
     --border-color: #3c3836;
@@ -60,19 +60,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(254, 128, 25, 0.45);
+    --glow-color: rgba(215, 153, 33, 0.45);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #fe8019;
-    --select-text-bg-color: rgba(254, 128, 25, 0.3);
+    --hover-background-color: #d79921;
+    --select-text-bg-color: rgba(215, 153, 33, 0.3);
 
     /* --- Sidebar (Zeus) --- */
     --side-bar-bg-color: #1d2021;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #fbf1c7;
-    --item-hover-bg-color: rgba(254, 128, 25, 0.12);
+    --item-hover-bg-color: rgba(215, 153, 33, 0.12);
     --item-hover-text-color: #fbf1c7;
     --control-text-color: #d5c4a1;
     --control-text-hover-color: #fbf1c7;
@@ -85,11 +85,11 @@
     --window-border: 1px solid #504945;
     --panel-border-color: #504945;
     --table-border-color: #3c3836;
-    --search-select-bg-color: rgba(254, 128, 25, 0.25);
+    --search-select-bg-color: rgba(215, 153, 33, 0.25);
     --search-select-text-color: #fbf1c7;
     --focus-ring-color: var(--primary-color);
     --rawblock-edit-panel-bd: #3c3836;
-    --menu-divider-color: rgba(254, 128, 25, 0.1);
+    --menu-divider-color: rgba(215, 153, 33, 0.1);
 
     /* --- Code Highlighting (Gruvbox) --- */
     --code-block-bg: #1d2021;
@@ -128,7 +128,7 @@
 
     /* --- Content Area --- */
     --max-width: 950px;
-    --texture-mask-color: #fe8019;
+    --texture-mask-color: #d79921;
     --texture-opacity: 0.03;
     --bg-style: radial-gradient(#a89984 1px, transparent 1px);
 

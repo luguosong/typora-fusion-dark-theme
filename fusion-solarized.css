@@ -10,13 +10,13 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #002b36;
+    --bg-color: #1a1f2b;
     --text-color: #b0bec5;
     --text-color-secondary: #a3b8ca;
     --primary-color: #b58900;
     --secondary-color: #268bd2;
     --accent-color: #268bd2;
-    --border-color: #073642;
+    --border-color: #252b3a;
 
     /* --- Text Hierarchy --- */
     --text-bright: #fdf6e3;
@@ -25,17 +25,17 @@
     --text-input: #eee8d5;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #073642;
-    --surface-2: #0a3d4a;
-    --surface-3: #0d4452;
-    --surface-input: #0d4452;
-    --surface-active: #0a3d4a;
-    --surface-deep: #001e26;
+    --surface-1: #141820;
+    --surface-2: #232938;
+    --surface-3: #2c3345;
+    --surface-input: #2c3345;
+    --surface-active: #232938;
+    --surface-deep: #10131a;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #001e26;
-    --border-medium: #586e75;
-    --border-input: #657b83;
+    --border-strong: #10131a;
+    --border-medium: #3d4560;
+    --border-input: #4a5270;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -69,7 +69,7 @@
     --select-text-bg-color: rgba(181, 137, 0, 0.3);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #073642;
+    --side-bar-bg-color: #141820;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
@@ -83,38 +83,38 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #073642;
-    --panel-border-color: #073642;
-    --table-border-color: #073642;
+    --window-border: 1px solid #252b3a;
+    --panel-border-color: #252b3a;
+    --table-border-color: #252b3a;
     --search-select-bg-color: rgba(181, 137, 0, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #073642;
+    --rawblock-edit-panel-bd: #252b3a;
     --menu-divider-color: rgba(181, 137, 0, 0.1);
 
     /* --- Code Highlighting (Solarized) --- */
-    --code-block-bg: #073642;
+    --code-block-bg: #141820;
     --code-text: #839496;
-    --code-gutter-border: #586e75;
+    --code-gutter-border: #2c3345;
     --glass-border-color: rgba(255, 255, 255, 0.05);
     --code-keyword: #859900;
     --code-variable: #839496;
     --code-function: #268bd2;
     --code-param: #b58900;
     --code-string: #2aa198;
-    --code-comment: #586e75;
+    --code-comment: #4a5270;
     --code-type: #b58900;
     --code-property: #268bd2;
     --code-number: #d33682;
     --code-meta: #cb4b16;
-    --code-selected-bg: #586e75;
+    --code-selected-bg: #2c3345;
 
     /* --- Kbd --- */
-    --kbd-bg: #073642;
-    --kbd-border: #586e75;
-    --kbd-border-top: #657b83;
-    --kbd-border-bottom: #002b36;
-    --kbd-shadow: #002b36;
+    --kbd-bg: #232938;
+    --kbd-border: #2c3345;
+    --kbd-border-top: #3d4560;
+    --kbd-border-bottom: #1a1f2b;
+    --kbd-shadow: #10131a;
 
     /* --- Alert Colors --- */
     --alert-note: #6c71c4;
@@ -134,16 +134,16 @@
     --bg-style: radial-gradient(#93a1a1 1px, transparent 1px);
 
     /* --- Markdown --- */
-    --md-char-color: #586e75;
-    --heading-char-color: #586e75;
-    --meta-content-color: #657b83;
-    --blur-text-color: #586e75;
+    --md-char-color: #3d4560;
+    --heading-char-color: #3d4560;
+    --meta-content-color: #4a5270;
+    --blur-text-color: #3d4560;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(0, 43, 54, 0.85);
+    --export-sidebar-bg: rgba(26, 31, 43, 0.85);
 
     /* --- Focus Mode --- */
-    --focus-blockquote-border: rgba(88, 110, 117, 0.12);
+    --focus-blockquote-border: rgba(61, 69, 96, 0.12);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;

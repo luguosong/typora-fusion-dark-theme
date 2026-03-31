@@ -8,13 +8,13 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #ffffff;
+    --bg-color: #f9f7f4;
     --text-color: #2c2c2c;
     --text-color-secondary: #5a5a5a;
     --primary-color: #b45309;
     --secondary-color: #6366f1;
     --accent-color: #6366f1;
-    --border-color: #e0e0e0;
+    --border-color: #ddd8d0;
 
     /* --- Text Hierarchy --- */
     --text-bright: #111;
@@ -23,17 +23,17 @@
     --text-input: #222;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #f5f5f5;
-    --surface-2: #ffffff;
-    --surface-3: #ebebeb;
-    --surface-input: #f0f0f0;
-    --surface-active: #e8e8e8;
-    --surface-deep: #f8f8f8;
+    --surface-1: #f0ede7;
+    --surface-2: #f9f7f4;
+    --surface-3: #e6e3dc;
+    --surface-input: #edebe5;
+    --surface-active: #e4e1da;
+    --surface-deep: #f4f2ee;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #ccc;
-    --border-medium: #d5d5d5;
-    --border-input: #c0c0c0;
+    --border-strong: #c5c0b8;
+    --border-medium: #d0cbc3;
+    --border-input: #bab5ac;
 
     /* --- Overlay (black-based for light themes) --- */
     --overlay-2: rgba(0, 0, 0, 0.02);
@@ -67,7 +67,7 @@
     --select-text-bg-color: rgba(217, 119, 6, 0.2);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #f5f5f5;
+    --side-bar-bg-color: #f0ede7;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 88%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #111;
@@ -81,20 +81,20 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #d5d5d5;
-    --panel-border-color: #d5d5d5;
-    --table-border-color: #e0e0e0;
+    --window-border: 1px solid #d0cbc3;
+    --panel-border-color: #d0cbc3;
+    --table-border-color: #ddd8d0;
     --search-select-bg-color: rgba(217, 119, 6, 0.15);
     --search-select-text-color: #111;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #f0f0f0;
+    --rawblock-edit-panel-bd: #edebe5;
     --menu-divider-color: rgba(217, 119, 6, 0.1);
 
     /* --- Code Highlighting (Light Dracula adaptation) --- */
-    --code-block-bg: #fafafa;
+    --code-block-bg: #f3f0ea;
     --code-text: #383a42;
-    --code-gutter-border: #e0e0e0;
-    --glass-border-color: rgba(0, 0, 0, 0.06);
+    --code-gutter-border: #ddd8d0;
+    --glass-border-color: rgba(0, 0, 0, 0.05);
     --code-keyword: #d63384;
     --code-variable: #383a42;
     --code-function: #22863a;
@@ -105,14 +105,14 @@
     --code-property: #4078f2;
     --code-number: #986801;
     --code-meta: #c18401;
-    --code-selected-bg: #d7d7d7;
+    --code-selected-bg: #d5d0c8;
 
     /* --- Kbd --- */
-    --kbd-bg: #f0f0f0;
-    --kbd-border: #d0d0d0;
-    --kbd-border-top: #e0e0e0;
-    --kbd-border-bottom: #b0b0b0;
-    --kbd-shadow: #b0b0b0;
+    --kbd-bg: #edebe5;
+    --kbd-border: #cdc8c0;
+    --kbd-border-top: #ddd8d0;
+    --kbd-border-bottom: #ada8a0;
+    --kbd-shadow: #ada8a0;
 
     /* --- Alert Colors --- */
     --alert-note: #7c3aed;
@@ -138,7 +138,7 @@
     --blur-text-color: #aaa;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(245, 245, 245, 0.92);
+    --export-sidebar-bg: rgba(240, 237, 231, 0.92);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(170, 170, 170, 0.2);
