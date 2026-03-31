@@ -43,14 +43,14 @@
     --overlay-6: rgba(0, 0, 0, 0.06);
     --overlay-8: rgba(0, 0, 0, 0.08);
     --overlay-10: rgba(0, 0, 0, 0.1);
-    --overlay-15: rgba(0, 0, 0, 0.12);
-    --overlay-20: rgba(0, 0, 0, 0.15);
+    --overlay-15: rgba(0, 0, 0, 0.12); /* intentionally reduced for light bg */
+    --overlay-20: rgba(0, 0, 0, 0.15); /* intentionally reduced for light bg */
 
     /* --- Shadow --- */
     --shadow-5: rgba(0, 0, 0, 0.03);
     --shadow-10: rgba(0, 0, 0, 0.06);
     --shadow-12: rgba(0, 0, 0, 0.08);
-    --shadow-15: rgba(0, 0, 0, 0.08);
+    --shadow-15: rgba(0, 0, 0, 0.10);
     --shadow-20: rgba(0, 0, 0, 0.1);
     --shadow-25: rgba(0, 0, 0, 0.12);
     --shadow-30: rgba(0, 0, 0, 0.15);

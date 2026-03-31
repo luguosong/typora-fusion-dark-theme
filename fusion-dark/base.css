@@ -60,18 +60,20 @@ content {
     content: '';
     display: block;
     margin: 10px auto 0;
-    width: 40px;
+    width: 50%;
     height: 4px;
     border-radius: 4px;
     background: var(--h1-underline-color);
     box-shadow: 0 0 4px color-mix(in srgb, var(--primary-color), transparent 50%);
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    transform: scaleX(0.1);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
 }
 .content-title:hover {
     text-shadow: var(--glow-shadow-text);
 }
 .content-title:hover::after {
-    width: 50%;
+    transform: scaleX(1);
     box-shadow: 0 0 10px color-mix(in srgb, var(--h1-underline-color), transparent 30%);
 }
 
@@ -86,7 +88,7 @@ content {
     color: var(--text-color);
     letter-spacing: 0.3px;
     word-break: break-word;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     text-align: left;
     position: relative;
     z-index: 0;
@@ -137,7 +139,7 @@ li > ol, li > ul { margin: 0; }
 #write h1, #write h2, #write h3,
 #write h4, #write h5, #write h6 {
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code,
 h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
@@ -160,12 +162,14 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     content: '';
     display: block;
     margin: 10px auto 0;
-    width: 40px;
+    width: 50%;
     height: 4px;
     border-radius: 4px;
     background: var(--h1-underline-color);
     box-shadow: 0 0 4px color-mix(in srgb, var(--primary-color), transparent 50%);
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    transform: scaleX(0.1);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
 }
 #write h1:not(.md-focus):hover {
     transform: translateY(-1px);
@@ -174,7 +178,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
 #write h1.md-focus::after,
 #write h1:focus::after,
 #write h1:hover::after {
-    width: 50%;
+    transform: scaleX(1);
     box-shadow: 0 0 10px color-mix(in srgb, var(--h1-underline-color), transparent 30%);
 }
 
@@ -195,7 +199,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     border-bottom: none;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease, background-image 0.5s ease, text-shadow 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
 }
 #write h2.md-focus,
 #write h2:focus,
@@ -225,7 +229,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     height: 16px;
     background: var(--primary-color);
     border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     opacity: 0.8;
 }
 #write h3.md-focus,
@@ -258,7 +262,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #write h4.md-focus, #write h4:focus, #write h4:hover {
     color: var(--primary-color);
@@ -287,7 +291,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     height: 8px;
     border-radius: 50%;
     box-sizing: border-box;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #write h5.md-focus, #write h5:focus, #write h5:hover {
     color: var(--primary-color);
@@ -311,7 +315,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     margin-right: 7px;
     display: inline-block;
     font-weight: 700;
-    transition: all 0.3s ease;
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
 }
 #write h6.md-focus, #write h6:focus, #write h6:hover {
     color: var(--primary-color);
@@ -339,7 +343,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     position: relative;
     overflow: visible;
     opacity: 0.5;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 #write hr::after {
     content: '';
@@ -351,7 +355,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     height: 8px;
     border: 2px solid var(--primary-color);
     background: var(--bg-color);
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 #write hr:hover {
     opacity: 1;
@@ -374,7 +378,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     border-radius: 4px;
     background: none;
     border-bottom: none;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
     position: relative;
     display: inline-block;
 }
@@ -414,7 +418,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     background-color: var(--shadow-20);
     border: 1px solid color-mix(in srgb, var(--primary-color), transparent 70%);
     border-radius: 16px;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 #write blockquote::before {
     content: "💡";
@@ -425,7 +429,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     filter: grayscale(1);
     opacity: 0.8;
     transform: rotate(30deg);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: filter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 #write blockquote p {
     color: var(--text-color-secondary);
@@ -522,7 +526,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     text-decoration: line-through;
     text-decoration-color: var(--primary-color);
     color: var(--text-muted);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, color 0.3s ease, text-decoration-color 0.3s ease;
 }
 #write del:hover {
     opacity: 1;
@@ -585,6 +589,9 @@ li.md-list-item { margin: 0.4rem 0; }
     outline: 0;
     z-index: 1;
 }
+.task-list-item input:focus-visible::before {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+}
 .task-list-item input::before {
     content: ' ';
     display: block;
@@ -593,7 +600,7 @@ li.md-list-item { margin: 0.4rem 0; }
     border-radius: 50%;
     background: var(--shadow-20);
     border: 2px solid var(--overlay-20);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+    transition: border 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
     box-sizing: border-box;
 }
 .task-list-item input:checked::before {
@@ -614,7 +621,7 @@ li.md-list-item { margin: 0.4rem 0; }
     border-right: 0;
     transform: rotate(-45deg) scale(0);
     opacity: 0;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+    transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
 }
 .task-list-item input:checked::after {
     opacity: 1;
@@ -661,7 +668,7 @@ li.md-list-item { margin: 0.4rem 0; }
     margin-bottom: 0;
     background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
     border-bottom: 1px solid color-mix(in srgb, var(--primary-color), transparent 90%);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
 .md-fences {
@@ -750,7 +757,7 @@ pre.md-fences-advanced.md-focus .md-fences-adv-panel { position: unset; }
     margin: 0 2px;
     border-radius: 6px;
     vertical-align: middle;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 #write code:not(.md-fencescode):hover {
     background-color: var(--primary-color);
@@ -789,7 +796,7 @@ figure { border-radius: 8px; }
     color: var(--text-color);
     border-right: 1px solid color-mix(in srgb, var(--text-bright), transparent 95%);
     border-bottom: 1px solid color-mix(in srgb, var(--text-bright), transparent 95%);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 #write table td:last-child, #write table th:last-child { border-right: none; }
 #write table tr:last-child td { border-bottom: none; }
@@ -807,9 +814,6 @@ figure { border-radius: 8px; }
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-color), transparent 40%);
     cursor: default;
 }
-#write table thead th {
-    background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
-}
 
 
 /* ======================== Images (Phycat style) ======================== */
@@ -821,7 +825,7 @@ figure { border-radius: 8px; }
     object-fit: contain;
     filter: brightness(1) contrast(1);
     box-shadow: 0 4px 6px -1px var(--shadow-5);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     max-width: 100%;
     cursor: zoom-in;
 }
@@ -846,7 +850,7 @@ figure { border-radius: 8px; }
     border-top-color: var(--border-input);
     border-bottom-color: var(--kbd-shadow);
     box-shadow: 0 4px 0 var(--kbd-shadow), 0 5px 5px var(--shadow-40);
-    transition: all 0.1s ease;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.1s ease, border-color 0.1s ease;
     display: inline-block;
     line-height: 1;
     margin: 0 4px;
@@ -872,7 +876,7 @@ pre.md-meta-block {
     border: 1.5px dashed color-mix(in srgb, var(--primary-color), transparent 60%);
     border-radius: 8px;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 pre.md-meta-block::after {
     content: "YAML";
@@ -888,7 +892,7 @@ pre.md-meta-block::after {
     border-radius: 0 0 6px 6px;
     box-shadow: 0 2px 10px color-mix(in srgb, var(--primary-color), transparent 70%);
     pointer-events: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 pre.md-meta-block:hover {
     background-color: color-mix(in srgb, var(--primary-color), transparent 92%);
@@ -1027,7 +1031,7 @@ pre.md-meta-block:hover {
     border-radius: 8px;
     margin-bottom: 4px;
     position: relative;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
 }
 .md-toc-item a { text-decoration: none; color: inherit; display: block; width: 100%; border-bottom: none; }
@@ -1310,8 +1314,11 @@ pre.md-meta-block:hover {
     outline: none;
     color: var(--text-ui);
 }
-.md-notification button:focus, .modal-dialog .btn:focus, .modal-dialog button:focus { outline: none; }
-.md-hr:focus { outline: none; }
+.md-notification button:focus, .modal-dialog .btn:focus, .modal-dialog button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+.md-hr:focus { outline: none; box-shadow: 0 0 0 2px var(--primary-color); }
 
 
 /* ======================== Auto Suggest ======================== */
@@ -1353,7 +1360,7 @@ pre.md-meta-block:hover {
 .md-rawblock-control:not(.md-rawblock-tooltip) input { background-color: var(--surface-input) !important; color: var(--text-bright) !important; border: 1px solid var(--border-input) !important; }
 .md-rawblock-control:not(.md-rawblock-tooltip) .md-rawblock-btn { color: var(--text-ui) !important; }
 
-.md-empty .md-meta, .md-expand .md-content, .md-expand .md-meta, .md-expand.md-content, .md-expand.md-meta { font-family: none; }
+.md-empty .md-meta, .md-expand .md-content, .md-expand .md-meta, .md-expand.md-content, .md-expand.md-meta { font-family: inherit; }
 
 
 /* ======================== Mermaid (Phycat + dark) ======================== */
@@ -1362,7 +1369,7 @@ svg[id^=mermaid] .label text, svg[id^=mermaid] span, svg[id^=mermaid] text { fil
 g > foreignObject > div > span > p,
 svg[id^=mermaid] .edgeLabel .label span,
 svg[id^=mermaid] .label text,
-svg[id^=mermaid] .node .label text { fill: var(--text-bright) !important; color: var(--text-bright) !important; text-shadow: 0 0 3px #000, 1px 1px 1px #000 !important; font-weight: 600 !important; }
+svg[id^=mermaid] .node .label text { fill: var(--text-bright) !important; color: var(--text-bright) !important; text-shadow: 0 0 3px var(--code-block-bg), 1px 1px 1px var(--code-block-bg) !important; font-weight: 600 !important; }
 svg[id^=mermaid] .node circle, svg[id^=mermaid] .node ellipse, svg[id^=mermaid] .node path, svg[id^=mermaid] .node polygon, svg[id^=mermaid] .node rect { fill: var(--code-block-bg) !important; }
 svg[id^=mermaid] .node circle, svg[id^=mermaid] .node ellipse { stroke: var(--secondary-color) !important; stroke-width: 2px !important; filter: drop-shadow(0 0 5px var(--secondary-color)); }
 svg[id^=mermaid] .node rect { stroke: var(--primary-color) !important; }
@@ -1457,7 +1464,7 @@ button, .btn {
     margin: 2px 15px !important;
     line-height: 2.5em !important;
     padding-left: 15px !important;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
     display: block;
 }
 #megamenu-menu-list li a.active,
@@ -1476,7 +1483,7 @@ button, .btn {
     color: var(--text-color) !important;
     border: 1px solid var(--overlay-5) !important;
     border-radius: 8px !important;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .long-btn:hover {
     background-color: color-mix(in srgb, var(--primary-color), transparent 90%) !important;
@@ -1490,7 +1497,7 @@ button, .btn {
 .recent-file-item {
     color: var(--text-color-secondary) !important;
     border-bottom: 1px solid var(--overlay-2) !important;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 .recent-file-item:hover { background-color: color-mix(in srgb, var(--primary-color), transparent 90%) !important; color: var(--text-bright) !important; }
 .recent-file-item:hover .recent-file-name { color: var(--primary-color) !important; }
@@ -1504,7 +1511,7 @@ button, .btn {
 .theme-preview-div {
     border: 2px solid var(--overlay-10) !important;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .theme-preview-div.active, .theme-preview-div:hover {
     border-color: var(--primary-color) !important;
@@ -1560,7 +1567,7 @@ button, .btn {
     background-color: color-mix(in srgb, var(--primary-color), transparent 85%) !important;
     color: var(--primary-color) !important;
     border-left: 3px solid var(--primary-color);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .typora-sourceview-on .CodeMirror-gutters {
     background-color: var(--bg-color) !important;
@@ -1594,7 +1601,7 @@ body .md-table-resize-popover .md-grid-board a {
     border-radius: 3px !important;
     background-color: color-mix(in srgb, var(--text-color), transparent 90%) !important;
     border: 1px solid transparent !important;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    transition: background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
     background-color: var(--primary-color) !important;
