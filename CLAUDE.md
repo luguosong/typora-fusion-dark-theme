@@ -19,7 +19,7 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css                  # 共享基础样式（~1472 行，所有主题复用）
+│   ├── base.css                  # 共享基础样式（~1382 行，所有主题复用）
 │   ├── CascadiaCode.woff2        # 内置等宽字体
 │   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
 ├── fusion-dark.css               # Dark + Orange 主题（变量层）
@@ -47,7 +47,7 @@ typora-fusion-dark-theme/
          │ @import url("fusion-dark/base.css")
          ▼
 ┌──────────────────────┐
-│  fusion-dark/base.css│  ← 共享基础样式层（~1472 行）
+│  fusion-dark/base.css│  ← 共享基础样式层（~1382 行）
 │                      │    所有选择器、布局、动画
 │                      │    颜色全部通过 var() 引用
 └──────────────────────┘
@@ -78,7 +78,7 @@ typora-fusion-dark-theme/
 | 2 | Base | `html`、`body`、`::selection` |
 | 3 | Content Area Layout | `#write` 容器、纹理叠层、响应式断点 |
 | 4 | Paragraph | 段落字体与间距 |
-| 5 | Headings | `.content-title` 与 H1 联合选择器 + H2–H6 独立样式 |
+| 5 | Headings | H1 居中标题 + H2–H6 统一左竖线 + CSS 计数器自动编号 |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
 | 7 | Links | 图标前缀 + 霓虹悬停 |
 | 8 | Blockquote | 圆角卡片 + Emoji 装饰 |
@@ -186,6 +186,45 @@ typora-fusion-dark-theme/
 
 - **深色主题** → overlay 基于白色 `rgba(255, 255, 255, N%)`
 - **浅色主题** → overlay 基于黑色 `rgba(0, 0, 0, N%)`
+
+### 标题编号系统
+
+H2–H6 使用 CSS Counters 实现自动多级编号，H1 作为文档标题不参与编号：
+
+```
+#write         → counter-reset: h2 h3 h4 h5 h6
+#write h1      → counter-reset: h2 h3 h4 h5 h6  （遇到 H1 重新计数）
+#write h2      → counter-increment: h2; counter-reset: h3 h4 h5 h6
+#write h3      → counter-increment: h3; counter-reset: h4 h5 h6
+#write h4–h6   → 依此类推
+```
+
+编号通过 `::before` 伪元素展示：
+
+| 级别 | 前缀格式 | 示例 |
+|------|---------|------|
+| H2 | `counter(h2) ". "` | 1. 2. 3. |
+| H3 | `counter(h2) "." counter(h3) " "` | 1.1 1.2 2.1 |
+| H4 | 三级点分 | 1.1.1 |
+| H5 | 四级点分 | 1.1.1.1 |
+| H6 | 五级点分 | 1.1.1.1.1 |
+
+H2–H6 视觉统一为**左侧 4px 竖线 + 编号前缀**，通过字号递减区分层级。
+
+### 变量使用与清理
+
+主题文件中的变量分三类：
+
+| 类别 | 说明 | 是否可删除 |
+|------|------|-----------|
+| **base.css 引用** | 被 `var()` 直接引用的变量 | ❌ |
+| **Typora 内部** | 被 Typora App 直接读取（如 `--font-monospace`、`--mermaid-theme`、`--md-char-color`） | ❌ |
+| **设计令牌** | 属于渐变/阴影/发光系统但暂未引用的变量 | ⚠️ 需确认 |
+
+清理变量前必须确认其不属于 Typora 内部变量。已知 Typora 内部变量包括：
+`--control-text-color`、`--active-file-border-color`、`--window-border`、`--panel-border-color`、
+`--search-select-*`、`--rawblock-edit-panel-bd`、`--focus-ring-color`、`--blur-text-color`、
+`--md-char-color`、`--heading-char-color`、`--meta-content-color`、`--mermaid-theme` 等。
 
 ---
 
