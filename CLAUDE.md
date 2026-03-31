@@ -27,6 +27,8 @@ typora-fusion-dark-theme/
 ├── fusion-nord.css               # Nord 主题（变量层）
 ├── fusion-light.css              # Light + Amber 主题（变量层）
 ├── fusion-material.css           # Material Palenight 主题（变量层）
+├── fusion-solarized.css          # Solarized Dark 护眼主题（变量层）
+├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
 ├── README.md                     # 中文文档
 ├── README_en.md                  # 英文文档
 └── CLAUDE.md                     # 本文件
@@ -295,7 +297,7 @@ background: rgba(232, 148, 76, 0.1);
 3. 内容选择器限定在 `#write` 下
 4. 定义默认、`:hover`、`:focus`、`.md-focus` 状态
 5. 所有颜色值使用 CSS 变量（定义在主题文件中）
-6. 如需新增变量，须在**所有 5 个主题文件**的 `:root` 中同步添加
+6. 如需新增变量，须在**所有 7 个主题文件**的 `:root` 中同步添加
 7. 在默认状态添加 `transition`
 8. 在**编辑模式**和**专注模式**下均测试效果
 
@@ -325,13 +327,15 @@ background: rgba(232, 148, 76, 0.1);
 
 ## 主题变体一览
 
-| 文件 | 配色方案 | 主色调 | 背景色 |
-|---|---|---|---|
-| `fusion-dark.css` | Dark + Orange | `#e8944c` | `#1e1e1e` |
-| `fusion-dracula.css` | Full Dracula | `#ff79c6` | `#282a36` |
-| `fusion-nord.css` | Nord | `#88c0d0` | `#2e3440` |
-| `fusion-light.css` | Light + Amber | `#d97706` | `#ffffff` |
-| `fusion-material.css` | Material Palenight | `#82aaff` | `#292d3e` |
+| 文件 | 配色方案 | 主色调 | 背景色 | 正文对比度 |
+|---|---|---|---|---|
+| `fusion-dark.css` | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA |
+| `fusion-dracula.css` | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA |
+| `fusion-nord.css` | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA |
+| `fusion-light.css` | Light + Amber | `#b45309` | `#ffffff` | 6.9:1 AA |
+| `fusion-material.css` | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA |
+| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#002b36` | 7.3:1 AAA |
+| `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#fe8019` | `#282828` | 8.6:1 AAA |
 
 ---
 

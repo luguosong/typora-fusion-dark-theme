@@ -1,46 +1,65 @@
-# Fusion Dark — Typora 主题
+﻿# Fusion — Typora 主题集
 
 > 🌐 **Language / 语言：** [English](README_en.md) | 简体中文
 
-> 🖤 一款面向程序员的 [Typora](https://typora.io/) 深色主题，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，以橙色与蓝色为点缀色。
+> 🎨 一套面向程序员的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **7 种配色方案**，全部达到 WCAG AA 以上护眼对比度。
+
+---
+
+## 🎨 主题一览
+
+| 主题 | 配色 | 主色调 | 背景色 | 正文对比度 | 护眼 |
+|---|---|---|---|---|---|
+| **Fusion Dark** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
+| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
+| **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
+| **Fusion Light** | Light + Amber | `#b45309` | `#ffffff` | 6.9:1 AA | |
+| **Fusion Material** | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA | |
+| **Fusion Solarized** | Solarized Dark | `#b58900` | `#002b36` | 7.3:1 AAA | 🌿 |
+| **Fusion Gruvbox** | Gruvbox Dark | `#fe8019` | `#282828` | 8.6:1 AAA | 🌿 |
 
 ---
 
 ## ✨ 设计理念
 
-**Fusion Dark** 是一款混合主题，汇聚两种风格之精华：
+**Fusion** 是一套混合主题集，汇聚多种风格之精华：
 
 | 区域 | 风格来源 | 特征 |
 |---|---|---|
 | **侧栏** | Zeus | 简洁的 VS Code 风暗色面板 |
 | **内容区** | Phycat | 丰富的动画、玻璃拟态、霓虹发光效果 |
-| **语法高亮** | Dracula | 对比鲜明、护眼的色彩令牌 |
+| **语法高亮** | 各配色方案 | 对比鲜明、护眼的色彩令牌 |
 
-主调色盘以暖橙色（`#e8944c`）作为主强调色，以冷蓝色（`#9eaffa`）为辅助色，背景为深暗色（`#1e1e1e`）。
+架构：每个主题仅定义变量（~130 行），共享同一套基础样式（`fusion-dark/base.css`），实现一处修改全部生效。
 
 ---
 
-## �� 文件结构
+## 📁 文件结构
 
 ```
 typora-fusion-dark-theme/
-├── fusion-dark.css            # 主题样式表（约 1,674 行）
-└── fusion-dark/
-    ├── CascadiaCode.woff2     # 等宽字体（代码块与行内代码）
-    └── LXGWWenKai-Regular.ttf # 霞鹜文楷（正文段落中文字体）
+├── fusion-dark/
+│   ├── base.css               # 共享基础样式（所有主题复用）
+│   ├── CascadiaCode.woff2     # 等宽字体（代码块与行内代码）
+│   └── LXGWWenKai-Regular.ttf # 霞鹜文楷（正文段落中文字体）
+├── fusion-dark.css            # Dark + Orange
+├── fusion-dracula.css         # Dracula
+├── fusion-nord.css            # Nord
+├── fusion-light.css           # Light + Amber
+├── fusion-material.css        # Material Palenight
+├── fusion-solarized.css       # Solarized Dark 🌿
+└── fusion-gruvbox.css         # Gruvbox Dark 🌿
 ```
 
 ---
 
 ## 🎨 功能亮点
 
-### 标题系统（6 个独立样式）
-- **H1** — 居中排版，聚焦/悬停时下划线动态展开
-- **H2** — 玻璃拟态卡片，带径向渐变背景
-- **H3** — 左侧强调竖条，悬停时自动伸长
-- **H4** — 橙色实心圆点标记，滑入动画
-- **H5** — 空心圆框标记，发光效果
-- **H6** — 破折号（`-`）前缀，颜色渐变过渡
+### 标题系统（自动编号 + 统一左竖线）
+- **H1** — 居中排版，聚焦/悬停时下划线动态展开（文档标题，不编号）
+- **H2–H6** — 左侧 4px 主色竖线 + CSS 计数器自动编号
+  - H2: `1.` `2.` `3.` — H3: `1.1` `1.2` — H4: `1.1.1` — 以此类推至 5 级
+  - 悬停时竖线高亮 + 发光 + 轻微右移
 
 ### 代码
 - **围栏代码块** — macOS 红黄绿交通灯装饰、语言标签、Dracula 风语法着色
@@ -96,23 +115,27 @@ typora-fusion-dark-theme/
 ## 🚀 安装方法
 
 1. 打开 Typora → **偏好设置 → 外观 → 打开主题文件夹**
-2. 将 `fusion-dark.css` 和 `fusion-dark/` 目录复制到主题文件夹中
+2. 将你想要的主题文件（如 `fusion-dark.css`）和 `fusion-dark/` 目录复制到主题文件夹中
 3. 重启 Typora（或刷新主题）
-4. 在 **偏好设置 → 外观 → 主题** 中选择 **Fusion Dark**
+4. 在 **偏好设置 → 外观 → 主题** 中选择对应主题
+
+> 💡 所有主题共享 `fusion-dark/` 资源目录，只需复制一次即可。
 
 ---
 
-## 🎨 颜色参考
+## 🎨 颜色参考（以 Fusion Dark 为例）
 
 | 变量 | 值 | 用途 |
 |---|---|---|
 | `--bg-color` | `#1e1e1e` | 页面背景 |
 | `--text-color` | `#d4d4d4` | 主要文字 |
-| `--text-color-secondary` | `#9ca3af` | 段落、次要文字 |
+| `--text-color-secondary` | `#b0b8c4` | 段落、次要文字 |
 | `--primary-color` | `#e8944c` | 橙色强调（标题、链接、边框） |
 | `--secondary-color` | `#9eaffa` | 蓝色强调（斜体、Note 提示块） |
 | `--side-bar-bg-color` | `#252526` | 侧栏背景 |
 | `--code-block-bg` | `#282a36` | 代码块背景（Dracula 风格） |
+
+> 其他主题的变量值请查阅对应 `fusion-*.css` 文件。
 
 ---
 
