@@ -1,0 +1,149 @@
+/*
+ * ============================================================
+ *  Fusion Gruvbox — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Gruvbox Dark
+ *  Eye-friendly retro warm scheme by morhetz
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette --- */
+    --bg-color: #282828;
+    --text-color: #ebdbb2;
+    --text-color-secondary: #d5c4a1;
+    --primary-color: #fe8019;
+    --secondary-color: #83a598;
+    --accent-color: #83a598;
+    --border-color: #3c3836;
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #fbf1c7;
+    --text-ui: #d5c4a1;
+    --text-muted: #928374;
+    --text-input: #ebdbb2;
+
+    /* --- Surface Hierarchy --- */
+    --surface-1: #1d2021;
+    --surface-2: #3c3836;
+    --surface-3: #504945;
+    --surface-input: #504945;
+    --surface-active: #504945;
+    --surface-deep: #1d2021;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #1d2021;
+    --border-medium: #504945;
+    --border-input: #665c54;
+
+    /* --- Overlay (white-based for dark themes) --- */
+    --overlay-2: rgba(255, 255, 255, 0.02);
+    --overlay-3: rgba(255, 255, 255, 0.03);
+    --overlay-4: rgba(255, 255, 255, 0.04);
+    --overlay-5: rgba(255, 255, 255, 0.05);
+    --overlay-6: rgba(255, 255, 255, 0.06);
+    --overlay-8: rgba(255, 255, 255, 0.08);
+    --overlay-10: rgba(255, 255, 255, 0.1);
+    --overlay-15: rgba(255, 255, 255, 0.15);
+    --overlay-20: rgba(255, 255, 255, 0.2);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.05);
+    --shadow-10: rgba(0, 0, 0, 0.1);
+    --shadow-12: rgba(0, 0, 0, 0.12);
+    --shadow-15: rgba(0, 0, 0, 0.15);
+    --shadow-20: rgba(0, 0, 0, 0.2);
+    --shadow-25: rgba(0, 0, 0, 0.25);
+    --shadow-30: rgba(0, 0, 0, 0.3);
+    --shadow-40: rgba(0, 0, 0, 0.4);
+    --shadow-50: rgba(0, 0, 0, 0.5);
+    --shadow-60: rgba(0, 0, 0, 0.6);
+
+    /* --- Glow Effects --- */
+    --glow-color: rgba(254, 128, 25, 0.45);
+    --glow-shadow-text: 0 0 5px var(--glow-color);
+    --glow-shadow-box: 0 0 8px var(--glow-color);
+    --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
+    --hover-background-color: #fe8019;
+    --select-text-bg-color: rgba(254, 128, 25, 0.3);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #1d2021;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #fbf1c7;
+    --item-hover-bg-color: rgba(254, 128, 25, 0.12);
+    --item-hover-text-color: #fbf1c7;
+    --control-text-color: #d5c4a1;
+    --control-text-hover-color: #fbf1c7;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #504945;
+    --panel-border-color: #504945;
+    --table-border-color: #3c3836;
+    --search-select-bg-color: rgba(254, 128, 25, 0.25);
+    --search-select-text-color: #fbf1c7;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #3c3836;
+    --menu-divider-color: rgba(254, 128, 25, 0.1);
+
+    /* --- Code Highlighting (Gruvbox) --- */
+    --code-block-bg: #1d2021;
+    --code-text: #ebdbb2;
+    --code-gutter-border: #504945;
+    --glass-border-color: rgba(255, 255, 255, 0.05);
+    --code-keyword: #fb4934;
+    --code-variable: #ebdbb2;
+    --code-function: #b8bb26;
+    --code-param: #fabd2f;
+    --code-string: #b8bb26;
+    --code-comment: #928374;
+    --code-type: #83a598;
+    --code-property: #8ec07c;
+    --code-number: #d3869b;
+    --code-meta: #fe8019;
+    --code-selected-bg: #504945;
+
+    /* --- Kbd --- */
+    --kbd-bg: #3c3836;
+    --kbd-border: #504945;
+    --kbd-border-top: #665c54;
+    --kbd-border-bottom: #282828;
+    --kbd-shadow: #1d2021;
+
+    /* --- Alert Colors --- */
+    --alert-note: #d3869b;
+    --alert-tip: #8ec07c;
+    --alert-warning: #fabd2f;
+    --alert-caution: #fb4934;
+
+    /* --- Fonts --- */
+    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --font-monospace: "Cascadia Code";
+    --code-font: "Cascadia Code";
+
+    /* --- Content Area --- */
+    --max-width: 950px;
+    --texture-mask-color: #fe8019;
+    --texture-opacity: 0.03;
+    --bg-style: radial-gradient(#a89984 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #665c54;
+    --heading-char-color: #665c54;
+    --meta-content-color: #7c6f64;
+    --blur-text-color: #665c54;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(29, 32, 33, 0.85);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(146, 131, 116, 0.12);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: dark;
+}
