@@ -154,7 +154,7 @@ li > ol, li > ul { margin: 0; }
 /* ======================== Headings (Phycat style) ======================== */
 #write h1, #write h2, #write h3,
 #write h4, #write h5, #write h6 {
-    color: var(--text-color);
+    color: var(--primary-color);
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code,
@@ -174,11 +174,11 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
 }
 
 /* Counter: 自增当前级别 & 重置所有下级计数器 */
-#write h2 { counter-increment: h2; counter-reset: h3 h4 h5 h6; font-size: 1.4rem; }
-#write h3 { counter-increment: h3; counter-reset: h4 h5 h6; font-size: 1.25rem; }
-#write h4 { counter-increment: h4; counter-reset: h5 h6; font-size: 1.15rem; }
-#write h5 { counter-increment: h5; counter-reset: h6; font-size: 1.1rem; }
-#write h6 { counter-increment: h6; font-size: 1.05rem; }
+#write h2 { counter-increment: h2; counter-reset: h3 h4 h5 h6; font-size: 1.4rem; margin-top: 2rem; }
+#write h3 { counter-increment: h3; counter-reset: h4 h5 h6; font-size: 1.25rem; margin-top: 1.6rem; }
+#write h4 { counter-increment: h4; counter-reset: h5 h6; font-size: 1.15rem; margin-top: 1.4rem; }
+#write h5 { counter-increment: h5; counter-reset: h6; font-size: 1.1rem; margin-top: 1.2rem; }
+#write h6 { counter-increment: h6; font-size: 1.05rem; margin-top: 1.2rem; }
 
 /* Counter prefix: 自动编号文本 */
 #write h2::before { content: counter(h2) ". "; }
@@ -197,13 +197,12 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     transition: opacity 0.3s ease;
 }
 
-/* Hover / Focus 统一交互 */
+/* Hover / Focus 统一交互（默认已为主色调，悬停增加发光） */
 #write h2.md-focus, #write h2:focus, #write h2:hover,
 #write h3.md-focus, #write h3:focus, #write h3:hover,
 #write h4.md-focus, #write h4:focus, #write h4:hover,
 #write h5.md-focus, #write h5:focus, #write h5:hover,
 #write h6.md-focus, #write h6:focus, #write h6:hover {
-    color: var(--primary-color);
     text-shadow: var(--glow-shadow-text);
     border-left-color: var(--primary-color);
     transform: translateX(2px);
