@@ -46,17 +46,18 @@ content {
 }
 
 /* 文件夹模式下的文件名标题（修复深色背景不可见问题） */
-.content-title {
-    color: var(--text-color);
+.content-title,
+#write h1 {
+    text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    text-align: center;
     padding-bottom: 14px;
     position: relative;
     cursor: text;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
-.content-title::after {
+.content-title::after,
+#write h1::after {
     content: '';
     display: block;
     margin: 10px auto 0;
@@ -69,12 +70,25 @@ content {
     transform-origin: center;
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
 }
-.content-title:hover {
+.content-title:hover,
+#write h1:not(.md-focus):hover {
     text-shadow: var(--glow-shadow-text);
 }
-.content-title:hover::after {
+.content-title:hover::after,
+#write h1.md-focus::after,
+#write h1:focus::after,
+#write h1:hover::after {
     transform: scaleX(1);
     box-shadow: 0 0 10px color-mix(in srgb, var(--h1-underline-color), transparent 30%);
+}
+/* H1 特有样式 */
+#write h1 {
+    margin: 20px 0;
+    border-bottom: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+#write h1:not(.md-focus):hover {
+    transform: translateY(-1px);
 }
 
 
@@ -146,41 +160,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     font-size: inherit !important;
 }
 
-/* --- H1: Centered with animated underline bar --- */
-#write h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 20px 0;
-    padding-bottom: 14px;
-    position: relative;
-    border-bottom: none;
-    cursor: text;
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-}
-#write h1::after {
-    content: '';
-    display: block;
-    margin: 10px auto 0;
-    width: 50%;
-    height: 4px;
-    border-radius: 4px;
-    background: var(--h1-underline-color);
-    box-shadow: 0 0 4px color-mix(in srgb, var(--primary-color), transparent 50%);
-    transform: scaleX(0.1);
-    transform-origin: center;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
-}
-#write h1:not(.md-focus):hover {
-    transform: translateY(-1px);
-    text-shadow: var(--glow-shadow-text);
-}
-#write h1.md-focus::after,
-#write h1:focus::after,
-#write h1:hover::after {
-    transform: scaleX(1);
-    box-shadow: 0 0 10px color-mix(in srgb, var(--h1-underline-color), transparent 30%);
-}
+/* --- H1: 额外样式见上方 .content-title 合并定义 --- */
 
 /* --- H2: Glass morphism card --- */
 #write h2 {
@@ -247,7 +227,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     box-shadow: var(--glow-shadow-box);
 }
 
-/* --- H4: Filled dot marker --- */
+/* --- H4: Filled dot marker (flex 用于 ::before 圆点与文字对齐) --- */
 #write h4 {
     margin: 20px 0;
     font-size: 1.15rem;
@@ -274,7 +254,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     box-shadow: var(--glow-shadow-box);
 }
 
-/* --- H5: Circle outline marker --- */
+/* --- H5: Circle outline marker (flex 用于 ::before 空心圆与文字对齐) --- */
 #write h5 {
     margin: 20px 0;
     font-size: 1.1rem;
@@ -380,7 +360,7 @@ h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
     border-bottom: none;
     transition: color 0.2s ease, text-shadow 0.2s ease;
     position: relative;
-    display: inline-block;
+    display: inline;
 }
 #write p a:not(.md-toc-inner)::before {
     content: '';
@@ -1381,7 +1361,7 @@ g.edgeLabel text { fill: var(--text-color) !important; }
 
 
 /* ======================== Focus Mode ======================== */
-.on-focus-mode blockquote { border-left-color: var(--focus-blockquote-border); }
+.on-focus-mode blockquote { border-color: var(--focus-blockquote-border); }
 
 header, .context-menu, .megamenu-content, footer { font-family: var(--font-sans-serif); }
 
@@ -1612,14 +1592,15 @@ body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
 /* ======================== Print Styles ======================== */
 @media print {
     @page { margin: 0; padding: 15mm; size: A4; }
-    body { background-color: transparent !important; margin: 0 !important; width: 100% !important; }
+    body { background-color: transparent !important; margin: 0 !important; width: 100% !important; color: #222 !important; }
     .typora-export #write { margin: 0 auto !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; border: none !important; box-shadow: none !important; background: none !important; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     figure, pre { page-break-inside: avoid; }
-    h1, h2, h3, h4, h5, h6 { page-break-after: avoid !important; page-break-inside: avoid !important; }
-    p { orphans: 2; widows: 2; line-height: 1.5rem; text-shadow: none; }
+    h1, h2, h3, h4, h5, h6 { page-break-after: avoid !important; page-break-inside: avoid !important; color: #111 !important; }
+    p { orphans: 2; widows: 2; line-height: 1.5rem; text-shadow: none; color: #222 !important; }
+    #write a { color: #0366d6 !important; }
     .md-toc { background-image: none; text-shadow: none; }
-    #write strong { text-shadow: none; }
+    #write strong { text-shadow: none; color: #111 !important; }
     #write li:before { border-color: transparent; }
 }
 
