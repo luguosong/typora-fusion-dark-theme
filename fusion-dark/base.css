@@ -641,6 +641,17 @@ pre.CodeMirror-line { padding: 0 1.2rem; }
 }
 
 pre.md-fences-advanced.md-focus .md-fences-adv-panel { position: unset; }
+/* 修复 Mermaid 等图表编辑模式下方大面积空白 */
+.md-fences-advanced.md-focus {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+}
+.md-diagram-panel-preview {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: unset !important;
+}
 #write .CodeMirror-wrap .CodeMirror-code pre { padding-left: 12px; }
 
 
