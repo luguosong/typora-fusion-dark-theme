@@ -189,6 +189,8 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
 /* Counter prefix 共用样式 */
 #write h2::before, #write h3::before, #write h4::before,
 #write h5::before, #write h6::before {
+    display: inline-block;
+    margin-right: 0.3em;
     color: var(--primary-color);
     font-weight: bold;
     font-variant-numeric: tabular-nums;
@@ -223,12 +225,18 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
     text-shadow: var(--glow-shadow-text);
     transform: translateY(-1px);
 }
-#write h2.md-focus::before, #write h2:focus::before, #write h2:hover::before,
-#write h3.md-focus::before, #write h3:focus::before, #write h3:hover::before,
-#write h4.md-focus::before, #write h4:focus::before, #write h4:hover::before,
-#write h5.md-focus::before, #write h5:focus::before, #write h5:hover::before,
-#write h6.md-focus::before, #write h6:focus::before, #write h6:hover::before {
+#write h2:focus::before, #write h2:hover::before,
+#write h3:focus::before, #write h3:hover::before,
+#write h4:focus::before, #write h4:hover::before,
+#write h5:focus::before, #write h5:hover::before,
+#write h6:focus::before, #write h6:hover::before {
     opacity: 1;
+}
+/* 编辑模式下隐藏计数器编号，避免与 Markdown 标记字符重叠 */
+#write h2.md-focus::before, #write h3.md-focus::before,
+#write h4.md-focus::before, #write h5.md-focus::before,
+#write h6.md-focus::before {
+    display: none;
 }
 #write h2.md-focus::after, #write h2:focus::after, #write h2:hover::after,
 #write h3.md-focus::after, #write h3:focus::after, #write h3:hover::after,
