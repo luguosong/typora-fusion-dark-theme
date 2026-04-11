@@ -126,7 +126,6 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --max-width: 950px;
     --texture-mask-color: #88c0d0;
     --texture-opacity: 0.02;
     --bg-style: radial-gradient(#d8dee9 1px, transparent 1px);

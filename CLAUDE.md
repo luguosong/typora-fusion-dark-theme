@@ -80,7 +80,7 @@ typora-fusion-dark-theme/
 |---|---|---|
 | 1 | Fonts | `@font-face` 内置字体声明 |
 | 2 | Base | `html`、`body`、`::selection` |
-| 3 | Content Area Layout | `#write` 容器、纹理叠层、响应式断点 |
+| 3 | Content Area Layout | `#write` 容器（无 max-width 限制）、纹理叠层 |
 | 4 | Paragraph | 段落字体与间距 |
 | 5 | Headings | H1 居中标题 + H2–H6 渐变下划线 + CSS 计数器自动编号 |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
@@ -144,7 +144,7 @@ typora-fusion-dark-theme/
     /* --- Kbd --- */                 键帽颜色
     /* --- Alert Colors --- */        提示块颜色
     /* --- Fonts --- */               字体栈
-    /* --- Content Area --- */        内容区宽度/纹理
+    /* --- Content Area --- */        内容区纹理
     /* --- Markdown --- */            Markdown 标记字符
     /* --- Export / Focus / Mermaid ---*/  杂项
 }
