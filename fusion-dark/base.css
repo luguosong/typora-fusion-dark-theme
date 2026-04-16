@@ -453,13 +453,13 @@ h5.md-focus:before, h6.md-focus:before {
 /* ======================== Lists ======================== */
 ::marker { color: var(--primary-color); }
 
-li.md-list-item { margin: 0.4rem 0; }
+li.md-list-item { margin: 0.25rem 0; }
 
 #write ol, #write ul {
     margin-top: 0;
-    margin-left: 16px;
+    margin-left: 12px;
     margin-bottom: 8px;
-    padding-left: 13px;
+    padding-left: 10px;
 }
 #write ul { list-style-type: disc; }
 #write ul ul { list-style-type: circle; }
@@ -469,16 +469,6 @@ li.md-list-item { margin: 0.4rem 0; }
 #write ol ol ol { list-style-type: lower-roman; }
 
 #write ol li { padding-left: 0.5rem; }
-
-/* Vertical connector line for list items */
-#write li:before {
-    content: "";
-    height: calc(100% - 50px);
-    top: 35px;
-    position: absolute;
-    border-left: 0.5px solid var(--primary-color);
-    left: -12.5px;
-}
 
 
 /* ======================== Task List (Phycat animated) ======================== */
