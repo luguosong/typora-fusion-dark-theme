@@ -8,7 +8,7 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #0d1018;
+    --bg-color: #101010;
     --text-color: #cdd3e8;
     --text-color-secondary: #b0b8d4;
     --primary-color: #82aaff;
@@ -67,7 +67,7 @@
     --select-text-bg-color: rgba(130, 170, 255, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #080a14;
+    --side-bar-bg-color: #080808;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
@@ -137,7 +137,7 @@
     --blur-text-color: #676e95;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(8, 10, 20, 0.9);
+    --export-sidebar-bg: rgba(8, 8, 8, 0.90);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(103, 110, 149, 0.15);

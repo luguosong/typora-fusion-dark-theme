@@ -14,7 +14,7 @@
 | **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
 | **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
 | **Fusion Light** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
-| **Fusion Material** | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA | |
+| **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA | |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
 | **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
