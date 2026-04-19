@@ -63,7 +63,7 @@
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #f07830;
+    --hover-background-color: #d96820;
     --select-text-bg-color: rgba(240, 120, 48, 0.3);
 
     /* --- Sidebar (Zeus) --- */
@@ -128,12 +128,12 @@
     /* --- Content Area --- */
     --texture-mask-color: #f07830;
     --texture-opacity: 0.03;
-    --bg-style: radial-gradient(#ffffff 1px, transparent 1px);
+    --bg-style: radial-gradient(rgba(240, 120, 48, 0.6) 1px, transparent 1px);
 
     /* --- Markdown --- */
     --md-char-color: #666;
     --heading-char-color: #666;
-    --meta-content-color: #5b808d;
+    --meta-content-color: #777;
     --blur-text-color: #777;
 
     /* --- Export --- */
