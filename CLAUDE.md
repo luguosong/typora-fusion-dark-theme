@@ -340,7 +340,7 @@ background: rgba(232, 148, 76, 0.1);
 | `fusion-nord.css` | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA |
 | `fusion-amber.css` | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA |
 | `fusion-material.css` | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA |
-| `fusion-solarized.css` | Solarized Dark 🌿 | `#d4a017` | `#0e1119` | 8.5:1 AAA |
+| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#0e1119` | 8.5:1 AAA |
 | `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#f0b429` | `#161616` | 13.0:1 AAA |
 | `fusion-academic-light.css` | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA |
 | `fusion-academic-dark.css` | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA |

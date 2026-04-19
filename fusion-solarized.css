@@ -13,7 +13,7 @@
     --bg-color: #0e1119;
     --text-color: #b0bec5;
     --text-color-secondary: #a3b8ca;
-    --primary-color: #d4a017;
+    --primary-color: #b58900;
     --secondary-color: #268bd2;
     --accent-color: #268bd2;
     --border-color: #1a2030;
@@ -61,19 +61,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(212, 160, 23, 0.50);
+    --glow-color: rgba(181, 137, 0, 0.50);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #d4a017;
-    --select-text-bg-color: rgba(212, 160, 23, 0.3);
+    --hover-background-color: #b58900;
+    --select-text-bg-color: rgba(181, 137, 0, 0.3);
 
     /* --- Sidebar (Zeus) --- */
     --side-bar-bg-color: #0a0c12;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
-    --item-hover-bg-color: rgba(212, 160, 23, 0.12);
+    --item-hover-bg-color: rgba(181, 137, 0, 0.12);
     --item-hover-text-color: #fff;
     --control-text-color: #93a1a1;
     --control-text-hover-color: #eee8d5;
@@ -86,11 +86,11 @@
     --window-border: 1px solid #1a2030;
     --panel-border-color: #1a2030;
     --table-border-color: #1a2030;
-    --search-select-bg-color: rgba(212, 160, 23, 0.25);
+    --search-select-bg-color: rgba(181, 137, 0, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
     --rawblock-edit-panel-bd: #111624;
-    --menu-divider-color: rgba(212, 160, 23, 0.1);
+    --menu-divider-color: rgba(181, 137, 0, 0.1);
 
     /* --- Code Highlighting (Solarized) --- */
     --code-block-bg: #141820;
@@ -128,7 +128,7 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #d4a017;
+    --texture-mask-color: #b58900;
     --texture-opacity: 0.03;
     --bg-style: radial-gradient(#93a1a1 1px, transparent 1px);
 
