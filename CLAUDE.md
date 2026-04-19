@@ -8,7 +8,7 @@
 
 - **Zeus** 侧栏设计（VS Code 风暗色面板）
 - **Phycat** 内容区设计（玻璃拟态、霓虹发光、丰富动画）
-- 多种配色方案（Dark Orange、Dracula、Nord、Amber、Material、Solarized、Gruvbox、Academic Light、Academic Dark）
+- 多种配色方案（Dark Orange、Solarized、Gruvbox、Academic Light、Academic Dark Nord）
 
 项目**无构建系统、无包管理器、无 JavaScript**，完全由纯 CSS 构成。
 
@@ -19,18 +19,14 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css                  # 共享基础样式（~1545 行，所有主题复用）
+│   ├── base.css                  # 共享基础样式（~1570 行，所有主题复用）
 │   ├── CascadiaCode.woff2        # 内置等宽字体
 │   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
 ├── fusion-dark-orange.css        # Dark + Orange 主题（变量层）
-├── fusion-dracula.css            # Full Dracula 主题（变量层）
-├── fusion-nord.css               # Nord 主题（变量层）
-├── fusion-amber.css              # Light + Amber 主题（变量层）
-├── fusion-material.css           # Material Palenight 主题（变量层）
 ├── fusion-solarized.css          # Solarized Dark 护眼主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
 ├── fusion-academic-light.css     # Academic Light 学术浅色主题（变量层）
-├── fusion-academic-dark.css      # Academic Dark 学术深色主题（变量层）
+├── fusion-academic-dark.css      # Academic Dark (Nord Polar Night) 学术深色主题（变量层）
 ├── README.md                     # 中文文档
 ├── README_en.md                  # 英文文档
 └── CLAUDE.md                     # 本文件
@@ -42,13 +38,9 @@ typora-fusion-dark-theme/
 
 ```
 ┌──────────────────────────┐
-│  fusion-dark-orange.css  │  ← 主题变量层（~150 行）
-│  fusion-dracula.css      │    仅定义 :root CSS 自定义属性
-│  fusion-nord.css         │    通过 @import 引入 base.css
-│  fusion-amber.css        │
-│  fusion-material.css     │
-│  fusion-solarized.css    │
-│  fusion-gruvbox.css      │
+│  fusion-dark-orange.css  │  ← 主题变量层（~155 行）
+│  fusion-solarized.css    │    仅定义 :root CSS 自定义属性
+│  fusion-gruvbox.css      │    通过 @import 引入 base.css
 │  fusion-academic-light.css│
 │  fusion-academic-dark.css│
 └────────┬─────────────────┘
@@ -66,7 +58,7 @@ typora-fusion-dark-theme/
 | 需求 | 修改文件 |
 |---|---|
 | 调整某个主题的颜色/色调 | 对应主题的 `fusion-*.css` |
-| 新增所有主题共享的变量 | 所有 `fusion-*.css` 中的 `:root` |
+| 新增所有主题共享的变量 | 所有 `fusion-*.css` 中的 `:root`（共 5 个文件） |
 | 修改结构/布局/选择器 | `fusion-dark/base.css` |
 | 新增主题变体 | 创建新的 `fusion-<name>.css`，`@import` base.css 并定义完整变量集 |
 
@@ -336,14 +328,10 @@ background: rgba(232, 148, 76, 0.1);
 | 文件 | 配色方案 | 主色调 | 背景色 | 正文对比度 |
 |---|---|---|---|---|
 | `fusion-dark-orange.css` | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA |
-| `fusion-dracula.css` | Full Dracula | `#ff79c6` | `#111117` | 18.1:1 AAA |
-| `fusion-nord.css` | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA |
-| `fusion-amber.css` | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA |
-| `fusion-material.css` | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA |
-| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#0e1119` | 8.5:1 AAA |
-| `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#f0b429` | `#161616` | 13.0:1 AAA |
+| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#002b36` | 4.6:1 AA |
+| `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#fabd2f` | `#282828` | 10.2:1 AAA |
 | `fusion-academic-light.css` | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA |
-| `fusion-academic-dark.css` | Academic Dark 🎓 | `#D4AA38` | `#0D0D0D` | 14.2:1 AAA |
+| `fusion-academic-dark.css` | Academic Dark (Nord) 🎓 | `#88c0d0` | `#121519` | 12.5:1 AAA |
 
 ---
 
@@ -377,7 +365,7 @@ cp -r fusion-dark/ <typora-themes-dir>/
 # 3. 重启 Typora 选择主题
 
 # 查看 CSS 变量行数
-wc -l fusion-dark-orange.css fusion-dracula.css fusion-nord.css fusion-amber.css fusion-material.css
+wc -l fusion-dark-orange.css fusion-solarized.css fusion-gruvbox.css fusion-academic-light.css fusion-academic-dark.css
 
 # 查看 base.css 某个 Section
 grep -n "========================" fusion-dark/base.css
