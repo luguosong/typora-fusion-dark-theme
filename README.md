@@ -10,13 +10,13 @@
 
 | 主题 | 配色 | 主色调 | 背景色 | 正文对比度 | 护眼 |
 |---|---|---|---|---|---|
-| **Fusion Dark Orange** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
-| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
-| **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
-| **Fusion Amber** | Light + Amber | `#b45309` | `#f9f7f4` | 8.4:1 AAA | |
+| **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
+| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#111117` | 18.1:1 AAA | |
+| **Fusion Nord** | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA | |
+| **Fusion Amber** | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA | |
 | **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA |
-| **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
-| **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
+| **Fusion Solarized** | Solarized Dark | `#d4a017` | `#0e1119` | 8.5:1 AAA | 🌿 |
+| **Fusion Gruvbox** | Gruvbox Dark | `#f0b429` | `#161616` | 13.0:1 AAA | 🌿 |
 | **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
 | **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA | |
 
