@@ -1586,6 +1586,8 @@ body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
     /* --- 防跨页断裂 --- */
     /* 代码块、图表不在中间分页 */
     #write figure, #write pre { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 图片及其包裹段落不跨页截断（Typora 图片通常为 p > img，不在 figure 中） */
+    #write img, #write p:has(img) { page-break-inside: avoid; break-inside: avoid-page; }
     /* 表格整体避免跨页（LaTeX 三线表实践） */
     #write table { page-break-inside: avoid; break-inside: avoid-page; }
     /* 引用块、Alert 避免从中间断开 */
