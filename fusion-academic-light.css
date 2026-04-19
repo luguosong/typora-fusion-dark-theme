@@ -25,7 +25,7 @@
 
     /* --- Surface Hierarchy --- */
     --surface-1: #F0EBE2;
-    --surface-2: #F8F4ED;
+    --surface-2: #ECE7DD;
     --surface-3: #E8E2D8;
     --surface-input: #EDE8E0;
     --surface-active: #E2DDD5;
@@ -129,12 +129,12 @@
     /* --- Content Area --- */
     --texture-mask-color: #9C2F2F;
     --texture-opacity: 0.018;
-    --bg-style: radial-gradient(#000000 1px, transparent 1px);
+    --bg-style: radial-gradient(#5C544A 1px, transparent 1px);
 
     /* --- Markdown --- */
     --md-char-color: #BDB8B0;
     --heading-char-color: #BDB8B0;
-    --meta-content-color: #7A8FA0;
+    --meta-content-color: #A09888;
     --blur-text-color: #B0A8A0;
 
     /* --- Export --- */
