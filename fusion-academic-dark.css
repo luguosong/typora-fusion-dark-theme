@@ -68,7 +68,7 @@
     --select-text-bg-color: rgba(136, 192, 208, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #121519;
+    --side-bar-bg-color: #191d23;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #eceff4;
@@ -129,12 +129,12 @@
     /* --- Content Area --- */
     --texture-mask-color: #88c0d0;
     --texture-opacity: 0.02;
-    --bg-style: radial-gradient(#d8dee9 1px, transparent 1px);
+    --bg-style: radial-gradient(rgba(136, 192, 208, 0.6) 1px, transparent 1px);
 
     /* --- Markdown --- */
     --md-char-color: #4c566a;
     --heading-char-color: #4c566a;
-    --meta-content-color: #5e81ac;
+    --meta-content-color: #616e88;
     --blur-text-color: #616e88;
 
     /* --- Export --- */
