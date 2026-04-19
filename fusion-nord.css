@@ -8,13 +8,13 @@
 
 :root {
     /* --- Core Palette (Nord Polar Night + Frost) --- */
-    --bg-color: #2e3440;
+    --bg-color: #121519;
     --text-color: #d8dee9;
     --text-color-secondary: #b3c3d6;
     --primary-color: #88c0d0;
     --secondary-color: #81a1c1;
     --accent-color: #81a1c1;
-    --border-color: #3b4252;
+    --border-color: #1e2530;
 
     /* --- Text Hierarchy --- */
     --text-bright: #eceff4;
@@ -23,17 +23,17 @@
     --text-input: #e5e9f0;
 
     /* --- Surface Hierarchy (Polar Night) --- */
-    --surface-1: #2b303b;
-    --surface-2: #3b4252;
-    --surface-3: #434c5e;
-    --surface-input: #3b4252;
-    --surface-active: #434c5e;
-    --surface-deep: #242933;
+    --surface-1: #191d23;
+    --surface-2: #232d38;
+    --surface-3: #2c3848;
+    --surface-input: #2c3848;
+    --surface-active: #354250;
+    --surface-deep: #0d1015;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #242933;
-    --border-medium: #434c5e;
-    --border-input: #4c566a;
+    --border-strong: #0c0f13;
+    --border-medium: #2c3848;
+    --border-input: #3b4d60;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -67,7 +67,7 @@
     --select-text-bg-color: rgba(136, 192, 208, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #2e3440;
+    --side-bar-bg-color: #121519;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #eceff4;
@@ -81,13 +81,13 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #434c5e;
-    --panel-border-color: #434c5e;
-    --table-border-color: #3b4252;
+    --window-border: 1px solid #2c3848;
+    --panel-border-color: #2c3848;
+    --table-border-color: #1e2530;
     --search-select-bg-color: rgba(136, 192, 208, 0.2);
     --search-select-text-color: #eceff4;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #3b4252;
+    --rawblock-edit-panel-bd: #232d38;
     --menu-divider-color: rgba(136, 192, 208, 0.1);
 
     /* --- Code Highlighting (Nord Aurora) --- */
@@ -108,11 +108,11 @@
     --code-selected-bg: #434c5e;
 
     /* --- Kbd --- */
-    --kbd-bg: #3b4252;
-    --kbd-border: #434c5e;
-    --kbd-border-top: #4c566a;
-    --kbd-border-bottom: #2e3440;
-    --kbd-shadow: #2e3440;
+    --kbd-bg: #232d38;
+    --kbd-border: #2c3848;
+    --kbd-border-top: #3b4d60;
+    --kbd-border-bottom: #121519;
+    --kbd-shadow: #121519;
 
     /* --- Alert Colors (Nord Aurora) --- */
     --alert-note: #b48ead;
@@ -137,11 +137,19 @@
     --blur-text-color: #616e88;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(36, 41, 51, 0.9);
+    --export-sidebar-bg: rgba(12, 15, 19, 0.92);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(76, 86, 106, 0.15);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-padding: 18px 20px 18px 48px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }

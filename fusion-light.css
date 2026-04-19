@@ -8,13 +8,13 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #f9f7f4;
+    --bg-color: #f0f3f7;
     --text-color: #2c2c2c;
     --text-color-secondary: #5a5a5a;
-    --primary-color: #b45309;
+    --primary-color: #c96b0a;
     --secondary-color: #6366f1;
     --accent-color: #6366f1;
-    --border-color: #ddd8d0;
+    --border-color: #d8dde6;
 
     /* --- Text Hierarchy --- */
     --text-bright: #111;
@@ -23,17 +23,17 @@
     --text-input: #222;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #f0ede7;
-    --surface-2: #f9f7f4;
-    --surface-3: #e6e3dc;
-    --surface-input: #edebe5;
-    --surface-active: #e4e1da;
-    --surface-deep: #f4f2ee;
+    --surface-1: #e5e9f0;
+    --surface-2: #f0f3f7;
+    --surface-3: #d8dde8;
+    --surface-input: #e2e6f0;
+    --surface-active: #d5dae6;
+    --surface-deep: #eaecf4;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #c5c0b8;
-    --border-medium: #d0cbc3;
-    --border-input: #bab5ac;
+    --border-strong: #b8bfcc;
+    --border-medium: #c8ceda;
+    --border-input: #b0b8c8;
 
     /* --- Overlay (black-based for light themes) --- */
     --overlay-2: rgba(0, 0, 0, 0.02);
@@ -59,19 +59,19 @@
     --shadow-60: rgba(0, 0, 0, 0.3);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(217, 119, 6, 0.35);
+    --glow-color: rgba(201, 107, 10, 0.35);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 3px var(--shadow-10), 0 4px 12px var(--shadow-5);
-    --hover-background-color: #d97706;
-    --select-text-bg-color: rgba(217, 119, 6, 0.2);
+    --hover-background-color: #e07810;
+    --select-text-bg-color: rgba(201, 107, 10, 0.2);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #f0ede7;
+    --side-bar-bg-color: #e5e9f0;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 88%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #111;
-    --item-hover-bg-color: rgba(217, 119, 6, 0.08);
+    --item-hover-bg-color: rgba(201, 107, 10, 0.08);
     --item-hover-text-color: #111;
     --control-text-color: #444;
     --control-text-hover-color: #111;
@@ -81,14 +81,14 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #d0cbc3;
-    --panel-border-color: #d0cbc3;
-    --table-border-color: #ddd8d0;
-    --search-select-bg-color: rgba(217, 119, 6, 0.15);
+    --window-border: 1px solid #c8ceda;
+    --panel-border-color: #c8ceda;
+    --table-border-color: #d8dde8;
+    --search-select-bg-color: rgba(201, 107, 10, 0.15);
     --search-select-text-color: #111;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #edebe5;
-    --menu-divider-color: rgba(217, 119, 6, 0.1);
+    --rawblock-edit-panel-bd: #e2e6f0;
+    --menu-divider-color: rgba(201, 107, 10, 0.1);
 
     /* --- Code Highlighting (Light Dracula adaptation) --- */
     --code-block-bg: #f3f0ea;
@@ -126,7 +126,7 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #d97706;
+    --texture-mask-color: #c96b0a;
     --texture-opacity: 0.02;
     --bg-style: radial-gradient(#000000 1px, transparent 1px);
 
@@ -137,11 +137,19 @@
     --blur-text-color: #aaa;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(240, 237, 231, 0.92);
+    --export-sidebar-bg: rgba(229, 233, 240, 0.92);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(170, 170, 170, 0.2);
 
     /* --- Mermaid --- */
     --mermaid-theme: default;
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-padding: 18px 20px 18px 48px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }

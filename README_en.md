@@ -1,22 +1,38 @@
-# Fusion Dark — Typora Theme
+# Fusion — Typora Theme
 
 > 🌐 **Language / 语言：** English | [简体中文](README.md)
 
-> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling, accented in orange & blue.
+> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **9 color schemes** including academic/scholarly variants.
+
+---
+
+## 🎨 Theme Overview
+
+| Theme | Palette | Primary | Background | Contrast | Eye-friendly |
+|---|---|---|---|---|---|
+| **Fusion Dark** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
+| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
+| **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
+| **Fusion Light** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
+| **Fusion Material** | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA | |
+| **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
+| **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
+| **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
+| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0E1B2C` | 8.8:1 AAA | |
 
 ---
 
 ## ✨ Design Philosophy
 
-**Fusion Dark** is a hybrid theme that combines the best of two worlds:
+**Fusion** is a hybrid theme combining the best of multiple worlds:
 
 | Layer | Style Source | Characteristics |
 |---|---|---|
 | **Sidebar** | Zeus | Clean VS Code–inspired dark panel |
 | **Content Area** | Phycat | Rich animations, glass morphism, glow effects |
-| **Syntax Highlight** | Dracula | Vibrant, contrast-friendly color tokens |
+| **Academic** | LaTeX | Serif headings, wide margins, scholarly blockquotes |
 
-The primary palette uses a warm **orange** (`#e8944c`) as the accent and a cool **periwinkle blue** (`#9eaffa`) as the secondary color, set against a deep dark background (`#1e1e1e`).
+Architecture: each theme is a variable-only file (~150 lines) that shares a single structural base (`fusion-dark/base.css`).
 
 ---
 
@@ -24,17 +40,41 @@ The primary palette uses a warm **orange** (`#e8944c`) as the accent and a cool 
 
 ```
 typora-fusion-dark-theme/
-├── fusion-dark.css          # Main theme stylesheet (~1,674 lines)
-└── fusion-dark/
-    ├── CascadiaCode.woff2   # Monospace font (code blocks & inline code)
-    └── LXGWWenKai-Regular.ttf  # Chinese serif font (body paragraphs)
+├── fusion-dark/
+│   ├── base.css               # Shared structural styles (all themes)
+│   ├── CascadiaCode.woff2     # Monospace font (code blocks)
+│   └── LXGWWenKai-Regular.ttf # Chinese serif font (body)
+├── fusion-dark.css            # Dark + Orange
+├── fusion-dracula.css         # Full Dracula
+├── fusion-nord.css            # Nord
+├── fusion-light.css           # Light + Amber
+├── fusion-material.css        # Material Palenight
+├── fusion-solarized.css       # Solarized Dark 🌿
+├── fusion-gruvbox.css         # Gruvbox Dark 🌿
+├── fusion-academic.css        # Academic Light 🎓
+└── fusion-academic-dark.css   # Academic Dark 🎓
 ```
+
+---
+
+## 🎓 Academic Themes
+
+The two academic themes are designed for university students and researchers writing or reading Markdown notes:
+
+| Feature | Value |
+|---|---|
+| Headings | EB Garamond / Georgia serif font |
+| Line height | 1.95 (comfortable long-read spacing) |
+| Content margins | Wide (100px per side) |
+| Blockquote | Clean left accent bar, no emoji |
+| Colors (light) | Cream `#F8F4ED` background · Burgundy `#9C2F2F` accent · Navy `#1A2A44` secondary |
+| Colors (dark) | Navy `#0E1B2C` background · Gold `#C9A96E` accent · Slate blue `#88A0B8` secondary |
 
 ---
 
 ## 🎨 Feature Highlights
 
-### Heading System (6 distinct styles)
+### Heading System (auto-numbered + gradient underline)
 - **H1** — Centered, animated expanding underline bar on hover/focus
 - **H2** — Glass morphism card with radial gradient background
 - **H3** — Left accent bar that grows on hover

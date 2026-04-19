@@ -331,13 +331,13 @@ background: rgba(232, 148, 76, 0.1);
 
 | 文件 | 配色方案 | 主色调 | 背景色 | 正文对比度 |
 |---|---|---|---|---|
-| `fusion-dark.css` | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA |
-| `fusion-dracula.css` | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA |
-| `fusion-nord.css` | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA |
-| `fusion-light.css` | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA |
-| `fusion-material.css` | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA |
-| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#1a1f2b` | 8.1:1 AAA |
-| `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#d79921` | `#282828` | 8.6:1 AAA |
+| `fusion-dark.css` | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA |
+| `fusion-dracula.css` | Full Dracula | `#ff79c6` | `#111117` | 18.1:1 AAA |
+| `fusion-nord.css` | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA |
+| `fusion-light.css` | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA |
+| `fusion-material.css` | Material Palenight | `#82aaff` | `#0d1018` | 12.0:1 AAA |
+| `fusion-solarized.css` | Solarized Dark 🌿 | `#d4a017` | `#0e1119` | 8.5:1 AAA |
+| `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#f0b429` | `#161616` | 13.0:1 AAA |
 
 ---
 

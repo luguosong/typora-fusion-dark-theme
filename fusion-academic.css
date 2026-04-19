@@ -1,0 +1,156 @@
+/*
+ * ============================================================
+ *  Fusion Academic — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Academic Light 🎓
+ *  风格：LaTeX 学术论文风 · 浅色米白纸张 · 酒红 + 深蓝配色
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette --- */
+    --bg-color: #F8F4ED;
+    --text-color: #1E1C1A;
+    --text-color-secondary: #3D3730;
+    --primary-color: #9C2F2F;
+    --secondary-color: #1A2A44;
+    --accent-color: #1A2A44;
+    --border-color: #DDD8D0;
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #0D0B09;
+    --text-ui: #4A443C;
+    --text-muted: #A09888;
+    --text-input: #1E1C1A;
+
+    /* --- Surface Hierarchy --- */
+    --surface-1: #F0EBE2;
+    --surface-2: #F8F4ED;
+    --surface-3: #E8E2D8;
+    --surface-input: #EDE8E0;
+    --surface-active: #E2DDD5;
+    --surface-deep: #F4F0E8;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #C8C0B4;
+    --border-medium: #D4CEC6;
+    --border-input: #C0B8B0;
+
+    /* --- Overlay (black-based for light themes) --- */
+    --overlay-2: rgba(0, 0, 0, 0.02);
+    --overlay-3: rgba(0, 0, 0, 0.03);
+    --overlay-4: rgba(0, 0, 0, 0.04);
+    --overlay-5: rgba(0, 0, 0, 0.05);
+    --overlay-6: rgba(0, 0, 0, 0.06);
+    --overlay-8: rgba(0, 0, 0, 0.08);
+    --overlay-10: rgba(0, 0, 0, 0.1);
+    --overlay-15: rgba(0, 0, 0, 0.11);
+    --overlay-20: rgba(0, 0, 0, 0.14);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.03);
+    --shadow-10: rgba(0, 0, 0, 0.06);
+    --shadow-12: rgba(0, 0, 0, 0.08);
+    --shadow-15: rgba(0, 0, 0, 0.09);
+    --shadow-20: rgba(0, 0, 0, 0.10);
+    --shadow-25: rgba(0, 0, 0, 0.12);
+    --shadow-30: rgba(0, 0, 0, 0.15);
+    --shadow-40: rgba(0, 0, 0, 0.20);
+    --shadow-50: rgba(0, 0, 0, 0.25);
+    --shadow-60: rgba(0, 0, 0, 0.30);
+
+    /* --- Glow Effects --- */
+    --glow-color: rgba(156, 47, 47, 0.30);
+    --glow-shadow-text: 0 0 4px var(--glow-color);
+    --glow-shadow-box: 0 0 6px var(--glow-color);
+    --shadow-subtle: 0 1px 3px var(--shadow-10), 0 4px 12px var(--shadow-5);
+    --hover-background-color: #7D2020;
+    --select-text-bg-color: rgba(156, 47, 47, 0.18);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #F0EBE2;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #0D0B09;
+    --item-hover-bg-color: rgba(156, 47, 47, 0.07);
+    --item-hover-text-color: #0D0B09;
+    --control-text-color: #4A443C;
+    --control-text-hover-color: #0D0B09;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #D4CEC6;
+    --panel-border-color: #D4CEC6;
+    --table-border-color: #D8D2CA;
+    --search-select-bg-color: rgba(156, 47, 47, 0.14);
+    --search-select-text-color: #0D0B09;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #EDE8E0;
+    --menu-divider-color: rgba(156, 47, 47, 0.10);
+
+    /* --- Code Highlighting (Light academic adaptation) --- */
+    --code-block-bg: #F2EDE4;
+    --code-text: #2C2824;
+    --code-gutter-border: #DDD8D0;
+    --glass-border-color: rgba(0, 0, 0, 0.04);
+    --code-keyword: #9C2F2F;
+    --code-variable: #2C2824;
+    --code-function: #1A6B3C;
+    --code-param: #7B4A10;
+    --code-string: #2E6B30;
+    --code-comment: #8A8480;
+    --code-type: #1A4A7B;
+    --code-property: #3A5FA8;
+    --code-number: #7B5C10;
+    --code-meta: #9C5C18;
+    --code-selected-bg: #E2DDD5;
+
+    /* --- Kbd --- */
+    --kbd-bg: #EEEAE3;
+    --kbd-border: #CCC8C0;
+    --kbd-border-top: #D8D4CC;
+    --kbd-border-bottom: #B0A8A0;
+    --kbd-shadow: #B0A8A0;
+
+    /* --- Alert Colors --- */
+    --alert-note: #1A4A7B;
+    --alert-tip: #1A6B3C;
+    --alert-warning: #9C6A10;
+    --alert-caution: #9C2F2F;
+
+    /* --- Fonts --- */
+    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --font-monospace: "Cascadia Code";
+    --code-font: "Cascadia Code";
+
+    /* --- Content Area --- */
+    --texture-mask-color: #9C2F2F;
+    --texture-opacity: 0.018;
+    --bg-style: radial-gradient(#000000 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #BDB8B0;
+    --heading-char-color: #BDB8B0;
+    --meta-content-color: #7A8FA0;
+    --blur-text-color: #B0A8A0;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(240, 235, 226, 0.92);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(160, 152, 136, 0.2);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: default;
+
+    /* --- Academic Typography (学术排版专用覆盖) --- */
+    --font-heading: "EB Garamond", "Georgia", "Times New Roman", serif;
+    --body-line-height: 1.95;
+    --write-padding: 24px 100px;
+    --blockquote-padding: 16px 24px;
+    --blockquote-left-shadow: inset 5px 0 0 var(--primary-color);
+    --blockquote-icon-display: none;
+}

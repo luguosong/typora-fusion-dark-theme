@@ -8,13 +8,13 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #1e1e1e;
+    --bg-color: #141414;
     --text-color: #d4d4d4;
     --text-color-secondary: #b0b8c4;
-    --primary-color: #e8944c;
+    --primary-color: #f07830;
     --secondary-color: #9eaffa;
     --accent-color: #9eaffa;
-    --border-color: #3a3a3a;
+    --border-color: #282828;
 
     /* --- Text Hierarchy --- */
     --text-bright: #fff;
@@ -23,17 +23,17 @@
     --text-input: #eee;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #252526;
-    --surface-2: #2d2d2d;
-    --surface-3: #333;
-    --surface-input: #383838;
-    --surface-active: #37373d;
-    --surface-deep: #191a21;
+    --surface-1: #1a1a1a;
+    --surface-2: #222222;
+    --surface-3: #2a2a2a;
+    --surface-input: #303030;
+    --surface-active: #2e2e2e;
+    --surface-deep: #0d0d0d;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #111;
-    --border-medium: #454545;
-    --border-input: #555;
+    --border-strong: #0a0a0a;
+    --border-medium: #363636;
+    --border-input: #484848;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -59,19 +59,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(232, 148, 76, 0.45);
+    --glow-color: rgba(240, 120, 48, 0.50);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #e8944c;
-    --select-text-bg-color: rgba(232, 148, 76, 0.3);
+    --hover-background-color: #f07830;
+    --select-text-bg-color: rgba(240, 120, 48, 0.3);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #252526;
+    --side-bar-bg-color: #1a1a1a;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
-    --item-hover-bg-color: rgba(232, 148, 76, 0.12);
+    --item-hover-bg-color: rgba(240, 120, 48, 0.12);
     --item-hover-text-color: #fff;
     --control-text-color: #d4d4d4;
     --control-text-hover-color: #fff;
@@ -81,14 +81,14 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #454545;
-    --panel-border-color: #454545;
-    --table-border-color: #3a3a3a;
-    --search-select-bg-color: rgba(232, 148, 76, 0.25);
+    --window-border: 1px solid #363636;
+    --panel-border-color: #363636;
+    --table-border-color: #282828;
+    --search-select-bg-color: rgba(240, 120, 48, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #2d2d2d;
-    --menu-divider-color: rgba(232, 148, 76, 0.1);
+    --rawblock-edit-panel-bd: #222222;
+    --menu-divider-color: rgba(240, 120, 48, 0.1);
 
     /* --- Code Highlighting (Dracula-inspired) --- */
     --code-block-bg: #282a36;
@@ -108,11 +108,11 @@
     --code-selected-bg: #44475a;
 
     /* --- Kbd --- */
-    --kbd-bg: #333;
-    --kbd-border: #444;
-    --kbd-border-top: #555;
-    --kbd-border-bottom: #222;
-    --kbd-shadow: #222;
+    --kbd-bg: #222222;
+    --kbd-border: #303030;
+    --kbd-border-top: #3a3a3a;
+    --kbd-border-bottom: #111;
+    --kbd-shadow: #111;
 
     /* --- Alert Colors --- */
     --alert-note: #bd93f9;
@@ -126,7 +126,7 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #e8944c;
+    --texture-mask-color: #f07830;
     --texture-opacity: 0.03;
     --bg-style: radial-gradient(#ffffff 1px, transparent 1px);
 
@@ -137,11 +137,19 @@
     --blur-text-color: #777;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(30, 30, 40, 0.85);
+    --export-sidebar-bg: rgba(14, 14, 14, 0.88);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(85, 85, 85, 0.12);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-padding: 18px 20px 18px 48px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }

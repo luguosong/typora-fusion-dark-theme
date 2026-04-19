@@ -97,9 +97,9 @@ content {
 #write {
     max-width: none;
     margin: 0 auto;
-    padding: 24px 40px;
+    padding: var(--write-padding, 24px 40px);
     padding-bottom: 100px;
-    line-height: 1.85;
+    line-height: var(--body-line-height, 1.85);
     color: var(--text-color);
     letter-spacing: 0.3px;
     word-break: break-word;
@@ -148,6 +148,7 @@ li > ol, li > ul { margin: 0; }
 #write h1, #write h2, #write h3,
 #write h4, #write h5, #write h6 {
     color: var(--primary-color);
+    font-family: var(--font-heading, var(--font-sans-serif));
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code,
@@ -327,11 +328,12 @@ h5.md-focus:before, h6.md-focus:before {
 #write blockquote {
     position: relative;
     margin: 20px 0;
-    padding: 18px 20px 18px 48px;
+    padding: var(--blockquote-padding, 18px 20px 18px 48px);
     color: var(--text-color-secondary);
     background-color: var(--shadow-20);
     border: 1px solid color-mix(in srgb, var(--primary-color), transparent 70%);
     border-radius: 16px;
+    box-shadow: var(--blockquote-left-shadow, none);
     transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 #write blockquote::before {
@@ -340,6 +342,7 @@ h5.md-focus:before, h6.md-focus:before {
     left: 10px;
     top: 2px;
     font-size: 20px;
+    display: var(--blockquote-icon-display, block);
     filter: grayscale(1);
     opacity: 0.8;
     transform: rotate(30deg);

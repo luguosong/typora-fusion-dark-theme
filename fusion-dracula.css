@@ -8,13 +8,13 @@
 
 :root {
     /* --- Core Palette (Dracula) --- */
-    --bg-color: #282a36;
+    --bg-color: #111117;
     --text-color: #f8f8f2;
     --text-color-secondary: #b8c0d0;
     --primary-color: #ff79c6;
     --secondary-color: #bd93f9;
     --accent-color: #bd93f9;
-    --border-color: #44475a;
+    --border-color: #2a2d3e;
 
     /* --- Text Hierarchy --- */
     --text-bright: #f8f8f2;
@@ -23,17 +23,17 @@
     --text-input: #f8f8f2;
 
     /* --- Surface Hierarchy (Dracula) --- */
-    --surface-1: #21222c;
-    --surface-2: #282a36;
-    --surface-3: #343746;
-    --surface-input: #44475a;
-    --surface-active: #44475a;
-    --surface-deep: #191a21;
+    --surface-1: #0d0e18;
+    --surface-2: #151622;
+    --surface-3: #1e2034;
+    --surface-input: #282a40;
+    --surface-active: #30334a;
+    --surface-deep: #08090e;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #191a21;
-    --border-medium: #44475a;
-    --border-input: #6272a4;
+    --border-strong: #070810;
+    --border-medium: #2a2d3e;
+    --border-input: #44475a;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -67,7 +67,7 @@
     --select-text-bg-color: rgba(255, 121, 198, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #21222c;
+    --side-bar-bg-color: #0d0e18;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #f8f8f2;
@@ -81,13 +81,13 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #44475a;
-    --panel-border-color: #44475a;
-    --table-border-color: #44475a;
+    --window-border: 1px solid #2a2d3e;
+    --panel-border-color: #2a2d3e;
+    --table-border-color: #2a2d3e;
     --search-select-bg-color: rgba(255, 121, 198, 0.2);
     --search-select-text-color: #f8f8f2;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #282a36;
+    --rawblock-edit-panel-bd: #151622;
     --menu-divider-color: rgba(255, 121, 198, 0.1);
 
     /* --- Code Highlighting (Dracula canonical) --- */
@@ -108,11 +108,11 @@
     --code-selected-bg: #44475a;
 
     /* --- Kbd --- */
-    --kbd-bg: #343746;
-    --kbd-border: #44475a;
-    --kbd-border-top: #6272a4;
-    --kbd-border-bottom: #21222c;
-    --kbd-shadow: #21222c;
+    --kbd-bg: #1e2034;
+    --kbd-border: #2a2d3e;
+    --kbd-border-top: #3d4060;
+    --kbd-border-bottom: #0d0e18;
+    --kbd-shadow: #0d0e18;
 
     /* --- Alert Colors (Dracula) --- */
     --alert-note: #bd93f9;
@@ -137,11 +137,19 @@
     --blur-text-color: #6272a4;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(25, 26, 33, 0.9);
+    --export-sidebar-bg: rgba(11, 11, 15, 0.92);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(68, 71, 90, 0.2);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-padding: 18px 20px 18px 48px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }

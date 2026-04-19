@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** [English](README_en.md) | 简体中文
 
-> 🎨 一套面向程序员的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **7 种配色方案**，全部达到 WCAG AA 以上护眼对比度。
+> 🎨 一套面向程序员与研究者的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **9 种配色方案**（含 2 个学术/论文风），全部达到 WCAG AA 以上护眼对比度。
 
 ---
 
@@ -17,6 +17,8 @@
 | **Fusion Material** | Material Palenight | `#82aaff` | `#292d3e` | 6.9:1 AA |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
+| **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
+| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0E1B2C` | 8.8:1 AAA | |
 
 ---
 
@@ -30,7 +32,22 @@
 | **内容区** | Phycat | 丰富的动画、玻璃拟态、霓虹发光效果 |
 | **语法高亮** | 各配色方案 | 对比鲜明、护眼的色彩令牌 |
 
-架构：每个主题仅定义变量（~130 行），共享同一套基础样式（`fusion-dark/base.css`），实现一处修改全部生效。
+架构：每个主题仅定义变量（~150 行），共享同一套基础样式（`fusion-dark/base.css`），实现一处修改全部生效。
+
+---
+
+## 🎓 学术主题特性
+
+`fusion-academic.css` 与 `fusion-academic-dark.css` 专为大学生、研究生和研究者设计：
+
+| 特性 | 说明 |
+|---|---|
+| **标题字体** | EB Garamond / Georgia Serif 衬线字体，学术论文质感 |
+| **行高** | 1.95（宽松阅读，适合长时间研究笔记） |
+| **内容边距** | 宽边距（左右各 100px），仿论文排版 |
+| **引用块** | 左侧 5px 强调色竖条，无 Emoji，斜体正式感 |
+| **浅色配色** | 米白 `#F8F4ED` 背景 · 酒红 `#9C2F2F` 强调 · 深海军蓝 `#1A2A44` 辅色 |
+| **深色配色** | 深蓝 `#0E1B2C` 背景 · 金色 `#C9A96E` 强调 · 青石蓝 `#88A0B8` 辅色 |
 
 ---
 
@@ -48,7 +65,9 @@ typora-fusion-dark-theme/
 ├── fusion-light.css           # Light + Amber
 ├── fusion-material.css        # Material Palenight
 ├── fusion-solarized.css       # Solarized Dark 🌿
-└── fusion-gruvbox.css         # Gruvbox Dark 🌿
+├── fusion-gruvbox.css         # Gruvbox Dark 🌿
+├── fusion-academic.css        # Academic Light 🎓
+└── fusion-academic-dark.css   # Academic Dark 🎓
 ```
 
 ---

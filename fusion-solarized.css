@@ -10,13 +10,13 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #1a1f2b;
+    --bg-color: #0e1119;
     --text-color: #b0bec5;
     --text-color-secondary: #a3b8ca;
-    --primary-color: #b58900;
+    --primary-color: #d4a017;
     --secondary-color: #268bd2;
     --accent-color: #268bd2;
-    --border-color: #252b3a;
+    --border-color: #1a2030;
 
     /* --- Text Hierarchy --- */
     --text-bright: #fdf6e3;
@@ -25,17 +25,17 @@
     --text-input: #eee8d5;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #141820;
-    --surface-2: #232938;
-    --surface-3: #2c3345;
-    --surface-input: #2c3345;
-    --surface-active: #232938;
-    --surface-deep: #10131a;
+    --surface-1: #0a0c12;
+    --surface-2: #111624;
+    --surface-3: #192030;
+    --surface-input: #192030;
+    --surface-active: #111624;
+    --surface-deep: #060709;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #10131a;
-    --border-medium: #3d4560;
-    --border-input: #4a5270;
+    --border-strong: #060709;
+    --border-medium: #2a3250;
+    --border-input: #374068;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -61,19 +61,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(181, 137, 0, 0.45);
+    --glow-color: rgba(212, 160, 23, 0.50);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #b58900;
-    --select-text-bg-color: rgba(181, 137, 0, 0.3);
+    --hover-background-color: #d4a017;
+    --select-text-bg-color: rgba(212, 160, 23, 0.3);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #141820;
+    --side-bar-bg-color: #0a0c12;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
-    --item-hover-bg-color: rgba(181, 137, 0, 0.12);
+    --item-hover-bg-color: rgba(212, 160, 23, 0.12);
     --item-hover-text-color: #fff;
     --control-text-color: #93a1a1;
     --control-text-hover-color: #eee8d5;
@@ -83,14 +83,14 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #252b3a;
-    --panel-border-color: #252b3a;
-    --table-border-color: #252b3a;
-    --search-select-bg-color: rgba(181, 137, 0, 0.25);
+    --window-border: 1px solid #1a2030;
+    --panel-border-color: #1a2030;
+    --table-border-color: #1a2030;
+    --search-select-bg-color: rgba(212, 160, 23, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #252b3a;
-    --menu-divider-color: rgba(181, 137, 0, 0.1);
+    --rawblock-edit-panel-bd: #111624;
+    --menu-divider-color: rgba(212, 160, 23, 0.1);
 
     /* --- Code Highlighting (Solarized) --- */
     --code-block-bg: #141820;
@@ -110,11 +110,11 @@
     --code-selected-bg: #2c3345;
 
     /* --- Kbd --- */
-    --kbd-bg: #232938;
-    --kbd-border: #2c3345;
-    --kbd-border-top: #3d4560;
-    --kbd-border-bottom: #1a1f2b;
-    --kbd-shadow: #10131a;
+    --kbd-bg: #111624;
+    --kbd-border: #1a2030;
+    --kbd-border-top: #2a3252;
+    --kbd-border-bottom: #0e1119;
+    --kbd-shadow: #060709;
 
     /* --- Alert Colors --- */
     --alert-note: #6c71c4;
@@ -128,7 +128,7 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #b58900;
+    --texture-mask-color: #d4a017;
     --texture-opacity: 0.03;
     --bg-style: radial-gradient(#93a1a1 1px, transparent 1px);
 
@@ -139,11 +139,19 @@
     --blur-text-color: #3d4560;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(26, 31, 43, 0.85);
+    --export-sidebar-bg: rgba(10, 12, 18, 0.85);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(61, 69, 96, 0.12);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-padding: 18px 20px 18px 48px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }
