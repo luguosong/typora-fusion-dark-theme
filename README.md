@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** [English](README_en.md) | 简体中文
 
-> 🎨 一套面向程序员与研究者的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **9 种配色方案**（含 2 个学术/论文风），全部达到 WCAG AA 以上护眼对比度。
+> 🎨 一套面向程序员与研究者的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **5 种配色方案**（含 2 个学术/论文风），全部达到 WCAG AA 以上护眼对比度。
 
 ---
 
@@ -11,14 +11,10 @@
 | 主题 | 配色 | 主色调 | 背景色 | 正文对比度 | 护眼 |
 |---|---|---|---|---|---|
 | **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#111117` | 18.1:1 AAA | |
-| **Fusion Nord** | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA | |
-| **Fusion Amber** | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA | |
-| **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#0e1119` | 8.5:1 AAA | 🌿 |
-| **Fusion Gruvbox** | Gruvbox Dark | `#f0b429` | `#161616` | 13.0:1 AAA | 🌿 |
+| **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#161616` | 10.2:1 AAA | 🌿 |
 | **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
-| **Fusion Academic Dark** | Academic Dark 🎓 | `#D4AA38` | `#0D0D0D` | 14.2:1 AAA | |
+| **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
 
 ---
 
@@ -47,7 +43,7 @@
 | **内容边距** | 宽边距（左右各 100px），仿论文排版 |
 | **引用块** | 左侧 5px 强调色竖条，无 Emoji，斜体正式感 |
 | **浅色配色** | 米白 `#F8F4ED` 背景 · 酒红 `#9C2F2F` 强调 · 深海军蓝 `#1A2A44` 辅色 |
-| **深色配色** | 纯黑 `#0D0D0D` 背景 · 金色 `#C9A96E` 强调 · 青石蓝 `#88A0B8` 辅色 |
+| **深色配色** | Nord `#121519` 背景 · 冰川蓝 `#88c0d0` 强调 · 青石蓝 `#81a1c1` 辅色 |
 
 ---
 
@@ -60,14 +56,10 @@ typora-fusion-dark-theme/
 │   ├── CascadiaCode.woff2     # 等宽字体（代码块与行内代码）
 │   └── LXGWWenKai-Regular.ttf # 霞鹜文楷（正文段落中文字体）
 ├── fusion-dark-orange.css     # Dark + Orange
-├── fusion-dracula.css         # Dracula
-├── fusion-nord.css            # Nord
-├── fusion-amber.css           # Light + Amber
-├── fusion-material.css        # Material Palenight
 ├── fusion-solarized.css       # Solarized Dark 🌿
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
 ├── fusion-academic-light.css  # Academic Light 🎓
-└── fusion-academic-dark.css   # Academic Dark 🎓
+└── fusion-academic-dark.css   # Academic Dark (Nord) 🎓
 ```
 
 ---

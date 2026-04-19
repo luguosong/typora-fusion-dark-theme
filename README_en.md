@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** English | [简体中文](README.md)
 
-> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **9 color schemes** including academic/scholarly variants.
+> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **5 color schemes** including academic/scholarly variants.
 
 ---
 
@@ -11,14 +11,10 @@
 | Theme | Palette | Primary | Background | Contrast | Eye-friendly |
 |---|---|---|---|---|---|
 | **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Dracula** | Full Dracula | `#ff79c6` | `#111117` | 18.1:1 AAA | |
-| **Fusion Nord** | Nord | `#88c0d0` | `#121519` | 12.5:1 AAA | |
-| **Fusion Amber** | Light + Amber | `#c96b0a` | `#f0f3f7` | 14.8:1 AAA | |
-| **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA | |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#0e1119` | 8.5:1 AAA | 🌿 |
-| **Fusion Gruvbox** | Gruvbox Dark | `#f0b429` | `#161616` | 13.0:1 AAA | 🌿 |
+| **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#161616` | 10.2:1 AAA | 🌿 |
 | **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
-| **Fusion Academic Dark** | Academic Dark 🎓 | `#D4AA38` | `#0D0D0D` | 14.2:1 AAA | |
+| **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
 
 ---
 
@@ -45,14 +41,10 @@ typora-fusion-dark-theme/
 │   ├── CascadiaCode.woff2     # Monospace font (code blocks)
 │   └── LXGWWenKai-Regular.ttf # Chinese serif font (body)
 ├── fusion-dark-orange.css     # Dark + Orange
-├── fusion-dracula.css         # Full Dracula
-├── fusion-nord.css            # Nord
-├── fusion-amber.css           # Light + Amber
-├── fusion-material.css        # Material Palenight
 ├── fusion-solarized.css       # Solarized Dark 🌿
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
 ├── fusion-academic-light.css  # Academic Light 🎓
-└── fusion-academic-dark.css   # Academic Dark 🎓
+└── fusion-academic-dark.css   # Academic Dark (Nord) 🎓
 ```
 
 ---
@@ -68,7 +60,7 @@ The two academic themes are designed for university students and researchers wri
 | Content margins | Wide (100px per side) |
 | Blockquote | Clean left accent bar, no emoji |
 | Colors (light) | Cream `#F8F4ED` background · Burgundy `#9C2F2F` accent · Navy `#1A2A44` secondary |
-| Colors (dark) | Pure black `#0D0D0D` background · Gold `#C9A96E` accent · Slate blue `#88A0B8` secondary |
+| Colors (dark) | Nord `#121519` background · Ice blue `#88c0d0` accent · Slate `#81a1c1` secondary |
 
 ---
 
