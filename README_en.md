@@ -18,7 +18,7 @@
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
 | **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
-| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0E1B2C` | 8.8:1 AAA | |
+| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA | |
 
 ---
 
@@ -68,7 +68,7 @@ The two academic themes are designed for university students and researchers wri
 | Content margins | Wide (100px per side) |
 | Blockquote | Clean left accent bar, no emoji |
 | Colors (light) | Cream `#F8F4ED` background · Burgundy `#9C2F2F` accent · Navy `#1A2A44` secondary |
-| Colors (dark) | Navy `#0E1B2C` background · Gold `#C9A96E` accent · Slate blue `#88A0B8` secondary |
+| Colors (dark) | Pure black `#0D0D0D` background · Gold `#C9A96E` accent · Slate blue `#88A0B8` secondary |
 
 ---
 

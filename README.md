@@ -18,7 +18,7 @@
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
 | **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
-| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0E1B2C` | 8.8:1 AAA | |
+| **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA | |
 
 ---
 
@@ -47,7 +47,7 @@
 | **内容边距** | 宽边距（左右各 100px），仿论文排版 |
 | **引用块** | 左侧 5px 强调色竖条，无 Emoji，斜体正式感 |
 | **浅色配色** | 米白 `#F8F4ED` 背景 · 酒红 `#9C2F2F` 强调 · 深海军蓝 `#1A2A44` 辅色 |
-| **深色配色** | 深蓝 `#0E1B2C` 背景 · 金色 `#C9A96E` 强调 · 青石蓝 `#88A0B8` 辅色 |
+| **深色配色** | 纯黑 `#0D0D0D` 背景 · 金色 `#C9A96E` 强调 · 青石蓝 `#88A0B8` 辅色 |
 
 ---
 

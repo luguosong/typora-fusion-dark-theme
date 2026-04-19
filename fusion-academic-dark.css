@@ -2,20 +2,20 @@
  * ============================================================
  *  Fusion Academic Dark — Typora Theme
  *  Sidebar: Zeus | Content: Phycat | Palette: Academic Dark 🎓
- *  风格：学术深夜阅读风 · 深海军蓝背景 · 金色 + 青石蓝配色
+ *  风格：学术深夜阅读风 · 纯黑背景高对比 · 金色 + 青石蓝配色
  * ============================================================
  */
 @import url("fusion-dark/base.css");
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #0E1B2C;
+    --bg-color: #0D0D0D;
     --text-color: #D8D0C4;
     --text-color-secondary: #B8A898;
     --primary-color: #C9A96E;
     --secondary-color: #88A0B8;
     --accent-color: #88A0B8;
-    --border-color: #1E2D40;
+    --border-color: #2A2A2A;
 
     /* --- Text Hierarchy --- */
     --text-bright: #EDE8E0;
@@ -24,17 +24,17 @@
     --text-input: #D8D0C4;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #132030;
-    --surface-2: #162436;
-    --surface-3: #1A2A3C;
-    --surface-input: #1E3048;
-    --surface-active: #1C2C40;
-    --surface-deep: #0A1220;
+    --surface-1: #141414;
+    --surface-2: #1A1A1A;
+    --surface-3: #202020;
+    --surface-input: #252525;
+    --surface-active: #1E1E1E;
+    --surface-deep: #050505;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #0A1420;
-    --border-medium: #243650;
-    --border-input: #2C4260;
+    --border-strong: #0A0A0A;
+    --border-medium: #303030;
+    --border-input: #383838;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -68,7 +68,7 @@
     --select-text-bg-color: rgba(201, 169, 110, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #0A1520;
+    --side-bar-bg-color: #080808;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #EDE8E0;
@@ -82,19 +82,19 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #243650;
-    --panel-border-color: #243650;
-    --table-border-color: #1E2D40;
+    --window-border: 1px solid #303030;
+    --panel-border-color: #303030;
+    --table-border-color: #2A2A2A;
     --search-select-bg-color: rgba(201, 169, 110, 0.20);
     --search-select-text-color: #EDE8E0;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #162436;
+    --rawblock-edit-panel-bd: #1A1A1A;
     --menu-divider-color: rgba(201, 169, 110, 0.10);
 
     /* --- Code Highlighting (academic dark adaptation) --- */
-    --code-block-bg: #0C1824;
+    --code-block-bg: #0A0A0A;
     --code-text: #D8D0C4;
-    --code-gutter-border: #243650;
+    --code-gutter-border: #303030;
     --glass-border-color: rgba(255, 255, 255, 0.04);
     --code-keyword: #E8A8A8;
     --code-variable: #D8D0C4;
@@ -106,14 +106,14 @@
     --code-property: #A0B8D8;
     --code-number: #C9A96E;
     --code-meta: #D8B880;
-    --code-selected-bg: #243650;
+    --code-selected-bg: #303030;
 
     /* --- Kbd --- */
-    --kbd-bg: #162436;
-    --kbd-border: #243650;
-    --kbd-border-top: #2C4060;
-    --kbd-border-bottom: #0A1420;
-    --kbd-shadow: #0A1420;
+    --kbd-bg: #1A1A1A;
+    --kbd-border: #303030;
+    --kbd-border-top: #383838;
+    --kbd-border-bottom: #0A0A0A;
+    --kbd-shadow: #000000;
 
     /* --- Alert Colors --- */
     --alert-note: #88A0B8;
@@ -138,7 +138,7 @@
     --blur-text-color: #606870;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(10, 20, 32, 0.90);
+    --export-sidebar-bg: rgba(5, 5, 5, 0.92);
 
     /* --- Focus Mode --- */
     --focus-blockquote-border: rgba(70, 80, 90, 0.12);
