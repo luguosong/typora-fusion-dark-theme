@@ -85,7 +85,7 @@ content {
 #write h1 {
     margin: 20px 0;
     border-bottom: none;
-    counter-reset: h2 h3 h4 h5 h6;
+    counter-set: h2 0 h3 0 h4 0 h5 0 h6 0;
     transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
 }
 #write h1:not(.md-focus):hover {
@@ -108,7 +108,7 @@ content {
     position: relative;
     z-index: 0;
     /* 初始化标题计数器，防止多文档模式下计数器串位 */
-    counter-reset: h2 h3 h4 h5 h6;
+    counter-reset: h2 h3 h4 h5 h6;  /* 在 #write 作用域统一创建计数器 */
 }
 
 /* Subtle texture overlay on content */
@@ -173,23 +173,12 @@ content {
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Counter: 自增当前级别 & 重置所有下级计数器 */
-#write h2 { counter-increment: h2; counter-reset: h3 h4 h5 h6; font-size: 1.4rem; margin-top: 2rem; }
-#write h3 { counter-increment: h3; counter-reset: h4 h5 h6; font-size: 1.25rem; margin-top: 1.6rem; }
-#write h4 { counter-increment: h4; counter-reset: h5 h6; font-size: 1.15rem; margin-top: 1.4rem; }
-#write h5 { counter-increment: h5; counter-reset: h6; font-size: 1.1rem; margin-top: 1.2rem; }
+/* Counter: 自增当前级别 & 用 counter-set 归零下级（避免 counter-reset 新建作用域导致的继承歧义） */
+#write h2 { counter-increment: h2; counter-set: h3 0 h4 0 h5 0 h6 0; font-size: 1.4rem; margin-top: 2rem; }
+#write h3 { counter-increment: h3; counter-set: h4 0 h5 0 h6 0; font-size: 1.25rem; margin-top: 1.6rem; }
+#write h4 { counter-increment: h4; counter-set: h5 0 h6 0; font-size: 1.15rem; margin-top: 1.4rem; }
+#write h5 { counter-increment: h5; counter-set: h6 0; font-size: 1.1rem; margin-top: 1.2rem; }
 #write h6 { counter-increment: h6; font-size: 1.05rem; margin-top: 1.2rem; }
-
-/* @supports (counter-set: none): 渐进增强 — 现代 Chromium 用 counter-set 显式归零，
-   避免旧版 counter-reset 在某些嵌套场景下的继承歧义（参考 typora-latex-theme issue #175）*/
-@supports (counter-set: none) {
-    #write                { counter-set: h2 0 h3 0 h4 0 h5 0 h6 0; }
-    #write h1             { counter-set: h2 0 h3 0 h4 0 h5 0 h6 0; }
-    #write h2             { counter-set: h3 0 h4 0 h5 0 h6 0; }
-    #write h3             { counter-set: h4 0 h5 0 h6 0; }
-    #write h4             { counter-set: h5 0 h6 0; }
-    #write h5             { counter-set: h6 0; }
-}
 
 /* Counter prefix: 自动编号文本 */
 #write h2::before { content: counter(h2) ". "; }
