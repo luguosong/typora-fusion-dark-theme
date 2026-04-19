@@ -10,14 +10,14 @@
 
 | 主题 | 配色 | 主色调 | 背景色 | 正文对比度 | 护眼 |
 |---|---|---|---|---|---|
-| **Fusion Dark** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
+| **Fusion Dark Orange** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
 | **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
 | **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
-| **Fusion Light** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
+| **Fusion Amber** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
 | **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
-| **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
+| **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
 | **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA | |
 
 ---
@@ -38,7 +38,7 @@
 
 ## 🎓 学术主题特性
 
-`fusion-academic.css` 与 `fusion-academic-dark.css` 专为大学生、研究生和研究者设计：
+`fusion-academic-light.css` 与 `fusion-academic-dark.css` 专为大学生、研究生和研究者设计：
 
 | 特性 | 说明 |
 |---|---|
@@ -59,14 +59,14 @@ typora-fusion-dark-theme/
 │   ├── base.css               # 共享基础样式（所有主题复用）
 │   ├── CascadiaCode.woff2     # 等宽字体（代码块与行内代码）
 │   └── LXGWWenKai-Regular.ttf # 霞鹜文楷（正文段落中文字体）
-├── fusion-dark.css            # Dark + Orange
+├── fusion-dark-orange.css     # Dark + Orange
 ├── fusion-dracula.css         # Dracula
 ├── fusion-nord.css            # Nord
-├── fusion-light.css           # Light + Amber
+├── fusion-amber.css           # Light + Amber
 ├── fusion-material.css        # Material Palenight
 ├── fusion-solarized.css       # Solarized Dark 🌿
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
-├── fusion-academic.css        # Academic Light 🎓
+├── fusion-academic-light.css  # Academic Light 🎓
 └── fusion-academic-dark.css   # Academic Dark 🎓
 ```
 
@@ -135,7 +135,7 @@ typora-fusion-dark-theme/
 ## 🚀 安装方法
 
 1. 打开 Typora → **偏好设置 → 外观 → 打开主题文件夹**
-2. 将你想要的主题文件（如 `fusion-dark.css`）和 `fusion-dark/` 目录复制到主题文件夹中
+2. 将你想要的主题文件（如 `fusion-dark-orange.css`）和 `fusion-dark/` 目录复制到主题文件夹中
 3. 重启 Typora（或刷新主题）
 4. 在 **偏好设置 → 外观 → 主题** 中选择对应主题
 
@@ -143,7 +143,7 @@ typora-fusion-dark-theme/
 
 ---
 
-## 🎨 颜色参考（以 Fusion Dark 为例）
+## 🎨 颜色参考（以 Fusion Dark Orange 为例）
 
 | 变量 | 值 | 用途 |
 |---|---|---|

@@ -10,14 +10,14 @@
 
 | Theme | Palette | Primary | Background | Contrast | Eye-friendly |
 |---|---|---|---|---|---|
-| **Fusion Dark** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
+| **Fusion Dark Orange** | Dark + Orange | `#e8944c` | `#1e1e1e` | 8.3:1 AAA | |
 | **Fusion Dracula** | Full Dracula | `#ff79c6` | `#282a36` | 7.8:1 AAA | |
 | **Fusion Nord** | Nord | `#88c0d0` | `#2e3440` | 7.0:1 AAA | |
-| **Fusion Light** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
+| **Fusion Amber** | Light + Amber | `#b45309` | `#f9f7f4` | 6.4:1 AA | |
 | **Fusion Material** | Material Palenight | `#82aaff` | `#101010` | 13.4:1 AAA | |
 | **Fusion Solarized** | Solarized Dark | `#b58900` | `#1a1f2b` | 8.1:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#d79921` | `#282828` | 8.6:1 AAA | 🌿 |
-| **Fusion Academic** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
+| **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
 | **Fusion Academic Dark** | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA | |
 
 ---
@@ -44,14 +44,14 @@ typora-fusion-dark-theme/
 │   ├── base.css               # Shared structural styles (all themes)
 │   ├── CascadiaCode.woff2     # Monospace font (code blocks)
 │   └── LXGWWenKai-Regular.ttf # Chinese serif font (body)
-├── fusion-dark.css            # Dark + Orange
+├── fusion-dark-orange.css     # Dark + Orange
 ├── fusion-dracula.css         # Full Dracula
 ├── fusion-nord.css            # Nord
-├── fusion-light.css           # Light + Amber
+├── fusion-amber.css           # Light + Amber
 ├── fusion-material.css        # Material Palenight
 ├── fusion-solarized.css       # Solarized Dark 🌿
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
-├── fusion-academic.css        # Academic Light 🎓
+├── fusion-academic-light.css  # Academic Light 🎓
 └── fusion-academic-dark.css   # Academic Dark 🎓
 ```
 
@@ -136,9 +136,9 @@ Color-accurate print styles, page-break guards on headings and code blocks, text
 ## 🚀 Installation
 
 1. Open Typora → **Preferences → Appearance → Open Theme Folder**
-2. Copy `fusion-dark.css` and the `fusion-dark/` directory into the theme folder
+2. Copy `fusion-dark-orange.css` and the `fusion-dark/` directory into the theme folder
 3. Restart Typora (or refresh themes)
-4. Select **Fusion Dark** from **Preferences → Appearance → Theme**
+4. Select **Fusion Dark Orange** from **Preferences → Appearance → Theme**
 
 ---
 
