@@ -150,7 +150,14 @@
     --font-heading: "EB Garamond", "Georgia", "Times New Roman", serif;
     --body-line-height: 1.95;
     --write-padding: 24px 100px;
-    --blockquote-padding: 16px 24px;
+    --blockquote-icon-zone: 0px;          /* 无图标区，左侧直接为 inset 左边框腾出空间 */
     --blockquote-left-shadow: inset 5px 0 0 var(--primary-color);
     --blockquote-icon-display: none;
+    --alert-accent-width: 5px;            /* 学术主题：更宽的 Alert 竖条标记 */
 }
+
+/* 学术主题：禁用 Alert 悬停位移与水印动画，保持严肃风格 */
+.md-alert { transition: border-color 0.2s ease, background-color 0.2s ease; }
+.md-alert:hover { transform: none; box-shadow: none; }
+.md-alert::after { transition: opacity 0.2s ease; }
+.md-alert:hover::after { transform: rotate(-15deg); opacity: 0.1; filter: grayscale(100%); right: -10px; bottom: -15px; }

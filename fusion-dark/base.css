@@ -26,7 +26,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
+    line-height: 1.618; /* 黄金比例，视觉节奏最和谐 */
     margin: 0;
     overflow-x: hidden;
 }
@@ -107,6 +107,8 @@ content {
     text-align: left;
     position: relative;
     z-index: 0;
+    /* 初始化标题计数器，防止多文档模式下计数器串位 */
+    counter-reset: h2 h3 h4 h5 h6;
 }
 
 /* Subtle texture overlay on content */
@@ -138,10 +140,11 @@ content {
     font-family: Optima-Regular, Optima, "LXGW WenKai", PingFangSC-light, "PingFang SC", Cambria, Georgia, "Times New Roman", serif;
     font-size: 1rem;
     word-spacing: 1px;
+    text-indent: 0;
 }
 
-p, blockquote, ul, ol, dl, table { margin: 0.8em 0; }
-li > ol, li > ul { margin: 0; }
+#write p, #write blockquote, #write ul, #write ol, #write dl, #write table { margin: 0.8em 0; }
+#write li > ol, #write li > ul { margin: 0; }
 
 
 /* ======================== Headings (Phycat style) ======================== */
@@ -151,8 +154,12 @@ li > ol, li > ul { margin: 0; }
     font-family: var(--font-heading, var(--font-sans-serif));
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code,
-h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+#write h1 tt, #write h1 code,
+#write h2 tt, #write h2 code,
+#write h3 tt, #write h3 code,
+#write h4 tt, #write h4 code,
+#write h5 tt, #write h5 code,
+#write h6 tt, #write h6 code {
     font-size: inherit !important;
 }
 
@@ -326,9 +333,12 @@ h5.md-focus:before, h6.md-focus:before {
 
 /* ======================== Blockquote (Phycat style) ======================== */
 #write blockquote {
+    /* --bq-icon-zone 控制左侧图标预留区宽度，padding-left 与图标位置均通过 calc() 联动
+       主题文件可通过 :root { --blockquote-icon-zone: 0px } 覆盖（如学术主题不使用图标） */
+    --bq-icon-zone: var(--blockquote-icon-zone, 36px);
     position: relative;
     margin: 20px 0;
-    padding: var(--blockquote-padding, 18px 20px 18px 48px);
+    padding: 18px 20px 18px calc(var(--bq-icon-zone) + 12px);
     color: var(--text-color-secondary);
     background-color: var(--shadow-20);
     border: 1px solid color-mix(in srgb, var(--primary-color), transparent 70%);
@@ -339,7 +349,8 @@ h5.md-focus:before, h6.md-focus:before {
 #write blockquote::before {
     content: "💡";
     position: absolute;
-    left: 10px;
+    /* 图标水平居中于图标区：(zone - icon_em) / 2 ≈ 8px */
+    left: calc((var(--bq-icon-zone) - 1.25em) / 2);
     top: 2px;
     font-size: 20px;
     display: var(--blockquote-icon-display, block);
@@ -454,6 +465,7 @@ h5.md-focus:before, h6.md-focus:before {
 
 
 /* ======================== Lists ======================== */
+/* 所有标记使用主色调统一着色 */
 ::marker { color: var(--primary-color); }
 
 li.md-list-item { margin: 0.25rem 0; }
@@ -464,14 +476,21 @@ li.md-list-item { margin: 0.25rem 0; }
     margin-bottom: 8px;
     padding-left: 10px;
 }
+
+/* 无序列表三级标记：实心圆 → 空心圆 → 方块，层级感递增 */
 #write ul { list-style-type: disc; }
 #write ul ul { list-style-type: circle; }
 #write ul ul ul { list-style-type: square; }
+
+/* 有序列表三级标记：数字 → 小写字母 → 小写罗马数字 */
 #write ol { list-style-type: decimal; }
 #write ol ol { list-style-type: lower-alpha; }
 #write ol ol ol { list-style-type: lower-roman; }
 
 #write ol li { padding-left: 0.5rem; }
+
+/* 列表项内若有段落，缩减间距 */
+#write li > p { margin: 0.25rem 0; }
 
 
 /* ======================== Task List (Phycat animated) ======================== */
@@ -606,7 +625,7 @@ li.md-list-item { margin: 0.25rem 0; }
     font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
     border-radius: 8px;
     background-color: var(--code-block-bg);
-    line-height: 1.6rem;
+    line-height: 1.6;
     font-size: 0.95rem;
 }
 .CodeMirror-gutters {
@@ -706,8 +725,7 @@ figure { border-radius: 8px; }
     background-color: var(--overlay-2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 0.93rem;
 }
 #write table td, #write table th {
     padding: 10px 15px;
@@ -787,7 +805,7 @@ pre.md-meta-block {
     padding: 30px 20px 20px;
     margin: 20px 0;
     font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
-    font-size: 13px;
+    font-size: 0.87rem;
     color: var(--text-color-secondary);
     line-height: 1.6;
     background-color: color-mix(in srgb, var(--primary-color), transparent 98%);
@@ -803,7 +821,7 @@ pre.md-meta-block::after {
     right: 20px;
     background-color: var(--primary-color);
     color: var(--text-bright);
-    font-size: 10px;
+    font-size: 0.67rem;
     font-weight: 700;
     letter-spacing: 1px;
     padding: 4px 12px;
@@ -823,10 +841,13 @@ pre.md-meta-block:hover {
 
 /* ======================== Alerts / Callouts (Phycat style with emoji) ======================== */
 .md-alert {
-    padding: 12px 16px;
+    /* 左侧强调边框宽度；padding-left 通过 calc() 补偿，确保内容不因改变 accent 宽度而位移 */
+    --alert-accent-width: 3px;
+    padding: 12px 16px 12px calc(16px + var(--alert-accent-width));
     margin-bottom: 16px;
     color: var(--text-color);
     border: 1px solid transparent;
+    border-left-width: var(--alert-accent-width);
     border-radius: 12px;
     background-color: var(--overlay-2);
     position: relative;
@@ -838,7 +859,7 @@ pre.md-meta-block:hover {
     align-items: center;
     margin-bottom: 8px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.93rem;
     position: relative;
     z-index: 2;
     background-color: var(--overlay-6);
@@ -878,28 +899,28 @@ pre.md-meta-block:hover {
     filter: grayscale(0);
 }
 
-.md-alert.md-alert-note { border-color: color-mix(in srgb, var(--alert-note), transparent 70%); background-color: color-mix(in srgb, var(--alert-note), transparent 95%); }
-.md-alert.md-alert-note:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-note), transparent 90%); border-color: var(--secondary-color); }
+.md-alert.md-alert-note { border-color: color-mix(in srgb, var(--alert-note), transparent 70%); border-left-color: var(--alert-note); background-color: color-mix(in srgb, var(--alert-note), transparent 95%); }
+.md-alert.md-alert-note:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-note), transparent 90%); border-color: var(--secondary-color); border-left-color: var(--alert-note); }
 .md-alert.md-alert-note .md-alert-text-container { color: var(--secondary-color); }
 .md-alert.md-alert-note::after { content: "📝"; color: var(--secondary-color); }
 
-.md-alert.md-alert-tip { border-color: color-mix(in srgb, var(--alert-tip), transparent 70%); background-color: color-mix(in srgb, var(--alert-tip), transparent 95%); }
-.md-alert.md-alert-tip:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-tip), transparent 90%); border-color: var(--accent-color); }
+.md-alert.md-alert-tip { border-color: color-mix(in srgb, var(--alert-tip), transparent 70%); border-left-color: var(--alert-tip); background-color: color-mix(in srgb, var(--alert-tip), transparent 95%); }
+.md-alert.md-alert-tip:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-tip), transparent 90%); border-color: var(--accent-color); border-left-color: var(--alert-tip); }
 .md-alert.md-alert-tip .md-alert-text-container { color: var(--accent-color); }
 .md-alert.md-alert-tip::after { content: "💡"; color: var(--accent-color); }
 
-.md-alert.md-alert-warning { border-color: color-mix(in srgb, var(--alert-warning), transparent 70%); background-color: color-mix(in srgb, var(--alert-warning), transparent 95%); }
-.md-alert.md-alert-warning:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-warning), transparent 90%); border-color: var(--alert-warning); }
+.md-alert.md-alert-warning { border-color: color-mix(in srgb, var(--alert-warning), transparent 70%); border-left-color: var(--alert-warning); background-color: color-mix(in srgb, var(--alert-warning), transparent 95%); }
+.md-alert.md-alert-warning:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-warning), transparent 90%); border-color: var(--alert-warning); border-left-color: var(--alert-warning); }
 .md-alert.md-alert-warning .md-alert-text-container { color: var(--alert-warning); }
 .md-alert.md-alert-warning::after { content: "⚠️"; color: var(--alert-warning); }
 
-.md-alert.md-alert-important { border-color: color-mix(in srgb, var(--primary-color), transparent 70%); background-color: color-mix(in srgb, var(--primary-color), transparent 95%); }
-.md-alert.md-alert-important:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--primary-color), transparent 90%); border-color: var(--primary-color); }
+.md-alert.md-alert-important { border-color: color-mix(in srgb, var(--primary-color), transparent 70%); border-left-color: var(--primary-color); background-color: color-mix(in srgb, var(--primary-color), transparent 95%); }
+.md-alert.md-alert-important:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--primary-color), transparent 90%); border-color: var(--primary-color); border-left-color: var(--primary-color); }
 .md-alert.md-alert-important .md-alert-text-container { color: var(--primary-color); }
 .md-alert.md-alert-important::after { content: "🔥"; color: var(--primary-color); }
 
-.md-alert.md-alert-caution { border-color: color-mix(in srgb, var(--alert-caution), transparent 70%); background-color: color-mix(in srgb, var(--alert-caution), transparent 95%); }
-.md-alert.md-alert-caution:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-caution), transparent 90%); border-color: var(--alert-caution); }
+.md-alert.md-alert-caution { border-color: color-mix(in srgb, var(--alert-caution), transparent 70%); border-left-color: var(--alert-caution); background-color: color-mix(in srgb, var(--alert-caution), transparent 95%); }
+.md-alert.md-alert-caution:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-caution), transparent 90%); border-color: var(--alert-caution); border-left-color: var(--alert-caution); }
 .md-alert.md-alert-caution .md-alert-text-container { color: var(--alert-caution); }
 .md-alert.md-alert-caution::after { content: "💀"; color: var(--alert-caution); }
 
@@ -916,7 +937,7 @@ pre.md-meta-block:hover {
     border: 1px solid var(--overlay-5);
     box-shadow: 0 8px 32px var(--shadow-20);
     border-radius: 16px;
-    font-size: 15px;
+    font-size: 1rem;
     color: var(--text-color-secondary);
     position: relative;
     overflow: hidden;
@@ -971,7 +992,7 @@ pre.md-meta-block:hover {
 /* ======================== Footnotes ======================== */
 #write .footnote-word { font-weight: 400; color: var(--text-muted); }
 #write .footnote-ref { font-weight: 700; color: var(--accent-color); cursor: pointer; margin-left: 2px; }
-#write .footnote-item em { font-size: 14px; color: var(--text-muted); font-style: italic; display: block; background: none; }
+#write .footnote-item em { font-size: 0.93rem; color: var(--text-muted); font-style: italic; display: block; background: none; }
 
 
 /* ========================================================================
@@ -1354,7 +1375,6 @@ button, .btn {
     color: var(--text-bright) !important;
 }
 .window-header button {
-    border: 0;
     background: transparent !important;
     border: 0px !important;
     cursor: pointer;
@@ -1529,13 +1549,28 @@ body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
 
 /* ======================== Print Styles ======================== */
 @media print {
-    @page { margin: 0; padding: 15mm; size: A4; }
+    /* A4 标准页面边距（15mm 四边均等），修正：@page 不支持 padding */
+    @page { margin: 15mm; size: A4; }
     body { background-color: transparent !important; margin: 0 !important; width: 100% !important; color: #222 !important; }
     .typora-export #write { margin: 0 auto !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; border: none !important; box-shadow: none !important; background: none !important; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-    figure, pre { page-break-inside: avoid; }
+
+    /* --- 防跨页断裂 --- */
+    /* 代码块、图表不在中间分页 */
+    #write figure, #write pre { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 表格整体避免跨页（LaTeX 三线表实践） */
+    #write table { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 引用块、Alert 避免从中间断开 */
+    #write blockquote { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 标题后不立即换页（避免孤立标题） */
     h1, h2, h3, h4, h5, h6 { page-break-after: avoid !important; page-break-inside: avoid !important; color: #111 !important; }
-    p { orphans: 2; widows: 2; line-height: 1.5rem; text-shadow: none; color: #222 !important; }
+
+    /* --- 孤行/寡行控制（由 2 提升至 3，更符合排版规范） --- */
+    p { orphans: 3; widows: 3; line-height: 1.5; text-shadow: none; color: #222 !important; }
+
+    /* --- TOC 目录后强制换页（学术文档规范） --- */
+    #write .md-toc { page-break-after: always; break-after: page; }
+
     #write a { color: #0366d6 !important; }
     .md-toc { background-image: none; text-shadow: none; }
     #write strong { text-shadow: none; color: #111 !important; }
