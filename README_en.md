@@ -11,7 +11,7 @@
 | Theme | Palette | Primary | Background | Contrast | Eye-friendly |
 |---|---|---|---|---|---|
 | **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Solarized** | Solarized Dark | `#b58900` | `#0e1119` | 8.5:1 AAA | 🌿 |
+| **Fusion Solarized** | Solarized Dark | `#b58900` | `#002b36` | 4.6:1 AA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#161616` | 10.2:1 AAA | 🌿 |
 | **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
 | **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
