@@ -343,7 +343,7 @@ background: rgba(232, 148, 76, 0.1);
 | `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#0e1119` | 8.5:1 AAA |
 | `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#f0b429` | `#161616` | 13.0:1 AAA |
 | `fusion-academic-light.css` | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA |
-| `fusion-academic-dark.css` | Academic Dark 🎓 | `#C9A96E` | `#0D0D0D` | 13.6:1 AAA |
+| `fusion-academic-dark.css` | Academic Dark 🎓 | `#D4AA38` | `#0D0D0D` | 14.2:1 AAA |
 
 ---
 
