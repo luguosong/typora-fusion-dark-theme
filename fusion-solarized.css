@@ -151,7 +151,6 @@
     --font-heading: var(--font-sans-serif);
     --body-line-height: 1.85;
     --write-padding: 24px 40px;
-    --blockquote-padding: 18px 20px 18px 48px;
     --blockquote-left-shadow: none;
     --blockquote-icon-display: block;
 }
