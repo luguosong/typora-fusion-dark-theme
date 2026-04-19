@@ -154,6 +154,25 @@
     --blockquote-left-shadow: inset 5px 0 0 var(--primary-color);
     --blockquote-icon-display: none;
     --alert-accent-width: 5px;            /* 学术主题：更宽的 Alert 竖条标记 */
+
+    /* --- Three-line Table (学术三线表 — 覆盖玻璃拟态默认样式) --- */
+    --table-collapse: collapse;
+    --table-width: auto;
+    --table-margin: 0 auto;
+    --table-outer-border: none;
+    --table-top-border: 1.5pt solid var(--text-color);
+    --table-bottom-border: 1.5pt solid var(--text-color);
+    --table-border-radius: 0;
+    --table-overflow: visible;
+    --table-bg: transparent;
+    --table-backdrop: none;
+    --table-cell-vborder: none;
+    --table-cell-hborder: none;
+    --table-head-bg: transparent;
+    --table-head-color: var(--text-color);
+    --table-head-separator: 0.75pt solid var(--text-color);
+    --table-row-hover-bg: color-mix(in srgb, var(--primary-color), transparent 92%);
+    --table-cell-hover-bg: color-mix(in srgb, var(--primary-color), transparent 88%);
 }
 
 /* 学术主题：禁用 Alert 悬停位移与水印动画，保持严肃风格 */

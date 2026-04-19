@@ -180,6 +180,17 @@ content {
 #write h5 { counter-increment: h5; counter-reset: h6; font-size: 1.1rem; margin-top: 1.2rem; }
 #write h6 { counter-increment: h6; font-size: 1.05rem; margin-top: 1.2rem; }
 
+/* @supports (counter-set: none): 渐进增强 — 现代 Chromium 用 counter-set 显式归零，
+   避免旧版 counter-reset 在某些嵌套场景下的继承歧义（参考 typora-latex-theme issue #175）*/
+@supports (counter-set: none) {
+    #write                { counter-set: h2 0 h3 0 h4 0 h5 0 h6 0; }
+    #write h1             { counter-set: h2 0 h3 0 h4 0 h5 0 h6 0; }
+    #write h2             { counter-set: h3 0 h4 0 h5 0 h6 0; }
+    #write h3             { counter-set: h4 0 h5 0 h6 0; }
+    #write h4             { counter-set: h5 0 h6 0; }
+    #write h5             { counter-set: h6 0; }
+}
+
 /* Counter prefix: 自动编号文本 */
 #write h2::before { content: counter(h2) ". "; }
 #write h3::before { content: counter(h2) "." counter(h3) " "; }
@@ -714,38 +725,49 @@ figure { border-radius: 8px; }
 
 
 /* ======================== Tables (Phycat glass style) ======================== */
+/* 三线表覆盖变量（学术主题在 :root 中设定这些变量即可切换至学术三线表样式）：
+   --table-collapse: collapse; --table-width: auto; --table-margin: 0 auto;
+   --table-outer-border: none; --table-top-border / --table-bottom-border: 1.5pt solid var(--text-color);
+   --table-border-radius: 0; --table-overflow: visible; --table-bg: transparent; --table-backdrop: none;
+   --table-cell-vborder: none; --table-cell-hborder: none;
+   --table-head-bg: transparent; --table-head-color: var(--text-color);
+   --table-head-separator: 0.75pt solid var(--text-color); */
 #write table {
-    border-collapse: separate;
+    border-collapse: var(--table-collapse, separate);
     border-spacing: 0;
-    width: 100%;
-    margin: 0;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: var(--overlay-2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    width: var(--table-width, 100%);
+    margin: var(--table-margin, 0);
+    border: var(--table-outer-border, 1px solid var(--border-color));
+    /* border-top/bottom 写在 border 后，academic 主题可单独覆盖两条横线 */
+    border-top: var(--table-top-border, var(--table-outer-border, 1px solid var(--border-color)));
+    border-bottom: var(--table-bottom-border, var(--table-outer-border, 1px solid var(--border-color)));
+    border-radius: var(--table-border-radius, 8px);
+    overflow: var(--table-overflow, hidden);
+    background-color: var(--table-bg, var(--overlay-2));
+    backdrop-filter: var(--table-backdrop, blur(5px));
+    -webkit-backdrop-filter: var(--table-backdrop, blur(5px));
     font-size: 0.93rem;
 }
 #write table td, #write table th {
     padding: 10px 15px;
     color: var(--text-color);
-    border-right: 1px solid color-mix(in srgb, var(--text-bright), transparent 95%);
-    border-bottom: 1px solid color-mix(in srgb, var(--text-bright), transparent 95%);
+    border-right: var(--table-cell-vborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
+    border-bottom: var(--table-cell-hborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
     transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 #write table td:last-child, #write table th:last-child { border-right: none; }
 #write table tr:last-child td { border-bottom: none; }
 #write table th {
-    background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
-    color: var(--primary-color);
+    background-color: var(--table-head-bg, color-mix(in srgb, var(--primary-color), transparent 95%));
+    color: var(--table-head-color, var(--primary-color));
     font-weight: 700;
     white-space: nowrap;
-    border-bottom: 1px solid color-mix(in srgb, var(--primary-color), transparent 85%);
+    /* 表头分割线：三线表模式下此值覆盖 --table-cell-hborder 的 none */
+    border-bottom: var(--table-head-separator, 1px solid color-mix(in srgb, var(--primary-color), transparent 85%));
 }
-#write table tbody tr:hover td { background-color: var(--overlay-3); }
+#write table tbody tr:hover td { background-color: var(--table-row-hover-bg, var(--overlay-3)); }
 #write table tbody td:hover {
-    background-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    background-color: var(--table-cell-hover-bg, color-mix(in srgb, var(--primary-color), transparent 85%));
     color: var(--text-bright);
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-color), transparent 40%);
     cursor: default;
@@ -974,12 +996,18 @@ pre.md-meta-block:hover {
     cursor: pointer;
 }
 .md-toc-item a { text-decoration: none; color: inherit; display: block; width: 100%; border-bottom: none; }
-.md-toc-h1 { margin-top: 10px; font-weight: 600; }
-.md-toc-h2 { margin-left: 1.5em; font-size: 0.95em; }
-.md-toc-h3 { margin-left: 3em; font-size: 0.9em; opacity: 0.8; }
-.md-toc-h4 { margin-left: 4em; font-size: 0.85em; opacity: 0.8; }
-.md-toc-h5 { margin-left: 5em; font-size: 0.85em; opacity: 0.7; }
-.md-toc-h6 { margin-left: 6em; font-size: 0.85em; opacity: 0.6; }
+.md-toc-h1 { margin-top: 10px; font-weight: 600; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
+.md-toc-h2 { margin-left: 1.5em; font-size: 0.95em; counter-increment: toc-h2; counter-reset: toc-h3 toc-h4 toc-h5 toc-h6; }
+.md-toc-h3 { margin-left: 3em; font-size: 0.9em; opacity: 0.8; counter-increment: toc-h3; counter-reset: toc-h4 toc-h5 toc-h6; }
+.md-toc-h4 { margin-left: 4em; font-size: 0.85em; opacity: 0.8; counter-increment: toc-h4; counter-reset: toc-h5 toc-h6; }
+.md-toc-h5 { margin-left: 5em; font-size: 0.85em; opacity: 0.7; counter-increment: toc-h5; counter-reset: toc-h6; }
+.md-toc-h6 { margin-left: 6em; font-size: 0.85em; opacity: 0.6; counter-increment: toc-h6; }
+/* TOC 编号标签：与正文 h2~h6 编号格式一致（使用 a::before，不影响现有 ::before 小圆点） */
+.md-toc-h2 a::before { content: counter(toc-h2) ". "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h3 a::before { content: counter(toc-h2) "." counter(toc-h3) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h4 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h5 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h6 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
 .md-toc-item:hover {
     background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
     color: var(--text-bright);
@@ -1066,7 +1094,7 @@ pre.md-meta-block:hover {
 .outline-content li, .outline-content ul { margin-top: 2px; }
 
 /* TOC vertical guide line */
-.md-toc-content { position: relative; }
+.md-toc-content { position: relative; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
 .md-toc-content .md-toc-item { position: relative; color: var(--text-color); }
 .md-toc-content:before {
     content: '';
