@@ -1,40 +1,40 @@
 /*
  * ============================================================
  *  Fusion Academic Dark — Typora Theme
- *  Sidebar: Zeus | Content: Phycat | Palette: Academic Dark 🎓
- *  风格：学术深夜阅读风 · 纯黑背景高对比 · 青碧 + 青石蓝配色
+ *  Sidebar: Zeus | Content: Phycat | Palette: Nord Polar Night 🎓
+ *  风格：学术深夜阅读风 · Nord 冰川配色 · 沉浸式学术排版
  * ============================================================
  */
 @import url("fusion-dark/base.css");
 
 :root {
-    /* --- Core Palette --- */
-    --bg-color: #0D0D0D;
-    --text-color: #E4DBCE;
-    --text-color-secondary: #C8BAA8;
-    --primary-color: #52bbb1;
-    --secondary-color: #6AACD0;
-    --accent-color: #6AACD0;
-    --border-color: #2A2A2A;
+    /* --- Core Palette (Nord Polar Night + Frost) --- */
+    --bg-color: #121519;
+    --text-color: #d8dee9;
+    --text-color-secondary: #b3c3d6;
+    --primary-color: #88c0d0;
+    --secondary-color: #81a1c1;
+    --accent-color: #81a1c1;
+    --border-color: #1e2530;
 
     /* --- Text Hierarchy --- */
-    --text-bright: #F0E8DA;
-    --text-ui: #C8BAA8;
-    --text-muted: #706860;
-    --text-input: #E4DBCE;
+    --text-bright: #eceff4;
+    --text-ui: #d8dee9;
+    --text-muted: #616e88;
+    --text-input: #e5e9f0;
 
-    /* --- Surface Hierarchy --- */
-    --surface-1: #141414;
-    --surface-2: #1A1A1A;
-    --surface-3: #202020;
-    --surface-input: #252525;
-    --surface-active: #1E1E1E;
-    --surface-deep: #050505;
+    /* --- Surface Hierarchy (Polar Night) --- */
+    --surface-1: #191d23;
+    --surface-2: #232d38;
+    --surface-3: #2c3848;
+    --surface-input: #2c3848;
+    --surface-active: #354250;
+    --surface-deep: #0d1015;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #0A0A0A;
-    --border-medium: #303030;
-    --border-input: #383838;
+    --border-strong: #0c0f13;
+    --border-medium: #2c3848;
+    --border-input: #3b4d60;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -43,83 +43,83 @@
     --overlay-5: rgba(255, 255, 255, 0.05);
     --overlay-6: rgba(255, 255, 255, 0.06);
     --overlay-8: rgba(255, 255, 255, 0.08);
-    --overlay-10: rgba(255, 255, 255, 0.10);
+    --overlay-10: rgba(255, 255, 255, 0.1);
     --overlay-15: rgba(255, 255, 255, 0.15);
-    --overlay-20: rgba(255, 255, 255, 0.20);
+    --overlay-20: rgba(255, 255, 255, 0.2);
 
     /* --- Shadow --- */
-    --shadow-5: rgba(0, 0, 0, 0.05);
-    --shadow-10: rgba(0, 0, 0, 0.10);
-    --shadow-12: rgba(0, 0, 0, 0.12);
-    --shadow-15: rgba(0, 0, 0, 0.15);
-    --shadow-20: rgba(0, 0, 0, 0.20);
-    --shadow-25: rgba(0, 0, 0, 0.25);
-    --shadow-30: rgba(0, 0, 0, 0.30);
-    --shadow-40: rgba(0, 0, 0, 0.40);
-    --shadow-50: rgba(0, 0, 0, 0.50);
-    --shadow-60: rgba(0, 0, 0, 0.60);
+    --shadow-5: rgba(0, 0, 0, 0.08);
+    --shadow-10: rgba(0, 0, 0, 0.15);
+    --shadow-12: rgba(0, 0, 0, 0.18);
+    --shadow-15: rgba(0, 0, 0, 0.2);
+    --shadow-20: rgba(0, 0, 0, 0.25);
+    --shadow-25: rgba(0, 0, 0, 0.3);
+    --shadow-30: rgba(0, 0, 0, 0.35);
+    --shadow-40: rgba(0, 0, 0, 0.45);
+    --shadow-50: rgba(0, 0, 0, 0.55);
+    --shadow-60: rgba(0, 0, 0, 0.65);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(82, 187, 177, 0.50);
+    --glow-color: rgba(136, 192, 208, 0.35);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #3A9A90;
-    --select-text-bg-color: rgba(82, 187, 177, 0.30);
+    --hover-background-color: #6aacbe;
+    --select-text-bg-color: rgba(136, 192, 208, 0.25);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #080808;
+    --side-bar-bg-color: #121519;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
-    --active-file-text-color: #EDE8E0;
-    --item-hover-bg-color: rgba(82, 187, 177, 0.12);
-    --item-hover-text-color: #F0E8DA;
-    --control-text-color: #C8BAA8;
-    --control-text-hover-color: #F0E8DA;
+    --active-file-text-color: #eceff4;
+    --item-hover-bg-color: rgba(136, 192, 208, 0.1);
+    --item-hover-text-color: #eceff4;
+    --control-text-color: #d8dee9;
+    --control-text-hover-color: #eceff4;
 
     /* --- Headings --- */
     --h1-color: var(--text-color);
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #303030;
-    --panel-border-color: #303030;
-    --table-border-color: #2A2A2A;
-    --search-select-bg-color: rgba(82, 187, 177, 0.25);
-    --search-select-text-color: #F0E8DA;
+    --window-border: 1px solid #2c3848;
+    --panel-border-color: #2c3848;
+    --table-border-color: #1e2530;
+    --search-select-bg-color: rgba(136, 192, 208, 0.2);
+    --search-select-text-color: #eceff4;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #1A1A1A;
-    --menu-divider-color: rgba(82, 187, 177, 0.12);
+    --rawblock-edit-panel-bd: #232d38;
+    --menu-divider-color: rgba(136, 192, 208, 0.1);
 
-    /* --- Code Highlighting (academic dark adaptation) --- */
-    --code-block-bg: #0A0A0A;
-    --code-text: #E4DBCE;
-    --code-gutter-border: #303030;
-    --glass-border-color: rgba(255, 255, 255, 0.04);
-    --code-keyword: #F07890;
-    --code-variable: #E4DBCE;
-    --code-function: #60D890;
-    --code-param: #E8CC60;
-    --code-string: #78D078;
-    --code-comment: #647888;
-    --code-type: #58C8E8;
-    --code-property: #78B8E8;
-    --code-number: #52bbb1;
-    --code-meta: #E8C858;
-    --code-selected-bg: #303030;
+    /* --- Code Highlighting (Nord Aurora) --- */
+    --code-block-bg: #242933;
+    --code-text: #d8dee9;
+    --code-gutter-border: #3b4252;
+    --glass-border-color: rgba(255, 255, 255, 0.05);
+    --code-keyword: #81a1c1;
+    --code-variable: #d8dee9;
+    --code-function: #88c0d0;
+    --code-param: #d08770;
+    --code-string: #a3be8c;
+    --code-comment: #616e88;
+    --code-type: #8fbcbb;
+    --code-property: #88c0d0;
+    --code-number: #b48ead;
+    --code-meta: #ebcb8b;
+    --code-selected-bg: #434c5e;
 
     /* --- Kbd --- */
-    --kbd-bg: #1A1A1A;
-    --kbd-border: #303030;
-    --kbd-border-top: #383838;
-    --kbd-border-bottom: #0A0A0A;
-    --kbd-shadow: #000000;
+    --kbd-bg: #232d38;
+    --kbd-border: #2c3848;
+    --kbd-border-top: #3b4d60;
+    --kbd-border-bottom: #121519;
+    --kbd-shadow: #121519;
 
-    /* --- Alert Colors --- */
-    --alert-note: #6AACD0;
-    --alert-tip: #60D890;
-    --alert-warning: #D4AA38;
-    --alert-caution: #E05858;
+    /* --- Alert Colors (Nord Aurora) --- */
+    --alert-note: #b48ead;
+    --alert-tip: #8fbcbb;
+    --alert-warning: #ebcb8b;
+    --alert-caution: #bf616a;
 
     /* --- Fonts --- */
     --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
@@ -127,21 +127,21 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #52bbb1;
-    --texture-opacity: 0.025;
-    --bg-style: radial-gradient(#ffffff 1px, transparent 1px);
+    --texture-mask-color: #88c0d0;
+    --texture-opacity: 0.02;
+    --bg-style: radial-gradient(#d8dee9 1px, transparent 1px);
 
     /* --- Markdown --- */
-    --md-char-color: #505860;
-    --heading-char-color: #505860;
-    --meta-content-color: #5B7888;
-    --blur-text-color: #606870;
+    --md-char-color: #4c566a;
+    --heading-char-color: #4c566a;
+    --meta-content-color: #5e81ac;
+    --blur-text-color: #616e88;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(5, 5, 5, 0.92);
+    --export-sidebar-bg: rgba(12, 15, 19, 0.92);
 
     /* --- Focus Mode --- */
-    --focus-blockquote-border: rgba(70, 80, 90, 0.12);
+    --focus-blockquote-border: rgba(76, 86, 106, 0.15);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
