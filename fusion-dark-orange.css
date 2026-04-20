@@ -11,7 +11,7 @@
     --bg-color: #141414;
     --text-color: #d4d4d4;
     --text-color-secondary: #b0b8c4;
-    --primary-color: #f07830;
+    --primary-color: #d4875c;
     --secondary-color: #9eaffa;
     --accent-color: #9eaffa;
     --border-color: #282828;
@@ -59,19 +59,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(240, 120, 48, 0.50);
+    --glow-color: rgba(212, 135, 92, 0.50);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #d96820;
-    --select-text-bg-color: rgba(240, 120, 48, 0.3);
+    --hover-background-color: #b86840;
+    --select-text-bg-color: rgba(212, 135, 92, 0.3);
 
     /* --- Sidebar (Zeus) --- */
     --side-bar-bg-color: #1a1a1a;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
-    --item-hover-bg-color: rgba(240, 120, 48, 0.12);
+    --item-hover-bg-color: rgba(212, 135, 92, 0.12);
     --item-hover-text-color: #fff;
     --control-text-color: #d4d4d4;
     --control-text-hover-color: #fff;
@@ -84,11 +84,11 @@
     --window-border: 1px solid #363636;
     --panel-border-color: #363636;
     --table-border-color: #282828;
-    --search-select-bg-color: rgba(240, 120, 48, 0.25);
+    --search-select-bg-color: rgba(212, 135, 92, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
     --rawblock-edit-panel-bd: #222222;
-    --menu-divider-color: rgba(240, 120, 48, 0.1);
+    --menu-divider-color: rgba(212, 135, 92, 0.1);
 
     /* --- Code Highlighting (Dracula-inspired) --- */
     --code-block-bg: #282a36;
@@ -126,9 +126,9 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #f07830;
+    --texture-mask-color: #d4875c;
     --texture-opacity: 0.03;
-    --bg-style: radial-gradient(rgba(240, 120, 48, 0.6) 1px, transparent 1px);
+    --bg-style: radial-gradient(rgba(212, 135, 92, 0.6) 1px, transparent 1px);
 
     /* --- Markdown --- */
     --md-char-color: #666;
