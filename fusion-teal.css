@@ -1,0 +1,162 @@
+/*
+ * ============================================================
+ *  Fusion Teal — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Dark + Teal
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette --- */
+    --bg-color: #141414;
+    --text-color: #d4d4d4;
+    --text-color-secondary: #b0b8c4;
+    --primary-color: #349890;
+    --secondary-color: #c397d8;
+    --accent-color: #c397d8;
+    --border-color: #282828;
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #fff;
+    --text-ui: #ccc;
+    --text-muted: #888;
+    --text-input: #eee;
+
+    /* --- Surface Hierarchy --- */
+    --surface-1: #1a1a1a;
+    --surface-2: #222222;
+    --surface-3: #2a2a2a;
+    --surface-input: #303030;
+    --surface-active: #2e2e2e;
+    --surface-deep: #0d0d0d;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #0a0a0a;
+    --border-medium: #363636;
+    --border-input: #484848;
+
+    /* --- Overlay (white-based for dark themes) --- */
+    --overlay-2: rgba(255, 255, 255, 0.02);
+    --overlay-3: rgba(255, 255, 255, 0.03);
+    --overlay-4: rgba(255, 255, 255, 0.04);
+    --overlay-5: rgba(255, 255, 255, 0.05);
+    --overlay-6: rgba(255, 255, 255, 0.06);
+    --overlay-8: rgba(255, 255, 255, 0.08);
+    --overlay-10: rgba(255, 255, 255, 0.1);
+    --overlay-15: rgba(255, 255, 255, 0.15);
+    --overlay-20: rgba(255, 255, 255, 0.2);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.05);
+    --shadow-10: rgba(0, 0, 0, 0.1);
+    --shadow-12: rgba(0, 0, 0, 0.12);
+    --shadow-15: rgba(0, 0, 0, 0.15);
+    --shadow-20: rgba(0, 0, 0, 0.2);
+    --shadow-25: rgba(0, 0, 0, 0.25);
+    --shadow-30: rgba(0, 0, 0, 0.3);
+    --shadow-40: rgba(0, 0, 0, 0.4);
+    --shadow-50: rgba(0, 0, 0, 0.5);
+    --shadow-60: rgba(0, 0, 0, 0.6);
+
+    /* --- Glow Effects --- */
+    --glow-color: rgba(52, 152, 144, 0.50);
+    --glow-shadow-text: 0 0 5px var(--glow-color);
+    --glow-shadow-box: 0 0 8px var(--glow-color);
+    --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
+    --hover-background-color: #2a7a73;
+    --select-text-bg-color: rgba(52, 152, 144, 0.3);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #1a1a1a;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #ffffff;
+    --item-hover-bg-color: rgba(52, 152, 144, 0.12);
+    --item-hover-text-color: #fff;
+    --control-text-color: #d4d4d4;
+    --control-text-hover-color: #fff;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #363636;
+    --panel-border-color: #363636;
+    --table-border-color: #282828;
+    --search-select-bg-color: rgba(52, 152, 144, 0.25);
+    --search-select-text-color: #fff;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #222222;
+    --menu-divider-color: rgba(52, 152, 144, 0.1);
+
+    /* --- Code Highlighting (Dracula-inspired) --- */
+    --code-block-bg: #282a36;
+    --code-text: #f8f8f2;
+    --code-gutter-border: #44475a;
+    --glass-border-color: #ffffff0d;
+    --code-keyword: #ff79c6;
+    --code-variable: #f8f8f2;
+    --code-function: #50fa7b;
+    --code-param: #f1fa8c;
+    --code-string: #f1fa8c;
+    --code-comment: #6272a4;
+    --code-type: #8be9fd;
+    --code-property: #66d9ef;
+    --code-number: #bd93f9;
+    --code-meta: #ffb86c;
+    --code-selected-bg: #44475a;
+
+    /* --- Kbd --- */
+    --kbd-bg: #222222;
+    --kbd-border: #303030;
+    --kbd-border-top: #3a3a3a;
+    --kbd-border-bottom: #111;
+    --kbd-shadow: #111;
+
+    /* --- Alert Colors --- */
+    --alert-note: #bd93f9;
+    --alert-tip: #8be9fd;
+    --alert-warning: #ffb86c;
+    --alert-caution: #d63031;
+
+    /* --- Fonts --- */
+    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --font-monospace: "Cascadia Code";
+    --code-font: "Cascadia Code";
+
+    /* --- Content Area --- */
+    --texture-mask-color: #349890;
+    --texture-opacity: 0.03;
+    --bg-style: radial-gradient(rgba(52, 152, 144, 0.6) 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #666;
+    --heading-char-color: #666;
+    --meta-content-color: #777;
+    --blur-text-color: #777;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(14, 14, 14, 0.88);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(85, 85, 85, 0.12);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: dark;
+
+    /* --- Outline Panel --- */
+    --outline-line-color: rgba(255, 255, 255, 0.05);
+
+    /* --- H2 Glass Card --- */
+    --h2-bg-image: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 95%), transparent);
+    --h2-bg-image-hover: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 85%), transparent);
+    --h2-backdrop: blur(8px);
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
+}
