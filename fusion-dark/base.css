@@ -902,7 +902,7 @@ figure { border-radius: 8px; }
 #write figcaption {
     display: block;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 0.87rem;
     color: var(--text-color-secondary);
     text-align: center;
     opacity: 0.7;
@@ -1353,10 +1353,23 @@ pre.md-meta-block:hover {
 
 /* Outline items in pinned panel */
 .pin-outline #outline-content .outline-item {
+    display: block;
+    width: auto;
+    max-width: unset;
+    position: static;
     padding: 3px 8px;
+    border: none;
     border-radius: 6px;
     transition: background-color 0.15s ease;
     line-height: 1.6;
+}
+/* 固定面板中隐藏闪烁星形和计数器前缀 */
+.pin-outline #outline-content .outline-item-active::after {
+    content: none;
+    animation: none;
+}
+.pin-outline #outline-content .outline-label::before {
+    content: none;
 }
 
 .pin-outline #outline-content .outline-item:hover {
@@ -1811,9 +1824,9 @@ body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
 
     #write a { color: #0366d6 !important; }
     .md-toc { background-image: none; text-shadow: none; }
-    #write strong { text-shadow: none; color: #111 !important; transform: none !important; }
+    #write strong { text-shadow: none; color: #111 !important; transform: none !important; border-bottom: none !important; }
     #write mark { transform: none !important; text-shadow: none !important; }
-    #write em { text-decoration: none !important; }
+    #write em { text-decoration: none !important; background-image: none !important; }
     #write li:before { border-color: transparent; }
 
     /* --- Phycat 优化打印降级 --- */
