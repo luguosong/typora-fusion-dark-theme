@@ -394,3 +394,120 @@ letter-spacing: 0.5px;
 - [ ] strong/em/mark/del hover 动画
 - [ ] figcaption 居中 + hover 变色
 - [ ] 打印预览无异常（装饰元素应在打印中隐藏或降级）
+
+---
+
+## 打印降级规则（追加到 base.css Print Section）
+
+所有新增装饰元素在 `@media print` 中必须降级：
+
+```css
+@media print {
+    /* H2 移除玻璃卡片背景 */
+    #write h2 { background: none !important; backdrop-filter: none !important; border: none !important; }
+    /* H3-H6 移除装饰性前缀（竖条、圆点、空心圆、破折号） */
+    #write h3::before, #write h4::before, #write h5::before, #write h6::before { display: none !important; }
+    /* 行内样式重置 transform 和多余效果 */
+    #write strong { transform: none !important; }
+    #write mark { transform: none !important; background: #ffffcc !important; }
+    /* 大纲动画停止 */
+    .outline-item-active::after { animation: none !important; }
+}
+```
+
+注意：编号 `::before`（counter prefix）在打印中保留，只有装饰部分移除。
+
+---
+
+## ::before 伪元素冲突解决方案
+
+当前 H2-H6 的 `::before` 已用于计数器编号（如 "1.2.3 "），`::after` 用于渐变下划线。
+
+### 方案：编号保留在 `::before`，装饰移至 `::after`
+
+| 标题 | `::before` (编号) | `::after` (新装饰) |
+|------|-------------------|-------------------|
+| H2 | `counter(h2) ". "` | 移除下划线 → 不需要 `::after`，玻璃背景直接在 h2 上 |
+| H3 | `counter(h2) "." counter(h3) " "` | 竖条装饰（absolute 定位左侧） |
+| H4 | 编号 | 移除下划线 → 不需要 `::after`，圆点改用 `display: flex; gap` 在 h4 内部 |
+| H5 | 编号 | 移除下划线 → 不需要 `::after`，空心圆同 H4 |
+| H6 | 编号 | 移除下划线 → 不需要 `::after`，破折号同 H4 |
+
+**H4/H5/H6 的圆点/空心圆/破折号问题**：`display: flex` 会影响 Typora 编辑模式下的光标定位。更安全的做法：
+
+- H3 竖条 → `::after`（absolute 定位，不影响文本流）
+- H4 圆点 → 保留编号在 `::before`，圆点用编号的 `background` + `border-radius` 实现（圆形编号背景）
+- H5 空心圆 → 编号用空心圆包裹（`border` 无 `background`）
+- H6 破折号 → 在编号文本前加 "-" 字符
+
+**最终方案**：保持 `::before` 做编号，H3 竖条用 `::after`，H4-H6 的装饰整合到编号 `::before` 的样式中（通过修改编号的视觉呈现方式：H4 编号加圆形背景、H5 编号加空心圆边框、H6 编号前加破折号）。
+
+---
+
+## 可访问性：:focus-visible 规则
+
+CLAUDE.md 要求「移除默认 outline 时，必须添加 `:focus-visible` 替代样式」。新增的交互元素需添加：
+
+```css
+/* 大纲面板 */
+#outline-content .outline-item:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+    border-radius: 50px;
+}
+
+/* H2 玻璃卡片 */
+#write h2:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+}
+
+/* 行内样式 */
+#write strong:focus-visible,
+#write em:focus-visible,
+#write mark:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 3px var(--primary-color);
+    border-radius: 2px;
+}
+```
+
+注：行内元素（strong/em/mark）通常不接收 focus，但 Typora 的 `.md-focus` 类可以在编辑模式下触发类似效果。
+
+---
+
+## 浅色主题降级
+
+### H2 玻璃卡片
+
+`backdrop-filter: blur(8px)` 在浅色背景下效果有限（背景本身就是浅色，模糊无意义）。
+
+**学术浅色主题覆盖值**（`fusion-academic-light.css`）：
+
+```css
+--h2-bg-image: linear-gradient(135deg, transparent, transparent);  /* 无背景 */
+```
+
+同时移除 `backdrop-filter`：浅色主题不应用 `backdrop-filter`，通过 `@supports` 或直接在 base.css 中对 H2 使用变量控制：
+
+```css
+#write h2 {
+    backdrop-filter: var(--h2-backdrop, blur(8px));
+}
+```
+
+浅色主题设 `--h2-backdrop: none;` 即可。
+
+### 大纲面板
+
+浅色主题的 `--outline-line-color` 使用黑色系：
+```css
+--outline-line-color: rgba(0, 0, 0, 0.08);
+```
+
+### 新增变量汇总
+
+```css
+/* 所有主题需同步添加 */
+--outline-line-color: ...;
+--h2-bg-image: ...;
+--h2-bg-image-hover: ...;
+--h2-backdrop: blur(8px);           /* 浅色主题覆盖为 none */
+```
