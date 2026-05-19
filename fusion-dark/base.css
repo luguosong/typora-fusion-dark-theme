@@ -165,32 +165,39 @@ content {
 
 /* --- H1: 额外样式见上方 .content-title 合并定义 --- */
 
-/* --- H2–H6: CSS 计数器自动编号 + 渐变下划线 --- */
+/* --- H2–H6: CSS 计数器自动编号 + 差异化装饰 --- */
 #write h2, #write h3, #write h4, #write h5, #write h6 {
     position: relative;
     margin: 1rem 0;
-    padding-bottom: 8px;
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Counter: 自增当前级别 & 用 counter-set 归零下级（避免 counter-reset 新建作用域导致的继承歧义） */
-#write h2 { counter-increment: h2; counter-set: h3 0 h4 0 h5 0 h6 0; font-size: 1.4rem; margin-top: 2rem; }
-#write h3 { counter-increment: h3; counter-set: h4 0 h5 0 h6 0; font-size: 1.25rem; margin-top: 1.6rem; }
-#write h4 { counter-increment: h4; counter-set: h5 0 h6 0; font-size: 1.15rem; margin-top: 1.4rem; }
-#write h5 { counter-increment: h5; counter-set: h6 0; font-size: 1.1rem; margin-top: 1.2rem; }
-#write h6 { counter-increment: h6; font-size: 1.05rem; margin-top: 1.2rem; }
+/* Counter: 自增当前级别 & 用 counter-set 归零下级 */
+/* --- H2: 玻璃卡片背景 --- */
+#write h2 {
+    counter-increment: h2; counter-set: h3 0 h4 0 h5 0 h6 0;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 8px;
+    border-top: 1px solid var(--overlay-8);
+    background-image: var(--h2-bg-image);
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease,
+                background-image 0.5s ease, box-shadow 0.5s ease;
+}
+@supports (backdrop-filter: blur(1px)) {
+    #write h2 { backdrop-filter: var(--h2-backdrop, blur(8px)); }
+}
+#write h2:hover {
+    background-image: var(--h2-bg-image-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-20);
+}
 
-/* Counter prefix: 自动编号文本 */
-#write h2::before { content: counter(h2) ". "; }
-#write h3::before { content: counter(h2) "." counter(h3) " "; }
-#write h4::before { content: counter(h2) "." counter(h3) "." counter(h4) " "; }
-#write h5::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " "; }
-#write h6::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " "; }
-
-/* Counter prefix 共用样式 */
-#write h2::before, #write h3::before, #write h4::before,
-#write h5::before, #write h6::before {
-    display: inline-block;
+/* Counter prefix: H2 编号 */
+#write h2::before {
+    content: counter(h2) ". ";
     margin-right: 0.3em;
     color: var(--primary-color);
     font-weight: bold;
@@ -199,27 +206,127 @@ content {
     transition: opacity 0.3s ease;
 }
 
-/* Gradient underline: 渐变下划线（宽度逐级递减体现层级） */
-#write h2::after, #write h3::after, #write h4::after,
-#write h5::after, #write h6::after {
-    content: '';
-    display: block;
-    height: 2px;
-    margin-top: 6px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--primary-color), color-mix(in srgb, var(--secondary-color), transparent 40%), transparent);
-    opacity: 0.35;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+/* --- H3: 左侧竖条装饰 --- */
+#write h3 {
+    counter-increment: h3; counter-set: h4 0 h5 0 h6 0;
+    font-size: 1.25rem;
+    margin-top: 1.6rem;
+    padding-left: 15px;
 }
-#write h2::after { width: 100%; }
-#write h3::after { width: 75%; }
-#write h4::after { width: 55%; }
-#write h5::after { width: 40%; }
-#write h6::after { width: 28%; }
+#write h3::before {
+    content: counter(h2) "." counter(h3) " ";
+    margin-right: 0.3em;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+#write h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease, box-shadow 0.3s ease;
+}
+#write h3:hover::after {
+    height: 60%;
+    opacity: 1;
+    box-shadow: var(--glow-shadow-box);
+}
 
-/* Hover / Focus 统一交互（悬停增加发光 + 下划线亮起） */
-#write h2.md-focus, #write h2:focus, #write h2:hover,
-#write h3.md-focus, #write h3:focus, #write h3:hover,
+/* --- H4: 圆形编号背景 --- */
+#write h4 {
+    counter-increment: h4; counter-set: h5 0 h6 0;
+    font-size: 1.15rem;
+    margin-top: 1.4rem;
+}
+#write h4::before {
+    content: counter(h2) "." counter(h3) "." counter(h4) " ";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    margin-right: 0.4em;
+    padding: 0 4px;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    color: var(--text-bright);
+    font-size: 0.75em;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    vertical-align: middle;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+#write h4:hover::before {
+    transform: scale(1.15);
+    background-color: var(--primary-color);
+    box-shadow: var(--glow-shadow-box);
+}
+
+/* --- H5: 空心圆编号边框 --- */
+#write h5 {
+    counter-increment: h5; counter-set: h6 0;
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+}
+#write h5::before {
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    margin-right: 0.4em;
+    padding: 0 4px;
+    border-radius: 50%;
+    border: 1.5px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 0.75em;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    vertical-align: middle;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+#write h5:hover::before {
+    transform: scale(1.15);
+    background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+    box-shadow: var(--glow-shadow-box);
+}
+
+/* --- H6: 破折号前缀 --- */
+#write h6 {
+    counter-increment: h6;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+}
+#write h6::before {
+    content: "– " counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
+    margin-right: 0.2em;
+    color: var(--primary-color);
+    font-weight: 700;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+#write h6:hover::before {
+    opacity: 1;
+}
+
+/* Hover / Focus 交互 */
+#write h2.md-focus, #write h2:focus, #write h2:hover {
+    text-shadow: var(--glow-shadow-text);
+}
+#write h3.md-focus, #write h3:focus, #write h3:hover {
+    text-shadow: var(--glow-shadow-text);
+}
 #write h4.md-focus, #write h4:focus, #write h4:hover,
 #write h5.md-focus, #write h5:focus, #write h5:hover,
 #write h6.md-focus, #write h6:focus, #write h6:hover {
@@ -227,32 +334,31 @@ content {
     transform: translateY(-1px);
 }
 #write h2:focus::before, #write h2:hover::before,
-#write h3:focus::before, #write h3:hover::before,
-#write h4:focus::before, #write h4:hover::before,
-#write h5:focus::before, #write h5:hover::before,
-#write h6:focus::before, #write h6:hover::before {
+#write h3:focus::before, #write h3:hover::before {
     opacity: 1;
 }
-/* 编辑模式下隐藏计数器编号，避免与 Markdown 标记字符重叠 */
+
+/* 编辑模式下隐藏所有 ::before / ::after 装饰 */
 #write h2.md-focus::before, #write h3.md-focus::before,
 #write h4.md-focus::before, #write h5.md-focus::before,
 #write h6.md-focus::before {
     display: none;
 }
-#write h2.md-focus::after, #write h2:focus::after, #write h2:hover::after,
-#write h3.md-focus::after, #write h3:focus::after, #write h3:hover::after,
-#write h4.md-focus::after, #write h4:focus::after, #write h4:hover::after,
-#write h5.md-focus::after, #write h5:focus::after, #write h5:hover::after,
-#write h6.md-focus::after, #write h6:focus::after, #write h6:hover::after {
-    opacity: 0.7;
-    box-shadow: 0 0 8px color-mix(in srgb, var(--primary-color), transparent 50%);
+#write h3.md-focus::after {
+    display: none;
 }
 
-/* Heading focus label float (防止 Typora 内置标题标签干扰编号前缀) */
+/* Heading focus label float（防止 Typora 内置标题标签干扰） */
 h2.md-focus:before, h3.md-focus:before, h4.md-focus:before,
 h5.md-focus:before, h6.md-focus:before {
     float: unset;
     font-size: unset;
+}
+
+/* :focus-visible 可访问性 */
+#write h2:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+    border-radius: 8px;
 }
 
 
