@@ -151,6 +151,11 @@
     /* --- Outline Panel --- */
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
+    /* --- H2 Glass Card --- */
+    --h2-bg-image: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 95%), transparent);
+    --h2-bg-image-hover: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 85%), transparent);
+    --h2-backdrop: blur(8px);
+
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
     --font-heading: var(--font-sans-serif);
     --body-line-height: 1.85;

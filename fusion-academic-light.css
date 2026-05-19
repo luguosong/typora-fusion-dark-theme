@@ -149,6 +149,11 @@
     /* --- Outline Panel --- */
     --outline-line-color: rgba(0, 0, 0, 0.08);
 
+    /* --- H2 Glass Card (浅色主题降级：无背景无模糊) --- */
+    --h2-bg-image: linear-gradient(135deg, transparent, transparent);
+    --h2-bg-image-hover: linear-gradient(135deg, transparent, transparent);
+    --h2-backdrop: none;
+
     /* --- Academic Typography (学术排版专用覆盖) --- */
     --font-heading: "EB Garamond", "Georgia", "Times New Roman", serif;
     --body-line-height: 1.95;
