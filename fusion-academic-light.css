@@ -146,6 +146,9 @@
     /* --- Mermaid --- */
     --mermaid-theme: default;
 
+    /* --- Outline Panel --- */
+    --outline-line-color: rgba(0, 0, 0, 0.08);
+
     /* --- Academic Typography (学术排版专用覆盖) --- */
     --font-heading: "EB Garamond", "Georgia", "Times New Roman", serif;
     --body-line-height: 1.95;

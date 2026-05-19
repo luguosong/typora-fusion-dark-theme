@@ -148,6 +148,9 @@
     /* --- Mermaid --- */
     --mermaid-theme: dark;
 
+    /* --- Outline Panel --- */
+    --outline-line-color: rgba(255, 255, 255, 0.05);
+
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
     --font-heading: var(--font-sans-serif);
     --body-line-height: 1.85;
