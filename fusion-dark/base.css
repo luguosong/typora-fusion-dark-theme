@@ -1082,6 +1082,9 @@ pre.md-meta-block:hover {
 
 .outline-content li, .outline-content ul { margin-top: 2px; }
 
+/* 嵌套 ul 缩进恢复（Typora CSS reset 清零了 ul 默认 padding-left） */
+.outline-content ul { padding-left: 15px; }
+
 /* TOC vertical guide line */
 .md-toc-content { position: relative; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
 .md-toc-content .md-toc-item { position: relative; color: var(--text-color); }
