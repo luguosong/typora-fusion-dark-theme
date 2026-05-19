@@ -1,8 +1,7 @@
 /*
  * ============================================================
  *  Fusion Academic Light — Typora Theme
- *  Sidebar: Zeus | Content: Phycat | Palette: Academic Light 🎓
- *  风格：LaTeX 学术论文风 · 浅色米白纸张 · 酒红 + 深蓝配色
+ *  Sidebar: Zeus | Content: Phycat | Palette: Academic Light
  * ============================================================
  */
 @import url("fusion-dark/base.css");
@@ -154,37 +153,10 @@
     --h2-bg-image-hover: linear-gradient(135deg, transparent, transparent);
     --h2-backdrop: none;
 
-    /* --- Academic Typography (学术排版专用覆盖) --- */
-    --font-heading: "EB Garamond", "Georgia", "Times New Roman", serif;
-    --body-line-height: 1.95;
-    --write-padding: 24px 100px;
-    --blockquote-icon-zone: 0px;          /* 无图标区，左侧直接为 inset 左边框腾出空间 */
-    --blockquote-left-shadow: inset 5px 0 0 var(--primary-color);
-    --blockquote-icon-display: none;
-    --alert-accent-width: 5px;            /* 学术主题：更宽的 Alert 竖条标记 */
-
-    /* --- Three-line Table (学术三线表 — 覆盖玻璃拟态默认样式) --- */
-    --table-collapse: collapse;
-    --table-width: auto;
-    --table-margin: 0 auto;
-    --table-outer-border: none;
-    --table-top-border: 1.5pt solid var(--text-color);
-    --table-bottom-border: 1.5pt solid var(--text-color);
-    --table-border-radius: 0;
-    --table-overflow: visible;
-    --table-bg: transparent;
-    --table-backdrop: none;
-    --table-cell-vborder: none;
-    --table-cell-hborder: none;
-    --table-head-bg: transparent;
-    --table-head-color: var(--text-color);
-    --table-head-separator: 0.75pt solid var(--text-color);
-    --table-row-hover-bg: color-mix(in srgb, var(--primary-color), transparent 92%);
-    --table-cell-hover-bg: color-mix(in srgb, var(--primary-color), transparent 88%);
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: var(--font-sans-serif);
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
 }
-
-/* 学术主题：禁用 Alert 悬停位移与水印动画，保持严肃风格 */
-.md-alert { transition: border-color 0.2s ease, background-color 0.2s ease; }
-.md-alert:hover { transform: none; box-shadow: none; }
-.md-alert::after { transition: opacity 0.2s ease; }
-.md-alert:hover::after { transform: rotate(-15deg); opacity: 0.1; filter: grayscale(100%); right: -10px; bottom: -15px; }
