@@ -1811,8 +1811,32 @@ body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
 
     #write a { color: #0366d6 !important; }
     .md-toc { background-image: none; text-shadow: none; }
-    #write strong { text-shadow: none; color: #111 !important; }
+    #write strong { text-shadow: none; color: #111 !important; transform: none !important; }
+    #write mark { transform: none !important; text-shadow: none !important; }
+    #write em { text-decoration: none !important; }
     #write li:before { border-color: transparent; }
+
+    /* --- Phycat 优化打印降级 --- */
+    /* H2 移除玻璃卡片 */
+    #write h2 { background: none !important; backdrop-filter: none !important; border: none !important; box-shadow: none !important; }
+    /* H3 移除竖条（::after），保留编号（::before） */
+    #write h3::after { display: none !important; }
+    /* H4-H6 移除装饰视觉（背景、边框），保留编号文本 */
+    #write h4::before, #write h5::before, #write h6::before {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        min-width: unset !important;
+        height: unset !important;
+        border-radius: unset !important;
+        display: inline-block !important;
+    }
+    /* H6 破折号前缀移除（打印中无需装饰性破折号） */
+    #write h6::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " " !important; }
+    /* 大纲动画停止 + 药丸恢复朴素 */
+    .outline-item-active::after { animation: none !important; content: none !important; }
+    #outline-content .outline-item { border-radius: 4px !important; padding: 2px 4px !important; background: none !important; }
 }
 
 @media screen and (max-width: 1200px) {
