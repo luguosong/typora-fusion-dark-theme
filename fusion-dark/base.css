@@ -1077,40 +1077,127 @@ pre.md-meta-block:hover {
 #close-outline-filter-btn { position: relative; right: 0; }
 
 
-/* ======================== Outline Panel (Zeus simple style) ======================== */
-.outline-label { font-family: var(--font-sans-serif); color: var(--text-ui); }
+/* ======================== Outline Panel (Phycat pill style) ======================== */
 
-.outline-content li, .outline-content ul { margin-top: 2px; }
+/* --- 大纲计数器（独立于正文计数器） --- */
+.outline-content { counter-reset: outline-h1; }
+#outline-content .outline-h1 { counter-reset: outline-h2; }
+#outline-content .outline-h2 { counter-reset: outline-h3; }
+#outline-content .outline-h3 { counter-reset: outline-h4; }
+#outline-content .outline-h4 { counter-reset: outline-h5; }
+#outline-content .outline-h5 { counter-reset: outline-h6; }
 
-/* 嵌套 ul 缩进恢复（Typora CSS reset 清零了 ul 默认 padding-left） */
-.outline-content ul { padding-left: 15px; }
-
-/* TOC vertical guide line */
-.md-toc-content { position: relative; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
-.md-toc-content .md-toc-item { position: relative; color: var(--text-color); }
-.md-toc-content:before {
-    content: '';
-    position: absolute;
-    left: 0; top: 12px;
-    width: 1px; height: calc(100% - 20px);
-    border-left: 1px solid color-mix(in srgb, var(--primary-color), transparent 60%);
+/* --- 药丸形项目 --- */
+#outline-content .outline-item {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 6px 12px;
+    margin-bottom: 2px;
+    color: var(--text-color-secondary);
+    border-radius: 50px;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease, border-color 0.2s ease;
+    line-height: 1.6;
+    position: relative;
 }
-.md-toc-content .md-toc-h1::before { background: var(--primary-color); }
-.md-toc-content .md-toc-item:before {
-    content: '';
-    position: absolute;
-    top: 12px; left: -22px;
-    width: 5px; height: 5px;
-    border-radius: 50%;
+
+/* --- 层级缩进（通过 .outline-h2~h6 类选择器） --- */
+#outline-content .outline-h2,
+#outline-content .outline-h3,
+#outline-content .outline-h4,
+#outline-content .outline-h5,
+#outline-content .outline-h6 {
+    border-left: 1.5px solid var(--outline-line-color);
+    margin-left: 22px;
+    padding-left: 8px;
 }
 
-/* Active outline item — simple highlight */
-.outline-item.outline-item-active {
+/* --- ✦ 闪烁动画 --- */
+@keyframes outline-twinkle {
+    from { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
+    to   { opacity: 1;   transform: translateY(-50%) scale(1.2); }
+}
+
+#outline-content .outline-item-active::after {
+    content: "✦";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--primary-color);
+    animation: outline-twinkle 1.5s infinite alternate;
+}
+
+/* --- 大纲编号（CSS 计数器前缀） --- */
+#outline-content .outline-h1 > .outline-item > .outline-label::before {
+    counter-increment: outline-h1;
+    content: counter(outline-h1) ". ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h2 > .outline-item > .outline-label::before {
+    counter-increment: outline-h2;
+    content: counter(outline-h2) ". ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h3 > .outline-item > .outline-label::before {
+    counter-increment: outline-h3;
+    content: counter(outline-h2) "." counter(outline-h3) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h4 > .outline-item > .outline-label::before {
+    counter-increment: outline-h4;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h5 > .outline-item > .outline-label::before {
+    counter-increment: outline-h5;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h6 > .outline-item > .outline-label::before {
+    counter-increment: outline-h6;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "." counter(outline-h6) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+
+/* --- Hover 效果 --- */
+#outline-content .outline-item:hover {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+    color: var(--text-bright);
+    padding-left: 18px;
+}
+
+/* --- Active 项 --- */
+#outline-content .outline-item.outline-item-active {
     background-color: color-mix(in srgb, var(--primary-color), transparent 70%);
-    border-radius: 8px;
+    border-radius: 50px;
+    color: var(--text-bright);
+    border-color: color-mix(in srgb, var(--primary-color), transparent 50%);
+}
+#outline-content .outline-item.outline-item-active .outline-label {
     color: var(--text-bright);
 }
-.outline-item.outline-item-active span::before { color: var(--primary-color); }
+
+/* --- :focus-visible 可访问性 --- */
+#outline-content .outline-item:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+    border-radius: 50px;
+}
 
 /* ======================== Pinned Outline — Right Side Panel ======================== */
 .pin-outline #outline-content {
