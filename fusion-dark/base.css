@@ -1227,7 +1227,6 @@ pre.md-meta-block:hover {
     color: var(--text-color-secondary);
     border-radius: 50px;
     border: 1px solid transparent;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     line-height: 1.6;
     position: relative;
 }
@@ -1304,11 +1303,7 @@ pre.md-meta-block:hover {
     margin-right: 0.3em;
 }
 
-/* --- Hover 效果 --- */
-#outline-content .outline-item:hover {
-    background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
-    color: var(--text-bright);
-}
+/* --- Hover 效果（仅基础反馈，无动效） --- */
 
 /* --- Active 项 --- */
 #outline-content .outline-item.outline-item-active {
