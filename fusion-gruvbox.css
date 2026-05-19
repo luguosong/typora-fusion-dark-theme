@@ -12,7 +12,7 @@
     --bg-color: #282828;
     --text-color: #ebdbb2;
     --text-color-secondary: #d5c4a1;
-    --primary-color: #fabd2f;
+    --primary-color: #d4a017;
     --secondary-color: #83a598;
     --accent-color: #83a598;
     --border-color: #3c3836;
@@ -60,19 +60,19 @@
     --shadow-60: rgba(0, 0, 0, 0.6);
 
     /* --- Glow Effects --- */
-    --glow-color: rgba(250, 189, 47, 0.50);
+    --glow-color: rgba(212, 160, 23, 0.50);
     --glow-shadow-text: 0 0 5px var(--glow-color);
     --glow-shadow-box: 0 0 8px var(--glow-color);
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #e6aa20;
-    --select-text-bg-color: rgba(250, 189, 47, 0.3);
+    --hover-background-color: #b88813;
+    --select-text-bg-color: rgba(212, 160, 23, 0.3);
 
     /* --- Sidebar (Zeus) --- */
     --side-bar-bg-color: #1d2021;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #fbf1c7;
-    --item-hover-bg-color: rgba(250, 189, 47, 0.12);
+    --item-hover-bg-color: rgba(212, 160, 23, 0.12);
     --item-hover-text-color: #fbf1c7;
     --control-text-color: #d5c4a1;
     --control-text-hover-color: #fbf1c7;
@@ -85,11 +85,11 @@
     --window-border: 1px solid #504945;
     --panel-border-color: #504945;
     --table-border-color: #3c3836;
-    --search-select-bg-color: rgba(250, 189, 47, 0.25);
+    --search-select-bg-color: rgba(212, 160, 23, 0.25);
     --search-select-text-color: #fbf1c7;
     --focus-ring-color: var(--primary-color);
     --rawblock-edit-panel-bd: #32302f;
-    --menu-divider-color: rgba(250, 189, 47, 0.1);
+    --menu-divider-color: rgba(212, 160, 23, 0.1);
 
     /* --- Code Highlighting (Gruvbox) --- */
     --code-block-bg: #1d2021;
@@ -127,7 +127,7 @@
     --code-font: "Cascadia Code";
 
     /* --- Content Area --- */
-    --texture-mask-color: #fabd2f;
+    --texture-mask-color: #d4a017;
     --texture-opacity: 0.03;
     --bg-style: radial-gradient(#a89984 1px, transparent 1px);
 
