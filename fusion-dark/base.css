@@ -1222,13 +1222,19 @@ pre.md-meta-block:hover {
     align-items: center;
     width: fit-content;
     max-width: 100%;
-    padding: 6px 12px;
-    margin-bottom: 2px;
+    padding: 4px 12px;
+    margin-bottom: 1px;
     color: var(--text-color-secondary);
     border-radius: 50px;
     border: 1px solid transparent;
-    line-height: 1.6;
+    line-height: 1.5;
     position: relative;
+}
+#outline-content .outline-label {
+    padding: 0;
+}
+#outline-content .outline-expander {
+    margin-right: 2px;
 }
 
 /* --- 层级缩进（通过 .outline-h2~h6 类选择器） --- */
@@ -1243,10 +1249,6 @@ pre.md-meta-block:hover {
 }
 
 /* --- ✦ 闪烁动画 --- */
-@keyframes outline-twinkle {
-    from { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
-    to   { opacity: 1;   transform: translateY(-50%) scale(1.2); }
-}
 
 #outline-content .outline-item-active::after {
     content: "✦";
@@ -1256,7 +1258,6 @@ pre.md-meta-block:hover {
     transform: translateY(-50%);
     font-size: 10px;
     color: var(--primary-color);
-    animation: outline-twinkle 1.5s infinite alternate;
 }
 
 /* --- 大纲编号（CSS 计数器前缀） --- */
@@ -1303,7 +1304,27 @@ pre.md-meta-block:hover {
     margin-right: 0.3em;
 }
 
-/* --- Hover 效果（仅基础反馈，无动效） --- */
+/* --- 禁止大纲 hover 动效 --- */
+/* Typora 原生用 margin-left 负值 + border-left/right 全宽边框实现 hover 高亮 */
+/* li.outline-item-wrapper 同时有 .outline-item 类，需要精确选择 */
+#outline-content li.outline-item-wrapper:hover {
+    background-color: transparent !important;
+}
+#outline-content div.outline-item:hover {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+    background-color: transparent !important;
+}
+#outline-content .outline-item-wrapper,
+#outline-content .outline-item-wrapper *,
+#outline-content .outline-item,
+#outline-content .outline-item *,
+#outline-content .outline-label,
+#outline-content .outline-expander {
+    transition: none !important;
+}
 
 /* --- Active 项 --- */
 #outline-content .outline-item.outline-item-active {
@@ -1354,8 +1375,16 @@ pre.md-meta-block:hover {
     padding: 3px 8px;
     border: none;
     border-radius: 6px;
-    transition: background-color 0.15s ease;
     line-height: 1.6;
+    transition: none !important;
+}
+.pin-outline #outline-content li.outline-item-wrapper:hover {
+    background-color: transparent !important;
+}
+.pin-outline #outline-content div.outline-item:hover {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: transparent !important;
 }
 /* 固定面板中隐藏闪烁星形和计数器前缀 */
 .pin-outline #outline-content .outline-item-active::after {
@@ -1364,10 +1393,6 @@ pre.md-meta-block:hover {
 }
 .pin-outline #outline-content .outline-label::before {
     content: none;
-}
-
-.pin-outline #outline-content .outline-item:hover {
-    background-color: var(--overlay-5);
 }
 
 .pin-outline #outline-content .outline-item.outline-item-active {
@@ -1388,11 +1413,6 @@ pre.md-meta-block:hover {
 .pin-outline #outline-content .outline-expander {
     color: var(--text-color-secondary);
     opacity: 0.6;
-    transition: opacity 0.15s ease;
-}
-.pin-outline #outline-content .outline-expander:hover {
-    opacity: 1;
-    color: var(--primary-color);
 }
 
 /* Scrollbar inside pinned outline */
