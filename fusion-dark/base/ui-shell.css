@@ -1,0 +1,531 @@
+/* ============================================================
+ *  ui-shell.css - UI shell (high-churn): sidebar, outline, modals, menus, settings, export bar
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ========================================================================
+   SIDEBAR (Zeus Style — clean VS Code dark approach)
+   ======================================================================== */
+#typora-sidebar {
+    height: 100%;
+    color: var(--text-color-secondary);
+    font-size: 0.92rem;
+    background-color: var(--side-bar-bg-color);
+    border-right: 1px solid var(--border-strong);
+}
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.typora-node #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+    border-right: 1px solid var(--border-strong);
+}
+
+.sidebar-tabs { border-bottom: none; }
+
+/* File tree */
+.file-node-content {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    line-height: 28px;
+}
+.file-tree-node.active > .file-node-background {
+    background-color: var(--surface-active);
+    border-left: 3px solid var(--primary-color);
+    height: 28px;
+}
+.file-tree-node.active > .file-node-content {
+    color: var(--text-bright);
+    font-weight: 700;
+}
+.file-node-content:hover { background-color: var(--overlay-4); }
+.file-node-icon { color: var(--primary-color); padding-right: 0.2rem; opacity: 0.7; }
+.file-tree-node.active .file-node-icon { color: var(--primary-color); opacity: 1; }
+
+/* Sidebar tab indicators */
+.info-panel-tab-title { font-weight: 600; color: var(--text-color-secondary); }
+.active-tab-files #info-panel-tab-file .info-panel-tab-border,
+.active-tab-outline #info-panel-tab-outline .info-panel-tab-border,
+.ty-show-search #info-panel-tab-search .info-panel-tab-border {
+    height: 2px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+/* Search panel in sidebar */
+#file-library-search-panel { background-color: var(--surface-1); border-bottom: 1px solid var(--overlay-5); }
+#file-library-search-input {
+    border-radius: 6px;
+    background-color: var(--surface-input);
+    color: var(--text-bright);
+    border: 1px solid var(--border-input);
+}
+#file-library-search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px color-mix(in srgb, var(--primary-color), transparent 80%);
+}
+#close-outline-filter-btn { position: relative; right: 0; }
+
+
+/* ======================== Outline Panel (Phycat pill style) ======================== */
+
+/* --- 大纲计数器（独立于正文计数器） --- */
+.outline-content { counter-reset: outline-h1; }
+#outline-content .outline-h1 { counter-reset: outline-h2; }
+#outline-content .outline-h2 { counter-reset: outline-h3; }
+#outline-content .outline-h3 { counter-reset: outline-h4; }
+#outline-content .outline-h4 { counter-reset: outline-h5; }
+#outline-content .outline-h5 { counter-reset: outline-h6; }
+
+/* --- 药丸形项目 --- */
+#outline-content .outline-item {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 4px 12px;
+    margin-bottom: 1px;
+    color: var(--text-color-secondary);
+    border-radius: 50px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+    position: relative;
+}
+#outline-content .outline-label {
+    padding: 0;
+}
+#outline-content .outline-expander {
+    margin-right: 2px;
+}
+
+/* --- 层级缩进（通过 .outline-h2~h6 类选择器） --- */
+#outline-content .outline-h2,
+#outline-content .outline-h3,
+#outline-content .outline-h4,
+#outline-content .outline-h5,
+#outline-content .outline-h6 {
+    border-left: 1.5px solid var(--outline-line-color);
+    margin-left: 22px;
+    padding-left: 8px;
+}
+
+/* --- ✦ 闪烁动画 --- */
+
+#outline-content .outline-item-active::after {
+    content: "✦";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--primary-color);
+}
+
+/* --- 大纲编号（CSS 计数器前缀） --- */
+#outline-content .outline-h1 > .outline-item > .outline-label::before {
+    counter-increment: outline-h1;
+    content: counter(outline-h1) ". ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h2 > .outline-item > .outline-label::before {
+    counter-increment: outline-h2;
+    content: counter(outline-h2) ". ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h3 > .outline-item > .outline-label::before {
+    counter-increment: outline-h3;
+    content: counter(outline-h2) "." counter(outline-h3) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h4 > .outline-item > .outline-label::before {
+    counter-increment: outline-h4;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h5 > .outline-item > .outline-label::before {
+    counter-increment: outline-h5;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+#outline-content .outline-h6 > .outline-item > .outline-label::before {
+    counter-increment: outline-h6;
+    content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "." counter(outline-h6) " ";
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+
+/* --- 禁止大纲 hover 动效 --- */
+/* Typora 原生用 margin-left 负值 + border-left/right 全宽边框实现 hover 高亮 */
+/* li.outline-item-wrapper 同时有 .outline-item 类，需要精确选择 */
+#outline-content li.outline-item-wrapper:hover {
+    background-color: transparent !important;
+}
+#outline-content div.outline-item:hover {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+    background-color: transparent !important;
+}
+#outline-content .outline-item-wrapper,
+#outline-content .outline-item-wrapper *,
+#outline-content .outline-item,
+#outline-content .outline-item *,
+#outline-content .outline-label,
+#outline-content .outline-expander {
+    transition: none !important;
+}
+
+/* --- Active 项 --- */
+#outline-content .outline-item.outline-item-active {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 70%);
+    border-radius: 50px;
+    color: var(--text-bright);
+    border-color: color-mix(in srgb, var(--primary-color), transparent 50%);
+}
+#outline-content .outline-item.outline-item-active .outline-label {
+    color: var(--text-bright);
+}
+
+/* --- :focus-visible 可访问性 --- */
+#outline-content .outline-item:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+    border-radius: 50px;
+}
+
+/* ======================== Pinned Outline — Right Side Panel ======================== */
+.pin-outline #outline-content {
+    background-color: var(--surface-1);
+    border-left: 1px solid var(--border-strong);
+    padding: 12px 8px;
+    font-size: 0.9rem;
+    overflow-y: auto;
+}
+
+.pin-outline #outline-content .outline-active strong,
+.pin-outline .outline-active { color: var(--primary-color); }
+
+/* Panel header */
+.pin-outline #outline-content .outline-title-wrapper {
+    color: var(--text-color-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 8px 8px;
+    border-bottom: 1px solid var(--overlay-6);
+    margin-bottom: 6px;
+}
+
+/* Outline items in pinned panel */
+.pin-outline #outline-content .outline-item {
+    display: block;
+    width: auto;
+    max-width: unset;
+    position: static;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 6px;
+    line-height: 1.6;
+    transition: none !important;
+}
+.pin-outline #outline-content li.outline-item-wrapper:hover {
+    background-color: transparent !important;
+}
+.pin-outline #outline-content div.outline-item:hover {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: transparent !important;
+}
+/* 固定面板中隐藏闪烁星形和计数器前缀 */
+.pin-outline #outline-content .outline-item-active::after {
+    content: none;
+    animation: none;
+}
+.pin-outline #outline-content .outline-label::before {
+    content: none;
+}
+
+.pin-outline #outline-content .outline-item.outline-item-active {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 75%);
+    color: var(--text-bright);
+}
+
+.pin-outline #outline-content .outline-label {
+    color: var(--text-ui);
+    font-family: var(--font-sans-serif);
+}
+
+.pin-outline #outline-content .outline-item.outline-item-active .outline-label {
+    color: var(--text-bright);
+}
+
+/* Expander arrow */
+.pin-outline #outline-content .outline-expander {
+    color: var(--text-color-secondary);
+    opacity: 0.6;
+}
+
+/* Scrollbar inside pinned outline */
+.pin-outline #outline-content::-webkit-scrollbar { width: 4px; }
+.pin-outline #outline-content::-webkit-scrollbar-thumb {
+    background-color: var(--overlay-15);
+    border-radius: 4px;
+}
+.pin-outline #outline-content::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 50%);
+}
+
+
+/* ======================== Quick Open (Zeus) ======================== */
+#typora-quick-open {
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-1);
+    color: var(--text-ui);
+}
+#typora-quick-open-item {
+    background-color: var(--surface-1);
+    border-color: var(--border-color);
+}
+#typora-quick-open-item.active {
+    background-color: var(--item-hover-bg-color);
+    color: var(--text-bright);
+}
+
+
+/* ======================== Context Menu (Zeus clean + orange accent) ======================== */
+.context-menu, .dropdown-menu {
+    background-color: var(--surface-2) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 5px 15px var(--shadow-60) !important;
+    color: var(--text-ui) !important;
+    border-radius: 8px;
+}
+.menu-item.active {
+    background-color: var(--item-hover-bg-color) !important;
+    color: var(--text-bright) !important;
+}
+.menu-style-btn {
+    background: transparent;
+    border: 1px solid var(--border-input);
+    color: var(--text-ui);
+}
+
+.context-menu .menu-item.active,
+.context-menu .menu-item:hover,
+.dropdown-menu li:hover,
+.menu-item-container:hover,
+.nav-group-item.active {
+    background-color: var(--active-file-bg-color) !important;
+    color: var(--active-file-text-color) !important;
+    border-left: 3px solid var(--primary-color);
+}
+
+
+/* ======================== Modal/Dialog (Zeus clean) ======================== */
+.modal-content {
+    border-radius: 8px;
+    background-color: var(--surface-2);
+    color: var(--text-ui);
+    border: 1px solid var(--border-color);
+}
+.md-notification button, .modal-dialog .btn, .modal-dialog button {
+    border-radius: 8px;
+    outline: none;
+    color: var(--text-ui);
+    background-color: var(--surface-input);
+    border: 1px solid var(--border-input);
+}
+#about-content-license-button {
+    border: 1px solid var(--border-input);
+    background: var(--surface-3);
+    outline: none;
+    color: var(--text-ui);
+}
+.md-notification button:focus, .modal-dialog .btn:focus, .modal-dialog button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+.md-hr:focus { outline: none; box-shadow: 0 0 0 2px var(--primary-color); }
+
+
+/* ======================== Auto Suggest ======================== */
+.auto-suggest-container {
+    background-color: var(--surface-1) !important;
+    border: 1px solid var(--border-medium) !important;
+    box-shadow: 0 4px 10px var(--shadow-60) !important;
+    z-index: 99999 !important;
+}
+.auto-suggest-container li {
+    color: var(--text-ui) !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+.auto-suggest-container li.active {
+    background-color: var(--item-hover-bg-color) !important;
+    color: var(--text-bright) !important;
+}
+
+
+/* ======================== Settings Panel (Zeus clean) ======================== */
+.ty-preferences .window-content,
+.ty-preferences .nav-group-item,
+#setting-window, .modal-content {
+    background-color: var(--bg-color) !important;
+    color: var(--text-ui) !important;
+}
+.ty-preferences .nav-group-item.active {
+    background-color: var(--primary-color) !important;
+    color: var(--text-bright) !important;
+}
+.window-header button {
+    background: transparent !important;
+    border: 0px !important;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+
+/* ======================== Megamenu / File Panel (Phycat style) ======================== */
+.megamenu-content { background: var(--bg-color) !important; color: var(--text-color) !important; }
+.megamenu-opened header { background-image: none !important; background-color: transparent !important; border-bottom: none !important; }
+#megamenu-menu-sidebar, .megamenu-menu {
+    background-color: var(--surface-deep) !important;
+    color: var(--text-color) !important;
+    box-shadow: 2px 0 10px var(--shadow-30) !important;
+    border-right: 1px solid var(--overlay-5) !important;
+}
+.megamenu-menu-header { background-color: transparent !important; border-bottom: 1px solid var(--overlay-5) !important; color: var(--text-color) !important; }
+#megamenu-back-btn, #megamenu-menu-header-title { color: var(--text-color) !important; }
+#megamenu-menu-list { background-color: transparent !important; padding: 10px 0 !important; margin: 0 !important; box-shadow: none !important; border: none !important; }
+#megamenu-menu-list li a {
+    color: var(--text-color-secondary) !important;
+    background-color: transparent !important;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    margin: 2px 15px !important;
+    line-height: 2.5em !important;
+    padding-left: 15px !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+    display: block;
+}
+#megamenu-menu-list li a.active,
+#megamenu-menu-list li a:hover {
+    background-color: var(--active-file-bg-color) !important;
+    color: var(--text-bright) !important;
+    border-left: 3px solid var(--primary-color) !important;
+    padding-left: 12px !important;
+}
+
+.megamenu-menu-panel { background-color: transparent !important; }
+.megamenu-menu-panel h1, .megamenu-menu-panel h2 { color: var(--primary-color) !important; font-weight: 700 !important; border-color: transparent !important; }
+
+.long-btn {
+    background-color: var(--overlay-2) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--overlay-5) !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.long-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 90%) !important;
+    color: var(--text-bright) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--primary-color), transparent 80%);
+}
+
+#recent-file-panel { padding: 10px 0; color: var(--text-color) !important; }
+#recent-file-panel tbody tr:nth-child(2n-1) { background-color: transparent !important; }
+.recent-file-item {
+    color: var(--text-color-secondary) !important;
+    border-bottom: 1px solid var(--overlay-2) !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.recent-file-item:hover { background-color: color-mix(in srgb, var(--primary-color), transparent 90%) !important; color: var(--text-bright) !important; }
+.recent-file-item:hover .recent-file-name { color: var(--primary-color) !important; }
+
+/* Theme preview grid */
+#theme-preview-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+}
+.theme-preview-div {
+    border: 2px solid var(--overlay-10) !important;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.theme-preview-div.active, .theme-preview-div:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 5px 20px color-mix(in srgb, var(--primary-color), transparent 70%);
+    transform: translateY(-5px);
+}
+
+
+/* ======================== Export Sidebar (Phycat style) ======================== */
+.typora-export-sidebar {
+    position: fixed;
+    top: 20px; bottom: 20px; left: 20px;
+    width: 320px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--export-sidebar-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--primary-color), transparent 80%);
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 100;
+    color: var(--text-color-secondary);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.typora-export-sidebar:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary-color), transparent 80%), 0 10px 40px var(--shadow-50);
+}
+
+.typora-export body { background-color: var(--bg-color); color: var(--text-color); }
+.typora-export #write {
+    margin: 20px auto;
+    max-width: 950px;
+    width: 90%;
+    min-height: calc(100vh - 40px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px var(--shadow-10);
+    padding: 60px 80px;
+}
+.typora-export-sidebar + #write {
+    margin-left: 350px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: auto;
+    max-width: none;
+}
+
+/* Source view */
+.typora-sourceview-on #toggle-sourceview-btn {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 85%) !important;
+    color: var(--primary-color) !important;
+    border-left: 3px solid var(--primary-color);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.typora-sourceview-on .CodeMirror-gutters {
+    background-color: var(--bg-color) !important;
+    border-right: 1px solid var(--overlay-5) !important;
+}
+
+

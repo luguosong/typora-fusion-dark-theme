@@ -1,0 +1,145 @@
+/* ============================================================
+ *  foundation.css - shared foundation: fonts, base, content layout, paragraph
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Fonts ======================== */
+@font-face {
+    font-family: "Cascadia Code";
+    src: url("CascadiaCode.woff2") format("woff2");
+}
+@font-face {
+    font-family: "LXGW WenKai";
+    src: url("LXGWWenKai-Regular.ttf");
+}
+
+/* ======================== Base ======================== */
+html {
+    font-size: 15px;
+    background-color: var(--bg-color);
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.618; /* 黄金比例，视觉节奏最和谐 */
+    margin: 0;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--select-text-bg-color);
+    color: inherit;
+}
+
+body > *:first-child { margin-top: 0 !important; }
+body > *:last-child { margin-bottom: 0 !important; }
+
+/* Windows/Linux 主内容容器（不含标题栏和状态栏） */
+content {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* 文件夹模式下的文件名标题（修复深色背景不可见问题） */
+.content-title,
+#write h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-bottom: 14px;
+    position: relative;
+    cursor: text;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.content-title::after,
+#write h1::after {
+    content: '';
+    display: block;
+    margin: 10px auto 0;
+    width: 50%;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--h1-underline-color);
+    box-shadow: 0 0 4px color-mix(in srgb, var(--primary-color), transparent 50%);
+    transform: scaleX(0.1);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+.content-title:hover,
+#write h1:not(.md-focus):hover {
+    text-shadow: var(--glow-shadow-text);
+}
+.content-title:hover::after,
+#write h1.md-focus::after,
+#write h1:focus::after,
+#write h1:hover::after {
+    transform: scaleX(1);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--h1-underline-color), transparent 30%);
+}
+/* H1 特有样式 */
+#write h1 {
+    margin: 20px 0;
+    border-bottom: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+#write h1:not(.md-focus):hover {
+    transform: translateY(-1px);
+}
+
+
+/* ======================== Content Area Layout ======================== */
+#write {
+    max-width: none;
+    margin: 0 auto;
+    padding: var(--write-padding, 24px 40px);
+    padding-bottom: 100px;
+    line-height: var(--body-line-height, 1.85);
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    position: relative;
+    z-index: 0;
+}
+
+/* Subtle texture overlay on content */
+#write::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-color: var(--texture-mask-color);
+    opacity: var(--texture-opacity);
+    -webkit-mask-image: var(--bg-style);
+    mask-image: var(--bg-style);
+    -webkit-mask-size: 20px 20px;
+    mask-size: 20px 20px;
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+}
+
+
+#write > ul:first-child,
+#write > ol:first-child { margin-top: 30px; }
+
+
+/* ======================== Paragraph ======================== */
+#write p {
+    color: var(--text-color-secondary);
+    margin: 0 10px;
+    font-family: Optima-Regular, Optima, "LXGW WenKai", PingFangSC-light, "PingFang SC", Cambria, Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    word-spacing: 1px;
+    text-indent: 0;
+}
+
+#write p, #write blockquote, #write ul, #write ol, #write dl, #write table { margin: 0.8em 0; }
+#write li > ol, #write li > ul { margin: 0; }
+
+

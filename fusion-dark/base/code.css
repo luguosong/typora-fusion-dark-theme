@@ -1,0 +1,180 @@
+/* ============================================================
+ *  code.css - code: fenced blocks, syntax, inline code, code tooltip
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Code Blocks (Phycat style with mac dots) ======================== */
+.md-fences:not([lang=mermaid])::before {
+    content: attr(lang);
+    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
+    text-align: right;
+    padding-right: 15px;
+    color: var(--code-comment);
+    display: block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNDUwcHgiIGhlaWdodD0iMTMwcHgiPgogIDxlbGxpcHNlIGN4PSI2NSIgY3k9IjY1IiByeD0iNTAiIHJ5PSI1MiIgc3Ryb2tlPSJyZ2IoMjIwLDYwLDU0KSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJyZ2IoMjM3LDEwOCw5NikiLz4KICA8ZWxsaXBzZSBjeD0iMjI1IiBjeT0iNjUiIHJ4PSI1MCIgcnk9IjUyIiAgc3Ryb2tlPSJyZ2IoMjE4LDE1MSwzMykiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0icmdiKDI0NywxOTMsODEpIi8+CiAgPGVsbGlwc2UgY3g9IjM4NSIgY3k9IjY1IiByeD0iNTAiIHJ5PSI1MiIgIHN0cm9rZT0icmdiKDI3LDE2MSwzNykiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0icmdiKDEwMCwyMDAsODYpIi8+Cjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 12px 11px;
+    height: 32px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+    background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-color), transparent 90%);
+    transition: background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.md-fences {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: none;
+    background-color: var(--code-block-bg);
+    border: 1px solid color-mix(in srgb, var(--primary-color), transparent 80%);
+    transition: border-color 0.3s ease;
+}
+.md-fences.md-focus {
+    z-index: 100;
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+.md-fences.md-focus:not([lang=mermaid])::before {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
+    border-bottom-color: color-mix(in srgb, var(--primary-color), transparent 80%);
+}
+.md-fences .cm-s-inner.CodeMirror { margin-top: 0; }
+
+.cm-s-inner.CodeMirror {
+    padding: 20px 12px 12px 20px;
+    color: var(--code-text);
+    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
+    border-radius: 8px;
+    background-color: var(--code-block-bg);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+.CodeMirror-gutters {
+    border-right: 1px solid var(--code-gutter-border);
+    background: var(--code-block-bg);
+    white-space: nowrap;
+}
+pre.CodeMirror-line { padding: 0 1.2rem; }
+.CodeMirror-linenumber {
+    padding: 0 3px 0 5px;
+    text-align: right;
+    color: var(--code-comment);
+}
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: auto; }
+.CodeMirror div.CodeMirror-cursor {
+    /* 光标宽度：默认 2px（加粗但不色块）；主题 :root 设 --cursor-width: 5px 可得块状光标 */
+    border-left: var(--cursor-width, 2px) solid var(--primary-color);
+    z-index: 3;
+}
+
+pre.md-fences-advanced.md-focus .md-fences-adv-panel { position: unset; }
+/* 修复 Mermaid 等图表编辑模式下方大面积空白 */
+.md-fences-advanced.md-focus {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+}
+.md-diagram-panel-preview {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: unset !important;
+}
+#write .CodeMirror-wrap .CodeMirror-code pre { padding-left: 12px; }
+
+
+/* ======================== Code Syntax (Dracula-inspired) ======================== */
+.cm-keyword { color: var(--code-keyword) !important; font-weight: 700 !important; }
+.cm-variable { color: var(--code-variable) !important; }
+.cm-tag { color: var(--code-keyword) !important; font-weight: 700 !important; }
+.cm-variable-2 { color: var(--code-function) !important; }
+.cm-variable-3 { color: var(--code-param) !important; }
+.cm-def { color: var(--code-function) !important; }
+.cm-attribute { color: var(--code-function) !important; }
+.cm-comment, .md-comment, .md-meta { color: var(--code-comment) !important; font-style: italic; }
+.cm-string { color: var(--code-string) !important; }
+.cm-link { color: var(--code-type) !important; text-decoration: underline; }
+.cm-type { color: var(--code-type) !important; font-style: italic; }
+.cm-property { color: var(--code-property) !important; }
+.cm-tag:not(.cm-bracket) { font-weight: 700 !important; }
+.cm-operator { color: var(--code-keyword) !important; }
+.cm-number { color: var(--code-number) !important; }
+.cm-meta { color: var(--code-meta) !important; }
+.cm-builtin { color: var(--code-type) !important; font-style: italic; }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: var(--code-keyword) !important; font-weight: 700; }
+.CodeMirror-selected, .CodeMirror-selectedtext { background: var(--code-selected-bg) !important; }
+
+/* 括号匹配高亮：配对=绿、错配=红，复用现有 code/alert 令牌，不新增变量 */
+.CodeMirror-matchingbracket {
+    color: var(--code-function) !important;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.CodeMirror-nonmatchingbracket {
+    color: var(--alert-caution) !important;
+    font-weight: 700;
+}
+
+
+/* ======================== Inline Code (Phycat hover effect) ======================== */
+#write code:not(.md-fencescode), tt {
+    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    background-color: color-mix(in srgb, var(--secondary-color), transparent 90%);
+    color: var(--secondary-color);
+    border: 1px solid color-mix(in srgb, var(--secondary-color), transparent 85%);
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 6px;
+    vertical-align: middle;
+    transition: background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#write code:not(.md-fencescode):hover {
+    background-color: var(--secondary-color);
+    color: var(--text-bright);
+    border-color: var(--secondary-color);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--secondary-color), transparent 60%);
+    transform: scale(1.03);
+    text-decoration: none;
+}
+tt { margin: 0 2px; }
+figure { border-radius: 8px; }
+#write .md-footnote {
+    background-color: var(--surface-3);
+    color: var(--primary-color);
+}
+.md-lang { color: var(--primary-color); }
+
+
+/* ======================== Code Tooltip (Zeus) ======================== */
+.code-tooltip {
+    box-shadow: 0 4px 10px var(--shadow-50);
+    background-color: var(--surface-1) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-ui);
+}
+.md-fences .code-tooltip {
+    z-index: 50;
+    right: 0 !important;
+    bottom: -28px !important;
+    padding: 0;
+    border-radius: 5px;
+}
+.md-fences .code-tooltip input, .md-fences .code-tooltip span {
+    margin: 0;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: var(--surface-input);
+    color: var(--text-bright);
+    border: 1px solid var(--border-input);
+}
+
+

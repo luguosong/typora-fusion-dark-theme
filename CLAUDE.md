@@ -8,7 +8,7 @@
 
 - **Zeus** 侧栏设计（VS Code 风暗色面板）
 - **Phycat** 内容区设计（玻璃拟态、霓虹发光、丰富动画）
-- 多种配色方案（Dark Orange、Solarized、Gruvbox、Academic Light、Academic Dark Nord）
+- 多种配色方案（Dark Orange、Teal、Gruvbox、Academic Dark Nord）
 
 项目**无构建系统、无包管理器、无 JavaScript**，完全由纯 CSS 构成。
 
@@ -19,13 +19,21 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css                  # 共享基础样式（~1570 行，所有主题复用）
+│   ├── base.css                  # @import manifest（19 行，按原 section 顺序引入 base/，勿改顺序）
+│   ├── base/                     # 共享基础样式（按职责拆为 8 文件，所有主题复用）
+│   │   ├── foundation.css        # 字体 / Base / 内容区布局 / 段落（原 §1–4）
+│   │   ├── content-text.css      # 标题 / 分隔线 / 链接 / 行内样式（原 §5–9）
+│   │   ├── content-blocks.css    # 引用 / 列表 / 任务 / 表格 / 图片 / Kbd / YAML / Alerts / TOC / 脚注
+│   │   ├── code.css              # 围栏代码块 / 语法高亮 / 行内代码 / 代码提示
+│   │   ├── ui-shell.css          # 侧栏 / 大纲 / 弹窗 / 菜单 / 设置 / 导出栏
+│   │   ├── media-extensions.css  # 数学 / Mermaid / 原生 HTML 块
+│   │   ├── chrome-behavior.css   # 专注模式 / 滚动条 / 输入按钮 / 光标 / 表格调整
+│   │   └── export.css            # 打印 / 移动导出
 │   ├── CascadiaCode.woff2        # 内置等宽字体
 │   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
 ├── fusion-dark-orange.css        # Dark + Orange 主题（变量层）
-├── fusion-solarized.css          # Solarized Dark 护眼主题（变量层）
+├── fusion-teal.css               # Dark + Teal 深色青碧主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
-├── fusion-academic-light.css     # Academic Light 学术浅色主题（变量层）
 ├── fusion-academic-dark.css      # Academic Dark (Nord Polar Night) 学术深色主题（变量层）
 ├── README.md                     # 中文文档
 ├── README_en.md                  # 英文文档
@@ -38,17 +46,20 @@ typora-fusion-dark-theme/
 
 ```
 ┌──────────────────────────┐
-│  fusion-dark-orange.css  │  ← 主题变量层（~155 行）
-│  fusion-solarized.css    │    仅定义 :root CSS 自定义属性
+│  fusion-dark-orange.css  │  ← 主题变量层（~160 行）
+│  fusion-teal.css         │    仅定义 :root CSS 自定义属性
 │  fusion-gruvbox.css      │    通过 @import 引入 base.css
-│  fusion-academic-light.css│
 │  fusion-academic-dark.css│
 └────────┬─────────────────┘
          │ @import url("fusion-dark/base.css")
          ▼
 ┌──────────────────────┐
-│  fusion-dark/base.css│  ← 共享基础样式层（~1545 行）
-│                      │    所有选择器、布局、动画
+│  fusion-dark/base.css│  ← @import manifest（19 行，按原 section 顺序）
+└────────┬─────────────┘    ⚠ 同特异性规则按 import 顺序解析，勿改顺序
+         ▼
+┌──────────────────────┐
+│  fusion-dark/base/   │  ← 共享基础样式层（8 文件，~1800 行）
+│  foundation … export │    所有选择器、布局、动画
 │                      │    颜色全部通过 var() 引用
 └──────────────────────┘
 ```
@@ -58,13 +69,15 @@ typora-fusion-dark-theme/
 | 需求 | 修改文件 |
 |---|---|
 | 调整某个主题的颜色/色调 | 对应主题的 `fusion-*.css` |
-| 新增所有主题共享的变量 | 所有 `fusion-*.css` 中的 `:root`（共 5 个文件） |
-| 修改结构/布局/选择器 | `fusion-dark/base.css` |
+| 新增所有主题共享的变量 | 所有 `fusion-*.css` 中的 `:root`（共 4 个文件） |
+| 修改结构/布局/选择器 | `fusion-dark/base/` 下对应分文件（`base.css` 仅 manifest，勿直接写样式） |
 | 新增主题变体 | 创建新的 `fusion-<name>.css`，`@import` base.css 并定义完整变量集 |
 
 ---
 
 ## base.css Section 排列顺序
+
+> 下列 Section 原属单文件 base.css；现已按职责拆分到 `base/` 的 8 个分文件（见各文件头注释与上方「仓库结构」）。Section 编号仅供定位，不再对应单一文件。
 
 样式表使用块注释将各部分清晰分隔：
 
@@ -78,7 +91,7 @@ typora-fusion-dark-theme/
 | 2 | Base | `html`、`body`、`::selection` |
 | 3 | Content Area Layout | `#write` 容器（无 max-width 限制）、纹理叠层 |
 | 4 | Paragraph | 段落字体与间距 |
-| 5 | Headings | H1 居中标题 + H2–H6 渐变下划线 + CSS 计数器自动编号 |
+| 5 | Headings | H1 居中标题 + H2 玻璃卡片 + H3 左侧竖条 + H4–H6 字号递减 |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
 | 7 | Links | 图标前缀 + 霓虹悬停 |
 | 8 | Blockquote | 圆角卡片 + Emoji 装饰 |
@@ -187,29 +200,18 @@ typora-fusion-dark-theme/
 - **深色主题** → overlay 基于白色 `rgba(255, 255, 255, N%)`
 - **浅色主题** → overlay 基于黑色 `rgba(0, 0, 0, N%)`
 
-### 标题编号系统
+### 标题装饰系统
 
-H2–H6 使用 CSS Counters 实现自动多级编号，H1 作为文档标题不参与编号：
+H1–H6 统一使用主色 (`var(--primary-color)`)。**不使用 CSS 计数器自动编号**——兼容笔记自带的手动序号。各级靠差异化装饰区分，而非编号前缀：
 
-```
-#write         → counter-reset: h2 h3 h4 h5 h6
-#write h1      → counter-reset: h2 h3 h4 h5 h6  （遇到 H1 重新计数）
-#write h2      → counter-increment: h2; counter-reset: h3 h4 h5 h6
-#write h3      → counter-increment: h3; counter-reset: h4 h5 h6
-#write h4–h6   → 依此类推
-```
+| 级别 | 装饰 | 实现要点 |
+|------|------|---------|
+| H1 | 居中标题 | 由 `.content-title` 合并定义 |
+| H2 | 玻璃卡片背景 | `--h2-bg-image` 渐变 + `backdrop-filter` 模糊，`width: fit-content`，hover 上浮发光 |
+| H3 | 左侧竖条 | `::after` 生成 4px 主色竖条，hover 增高至 60% + 发光 |
+| H4–H6 | 仅字号递减 | 1.15 / 1.10 / 1.05rem，hover 上浮 + 文字发光 |
 
-编号通过 `::before` 伪元素展示：
-
-| 级别 | 前缀格式 | 示例 |
-|------|---------|------|
-| H2 | `counter(h2) ". "` | 1. 2. 3. |
-| H3 | `counter(h2) "." counter(h3) " "` | 1.1 1.2 2.1 |
-| H4 | 三级点分 | 1.1.1 |
-| H5 | 四级点分 | 1.1.1.1 |
-| H6 | 五级点分 | 1.1.1.1.1 |
-
-H2–H6 视觉统一为**渐变下划线 + 编号前缀**（下划线宽度逐级递减：H2=100%、H3=75%、H4=55%、H5=40%、H6=28%），通过字号递减区分层级。
+编辑模式下隐藏 H3 竖条（`#write h3.md-focus::after { display: none }`），避免输入时干扰。
 
 ### 变量使用与清理
 
@@ -295,7 +297,7 @@ background: rgba(232, 148, 76, 0.1);
 3. 内容选择器限定在 `#write` 下
 4. 定义默认、`:hover`、`:focus`、`.md-focus` 状态
 5. 所有颜色值使用 CSS 变量（定义在主题文件中）
-6. 如需新增变量，须在**所有 7 个主题文件**的 `:root` 中同步添加
+6. 如需新增变量，须在**所有 4 个主题文件**的 `:root` 中同步添加
 7. 在默认状态添加 `transition`
 8. 在**编辑模式**和**专注模式**下均测试效果
 
@@ -328,9 +330,8 @@ background: rgba(232, 148, 76, 0.1);
 | 文件 | 配色方案 | 主色调 | 背景色 | 正文对比度 |
 |---|---|---|---|---|
 | `fusion-dark-orange.css` | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA |
-| `fusion-solarized.css` | Solarized Dark 🌿 | `#b58900` | `#002b36` | 4.6:1 AA |
+| `fusion-teal.css` | Dark + Teal 🌊 | `#349890` | `#141414` | 11.6:1 AAA |
 | `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#fabd2f` | `#282828` | 10.2:1 AAA |
-| `fusion-academic-light.css` | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA |
 | `fusion-academic-dark.css` | Academic Dark (Nord) 🎓 | `#88c0d0` | `#121519` | 12.5:1 AAA |
 
 ---
@@ -365,10 +366,10 @@ cp -r fusion-dark/ <typora-themes-dir>/
 # 3. 重启 Typora 选择主题
 
 # 查看 CSS 变量行数
-wc -l fusion-dark-orange.css fusion-solarized.css fusion-gruvbox.css fusion-academic-light.css fusion-academic-dark.css
+wc -l fusion-dark-orange.css fusion-teal.css fusion-gruvbox.css fusion-academic-dark.css
 
-# 查看 base.css 某个 Section
-grep -n "========================" fusion-dark/base.css
+# 查看 base/ 各分文件的 Section
+grep -rn "========================" fusion-dark/base/
 ```
 
 ---
@@ -381,5 +382,19 @@ grep -n "========================" fusion-dark/base.css
 - **不得**引入 CSS 嵌套语法（`:is()`、`@layer` 等）— 保持与 Typora 内嵌 Chromium 版本的兼容性
 - **不得**使用 `transition: all` — 必须列出具体属性以避免意外属性参与过渡
 - **不得**使用 `word-wrap` — 使用标准属性 `overflow-wrap` 代替
-- **不得**在 base.css 中硬编码颜色值 — 所有颜色必须通过 `var()` 引用主题变量
-- **不得**只修改单个主题文件中的变量而忽略其他主题 — 新增变量需同步到所有 7 个主题文件
+- **不得**在 `base/` 各文件中硬编码颜色值 — 所有颜色必须通过 `var()` 引用主题变量
+- **不得**只修改单个主题文件中的变量而忽略其他主题 — 新增变量需同步到所有 4 个主题文件
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues (via the `gh` CLI). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Five canonical labels as-is (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context — one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.

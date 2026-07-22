@@ -1,0 +1,484 @@
+/* ============================================================
+ *  content-blocks.css - content blocks: blockquote, lists, task, tables, images, yaml, alerts, toc, footnotes
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Blockquote (Phycat style) ======================== */
+#write blockquote {
+    /* --bq-icon-zone 控制左侧图标预留区宽度，padding-left 与图标位置均通过 calc() 联动
+       主题文件可通过 :root { --blockquote-icon-zone: 0px } 覆盖（如学术主题不使用图标） */
+    --bq-icon-zone: var(--blockquote-icon-zone, 36px);
+    position: relative;
+    margin: 20px 0;
+    padding: 18px 20px 18px calc(var(--bq-icon-zone) + 12px);
+    color: var(--text-color-secondary);
+    background-color: var(--shadow-20);
+    border: 1px solid color-mix(in srgb, var(--primary-color), transparent 70%);
+    border-radius: 16px;
+    box-shadow: var(--blockquote-left-shadow, none);
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#write blockquote::before {
+    content: "💡";
+    position: absolute;
+    /* 图标水平居中于图标区：(zone - icon_em) / 2 ≈ 8px */
+    left: calc((var(--bq-icon-zone) - 1.25em) / 2);
+    top: 2px;
+    font-size: 20px;
+    display: var(--blockquote-icon-display, block);
+    filter: grayscale(1);
+    opacity: 0.8;
+    transform: rotate(30deg);
+    transition: filter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#write blockquote p {
+    color: var(--text-color-secondary);
+    margin-bottom: 0.5em;
+}
+#write blockquote p:last-child { margin-bottom: 0; }
+#write blockquote.md-focus,
+#write blockquote:active,
+#write blockquote:focus,
+#write blockquote:hover {
+    border-color: var(--primary-color);
+    background-color: color-mix(in srgb, var(--hover-background-color), transparent 95%);
+    box-shadow: var(--shadow-subtle);
+}
+#write blockquote.md-focus::before,
+#write blockquote:focus::before,
+#write blockquote:hover::before {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: rotate(0);
+}
+
+
+/* ======================== Lists ======================== */
+/* 所有标记使用主色调统一着色 */
+::marker { color: var(--primary-color); }
+
+li.md-list-item { margin: 0.25rem 0; }
+
+#write ol, #write ul {
+    margin-top: 0;
+    margin-left: 12px;
+    margin-bottom: 8px;
+    padding-left: 10px;
+}
+
+/* 无序列表三级标记：实心圆 → 空心圆 → 方块，层级感递增 */
+#write ul { list-style-type: disc; }
+#write ul ul { list-style-type: circle; }
+#write ul ul ul { list-style-type: square; }
+
+/* 有序列表三级标记：数字 → 小写字母 → 小写罗马数字 */
+#write ol { list-style-type: decimal; }
+#write ol ol { list-style-type: lower-alpha; }
+#write ol ol ol { list-style-type: lower-roman; }
+
+#write ol li { padding-left: 0.5rem; }
+
+/* 列表项内若有段落，缩减间距 */
+#write li > p { margin: 0.25rem 0; }
+
+
+/* ======================== Task List (Phycat animated) ======================== */
+@keyframes task-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.task-list-item { position: relative; }
+.task-list-item input {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    -webkit-appearance: initial;
+    appearance: initial;
+    position: absolute;
+    top: 9px;
+    left: -19px;
+    margin: 0;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
+}
+.task-list-item input:focus-visible::before {
+    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+}
+.task-list-item input::before {
+    content: ' ';
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: var(--shadow-20);
+    border: 2px solid var(--overlay-20);
+    transition: border 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+    box-sizing: border-box;
+}
+.task-list-item input:checked::before {
+    border: 1px solid var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color), transparent 80%);
+    box-shadow: 0 0 8px var(--primary-color), inset 0 0 5px color-mix(in srgb, var(--primary-color), transparent 50%);
+    animation: task-pulse 0.4s forwards;
+}
+.task-list-item input::after {
+    content: ' ';
+    position: absolute;
+    top: 0.325rem;
+    left: 0.28125rem;
+    width: 0.6375rem;
+    height: 0.4rem;
+    border: 2.5px solid var(--text-bright);
+    border-top: 0;
+    border-right: 0;
+    transform: rotate(-45deg) scale(0);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+.task-list-item input:checked::after {
+    opacity: 1;
+    transform: rotate(-45deg) scale(1);
+    text-shadow: 0 0 5px var(--text-bright);
+}
+.task-list-item p {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(var(--text-muted), var(--text-muted));
+    background-position: 0 50%;
+    background-size: 0 1.5px;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s ease, opacity 0.4s ease;
+    text-decoration: none !important;
+}
+.task-list-item input:checked + p {
+    color: var(--text-muted);
+    opacity: 0.6;
+    background-size: 100% 1.5px;
+}
+.task-list-item input:checked + p span {
+    color: var(--text-muted);
+    transition: color 0.4s ease;
+}
+#write li.task-list-item:before { left: -6.5px; }
+
+
+/* ======================== Tables (Phycat glass style) ======================== */
+/* 三线表覆盖变量（学术主题在 :root 中设定这些变量即可切换至学术三线表样式）：
+   --table-collapse: collapse; --table-width: auto; --table-margin: 0 auto;
+   --table-outer-border: none; --table-top-border / --table-bottom-border: 1.5pt solid var(--text-color);
+   --table-border-radius: 0; --table-overflow: visible; --table-bg: transparent; --table-backdrop: none;
+   --table-cell-vborder: none; --table-cell-hborder: none;
+   --table-head-bg: transparent; --table-head-color: var(--text-color);
+   --table-head-separator: 0.75pt solid var(--text-color); */
+#write table {
+    border-collapse: var(--table-collapse, separate);
+    border-spacing: 0;
+    width: var(--table-width, 100%);
+    margin: var(--table-margin, 0);
+    border: var(--table-outer-border, 1px solid var(--border-color));
+    /* border-top/bottom 写在 border 后，academic 主题可单独覆盖两条横线 */
+    border-top: var(--table-top-border, var(--table-outer-border, 1px solid var(--border-color)));
+    border-bottom: var(--table-bottom-border, var(--table-outer-border, 1px solid var(--border-color)));
+    border-radius: var(--table-border-radius, 8px);
+    overflow: var(--table-overflow, hidden);
+    background-color: var(--table-bg, var(--overlay-2));
+    backdrop-filter: var(--table-backdrop, blur(5px));
+    -webkit-backdrop-filter: var(--table-backdrop, blur(5px));
+    font-size: 0.93rem;
+    /* 表格默认等宽字体（数据表风）；回退正文字体在主题 :root 设 --table-font-family: inherit */
+    font-family: var(--table-font-family, var(--font-monospace));
+}
+#write table td, #write table th {
+    padding: 10px 15px;
+    color: var(--text-color);
+    border-right: var(--table-cell-vborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
+    border-bottom: var(--table-cell-hborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+#write table td:last-child, #write table th:last-child { border-right: none; }
+#write table tr:last-child td { border-bottom: none; }
+#write table th {
+    background-color: var(--table-head-bg, color-mix(in srgb, var(--primary-color), transparent 95%));
+    color: var(--table-head-color, var(--primary-color));
+    font-weight: 700;
+    white-space: nowrap;
+    /* 表头分割线：三线表模式下此值覆盖 --table-cell-hborder 的 none */
+    border-bottom: var(--table-head-separator, 1px solid color-mix(in srgb, var(--primary-color), transparent 85%));
+}
+#write table tbody tr:hover td { background-color: var(--table-row-hover-bg, var(--overlay-3)); }
+#write table tbody td:hover {
+    background-color: var(--table-cell-hover-bg, color-mix(in srgb, var(--primary-color), transparent 85%));
+    color: var(--text-bright);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-color), transparent 40%);
+    cursor: default;
+}
+
+
+/* ======================== Images (Phycat style) ======================== */
+#write p:has(img) { text-align: center; }
+#write img {
+    border-radius: 12px;
+    display: inline-block;
+    margin: 15px 5px;
+    object-fit: contain;
+    filter: brightness(1) contrast(1);
+    box-shadow: 0 4px 6px -1px var(--shadow-5);
+    transition: filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-width: 100%;
+    cursor: zoom-in;
+}
+#write p > img:only-child { display: block; margin: 20px auto; }
+#write img:hover {
+    filter: brightness(1.03) contrast(1.02);
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px -4px var(--shadow-25);
+    z-index: 10;
+}
+
+/* --- figcaption 图片标题 --- */
+#write figcaption {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.87rem;
+    color: var(--text-color-secondary);
+    text-align: center;
+    opacity: 0.7;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+#write figure:hover figcaption,
+#write p:hover figcaption {
+    color: var(--primary-color);
+    opacity: 0.9;
+}
+
+/* ======================== Kbd ======================== */
+#write kbd {
+    background-color: var(--surface-3);
+    color: var(--text-color);
+    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
+    font-size: 0.9em;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--kbd-border);
+    border-top-color: var(--border-input);
+    border-bottom-color: var(--kbd-shadow);
+    box-shadow: 0 4px 0 var(--kbd-shadow), 0 5px 5px var(--shadow-40);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+    display: inline-block;
+    line-height: 1;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+#write kbd:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--kbd-shadow), 0 3px 3px var(--shadow-40);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+
+/* ======================== YAML Front Matter ======================== */
+pre.md-meta-block {
+    padding: 30px 20px 20px;
+    margin: 20px 0;
+    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
+    font-size: 0.87rem;
+    color: var(--text-color-secondary);
+    line-height: 1.6;
+    background-color: color-mix(in srgb, var(--primary-color), transparent 98%);
+    border: 1.5px dashed color-mix(in srgb, var(--primary-color), transparent 60%);
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+pre.md-meta-block::after {
+    content: "YAML";
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-bright);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--primary-color), transparent 70%);
+    pointer-events: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+pre.md-meta-block:hover {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 92%);
+    border-style: solid;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-subtle);
+    transform: translateY(-1px);
+}
+
+
+/* ======================== Alerts / Callouts (Phycat style with emoji) ======================== */
+.md-alert {
+    /* 左侧强调边框宽度；padding-left 通过 calc() 补偿，确保内容不因改变 accent 宽度而位移 */
+    --alert-accent-width: 3px;
+    padding: 12px 16px 12px calc(16px + var(--alert-accent-width));
+    margin-bottom: 16px;
+    color: var(--text-color);
+    border: 1px solid transparent;
+    border-left-width: var(--alert-accent-width);
+    border-radius: 12px;
+    background-color: var(--overlay-2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.md-alert-text-container {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.93rem;
+    position: relative;
+    z-index: 2;
+    background-color: var(--overlay-6);
+    border: 1px solid var(--overlay-10);
+    padding: 4px 10px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px var(--shadow-10);
+}
+.md-alert-text-container span { background: none; padding: 0; box-shadow: none; color: inherit; }
+.md-alert-text svg { fill: currentColor; position: relative; top: 1px; margin-right: 5px; width: 1em; height: 1em; }
+
+.md-alert::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: -15px;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    opacity: 0.15;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    z-index: 0;
+    filter: grayscale(100%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease, filter 0.4s ease;
+}
+.md-alert:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-subtle);
+    z-index: 1;
+}
+.md-alert:hover::after {
+    transform: rotate(0) scale(1.05);
+    opacity: 0.2;
+    right: 5px;
+    bottom: -5px;
+    filter: grayscale(0);
+}
+
+.md-alert.md-alert-note { border-color: color-mix(in srgb, var(--alert-note), transparent 70%); border-left-color: var(--alert-note); background-color: color-mix(in srgb, var(--alert-note), transparent 95%); }
+.md-alert.md-alert-note:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-note), transparent 90%); border-color: var(--secondary-color); border-left-color: var(--alert-note); }
+.md-alert.md-alert-note .md-alert-text-container { color: var(--secondary-color); }
+.md-alert.md-alert-note::after { content: "📝"; color: var(--secondary-color); }
+
+.md-alert.md-alert-tip { border-color: color-mix(in srgb, var(--alert-tip), transparent 70%); border-left-color: var(--alert-tip); background-color: color-mix(in srgb, var(--alert-tip), transparent 95%); }
+.md-alert.md-alert-tip:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-tip), transparent 90%); border-color: var(--accent-color); border-left-color: var(--alert-tip); }
+.md-alert.md-alert-tip .md-alert-text-container { color: var(--accent-color); }
+.md-alert.md-alert-tip::after { content: "💡"; color: var(--accent-color); }
+
+.md-alert.md-alert-warning { border-color: color-mix(in srgb, var(--alert-warning), transparent 70%); border-left-color: var(--alert-warning); background-color: color-mix(in srgb, var(--alert-warning), transparent 95%); }
+.md-alert.md-alert-warning:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-warning), transparent 90%); border-color: var(--alert-warning); border-left-color: var(--alert-warning); }
+.md-alert.md-alert-warning .md-alert-text-container { color: var(--alert-warning); }
+.md-alert.md-alert-warning::after { content: "⚠️"; color: var(--alert-warning); }
+
+.md-alert.md-alert-important { border-color: color-mix(in srgb, var(--primary-color), transparent 70%); border-left-color: var(--primary-color); background-color: color-mix(in srgb, var(--primary-color), transparent 95%); }
+.md-alert.md-alert-important:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--primary-color), transparent 90%); border-color: var(--primary-color); border-left-color: var(--primary-color); }
+.md-alert.md-alert-important .md-alert-text-container { color: var(--primary-color); }
+.md-alert.md-alert-important::after { content: "🔥"; color: var(--primary-color); }
+
+.md-alert.md-alert-caution { border-color: color-mix(in srgb, var(--alert-caution), transparent 70%); border-left-color: var(--alert-caution); background-color: color-mix(in srgb, var(--alert-caution), transparent 95%); }
+.md-alert.md-alert-caution:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-caution), transparent 90%); border-color: var(--alert-caution); border-left-color: var(--alert-caution); }
+.md-alert.md-alert-caution .md-alert-text-container { color: var(--alert-caution); }
+.md-alert.md-alert-caution::after { content: "💀"; color: var(--alert-caution); }
+
+
+/* ======================== TOC (Phycat glass card) ======================== */
+.md-toc {
+    margin: 20px 0;
+    padding: 30px;
+    background-color: var(--overlay-2);
+    background-image: radial-gradient(circle at 0 0, color-mix(in srgb, var(--primary-color), transparent 90%), transparent 40%), radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--secondary-color), transparent 90%), transparent 40%);
+    background-repeat: no-repeat;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--overlay-5);
+    box-shadow: 0 8px 32px var(--shadow-20);
+    border-radius: 16px;
+    font-size: 1rem;
+    color: var(--text-color-secondary);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.md-toc:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px var(--shadow-30);
+    border-color: color-mix(in srgb, var(--primary-color), transparent 80%);
+}
+.md-toc:before {
+    content: "📑 Contents";
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    border-bottom: 1px dashed var(--overlay-10);
+    padding-bottom: 15px;
+    text-shadow: 0 0 6px color-mix(in srgb, var(--primary-color), transparent 70%);
+}
+.md-toc-item {
+    display: block;
+    line-height: 1.8em;
+    color: var(--text-color-secondary);
+    text-decoration: none;
+    padding: 6px 15px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    position: relative;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+.md-toc-item a { text-decoration: none; color: inherit; display: block; width: 100%; border-bottom: none; }
+.md-toc-h1 { margin-top: 10px; font-weight: 600; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
+.md-toc-h2 { margin-left: 1.5em; font-size: 0.95em; counter-increment: toc-h2; counter-reset: toc-h3 toc-h4 toc-h5 toc-h6; }
+.md-toc-h3 { margin-left: 3em; font-size: 0.9em; opacity: 0.8; counter-increment: toc-h3; counter-reset: toc-h4 toc-h5 toc-h6; }
+.md-toc-h4 { margin-left: 4em; font-size: 0.85em; opacity: 0.8; counter-increment: toc-h4; counter-reset: toc-h5 toc-h6; }
+.md-toc-h5 { margin-left: 5em; font-size: 0.85em; opacity: 0.7; counter-increment: toc-h5; counter-reset: toc-h6; }
+.md-toc-h6 { margin-left: 6em; font-size: 0.85em; opacity: 0.6; counter-increment: toc-h6; }
+/* TOC 编号标签：与正文 h2~h6 编号格式一致（使用 a::before，不影响现有 ::before 小圆点） */
+.md-toc-h2 a::before { content: counter(toc-h2) ". "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h3 a::before { content: counter(toc-h2) "." counter(toc-h3) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h4 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h5 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h6 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6) " "; color: var(--primary-color); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-item:hover {
+    background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+    color: var(--text-bright);
+    padding-left: 20px;
+    font-weight: 500;
+    box-shadow: var(--shadow-subtle);
+}
+
+
+/* ======================== Footnotes ======================== */
+#write .footnote-word { font-weight: 400; color: var(--text-muted); }
+#write .footnote-ref { font-weight: 700; color: var(--accent-color); cursor: pointer; margin-left: 2px; }
+#write .footnote-item em { font-size: 0.93rem; color: var(--text-muted); font-style: italic; display: block; background: none; }
+
+
