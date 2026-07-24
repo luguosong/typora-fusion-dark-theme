@@ -9,7 +9,7 @@
 #write h4, #write h5, #write h6 {
     color: var(--primary-color);
     font-family: var(--font-heading, var(--font-sans-serif));
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 #write h1 tt, #write h1 code,
 #write h2 tt, #write h2 code,
@@ -20,98 +20,53 @@
     font-size: inherit !important;
 }
 
-/* --- H1: 额外样式见上方 .content-title 合并定义 --- */
+/* --- H1: 额外样式见 foundation.css .content-title 合并定义 --- */
 
-/* --- H2–H6: 差异化装饰（无自动编号，兼容笔记自带的序号） --- */
+/* --- H2–H6: 手绘波浪下划线(逐级变窄),无自动编号(兼容笔记自带序号) --- */
 #write h2, #write h3, #write h4, #write h5, #write h6 {
     position: relative;
-    margin: 1rem 0;
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-}
-
-/* --- H2: 玻璃卡片背景 --- */
-#write h2 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
     width: fit-content;
-    padding: 0 10px;
-    border-radius: 8px;
-    border-top: 1px solid var(--overlay-8);
-    background-image: var(--h2-bg-image);
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease,
-                background-image 0.5s ease, box-shadow 0.5s ease;
+    margin: 1rem 0;
+    padding-bottom: 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-@supports (backdrop-filter: blur(1px)) {
-    #write h2 { backdrop-filter: var(--h2-backdrop, blur(8px)); }
-}
-#write h2:hover {
-    background-image: var(--h2-bg-image-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--shadow-20);
-}
-
-/* --- H3: 左侧竖条装饰 --- */
-#write h3 {
-    font-size: 1.25rem;
-    margin-top: 1.6rem;
-    padding-left: 15px;
-}
-#write h3::after {
+/* 手绘波浪下划线:--sketch-wave 遮罩 + 强调色;宽度由 --hu-width 逐级递减 */
+#write h2::after, #write h3::after, #write h4::after,
+#write h5::after, #write h6::after {
     content: '';
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 16px;
-    background: var(--primary-color);
-    border-radius: 2px;
-    opacity: 0.8;
-    transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease, box-shadow 0.3s ease;
+    bottom: 2px;
+    width: var(--hu-width, 100%);
+    height: 6px;
+    background-color: var(--primary-color);
+    -webkit-mask: var(--sketch-wave) repeat-x left center / auto 100%;
+    mask: var(--sketch-wave) repeat-x left center / auto 100%;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
 }
-#write h3:hover::after {
-    height: 60%;
-    opacity: 1;
-    box-shadow: var(--glow-shadow-box);
-}
+#write h2 { font-size: 1.4rem; margin-top: 2rem; --hu-width: 100%; }
+#write h3 { font-size: 1.25rem; margin-top: 1.6rem; --hu-width: 80%; }
+#write h4 { font-size: 1.15rem; margin-top: 1.4rem; --hu-width: 65%; }
+#write h5 { font-size: 1.1rem; margin-top: 1.2rem; --hu-width: 50%; }
+#write h6 { font-size: 1.05rem; margin-top: 1.2rem; --hu-width: 40%; }
 
-/* --- H4 --- */
-#write h4 {
-    font-size: 1.15rem;
-    margin-top: 1.4rem;
-}
-
-/* --- H5 --- */
-#write h5 {
-    font-size: 1.1rem;
-    margin-top: 1.2rem;
-}
-
-/* --- H6 --- */
-#write h6 {
-    font-size: 1.05rem;
-    margin-top: 1.2rem;
-}
-
-/* Hover / Focus 交互 */
-#write h2.md-focus, #write h2:focus, #write h2:hover {
-    text-shadow: var(--glow-shadow-text);
-}
-#write h3.md-focus, #write h3:focus, #write h3:hover {
-    text-shadow: var(--glow-shadow-text);
-}
-#write h4.md-focus, #write h4:focus, #write h4:hover,
-#write h5.md-focus, #write h5:focus, #write h5:hover,
-#write h6.md-focus, #write h6:focus, #write h6:hover {
-    text-shadow: var(--glow-shadow-text);
+/* Hover:轻微上移 + 下划线加深(一次性,无发光) */
+#write h2:hover, #write h3:hover, #write h4:hover,
+#write h5:hover, #write h6:hover {
     transform: translateY(-1px);
 }
-/* 编辑模式下隐藏 H3 竖条装饰（::after） */
-#write h3.md-focus::after {
+#write h2:hover::after, #write h3:hover::after, #write h4:hover::after,
+#write h5:hover::after, #write h6:hover::after {
+    opacity: 1;
+}
+/* 编辑模式下隐藏下划线装饰 */
+#write h2.md-focus::after, #write h3.md-focus::after, #write h4.md-focus::after,
+#write h5.md-focus::after, #write h6.md-focus::after {
     display: none;
 }
 
-/* Heading focus label float（防止 Typora 内置标题标签干扰） */
+/* Heading focus label float(防止 Typora 内置标题标签干扰) */
 h2.md-focus:before, h3.md-focus:before, h4.md-focus:before,
 h5.md-focus:before, h6.md-focus:before {
     float: unset;
@@ -119,9 +74,11 @@ h5.md-focus:before, h6.md-focus:before {
 }
 
 /* :focus-visible 可访问性 */
-#write h2:focus-visible {
+#write h2:focus-visible, #write h3:focus-visible, #write h4:focus-visible,
+#write h5:focus-visible, #write h6:focus-visible {
+    outline: none;
     box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 
