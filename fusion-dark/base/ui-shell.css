@@ -199,6 +199,16 @@
 #outline-content .outline-item.outline-item-active .outline-label {
     color: var(--text-bright);
 }
+/* 活动项手绘下划线点睛(强调色) */
+#outline-content .outline-item.outline-item-active .outline-label::after {
+    content: '';
+    display: block;
+    height: 4px;
+    margin-top: 1px;
+    background-color: var(--primary-color);
+    -webkit-mask: var(--sketch-wave) repeat-x left center / auto 100%;
+    mask: var(--sketch-wave) repeat-x left center / auto 100%;
+}
 
 /* --- :focus-visible 可访问性 --- */
 #outline-content .outline-item:focus-visible {

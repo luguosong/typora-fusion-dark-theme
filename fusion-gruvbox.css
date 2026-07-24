@@ -63,10 +63,7 @@
     --shadow-50: rgba(0, 0, 0, 0.5);
     --shadow-60: rgba(0, 0, 0, 0.6);
 
-    /* --- Glow Effects --- */
-    --glow-color: rgba(212, 160, 23, 0.50);
-    --glow-shadow-text: 0 0 5px var(--glow-color);
-    --glow-shadow-box: 0 0 8px var(--glow-color);
+    /* --- Effects --- */
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
     --hover-background-color: #b88813;
     --select-text-bg-color: rgba(212, 160, 23, 0.3);
