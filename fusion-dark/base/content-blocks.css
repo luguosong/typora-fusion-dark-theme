@@ -55,7 +55,7 @@
 
 
 /* ======================== Lists ======================== */
-/* 所有标记使用主色调统一着色 */
+/* 有序列表 ::marker 用主色;无序列表改用手绘箭头(墨色 --ink),见下 */
 ::marker { color: var(--primary-color); }
 
 li.md-list-item { margin: 0.25rem 0; }
@@ -67,10 +67,31 @@ li.md-list-item { margin: 0.25rem 0; }
     padding-left: 10px;
 }
 
-/* 无序列表三级标记：实心圆 → 空心圆 → 方块，层级感递增 */
-#write ul { list-style-type: disc; }
-#write ul ul { list-style-type: circle; }
-#write ul ul ul { list-style-type: square; }
+/* 无序列表:手绘向右箭头(墨色 --ink),替代 disc/circle/square。
+   箭头为 li::before(mask + background-color 变色),li 留出 padding 腾位;task-list 项排除 */
+#write ul {
+    --list-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12 Q 7 10.5 11 12 T 17 12.2' stroke='%23000' stroke-width='1.8' stroke-linecap='round' fill='none'/%3E%3Cpath d='M17 12.2 Q 14.5 10 12.5 7.8' stroke='%23000' stroke-width='1.8' stroke-linecap='round' fill='none'/%3E%3Cpath d='M17 12.2 Q 15.5 14.5 13.5 16.8' stroke='%23000' stroke-width='1.8' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    --list-arrow-size: 1.4em;
+    list-style-type: none;
+}
+#write ul > li:not(.task-list-item) {
+    position: relative;
+    padding-left: calc(var(--list-arrow-size) + 0.3em);
+}
+#write ul > li:not(.task-list-item)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: var(--list-arrow-size);
+    height: var(--list-arrow-size);
+    background-color: var(--ink);
+    -webkit-mask: var(--list-arrow) no-repeat center / contain;
+    mask: var(--list-arrow) no-repeat center / contain;
+}
+/* 嵌套层级箭头淡化,层级递减 */
+#write ul ul > li:not(.task-list-item)::before { opacity: 0.75; }
+#write ul ul ul > li:not(.task-list-item)::before { opacity: 0.55; }
 
 /* 有序列表三级标记：数字 → 小写字母 → 小写罗马数字 */
 #write ol { list-style-type: decimal; }
