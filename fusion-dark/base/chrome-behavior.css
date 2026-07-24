@@ -1,0 +1,84 @@
+/* ============================================================
+ *  chrome-behavior.css - chrome behavior: focus mode, scrollbar, input/button, caret, table resize
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Focus Mode ======================== */
+.on-focus-mode blockquote { border-color: var(--focus-blockquote-border); }
+
+header, .context-menu, .megamenu-content, footer { font-family: var(--font-sans-serif); }
+
+
+/* ======================== Global Scrollbar (Zeus clean) ======================== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+    background-color: var(--border-medium);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+::-webkit-scrollbar-track { background-color: var(--bg-color); }
+::-webkit-scrollbar-corner { background-color: var(--bg-color); }
+
+/* Sidebar scrollbar thinner */
+#file-library::-webkit-scrollbar,
+#outline-content::-webkit-scrollbar { width: 4px; }
+
+
+/* ======================== Global Input/Button Overrides (Zeus) ======================== */
+input[type="text"], input[type="search"], input[type="number"],
+input[type="password"], textarea, select {
+    background-color: var(--surface-input) !important;
+    border: 1px solid var(--border-input) !important;
+    color: var(--text-input) !important;
+    box-shadow: none !important;
+}
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-color) !important;
+}
+button, .btn {
+    background-color: var(--surface-3) !important;
+    border: 1px solid var(--border-input) !important;
+    color: var(--text-ui) !important;
+}
+
+.btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus,
+.open > .dropdown-toggle.btn-primary { background-color: var(--primary-color); }
+
+
+/* ======================== Caret & Selection ======================== */
+#write, [contenteditable], input, textarea { caret-color: var(--primary-color); }
+
+.btn:focus { outline-color: var(--primary-color); }
+
+
+/* ======================== Table Resize Popover ======================== */
+body .md-table-resize-popover {
+    width: max-content !important;
+    max-width: none !important;
+    height: auto !important;
+    padding: 12px !important;
+    background-color: var(--bg-color) !important;
+    border: 1px solid var(--primary-color);
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px var(--shadow-12) !important;
+}
+body .md-table-resize-popover .arrow { display: none !important; }
+body .md-table-resize-popover .md-grid-board { border-collapse: separate !important; border-spacing: 3px !important; }
+body .md-table-resize-popover .md-grid-board a {
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 3px !important;
+    background-color: color-mix(in srgb, var(--text-color), transparent 90%) !important;
+    border: 1px solid transparent !important;
+    transition: background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+body .md-table-resize-popover .md-grid-board td.md-grid-ext a {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--primary-color), transparent 60%) !important;
+}
+
+

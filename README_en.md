@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** English | [简体中文](README.md)
 
-> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **5 color schemes** including academic/scholarly variants.
+> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **4 color schemes** including an academic/scholarly variant.
 
 ---
 
@@ -11,9 +11,8 @@
 | Theme | Palette | Primary | Background | Contrast | Eye-friendly |
 |---|---|---|---|---|---|
 | **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Solarized** | Solarized Dark | `#b58900` | `#002b36` | 4.6:1 AA | 🌿 |
+| **Fusion Teal** | Dark + Teal 🌊 | `#349890` | `#141414` | 11.6:1 AAA | |
 | **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#282828` | 10.2:1 AAA | 🌿 |
-| **Fusion Academic Light** | Academic Light 🎓 | `#9C2F2F` | `#F8F4ED` | 11.4:1 AAA | |
 | **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
 
 ---
@@ -41,9 +40,8 @@ typora-fusion-dark-theme/
 │   ├── CascadiaCode.woff2     # Monospace font (code blocks)
 │   └── LXGWWenKai-Regular.ttf # Chinese serif font (body)
 ├── fusion-dark-orange.css     # Dark + Orange
-├── fusion-solarized.css       # Solarized Dark 🌿
+├── fusion-teal.css            # Dark + Teal 🌊
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
-├── fusion-academic-light.css  # Academic Light 🎓
 └── fusion-academic-dark.css   # Academic Dark (Nord) 🎓
 ```
 

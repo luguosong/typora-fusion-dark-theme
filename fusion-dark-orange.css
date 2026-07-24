@@ -16,6 +16,10 @@
     --accent-color: #9eaffa;
     --border-color: #282828;
 
+    /* --- Hand-drawn (手绘) --- */
+    /* 结构性描边默认色(墨色):边框 / 分隔 / 复选框 / 项目符号。≈次要文字色,随主题自适应 */
+    --ink: var(--text-color-secondary);
+
     /* --- Text Hierarchy --- */
     --text-bright: #fff;
     --text-ui: #ccc;
@@ -58,10 +62,7 @@
     --shadow-50: rgba(0, 0, 0, 0.5);
     --shadow-60: rgba(0, 0, 0, 0.6);
 
-    /* --- Glow Effects --- */
-    --glow-color: rgba(212, 135, 92, 0.50);
-    --glow-shadow-text: 0 0 5px var(--glow-color);
-    --glow-shadow-box: 0 0 8px var(--glow-color);
+    /* --- Effects --- */
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
     --hover-background-color: #b86840;
     --select-text-bg-color: rgba(212, 135, 92, 0.3);
@@ -148,13 +149,8 @@
     /* --- Outline Panel --- */
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
-    /* --- H2 Glass Card --- */
-    --h2-bg-image: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 95%), transparent);
-    --h2-bg-image-hover: linear-gradient(135deg, color-mix(in srgb, var(--primary-color), transparent 85%), transparent);
-    --h2-backdrop: blur(8px);
-
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
-    --font-heading: var(--font-sans-serif);
+    --font-heading: "LXGW WenKai", var(--font-sans-serif);
     --body-line-height: 1.85;
     --write-padding: 24px 40px;
     --blockquote-left-shadow: none;

@@ -1,0 +1,47 @@
+/* ============================================================
+ *  media-extensions.css - media extensions: math, mermaid
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Math Block (Zeus dark fix) ======================== */
+.md-math-block, .md-rawblock, .md-rawblock-container { color: var(--text-color); }
+.md-math-block .CodeMirror, .md-math-block .CodeMirror-scroll { background-color: var(--surface-2) !important; }
+.md-math-block .CodeMirror-line { color: var(--text-color) !important; }
+.md-focus .md-math-block, .md-focus.md-math-block {
+    background-color: var(--shadow-30) !important;
+    box-shadow: none !important;
+}
+.jax-element, g[data-mml-node="text"] { fill: var(--text-color) !important; }
+.md-math-preview {
+    background-color: var(--surface-1) !important;
+    border: 1px solid var(--border-medium) !important;
+    color: var(--text-bright) !important;
+    box-shadow: 0 4px 10px var(--shadow-50);
+}
+
+/* Raw block control bar */
+.md-rawblock-control:not(.md-rawblock-tooltip) { background-color: var(--surface-2) !important; }
+.md-rawblock-control:not(.md-rawblock-tooltip) input { background-color: var(--surface-input) !important; color: var(--text-bright) !important; border: 1px solid var(--border-input) !important; }
+.md-rawblock-control:not(.md-rawblock-tooltip) .md-rawblock-btn { color: var(--text-ui) !important; }
+
+.md-empty .md-meta, .md-expand .md-content, .md-expand .md-meta, .md-expand.md-content, .md-expand.md-meta { font-family: inherit; }
+
+
+/* ======================== Mermaid (Phycat + dark) ======================== */
+svg[id^=mermaid] { font-family: "JetBrains Mono", "Fira Code", sans-serif !important; font-size: 14px !important; }
+svg[id^=mermaid] .label text, svg[id^=mermaid] span, svg[id^=mermaid] text { fill: var(--code-variable) !important; color: var(--code-variable) !important; }
+g > foreignObject > div > span > p,
+svg[id^=mermaid] .edgeLabel .label span,
+svg[id^=mermaid] .label text,
+svg[id^=mermaid] .node .label text { fill: var(--text-bright) !important; color: var(--text-bright) !important; text-shadow: 0 0 3px var(--code-block-bg), 1px 1px 1px var(--code-block-bg) !important; font-weight: 600 !important; }
+svg[id^=mermaid] .node circle, svg[id^=mermaid] .node ellipse, svg[id^=mermaid] .node path, svg[id^=mermaid] .node polygon, svg[id^=mermaid] .node rect { fill: var(--code-block-bg) !important; }
+svg[id^=mermaid] .node circle, svg[id^=mermaid] .node ellipse { stroke: var(--secondary-color) !important; stroke-width: 2px !important; filter: drop-shadow(0 0 5px var(--secondary-color)); }
+svg[id^=mermaid] .node rect { stroke: var(--primary-color) !important; }
+svg[id^=mermaid] .edgePath .path { stroke: var(--code-comment) !important; stroke-width: 1.5px !important; opacity: 0.7; }
+svg[id^=mermaid] .edgeLabel rect { fill: var(--code-block-bg) !important; stroke: var(--border-color) !important; opacity: 1 !important; }
+g.edgeLabel text { fill: var(--text-color) !important; }
+.edgePath .path { stroke: var(--text-muted) !important; }
+.arrowheadPath { fill: var(--text-muted) !important; }
+
+

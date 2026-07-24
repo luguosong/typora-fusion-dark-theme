@@ -1,0 +1,55 @@
+/* ============================================================
+ *  export.css - export: print, mobile
+ *  Split from fusion-dark/base.css. base.css imports this in the
+ *  ORIGINAL section order; cascade depends on that order - do not reorder.
+ * ============================================================ */
+
+/* ======================== Print Styles ======================== */
+@media print {
+    /* A4 标准页面边距（15mm 四边均等），修正：@page 不支持 padding */
+    @page { margin: 15mm; size: A4; }
+    body { background-color: transparent !important; margin: 0 !important; width: 100% !important; color: #222 !important; }
+    .typora-export #write { margin: 0 auto !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; border: none !important; box-shadow: none !important; background: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    /* --- 防跨页断裂 --- */
+    /* 代码块、图表不在中间分页 */
+    #write figure, #write pre { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 图片及其包裹段落不跨页截断（Typora 图片通常为 p > img，不在 figure 中） */
+    #write img, #write p:has(img) { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 表格整体避免跨页（LaTeX 三线表实践） */
+    #write table { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 引用块、Alert 避免从中间断开 */
+    #write blockquote { page-break-inside: avoid; break-inside: avoid-page; }
+    /* 标题后不立即换页（避免孤立标题） */
+    h1, h2, h3, h4, h5, h6 { page-break-after: avoid !important; page-break-inside: avoid !important; color: #111 !important; }
+
+    /* --- 孤行/寡行控制（由 2 提升至 3，更符合排版规范） --- */
+    p { orphans: 3; widows: 3; line-height: 1.5; text-shadow: none; color: #222 !important; }
+
+    /* --- TOC 目录后强制换页（学术文档规范） --- */
+    #write .md-toc { page-break-after: always; break-after: page; }
+
+    #write a { color: #0366d6 !important; }
+    .md-toc { background-image: none; text-shadow: none; }
+    #write strong { text-shadow: none; color: #111 !important; transform: none !important; border-bottom: none !important; }
+    #write mark { transform: none !important; text-shadow: none !important; }
+    #write em { text-decoration: none !important; background-image: none !important; }
+    #write li:before { border-color: transparent; }
+
+    /* --- Phycat 优化打印降级 --- */
+    /* H2 移除玻璃卡片 */
+    #write h2 { background: none !important; backdrop-filter: none !important; border: none !important; box-shadow: none !important; }
+    /* H3 移除竖条装饰（::after） */
+    #write h3::after { display: none !important; }
+    /* 大纲动画停止 + 药丸恢复朴素 */
+    .outline-item-active::after { animation: none !important; content: none !important; }
+    #outline-content .outline-item { border-radius: 4px !important; padding: 2px 4px !important; background: none !important; }
+}
+
+@media screen and (max-width: 1200px) {
+    .typora-export-sidebar { display: none; }
+    .typora-export #write, .typora-export-sidebar + #write {
+        margin: 0; border-radius: 0; width: 100%; max-width: 100%; box-shadow: none; padding: 20px; min-height: 100vh;
+    }
+}
