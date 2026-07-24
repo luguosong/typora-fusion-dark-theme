@@ -12,21 +12,9 @@
     padding: 18px 20px 18px calc(var(--bq-icon-zone) + 12px);
     color: var(--text-color-secondary);
     background-color: var(--surface-1);
-    border: none;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 35%);
     border-radius: 14px;
-    transition: background-color 0.3s ease;
-}
-/* 手绘圆角框(墨色):mask-box-image 切片,可变色、随框缩放 */
-#write blockquote::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.65;
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 #write blockquote::before {
     content: "💡";
@@ -51,8 +39,8 @@
 #write blockquote:focus,
 #write blockquote:hover {
     background-color: var(--surface-2);
+    border-color: color-mix(in srgb, var(--ink), transparent 15%);
 }
-#write blockquote:hover::after { opacity: 0.9; }
 #write blockquote.md-focus::before,
 #write blockquote:focus::before,
 #write blockquote:hover::before {
@@ -201,29 +189,16 @@ li.md-list-item { margin: 0.25rem 0; }
     border-spacing: 0;
     width: var(--table-width, 100%);
     margin: var(--table-margin, 0);
-    border: var(--table-outer-border, none);
+    border: var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%));
     /* border-top/bottom 写在 border 后，academic 三线表可单独覆盖两条横线 */
-    border-top: var(--table-top-border, var(--table-outer-border, none));
-    border-bottom: var(--table-bottom-border, var(--table-outer-border, none));
+    border-top: var(--table-top-border, var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%)));
+    border-bottom: var(--table-bottom-border, var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%)));
     border-radius: var(--table-border-radius, 10px);
-    overflow: var(--table-overflow, visible);
+    overflow: var(--table-overflow, hidden);
     background-color: var(--table-bg, var(--surface-1));
     font-size: 0.93rem;
     /* 表格默认等宽字体（数据表风）；回退正文字体在主题 :root 设 --table-font-family: inherit */
     font-family: var(--table-font-family, var(--font-monospace));
-    position: relative;
-}
-/* 手绘外框(墨色);三线表主题可设 --table-frame-display: none 关闭 */
-#write table::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    display: var(--table-frame-display, block);
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.5;
 }
 #write table td, #write table th {
     padding: 10px 15px;
@@ -252,25 +227,9 @@ li.md-list-item { margin: 0.25rem 0; }
 
 /* ======================== Images (Phycat style) ======================== */
 #write p:has(img) { text-align: center; }
-/* 单图:手绘相框(墨色 mask-box-image),父 p 收缩包裹以定位框 */
-#write p:has(> img:only-child) {
-    width: fit-content;
-    margin: 20px auto;
-    position: relative;
-}
-#write p:has(> img:only-child)::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-#write p:has(> img:only-child):hover::after { opacity: 0.85; }
+/* 单图:墨色实边框相框(稳健,不盖图) */
 #write img {
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 35%);
     border-radius: 8px;
     display: inline-block;
     margin: 15px 5px;
@@ -280,7 +239,7 @@ li.md-list-item { margin: 0.25rem 0; }
     max-width: 100%;
     cursor: zoom-in;
 }
-#write p > img:only-child { display: block; margin: 0 auto; }
+#write p > img:only-child { display: block; margin: 20px auto; }
 #write img:hover {
     filter: brightness(1.03) contrast(1.02);
     transform: scale(1.02) rotate(-0.5deg);
@@ -310,30 +269,19 @@ li.md-list-item { margin: 0.25rem 0; }
     font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, monospace;
     font-size: 0.9em;
     padding: 3px 9px;
-    position: relative;
-    border: none;
-    transition: transform 0.15s ease, color 0.15s ease;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 25%);
+    border-radius: 6px;
+    transition: transform 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     display: inline-block;
     line-height: 1;
     margin: 0 4px;
     vertical-align: middle;
 }
-/* 手绘键帽轮廓(墨色) */
-#write kbd::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 9px stretch;
-    mask-border: var(--sketch-frame) 12 / 9px stretch;
-    transition: background-color 0.15s ease;
-}
 #write kbd:hover {
     transform: translateY(2px);
     color: var(--primary-color);
+    border-color: var(--primary-color);
 }
-#write kbd:hover::before { background-color: var(--primary-color); }
 
 
 /* ======================== YAML Front Matter ======================== */
@@ -345,21 +293,10 @@ pre.md-meta-block {
     color: var(--text-color-secondary);
     line-height: 1.6;
     background-color: var(--surface-1);
-    border: none;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 35%);
     border-radius: 8px;
     position: relative;
-    transition: background-color 0.3s ease;
-}
-/* 手绘框(墨色) */
-pre.md-meta-block::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.6;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 pre.md-meta-block::after {
     content: "YAML";
@@ -475,23 +412,12 @@ pre.md-meta-block:hover { background-color: var(--surface-2); }
     margin: 20px 0;
     padding: 30px;
     background-color: var(--surface-1);
-    border: none;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 35%);
     border-radius: 16px;
     font-size: 1rem;
     color: var(--text-color-secondary);
     position: relative;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-/* 手绘框(墨色) */
-.md-toc::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.6;
 }
 .md-toc:hover {
     transform: translateY(-2px);

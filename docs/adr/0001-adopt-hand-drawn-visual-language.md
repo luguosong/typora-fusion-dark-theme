@@ -22,5 +22,6 @@ accepted
 
 - `--glow-*` 霓虹发光变量整体移除;各元素 hover 由「发光 + 放大」改为一次性手绘小动作,不做无限循环抖动。
 - 玻璃 / 模糊(`backdrop-filter`)从正文容器移除,改纸面(纯色 + 极淡纸纹)。
-- 约束(纯 CSS、零 JS):手绘标记用 `mask` + `background-color: var()`;手绘描边用 `border-image` / `-webkit-mask-box-image`;强抖动用 `feTurbulence` + `feDisplacementMap` 滤镜,且**只能作用于纯边框伪元素层**——套在含文字元素上会扭曲文字。
+- 约束(纯 CSS、零 JS):手绘标记 / 下划线用 `mask` + `background-color: var()`(简单 mask,Typora 内嵌 Chromium 支持良好);波浪线用平铺 SVG data-URI。
+- **Typora 兼容性发现**:`-webkit-mask-box-image` / `mask-border` 在 Typora 内嵌 Chromium **不支持**,会使外框伪元素退化为实心色块盖住文字;故容器外框改用纯 `border: solid var(--ink)` + `border-radius`(基础 CSS,任何引擎均安全、随主题变色)。强抖动滤镜(`feTurbulence`)同理需先验证目标引擎再用。
 - 落地基线为 master 的 `fusion-dark/base/` 拆分结构(词汇表 CONTEXT.md 同步维护)。

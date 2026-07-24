@@ -33,27 +33,12 @@
     border-radius: 8px;
     box-shadow: none;
     background-color: var(--code-block-bg);
-    border: none;
-}
-/* 手绘框(墨色);编辑态转强调色 */
-.md-fences:not([lang=mermaid])::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--ink);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
-    mask-border: var(--sketch-frame) 12 / 12px stretch;
-    opacity: 0.5;
-    z-index: 2;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 40%);
+    transition: border-color 0.3s ease;
 }
 .md-fences.md-focus {
     z-index: 100;
-}
-.md-fences.md-focus:not([lang=mermaid])::after {
-    background-color: var(--primary-color);
-    opacity: 0.7;
+    border-color: var(--primary-color);
 }
 .md-fences.md-focus:not([lang=mermaid])::before {
     background-color: color-mix(in srgb, var(--primary-color), transparent 95%);
@@ -143,22 +128,12 @@ pre.md-fences-advanced.md-focus .md-fences-adv-panel { position: unset; }
     letter-spacing: 0.5px;
     background-color: color-mix(in srgb, var(--secondary-color), transparent 90%);
     color: var(--secondary-color);
-    padding: 2px 7px;
+    border: 1px solid color-mix(in srgb, var(--secondary-color), transparent 55%);
+    border-radius: 6px;
+    padding: 2px 6px;
     margin: 0 2px;
-    position: relative;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-/* 手绘徽章框(次色) */
-#write code:not(.md-fencescode)::before, tt::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-color: var(--secondary-color);
-    -webkit-mask-box-image: var(--sketch-frame) 12 / 7px stretch;
-    mask-border: var(--sketch-frame) 12 / 7px stretch;
-    opacity: 0.7;
-    transition: background-color 0.2s ease;
+    vertical-align: middle;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 #write code:not(.md-fencescode):hover {
     background-color: color-mix(in srgb, var(--secondary-color), transparent 78%);
