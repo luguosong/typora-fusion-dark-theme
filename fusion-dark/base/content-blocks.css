@@ -201,41 +201,51 @@ li.md-list-item { margin: 0.25rem 0; }
     border-spacing: 0;
     width: var(--table-width, 100%);
     margin: var(--table-margin, 0);
-    border: var(--table-outer-border, 1px solid var(--border-color));
-    /* border-top/bottom 写在 border 后，academic 主题可单独覆盖两条横线 */
-    border-top: var(--table-top-border, var(--table-outer-border, 1px solid var(--border-color)));
-    border-bottom: var(--table-bottom-border, var(--table-outer-border, 1px solid var(--border-color)));
-    border-radius: var(--table-border-radius, 8px);
-    overflow: var(--table-overflow, hidden);
-    background-color: var(--table-bg, var(--overlay-2));
-    backdrop-filter: var(--table-backdrop, blur(5px));
-    -webkit-backdrop-filter: var(--table-backdrop, blur(5px));
+    border: var(--table-outer-border, none);
+    /* border-top/bottom 写在 border 后，academic 三线表可单独覆盖两条横线 */
+    border-top: var(--table-top-border, var(--table-outer-border, none));
+    border-bottom: var(--table-bottom-border, var(--table-outer-border, none));
+    border-radius: var(--table-border-radius, 10px);
+    overflow: var(--table-overflow, visible);
+    background-color: var(--table-bg, var(--surface-1));
     font-size: 0.93rem;
     /* 表格默认等宽字体（数据表风）；回退正文字体在主题 :root 设 --table-font-family: inherit */
     font-family: var(--table-font-family, var(--font-monospace));
+    position: relative;
+}
+/* 手绘外框(墨色);三线表主题可设 --table-frame-display: none 关闭 */
+#write table::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: var(--table-frame-display, block);
+    background-color: var(--ink);
+    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
+    mask-border: var(--sketch-frame) 12 / 12px stretch;
+    opacity: 0.5;
 }
 #write table td, #write table th {
     padding: 10px 15px;
     color: var(--text-color);
-    border-right: var(--table-cell-vborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
-    border-bottom: var(--table-cell-hborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 95%));
-    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    border-right: var(--table-cell-vborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 92%));
+    border-bottom: var(--table-cell-hborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 92%));
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 #write table td:last-child, #write table th:last-child { border-right: none; }
 #write table tr:last-child td { border-bottom: none; }
 #write table th {
-    background-color: var(--table-head-bg, color-mix(in srgb, var(--primary-color), transparent 95%));
+    background-color: var(--table-head-bg, color-mix(in srgb, var(--primary-color), transparent 92%));
     color: var(--table-head-color, var(--primary-color));
     font-weight: 700;
     white-space: nowrap;
     /* 表头分割线：三线表模式下此值覆盖 --table-cell-hborder 的 none */
-    border-bottom: var(--table-head-separator, 1px solid color-mix(in srgb, var(--primary-color), transparent 85%));
+    border-bottom: var(--table-head-separator, 1px solid color-mix(in srgb, var(--primary-color), transparent 80%));
 }
 #write table tbody tr:hover td { background-color: var(--table-row-hover-bg, var(--overlay-3)); }
 #write table tbody td:hover {
     background-color: var(--table-cell-hover-bg, color-mix(in srgb, var(--primary-color), transparent 85%));
     color: var(--text-bright);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-color), transparent 40%);
     cursor: default;
 }
 
