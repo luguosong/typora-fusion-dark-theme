@@ -6,18 +6,27 @@
 
 /* ======================== Blockquote (Phycat style) ======================== */
 #write blockquote {
-    /* --bq-icon-zone 控制左侧图标预留区宽度，padding-left 与图标位置均通过 calc() 联动
-       主题文件可通过 :root { --blockquote-icon-zone: 0px } 覆盖（如学术主题不使用图标） */
     --bq-icon-zone: var(--blockquote-icon-zone, 36px);
     position: relative;
     margin: 20px 0;
     padding: 18px 20px 18px calc(var(--bq-icon-zone) + 12px);
     color: var(--text-color-secondary);
-    background-color: var(--shadow-20);
-    border: 1px solid color-mix(in srgb, var(--primary-color), transparent 70%);
-    border-radius: 16px;
-    box-shadow: var(--blockquote-left-shadow, none);
-    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--surface-1);
+    border: none;
+    border-radius: 14px;
+    transition: background-color 0.3s ease;
+}
+/* 手绘圆角框(墨色):mask-box-image 切片,可变色、随框缩放 */
+#write blockquote::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-color: var(--ink);
+    -webkit-mask-box-image: var(--sketch-frame) 12 / 12px stretch;
+    mask-border: var(--sketch-frame) 12 / 12px stretch;
+    opacity: 0.65;
+    transition: opacity 0.3s ease;
 }
 #write blockquote::before {
     content: "💡";
@@ -41,10 +50,9 @@
 #write blockquote:active,
 #write blockquote:focus,
 #write blockquote:hover {
-    border-color: var(--primary-color);
-    background-color: color-mix(in srgb, var(--hover-background-color), transparent 95%);
-    box-shadow: var(--shadow-subtle);
+    background-color: var(--surface-2);
 }
+#write blockquote:hover::after { opacity: 0.9; }
 #write blockquote.md-focus::before,
 #write blockquote:focus::before,
 #write blockquote:hover::before {
@@ -336,18 +344,30 @@ pre.md-meta-block:hover {
 
 /* ======================== Alerts / Callouts (Phycat style with emoji) ======================== */
 .md-alert {
-    /* 左侧强调边框宽度；padding-left 通过 calc() 补偿，确保内容不因改变 accent 宽度而位移 */
-    --alert-accent-width: 3px;
-    padding: 12px 16px 12px calc(16px + var(--alert-accent-width));
+    /* --alert-accent:语义强调色(类型覆盖);--alert-vstroke:手绘竖向笔触遮罩 */
+    --alert-accent: var(--primary-color);
+    --alert-vstroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 100' preserveAspectRatio='none'%3E%3Cpath d='M4 2 Q 6 25 4 50 Q 2 75 4 98' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    padding: 12px 16px 12px 22px;
     margin-bottom: 16px;
     color: var(--text-color);
-    border: 1px solid transparent;
-    border-left-width: var(--alert-accent-width);
+    border: none;
     border-radius: 12px;
     background-color: var(--overlay-2);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+/* 手绘左强调笔触(语义色) */
+.md-alert::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 5px;
+    background-color: var(--alert-accent);
+    -webkit-mask: var(--alert-vstroke) no-repeat center / 100% 100%;
+    mask: var(--alert-vstroke) no-repeat center / 100% 100%;
 }
 .md-alert-text-container {
     display: inline-flex;
@@ -361,7 +381,6 @@ pre.md-meta-block:hover {
     border: 1px solid var(--overlay-10);
     padding: 4px 10px;
     border-radius: 50px;
-    box-shadow: 0 2px 5px var(--shadow-10);
 }
 .md-alert-text-container span { background: none; padding: 0; box-shadow: none; color: inherit; }
 .md-alert-text svg { fill: currentColor; position: relative; top: 1px; margin-right: 5px; width: 1em; height: 1em; }
@@ -383,7 +402,6 @@ pre.md-meta-block:hover {
 }
 .md-alert:hover {
     transform: translateY(-1px);
-    box-shadow: var(--shadow-subtle);
     z-index: 1;
 }
 .md-alert:hover::after {
@@ -394,28 +412,23 @@ pre.md-meta-block:hover {
     filter: grayscale(0);
 }
 
-.md-alert.md-alert-note { border-color: color-mix(in srgb, var(--alert-note), transparent 70%); border-left-color: var(--alert-note); background-color: color-mix(in srgb, var(--alert-note), transparent 95%); }
-.md-alert.md-alert-note:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-note), transparent 90%); border-color: var(--secondary-color); border-left-color: var(--alert-note); }
+.md-alert.md-alert-note { --alert-accent: var(--alert-note); background-color: color-mix(in srgb, var(--alert-note), transparent 95%); }
 .md-alert.md-alert-note .md-alert-text-container { color: var(--secondary-color); }
 .md-alert.md-alert-note::after { content: "📝"; color: var(--secondary-color); }
 
-.md-alert.md-alert-tip { border-color: color-mix(in srgb, var(--alert-tip), transparent 70%); border-left-color: var(--alert-tip); background-color: color-mix(in srgb, var(--alert-tip), transparent 95%); }
-.md-alert.md-alert-tip:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-tip), transparent 90%); border-color: var(--accent-color); border-left-color: var(--alert-tip); }
+.md-alert.md-alert-tip { --alert-accent: var(--alert-tip); background-color: color-mix(in srgb, var(--alert-tip), transparent 95%); }
 .md-alert.md-alert-tip .md-alert-text-container { color: var(--accent-color); }
 .md-alert.md-alert-tip::after { content: "💡"; color: var(--accent-color); }
 
-.md-alert.md-alert-warning { border-color: color-mix(in srgb, var(--alert-warning), transparent 70%); border-left-color: var(--alert-warning); background-color: color-mix(in srgb, var(--alert-warning), transparent 95%); }
-.md-alert.md-alert-warning:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-warning), transparent 90%); border-color: var(--alert-warning); border-left-color: var(--alert-warning); }
+.md-alert.md-alert-warning { --alert-accent: var(--alert-warning); background-color: color-mix(in srgb, var(--alert-warning), transparent 95%); }
 .md-alert.md-alert-warning .md-alert-text-container { color: var(--alert-warning); }
 .md-alert.md-alert-warning::after { content: "⚠️"; color: var(--alert-warning); }
 
-.md-alert.md-alert-important { border-color: color-mix(in srgb, var(--primary-color), transparent 70%); border-left-color: var(--primary-color); background-color: color-mix(in srgb, var(--primary-color), transparent 95%); }
-.md-alert.md-alert-important:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--primary-color), transparent 90%); border-color: var(--primary-color); border-left-color: var(--primary-color); }
+.md-alert.md-alert-important { --alert-accent: var(--primary-color); background-color: color-mix(in srgb, var(--primary-color), transparent 95%); }
 .md-alert.md-alert-important .md-alert-text-container { color: var(--primary-color); }
 .md-alert.md-alert-important::after { content: "🔥"; color: var(--primary-color); }
 
-.md-alert.md-alert-caution { border-color: color-mix(in srgb, var(--alert-caution), transparent 70%); border-left-color: var(--alert-caution); background-color: color-mix(in srgb, var(--alert-caution), transparent 95%); }
-.md-alert.md-alert-caution:hover { box-shadow: 0 2px 12px color-mix(in srgb, var(--alert-caution), transparent 90%); border-color: var(--alert-caution); border-left-color: var(--alert-caution); }
+.md-alert.md-alert-caution { --alert-accent: var(--alert-caution); background-color: color-mix(in srgb, var(--alert-caution), transparent 95%); }
 .md-alert.md-alert-caution .md-alert-text-container { color: var(--alert-caution); }
 .md-alert.md-alert-caution::after { content: "💀"; color: var(--alert-caution); }
 
