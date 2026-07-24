@@ -104,15 +104,11 @@ li.md-list-item { margin: 0.25rem 0; }
 #write li > p { margin: 0.25rem 0; }
 
 
-/* ======================== Task List (Phycat animated) ======================== */
-@keyframes task-pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
+/* ======================== Task List — 手绘方框 + 手绘对勾 ======================== */
 .task-list-item { position: relative; }
 .task-list-item input {
+    --check-box: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5 Q 12 3.5 19 5 Q 20.5 12 19 19 Q 12 20.5 5 19 Q 3.5 12 5 5 Z' fill='none' stroke='%23000' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --check-tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 13 Q 8 15 10 18 Q 14 10 19 6' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     width: 1.25rem;
     height: 1.25rem;
     display: block;
@@ -126,44 +122,41 @@ li.md-list-item { margin: 0.25rem 0; }
     outline: 0;
     z-index: 1;
 }
-.task-list-item input:focus-visible::before {
+.task-list-item input:focus-visible {
     box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--primary-color);
+    border-radius: 4px;
 }
+/* 手绘方框(墨色);勾选后描边转强调色 */
 .task-list-item input::before {
     content: ' ';
     display: block;
     width: 1.2rem;
     height: 1.2rem;
-    border-radius: 50%;
-    background: var(--shadow-20);
-    border: 2px solid var(--overlay-20);
-    transition: border 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+    background-color: var(--ink);
+    -webkit-mask: var(--check-box) no-repeat center / contain;
+    mask: var(--check-box) no-repeat center / contain;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
-.task-list-item input:checked::before {
-    border: 1px solid var(--primary-color);
-    background: color-mix(in srgb, var(--primary-color), transparent 80%);
-    box-shadow: 0 0 8px var(--primary-color), inset 0 0 5px color-mix(in srgb, var(--primary-color), transparent 50%);
-    animation: task-pulse 0.4s forwards;
-}
+.task-list-item input:checked::before { background-color: var(--primary-color); }
+/* 手绘对勾(强调色),勾选时弹入 */
 .task-list-item input::after {
     content: ' ';
     position: absolute;
-    top: 0.325rem;
-    left: 0.28125rem;
-    width: 0.6375rem;
-    height: 0.4rem;
-    border: 2.5px solid var(--text-bright);
-    border-top: 0;
-    border-right: 0;
-    transform: rotate(-45deg) scale(0);
+    top: 0;
+    left: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--primary-color);
+    -webkit-mask: var(--check-tick) no-repeat center / 85%;
+    mask: var(--check-tick) no-repeat center / 85%;
+    transform: scale(0);
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4), transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .task-list-item input:checked::after {
     opacity: 1;
-    transform: rotate(-45deg) scale(1);
-    text-shadow: 0 0 5px var(--text-bright);
+    transform: scale(1);
 }
 .task-list-item p {
     position: relative;

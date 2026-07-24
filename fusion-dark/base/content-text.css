@@ -84,36 +84,46 @@ h5.md-focus:before, h6.md-focus:before {
 
 /* ======================== Horizontal Rule (Phycat style) ======================== */
 #write hr {
+    /* 中心手绘小涂鸦(六角星) */
+    --hr-doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M12 4 Q 12.8 12 12 20'/%3E%3Cpath d='M5 8 Q 12 11.5 19 16'/%3E%3Cpath d='M19 8 Q 12 12.5 5 16'/%3E%3C/g%3E%3C/svg%3E");
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    height: 18px;
     margin: 40px 0;
+    background: none;
     position: relative;
     overflow: visible;
-    opacity: 0.5;
+}
+/* 手绘波浪线(墨色) */
+#write hr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 7px;
+    background-color: var(--ink);
+    -webkit-mask: var(--sketch-wave) repeat-x center / auto 100%;
+    mask: var(--sketch-wave) repeat-x center / auto 100%;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
 }
+/* 中心涂鸦(强调色) */
 #write hr::after {
     content: '';
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 8px;
-    height: 8px;
-    border: 2px solid var(--primary-color);
-    background: var(--bg-color);
-    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-#write hr:hover {
-    opacity: 1;
-}
-#write hr:hover::after {
-    border-color: var(--primary-color);
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
     background-color: var(--primary-color);
-    box-shadow: 0 0 6px color-mix(in srgb, var(--primary-color), transparent 40%);
-    transform: translate(-50%, -50%) rotate(225deg) scale(1.2);
+    -webkit-mask: var(--hr-doodle) no-repeat center / contain;
+    mask: var(--hr-doodle) no-repeat center / contain;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+#write hr:hover::before { opacity: 0.9; }
+#write hr:hover::after { transform: translate(-50%, -50%) rotate(90deg) scale(1.15); }
 
 
 /* ======================== Links (Phycat style) ======================== */
