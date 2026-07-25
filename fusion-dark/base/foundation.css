@@ -5,13 +5,26 @@
  * ============================================================ */
 
 /* ======================== Fonts ======================== */
+/* @font-face 位于 base/ 子目录,字体文件在上级 fusion-dark/,故 url 需 ../ 前缀 */
 @font-face {
     font-family: "Cascadia Code";
-    src: url("CascadiaCode.woff2") format("woff2");
+    src: url("../CascadiaCode.woff2") format("woff2");
 }
 @font-face {
     font-family: "LXGW WenKai";
-    src: url("LXGWWenKai-Regular.ttf");
+    src: url("../LXGWWenKai-Regular.ttf");
+}
+/* 中文正文/标题主字体:站酷快乐体(展示型,契合手绘语言);缺字回退 LXGW 文楷 */
+@font-face {
+    font-family: "ZCOOL KuaiLe";
+    src: url("../ZCOOLKuaiLe-Regular.ttf");
+}
+/* 正文英文字体:Source Code Pro(等宽·斜体·可变字重);声明为 normal 使正文默认取用 */
+@font-face {
+    font-family: "Source Code Pro";
+    src: url("../SourceCodePro-Italic-VariableFont_wght.ttf");
+    font-weight: 200 900;
+    font-style: normal;
 }
 
 /* ======================== Hand-drawn Primitives ======================== */
@@ -143,7 +156,7 @@ content {
 #write p {
     color: var(--text-color-secondary);
     margin: 0 10px;
-    font-family: Optima-Regular, Optima, "LXGW WenKai", PingFangSC-light, "PingFang SC", Cambria, Georgia, "Times New Roman", serif;
+    font-family: "Source Code Pro", "ZCOOL KuaiLe", "LXGW WenKai", PingFangSC-light, "PingFang SC", Cambria, Georgia, "Times New Roman", serif;
     font-size: 1rem;
     word-spacing: 1px;
     text-indent: 0;

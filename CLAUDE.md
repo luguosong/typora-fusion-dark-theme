@@ -29,8 +29,10 @@ typora-fusion-dark-theme/
 │   │   ├── media-extensions.css  # 数学 / Mermaid / 原生 HTML 块
 │   │   ├── chrome-behavior.css   # 专注模式 / 滚动条 / 输入按钮 / 光标 / 表格调整
 │   │   └── export.css            # 打印 / 移动导出
-│   ├── CascadiaCode.woff2        # 内置等宽字体
-│   └── LXGWWenKai-Regular.ttf   # 内置中文衬线字体
+│   ├── CascadiaCode.woff2        # 内置等宽字体（代码/kbd/表格）
+│   ├── LXGWWenKai-Regular.ttf   # 中文回退字体（文楷，衬线手写）
+│   ├── ZCOOLKuaiLe-Regular.ttf  # 中文主字体（站酷快乐体，展示型）
+│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 正文英文字体（等宽·斜体·可变字重）
 ├── fusion-dark-orange.css        # Dark + Orange 主题（变量层）
 ├── fusion-teal.css               # Dark + Teal 深色青碧主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
@@ -319,11 +321,14 @@ background: rgba(232, 148, 76, 0.1);
 
 | 使用场景 | 字体变量 / 字体族 |
 |---|---|
-| 正文 / UI | `var(--font-sans-serif)` |
-| 段落 | Optima、"LXGW WenKai"、Georgia（中文支持硬编码字体栈） |
-| 代码与 kbd | `var(--font-monospace)` → "Cascadia Code" |
+| 正文 / UI | `var(--font-sans-serif)`（含 ZCOOL/文楷 CJK 回退，界面中文亦为 ZCOOL） |
+| 段落英文 | "Source Code Pro"（等宽·斜体·可变字重） |
+| 段落中文 | "ZCOOL KuaiLe" 站酷快乐体 → 回退 "LXGW WenKai" 文楷 |
+| 标题 | `var(--font-heading)` → "ZCOOL KuaiLe" → 文楷 → sans |
+| 代码 / kbd / 表格 | `var(--font-monospace)` / 硬编码栈 → "Cascadia Code"（拉丁）→ CJK 回退 ZCOOL/文楷 |
 
 **不得**添加新的 `@font-face` 声明，除非字体文件已提交至 `fusion-dark/` 文件夹。
+⚠️ `@font-face` 位于 `fusion-dark/base/foundation.css`（base/ 子目录），字体文件在上级 `fusion-dark/`，故 `src: url()` **必须用 `../` 前缀**（如 `url("../ZCOOLKuaiLe-Regular.ttf")`），否则会解析到 `base/` 而 404。
 
 ---
 
@@ -379,7 +384,7 @@ grep -rn "========================" fusion-dark/base/
 ## 禁止事项
 
 - **不得**手动添加浏览器厂商前缀 — Typora 内嵌 Chromium 已支持现代 CSS
-- **不得**修改字体文件路径，必须保持 `fusion-dark/FileName.ext` 格式
+- **不得**修改字体文件路径，字体须置于 `fusion-dark/`，且 `base/` 内的 `@font-face` 以 `../FileName.ext` 引用
 - **不得**在 UI 外壳 Section 和 Print Styles 以外使用 `!important`（外壳 Section 需要覆盖 Typora 内置样式，Print 需强制覆盖深色文字）
 - **不得**引入 CSS 嵌套语法（`:is()`、`@layer` 等）— 保持与 Typora 内嵌 Chromium 版本的兼容性
 - **不得**使用 `transition: all` — 必须列出具体属性以避免意外属性参与过渡
