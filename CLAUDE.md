@@ -91,7 +91,7 @@ typora-fusion-dark-theme/
 | 2 | Base | `html`、`body`、`::selection` |
 | 3 | Content Area Layout | `#write` 容器（无 max-width 限制）、纹理叠层 |
 | 4 | Paragraph | 段落字体与间距 |
-| 5 | Headings | H1 居中标题 + H2 玻璃卡片 + H3 左侧竖条 + H4–H6 字号递减 |
+| 5 | Headings | H1 居中标题 + H2–H6 逐级差异化(两色调渐变 + 每级不同手绘装饰) |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
 | 7 | Links | 图标前缀 + 霓虹悬停 |
 | 8 | Blockquote | 圆角卡片 + Emoji 装饰 |
@@ -200,18 +200,20 @@ typora-fusion-dark-theme/
 - **深色主题** → overlay 基于白色 `rgba(255, 255, 255, N%)`
 - **浅色主题** → overlay 基于黑色 `rgba(0, 0, 0, N%)`
 
-### 标题装饰系统
+### 标题层级区分系统
 
-H1–H6 统一使用主色 (`var(--primary-color)`)。**不使用 CSS 计数器自动编号**——兼容笔记自带的手动序号。各级靠差异化装饰区分，而非编号前缀：
+标题采用**多维度区分**让 H1–H6 一眼可辨(而非仅字号递减):字号阶梯 + 字重 + 两色调渐变 + 每级不同的手绘装饰。**不使用 CSS 计数器自动编号**——兼容笔记自带的手动序号;且所有装饰都避开「文字前导位」,不与手动序号冲突。
 
-| 级别 | 装饰 | 实现要点 |
-|------|------|---------|
-| H1 | 居中标题 | 由 `.content-title` 合并定义 |
-| H2 | 玻璃卡片背景 | `--h2-bg-image` 渐变 + `backdrop-filter` 模糊，`width: fit-content`，hover 上浮发光 |
-| H3 | 左侧竖条 | `::after` 生成 4px 主色竖条，hover 增高至 60% + 发光 |
-| H4–H6 | 仅字号递减 | 1.15 / 1.10 / 1.05rem，hover 上浮 + 文字发光 |
+| 级别 | 字号 | 字重 | 颜色 | 手绘装饰 |
+|------|------|------|------|---------|
+| H1 | 1.8rem | 粗 | 主色 | 居中波浪下划线(`.content-title` 合并定义) |
+| H2 | 1.55rem | 700 | 主色 | 整宽波浪下划线(`--sketch-wave`) |
+| H3 | 1.35rem | 700 | 主色 | 左侧竖条笔刷(`--sketch-brush`,置于文字左侧 gutter) |
+| H4 | 1.18rem | 600 | 主色↔正文色 70% 混合 | 直线下划线(`--sketch-line`) |
+| H5 | 1.02rem | 600 | 主色↔正文色 35% 混合 | 点线下划线(`--sketch-dots`) |
+| H6 | 0.92rem | 700 | 正文次要色 | 无装饰,大写 + 字间距(标签体) |
 
-编辑模式下隐藏 H3 竖条（`#write h3.md-focus::after { display: none }`），避免输入时干扰。
+颜色渐变用 `color-mix()` 从 `--primary-color`/`--text-color` 派生,**不新增每主题变量**。装饰统一用 `::after`(`::before` 留给 Typora 内置标题标签);编辑模式(`.md-focus`)隐藏装饰。H6 的 `text-transform: uppercase` 仅对英文生效,中文靠字号/字间距/色差区分。设计缘由见 `docs/adr/0002-heading-level-differentiation.md`。
 
 ### 变量使用与清理
 
