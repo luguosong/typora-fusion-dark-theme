@@ -30,3 +30,9 @@ accepted
 - **可变斜体字体**:Source Code Pro 的 `@font-face` 声明 `font-weight: 200 900; font-style: normal`,使正文默认取用并呈斜体(等宽)。
 - 新增两个字体文件入库 `fusion-dark/`:ZCOOL(1.5MB)、Source Code Pro(172KB)。
 - 字体变量 `--font-sans-serif`、`--font-heading` 为每主题定义,4 套 `fusion-*.css` 已同步。
+
+## 变更
+
+- **2026-07-27**: 中文主字体由「站酷快乐体 ZCOOL KuaiLe」更换为「东京街角的小浪漫 DongJingJieJiao」(手写体,同契合手绘语言)。font-family 键 `"ZCOOL KuaiLe"` → `"DongJingJieJiao"`,文件 `ZCOOLKuaiLe-Regular.ttf` → `DongJingJieJiao-Regular.ttf`。英文 Source Code Pro、代码 Cascadia Code、回退文楷均不变;本 ADR 的整体分派策略不变。
+- **2026-07-27(二)**: 字体体系精简为双字体——仅保留 Source Code Pro(英文/代码)与 DongJingJieJiao(中文)。删除 Cascadia Code(代码改用 Source Code Pro 等宽胜任)、LXGW 文楷(缺字改回退系统 sans),并清空所有具名回退字体(Open Sans/Helvetica/Arial/PingFang/Cambria/Consolas 等),仅留通用族 sans-serif/monospace 兜底。代价:DongJingJieJiao 为手写展示体、缺字风险高,删文楷后缺字将回退系统字体。
+- **2026-07-27(三)**: 中文主字体由「东京街角的小浪漫 DongJingJieJiao」换回「LXGW 文楷」——综合对比后文楷清晰度最佳。`DongJingJieJiao-Regular.ttf` 删除、`LXGWWenKai-Regular.ttf` 恢复;font-family 键 `"DongJingJieJiao"` → `"LXGW WenKai"`;英文/代码 Source Code Pro 不变,双字体体系维持。

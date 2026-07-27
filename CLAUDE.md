@@ -29,10 +29,8 @@ typora-fusion-dark-theme/
 │   │   ├── media-extensions.css  # 数学 / Mermaid / 原生 HTML 块
 │   │   ├── chrome-behavior.css   # 专注模式 / 滚动条 / 输入按钮 / 光标 / 表格调整
 │   │   └── export.css            # 打印 / 移动导出
-│   ├── CascadiaCode.woff2        # 内置等宽字体（代码/kbd/表格）
-│   ├── LXGWWenKai-Regular.ttf   # 中文回退字体（文楷，衬线手写）
-│   ├── ZCOOLKuaiLe-Regular.ttf  # 中文主字体（站酷快乐体，展示型）
-│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 正文英文字体（等宽·斜体·可变字重）
+│   ├── LXGWWenKai-Regular.ttf  # 中文主字体（LXGW 文楷，清晰楷体）
+│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 英文/代码字体（等宽·斜体·可变字重）
 ├── fusion-dark-orange.css        # Dark + Orange 主题（变量层）
 ├── fusion-teal.css               # Dark + Teal 深色青碧主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
@@ -321,14 +319,14 @@ background: rgba(232, 148, 76, 0.1);
 
 | 使用场景 | 字体变量 / 字体族 |
 |---|---|
-| 正文 / UI | `var(--font-sans-serif)`（含 ZCOOL/文楷 CJK 回退，界面中文亦为 ZCOOL） |
+| 正文 / UI | `var(--font-sans-serif)` → "Source Code Pro"（英文）+ "LXGW WenKai"（中文） |
 | 段落英文 | "Source Code Pro"（等宽·斜体·可变字重） |
-| 段落中文 | "ZCOOL KuaiLe" 站酷快乐体 → 回退 "LXGW WenKai" 文楷 |
-| 标题 | `var(--font-heading)` → "ZCOOL KuaiLe" → 文楷 → sans |
-| 代码 / kbd / 表格 | `var(--font-monospace)` / 硬编码栈 → "Cascadia Code"（拉丁）→ CJK 回退 ZCOOL/文楷 |
+| 段落中文 | "LXGW WenKai" 文楷（清晰楷体，缺字回退系统 sans） |
+| 标题 | `var(--font-heading)` → "LXGW WenKai" → Source Code Pro → sans |
+| 代码 / kbd / 表格 | `var(--font-monospace)` → "Source Code Pro" → CJK 回退 "LXGW WenKai" |
 
 **不得**添加新的 `@font-face` 声明，除非字体文件已提交至 `fusion-dark/` 文件夹。
-⚠️ `@font-face` 位于 `fusion-dark/base/foundation.css`（base/ 子目录），字体文件在上级 `fusion-dark/`，故 `src: url()` **必须用 `../` 前缀**（如 `url("../ZCOOLKuaiLe-Regular.ttf")`），否则会解析到 `base/` 而 404。
+⚠️ `@font-face` 位于 `fusion-dark/base/foundation.css`（base/ 子目录），字体文件在上级 `fusion-dark/`，故 `src: url()` **必须用 `../` 前缀**（如 `url("../LXGWWenKai-Regular.ttf")`），否则会解析到 `base/` 而 404。
 
 ---
 

@@ -111,7 +111,8 @@ li.md-list-item { margin: 0.25rem 0; }
     -webkit-appearance: initial;
     appearance: initial;
     position: absolute;
-    top: 9px;
+    top: 50%;
+    transform: translateY(-50%);
     left: -19px;
     margin: 0;
     cursor: pointer;
@@ -266,7 +267,7 @@ li.md-list-item { margin: 0.25rem 0; }
 #write kbd {
     background-color: var(--kbd-bg);
     color: var(--text-color);
-    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, "ZCOOL KuaiLe", "LXGW WenKai", monospace;
+    font-family: "Source Code Pro", "LXGW WenKai", monospace;
     font-size: 0.9em;
     padding: 3px 9px;
     border: 1.5px solid color-mix(in srgb, var(--ink), transparent 25%);
@@ -288,7 +289,7 @@ li.md-list-item { margin: 0.25rem 0; }
 pre.md-meta-block {
     padding: 30px 20px 20px;
     margin: 20px 0;
-    font-family: "Cascadia Code", "Lucida Console", Consolas, Courier, "ZCOOL KuaiLe", "LXGW WenKai", monospace;
+    font-family: "Source Code Pro", "LXGW WenKai", monospace;
     font-size: 0.87rem;
     color: var(--text-color-secondary);
     line-height: 1.6;

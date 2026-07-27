@@ -1,3 +1,7 @@
 .idea/**
 docs/*
 !docs/adr/
+
+# Claude Code 本机配置（Typora 主题目录路径机器特定，不入库）
+.claude/settings.local.json
+.claude/scripts/

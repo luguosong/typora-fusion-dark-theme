@@ -6,18 +6,10 @@
 
 /* ======================== Fonts ======================== */
 /* @font-face 位于 base/ 子目录,字体文件在上级 fusion-dark/,故 url 需 ../ 前缀 */
-@font-face {
-    font-family: "Cascadia Code";
-    src: url("../CascadiaCode.woff2") format("woff2");
-}
+/* 中文正文/标题主字体:LXGW 文楷(清晰易读的楷体,适合长文阅读) */
 @font-face {
     font-family: "LXGW WenKai";
     src: url("../LXGWWenKai-Regular.ttf");
-}
-/* 中文正文/标题主字体:站酷快乐体(展示型,契合手绘语言);缺字回退 LXGW 文楷 */
-@font-face {
-    font-family: "ZCOOL KuaiLe";
-    src: url("../ZCOOLKuaiLe-Regular.ttf");
 }
 /* 正文英文字体:Source Code Pro(等宽·斜体·可变字重);声明为 normal 使正文默认取用 */
 @font-face {
@@ -128,6 +120,12 @@ content {
     text-align: left;
     position: relative;
     z-index: 0;
+    /* 中文字体(LXGW WenKai)与英文 x-height 不一致;font-size-adjust 令各场景中文按栈首拉丁字体
+       x-height 对齐放大,与英文视觉等高。代码等宽场景豁免(见 code.css 的 font-size-adjust: none)。*/
+    font-size-adjust: 0.5;
+}
+@supports (font-size-adjust: from-font) {
+    #write { font-size-adjust: from-font; }
 }
 
 /* Subtle texture overlay on content */
@@ -156,7 +154,7 @@ content {
 #write p {
     color: var(--text-color-secondary);
     margin: 0 10px;
-    font-family: "Source Code Pro", "ZCOOL KuaiLe", "LXGW WenKai", PingFangSC-light, "PingFang SC", Cambria, Georgia, "Times New Roman", serif;
+    font-family: "Source Code Pro", "LXGW WenKai", sans-serif;
     font-size: 1rem;
     word-spacing: 1px;
     text-indent: 0;

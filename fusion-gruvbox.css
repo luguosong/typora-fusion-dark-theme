@@ -123,9 +123,9 @@
     --alert-caution: #fb4934;
 
     /* --- Fonts --- */
-    --font-sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, "ZCOOL KuaiLe", "LXGW WenKai", 'Segoe UI Emoji', sans-serif;
-    --font-monospace: "Cascadia Code", "ZCOOL KuaiLe", "LXGW WenKai";
-    --code-font: "Cascadia Code";
+    --font-sans-serif: "Source Code Pro", "LXGW WenKai", sans-serif;
+    --font-monospace: "Source Code Pro", "LXGW WenKai", monospace;
+    --code-font: "Source Code Pro";
 
     /* --- Content Area --- */
     --texture-mask-color: #d4a017;
@@ -151,7 +151,7 @@
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
-    --font-heading: "ZCOOL KuaiLe", "LXGW WenKai", var(--font-sans-serif);
+    --font-heading: "LXGW WenKai", "Source Code Pro", sans-serif;
     --body-line-height: 1.85;
     --write-padding: 24px 40px;
     --blockquote-left-shadow: none;
