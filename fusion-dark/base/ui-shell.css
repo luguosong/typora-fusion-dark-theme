@@ -480,7 +480,6 @@
 .theme-preview-div.active, .theme-preview-div:hover {
     border-color: var(--primary-color) !important;
     box-shadow: 0 5px 20px color-mix(in srgb, var(--primary-color), transparent 70%);
-    transform: translateY(-5px);
 }
 
 

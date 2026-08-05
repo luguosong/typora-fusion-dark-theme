@@ -8,7 +8,7 @@
 
 - **Zeus** 侧栏设计（VS Code 风暗色面板）
 - **Phycat** 内容区设计（玻璃拟态、霓虹发光、丰富动画）
-- 多种配色方案（Dark Orange、Teal、Gruvbox、Academic Dark Nord）
+- 多种配色方案（Aubergine 墨紫、Olive petrol 绿、Gruvbox、Maroon 枣红）—— 全暖护眼
 
 项目**无构建系统、无包管理器、无 JavaScript**，完全由纯 CSS 构成。
 
@@ -31,10 +31,10 @@ typora-fusion-dark-theme/
 │   │   └── export.css            # 打印 / 移动导出
 │   ├── LXGWWenKai-Regular.ttf  # 中文主字体（LXGW 文楷，清晰楷体）
 │   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 英文/代码字体（等宽·斜体·可变字重）
-├── fusion-dark-orange.css        # Dark + Orange 主题（变量层）
-├── fusion-teal.css               # Dark + Teal 深色青碧主题（变量层）
+├── fusion-aubergine.css          # Dark + Warm Plum 暖墨紫主题（变量层，旗舰）
+├── fusion-olive.css              # Dark + Petrol Green 深 petrol 绿主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
-├── fusion-academic-dark.css      # Academic Dark (Nord Polar Night) 学术深色主题（变量层）
+├── fusion-maroon.css             # Dark + Warm Brick 暖枣红主题（变量层）
 ├── README.md                     # 中文文档
 ├── README_en.md                  # 英文文档
 └── CLAUDE.md                     # 本文件
@@ -46,10 +46,10 @@ typora-fusion-dark-theme/
 
 ```
 ┌──────────────────────────┐
-│  fusion-dark-orange.css  │  ← 主题变量层（~160 行）
-│  fusion-teal.css         │    仅定义 :root CSS 自定义属性
+│  fusion-aubergine.css    │  ← 主题变量层（~160 行）
+│  fusion-olive.css        │    仅定义 :root CSS 自定义属性
 │  fusion-gruvbox.css      │    通过 @import 引入 base.css
-│  fusion-academic-dark.css│
+│  fusion-maroon.css       │
 └────────┬─────────────────┘
          │ @import url("fusion-dark/base.css")
          ▼
@@ -202,16 +202,16 @@ typora-fusion-dark-theme/
 
 ### 标题层级区分系统
 
-标题采用**多维度区分**让 H1–H6 一眼可辨(而非仅字号递减):字号阶梯 + 字重 + 两色调渐变 + 每级不同的手绘装饰。**不使用 CSS 计数器自动编号**——兼容笔记自带的手动序号;且所有装饰都避开「文字前导位」,不与手动序号冲突。
+标题采用**多维度区分**让 H1–H6 一眼可辨(而非仅字号递减):字号阶梯 + 两色调渐变 + 每级不同的手绘装饰。**字重统一 500**（#17 全去粗——层级不再靠字重,由字号 + 手绘装饰 + color-mix 色差独立承担;对仅 Regular 的 LXGW 文楷近乎无感,对拉丁 serif 留半档 Medium 余量）。**不使用 CSS 计数器自动编号**——兼容笔记自带的手动序号;且所有装饰都避开「文字前导位」,不与手动序号冲突。
 
 | 级别 | 字号 | 字重 | 颜色 | 手绘装饰 |
 |------|------|------|------|---------|
-| H1 | 1.8rem | 粗 | 主色 | 居中波浪下划线(`.content-title` 合并定义) |
-| H2 | 1.55rem | 700 | 主色 | 整宽波浪下划线(`--sketch-wave`) |
-| H3 | 1.35rem | 700 | 主色 | 左侧竖条笔刷(`--sketch-brush`,置于文字左侧 gutter) |
-| H4 | 1.18rem | 600 | 主色↔正文色 70% 混合 | 直线下划线(`--sketch-line`) |
-| H5 | 1.02rem | 600 | 主色↔正文色 35% 混合 | 点线下划线(`--sketch-dots`) |
-| H6 | 0.92rem | 700 | 正文次要色 | 无装饰,大写 + 字间距(标签体) |
+| H1 | 1.8rem | 500 | 主色 | 居中波浪下划线(`.content-title` 合并定义) |
+| H2 | 1.55rem | 500 | 主色 | 整宽波浪下划线(`--sketch-wave`) |
+| H3 | 1.35rem | 500 | 主色 | 左侧竖条笔刷(`--sketch-brush`,置于文字左侧 gutter) |
+| H4 | 1.18rem | 500 | 主色↔正文色 70% 混合 | 直线下划线(`--sketch-line`) |
+| H5 | 1.02rem | 500 | 主色↔正文色 35% 混合 | 点线下划线(`--sketch-dots`) |
+| H6 | 0.92rem | 500 | 正文次要色 | 无装饰,大写 + 字间距(标签体) |
 
 颜色渐变用 `color-mix()` 从 `--primary-color`/`--text-color` 派生,**不新增每主题变量**。装饰统一用 `::after`(`::before` 留给 Typora 内置标题标签);编辑模式(`.md-focus`)隐藏装饰。H6 的 `text-transform: uppercase` 仅对英文生效,中文靠字号/字间距/色差区分。设计缘由见 `docs/adr/0002-heading-level-differentiation.md`。
 
@@ -307,7 +307,7 @@ background: rgba(232, 148, 76, 0.1);
 
 ## 新增主题变体流程
 
-1. 复制任意现有主题文件（如 `fusion-dark-orange.css`）为 `fusion-<name>.css`
+1. 复制任意现有主题文件（如 `fusion-aubergine.css`）为 `fusion-<name>.css`
 2. 保持 `@import url("fusion-dark/base.css")` 不变
 3. 修改 `:root` 中全部变量值以匹配目标配色方案
 4. 在 Typora 主题文件夹中安装测试
@@ -319,11 +319,11 @@ background: rgba(232, 148, 76, 0.1);
 
 | 使用场景 | 字体变量 / 字体族 |
 |---|---|
-| 正文 / UI | `var(--font-sans-serif)` → "Source Code Pro"（英文）+ "LXGW WenKai"（中文） |
-| 段落英文 | "Source Code Pro"（等宽·斜体·可变字重） |
-| 段落中文 | "LXGW WenKai" 文楷（清晰楷体，缺字回退系统 sans） |
-| 标题 | `var(--font-heading)` → "LXGW WenKai" → Source Code Pro → sans |
-| 代码 / kbd / 表格 | `var(--font-monospace)` → "Source Code Pro" → CJK 回退 "LXGW WenKai" |
+| 正文 / UI | `var(--font-sans-serif)` → `--font-serif`（Charter→Georgia→Palatino，英文 serif）+ "LXGW WenKai"（中文楷体） |
+| 段落 | 继承 `--font-sans-serif`（#14：英文 serif 单声 + 中文楷体；`#write p` 不再硬编码字体） |
+| 表格 | `--table-font-family` → `--font-serif` + "LXGW WenKai"（serif；触发 base 表格 hook） |
+| 标题 | `var(--font-heading)` → "LXGW WenKai" → `--font-serif` → serif generic |
+| 代码 / kbd / YAML | `var(--font-monospace)` → "Source Code Pro" → CJK 回退 "LXGW WenKai"（mono 退守） |
 
 **不得**添加新的 `@font-face` 声明，除非字体文件已提交至 `fusion-dark/` 文件夹。
 ⚠️ `@font-face` 位于 `fusion-dark/base/foundation.css`（base/ 子目录），字体文件在上级 `fusion-dark/`，故 `src: url()` **必须用 `../` 前缀**（如 `url("../LXGWWenKai-Regular.ttf")`），否则会解析到 `base/` 而 404。
@@ -334,10 +334,10 @@ background: rgba(232, 148, 76, 0.1);
 
 | 文件 | 配色方案 | 主色调 | 背景色 | 正文对比度 |
 |---|---|---|---|---|
-| `fusion-dark-orange.css` | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA |
-| `fusion-teal.css` | Dark + Teal 🌊 | `#349890` | `#141414` | 11.6:1 AAA |
+| `fusion-aubergine.css` | Dark + Warm Plum 🟣 | `#a06e80` | `#15120e` | ≈13:1 AAA |
+| `fusion-olive.css` | Dark + Petrol Green 🫒 | `#4a988e` | `#12150f` | ≈10.5:1 AAA |
 | `fusion-gruvbox.css` | Gruvbox Dark 🌿 | `#fabd2f` | `#282828` | 10.2:1 AAA |
-| `fusion-academic-dark.css` | Academic Dark (Nord) 🎓 | `#88c0d0` | `#121519` | 12.5:1 AAA |
+| `fusion-maroon.css` | Dark + Warm Brick 🍂 | `#c47260` | `#15110f` | ≈11:1 AAA |
 
 ---
 
@@ -366,12 +366,12 @@ background: rgba(232, 148, 76, 0.1);
 # 安装主题到 Typora（Windows）
 # 1. 打开 Typora → 偏好设置 → 外观 → 打开主题文件夹
 # 2. 复制主题文件和资源目录：
-cp fusion-dark-orange.css <typora-themes-dir>/
+cp fusion-aubergine.css <typora-themes-dir>/
 cp -r fusion-dark/ <typora-themes-dir>/
 # 3. 重启 Typora 选择主题
 
 # 查看 CSS 变量行数
-wc -l fusion-dark-orange.css fusion-teal.css fusion-gruvbox.css fusion-academic-dark.css
+wc -l fusion-aubergine.css fusion-olive.css fusion-gruvbox.css fusion-maroon.css
 
 # 查看 base/ 各分文件的 Section
 grep -rn "========================" fusion-dark/base/

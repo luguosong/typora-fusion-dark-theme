@@ -123,8 +123,10 @@
     --alert-caution: #fb4934;
 
     /* --- Fonts --- */
-    --font-sans-serif: "Source Code Pro", "LXGW WenKai", sans-serif;
+    --font-serif: "Charter", "Georgia", "Palatino";   /* #14 拉丁 serif 三件套(CJK 仍走文楷) */
+    --font-sans-serif: var(--font-serif), "LXGW WenKai", serif;   /* #14 EN serif 单声 */
     --font-monospace: "Source Code Pro", "LXGW WenKai", monospace;
+    --table-font-family: var(--font-serif), "LXGW WenKai", serif;   /* #14 表格 serif(base hook) */
     --code-font: "Source Code Pro";
 
     /* --- Content Area --- */
@@ -151,7 +153,7 @@
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
-    --font-heading: "LXGW WenKai", "Source Code Pro", sans-serif;
+    --font-heading: "LXGW WenKai", var(--font-serif), serif;
     --body-line-height: 1.85;
     --write-padding: 24px 40px;
     --blockquote-left-shadow: none;

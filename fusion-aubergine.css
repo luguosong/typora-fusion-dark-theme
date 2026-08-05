@@ -1,0 +1,161 @@
+/*
+ * ============================================================
+ *  Fusion Aubergine — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Dark + Warm Plum (墨紫)
+ *  旗舰主题。暖纸 + 暖墨紫主色（≈H330，跳出红金弧，守 #19 全暖）。
+ *  代码块壳暖化（#18 底 #2a2520），Dracula 彩虹语法豁免（#12）。
+ * ============================================================
+ */
+@import url("fusion-dark/base.css");
+
+:root {
+    /* --- Core Palette --- */
+    --bg-color: #15120e;             /* orange 暖纸底（#15）—— aubergine 守暖 */
+    --text-color: #d6d2c9;           /* warm off-white */
+    --text-color-secondary: #b8b2a6; /* warm taupe */
+    --primary-color: #a06e80;        /* warm plum aubergine（≈H330，跳出红金弧，≈4.5:1） */
+    --secondary-color: #c9b37a;      /* warm gold —— plum 的学术补色 */
+    --accent-color: #c9b37a;
+    --border-color: #2a251d;
+
+    /* --- Hand-drawn (手绘) --- */
+    --ink: #988a90;   /* proto #23 暖墨紫灰描边——解耦（微带 plum） */
+
+    /* --- Text Hierarchy --- */
+    --text-bright: #fff;
+    --text-ui: #d0cac0;
+    --text-muted: #8c857a;
+    --text-input: #ece6dc;
+
+    /* --- Surface Hierarchy --- */
+    --surface-1: #1a1712;
+    --surface-2: #221e17;
+    --surface-3: #2a261e;
+    --surface-input: #302b22;
+    --surface-active: #2e2920;
+    --surface-deep: #0e0b07;
+
+    /* --- Border Hierarchy --- */
+    --border-strong: #0b0805;
+    --border-medium: #38322a;
+    --border-input: #4a4438;
+
+    /* --- Overlay (white-based for dark themes) --- */
+    --overlay-2: rgba(255, 255, 255, 0.02);
+    --overlay-3: rgba(255, 255, 255, 0.03);
+    --overlay-4: rgba(255, 255, 255, 0.04);
+    --overlay-5: rgba(255, 255, 255, 0.05);
+    --overlay-6: rgba(255, 255, 255, 0.06);
+    --overlay-8: rgba(255, 255, 255, 0.08);
+    --overlay-10: rgba(255, 255, 255, 0.1);
+    --overlay-15: rgba(255, 255, 255, 0.15);
+    --overlay-20: rgba(255, 255, 255, 0.2);
+
+    /* --- Shadow --- */
+    --shadow-5: rgba(0, 0, 0, 0.05);
+    --shadow-10: rgba(0, 0, 0, 0.1);
+    --shadow-12: rgba(0, 0, 0, 0.12);
+    --shadow-15: rgba(0, 0, 0, 0.15);
+    --shadow-20: rgba(0, 0, 0, 0.2);
+    --shadow-25: rgba(0, 0, 0, 0.25);
+    --shadow-30: rgba(0, 0, 0, 0.3);
+    --shadow-40: rgba(0, 0, 0, 0.4);
+    --shadow-50: rgba(0, 0, 0, 0.5);
+    --shadow-60: rgba(0, 0, 0, 0.6);
+
+    /* --- Effects --- */
+    --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
+    --hover-background-color: #6e4858;
+    --select-text-bg-color: rgba(160, 110, 128, 0.3);
+
+    /* --- Sidebar (Zeus) --- */
+    --side-bar-bg-color: #1a1712;
+    --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
+    --active-file-border-color: var(--primary-color);
+    --active-file-text-color: #ffffff;
+    --item-hover-bg-color: rgba(160, 110, 128, 0.12);
+    --item-hover-text-color: #fff;
+    --control-text-color: #d6d2c9;
+    --control-text-hover-color: #fff;
+
+    /* --- Headings --- */
+    --h1-color: var(--text-color);
+    --h1-underline-color: var(--primary-color);
+
+    /* --- Window & Panel --- */
+    --window-border: 1px solid #38322a;
+    --panel-border-color: #38322a;
+    --table-border-color: #2a251d;
+    --search-select-bg-color: rgba(160, 110, 128, 0.25);
+    --search-select-text-color: #fff;
+    --focus-ring-color: var(--primary-color);
+    --rawblock-edit-panel-bd: #221e17;
+    --menu-divider-color: rgba(160, 110, 128, 0.1);
+
+    /* --- Code Highlighting (#18 warm chrome + #12 Dracula rainbow) --- */
+    --code-block-bg: #2a2520;        /* proto #18 暖褐壳 */
+    --code-text: #f8f8f2;
+    --code-gutter-border: #3a342a;
+    --glass-border-color: #ffffff0d;
+    --code-keyword: #ff79c6;
+    --code-variable: #f8f8f2;
+    --code-function: #50fa7b;
+    --code-param: #f1fa8c;
+    --code-string: #f1fa8c;
+    --code-comment: #857a6a;
+    --code-type: #8be9fd;
+    --code-property: #66d9ef;
+    --code-number: #bd93f9;
+    --code-meta: #ffb86c;
+    --code-selected-bg: #3d3528;
+
+    /* --- Kbd --- */
+    --kbd-bg: #222222;
+    --kbd-border: #303030;
+    --kbd-border-top: #3a3a3a;
+    --kbd-border-bottom: #111;
+    --kbd-shadow: #111;
+
+    /* --- Alert Colors (family Dracula set) --- */
+    --alert-note: #bd93f9;
+    --alert-tip: #8be9fd;
+    --alert-warning: #ffb86c;
+    --alert-caution: #d63031;
+
+    /* --- Fonts --- */
+    --font-serif: "Charter", "Georgia", "Palatino";   /* #14 拉丁 serif 三件套(CJK 仍走文楷) */
+    --font-sans-serif: var(--font-serif), "LXGW WenKai", serif;   /* #14 EN serif 单声 */
+    --font-monospace: "Source Code Pro", "LXGW WenKai", monospace;
+    --table-font-family: var(--font-serif), "LXGW WenKai", serif;   /* #14 表格 serif(base hook) */
+    --code-font: "Source Code Pro";
+
+    /* --- Content Area --- */
+    --texture-mask-color: #a06e80;
+    --texture-opacity: 0.03;
+    --bg-style: radial-gradient(rgba(160, 110, 128, 0.6) 1px, transparent 1px);
+
+    /* --- Markdown --- */
+    --md-char-color: #6a6258;
+    --heading-char-color: #6a6258;
+    --meta-content-color: #7a7064;
+    --blur-text-color: #7a7064;
+
+    /* --- Export --- */
+    --export-sidebar-bg: rgba(14, 11, 7, 0.88);
+
+    /* --- Focus Mode --- */
+    --focus-blockquote-border: rgba(160, 110, 128, 0.12);
+
+    /* --- Mermaid --- */
+    --mermaid-theme: dark;
+
+    /* --- Outline Panel --- */
+    --outline-line-color: rgba(255, 255, 255, 0.05);
+
+    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    --font-heading: "LXGW WenKai", var(--font-serif), serif;
+    --body-line-height: 1.85;
+    --write-padding: 24px 40px;
+    --blockquote-left-shadow: none;
+    --blockquote-icon-display: block;
+}

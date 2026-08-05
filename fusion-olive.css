@@ -1,43 +1,44 @@
 /*
  * ============================================================
- *  Fusion Dark Orange — Typora Theme
- *  Sidebar: Zeus | Content: Phycat | Palette: Dark + Orange
+ *  Fusion Olive — Typora Theme
+ *  Sidebar: Zeus | Content: Phycat | Palette: Dark + Petrol Green
+ *  暖纸 + 深 petrol 绿主色。守 #19 全暖。
+ *  代码块壳暖化（#18 底 #2a2520），Dracula 彩虹语法豁免（#12）。
  * ============================================================
  */
 @import url("fusion-dark/base.css");
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #141414;
-    --text-color: #d4d4d4;
-    --text-color-secondary: #b0b8c4;
-    --primary-color: #d4875c;
-    --secondary-color: #9eaffa;
-    --accent-color: #9eaffa;
-    --border-color: #282828;
+    --bg-color: #12150f;             /* 暖纸底，微染橄榄（v1 暖，非 v2 中性） */
+    --text-color: #d3d4c6;           /* warm off-white,微绿 */
+    --text-color-secondary: #b3b5a3; /* warm taupe-olive */
+    --primary-color: #4a988e;        /* 深 petrol 绿（v2 保留：比 v1 鼠尾草 #9ba882 沉得多） */
+    --secondary-color: #bd8d76;      /* warm clay——petrol 的土质补色 */
+    --accent-color: #bd8d76;
+    --border-color: #22251a;         /* warm olive-tinted */
 
     /* --- Hand-drawn (手绘) --- */
-    /* 结构性描边默认色(墨色):边框 / 分隔 / 复选框 / 项目符号。≈次要文字色,随主题自适应 */
-    --ink: var(--text-color-secondary);
+    --ink: #949e85;   /* 暖橄榄灰墨——解耦（回暖） */
 
     /* --- Text Hierarchy --- */
     --text-bright: #fff;
-    --text-ui: #ccc;
-    --text-muted: #888;
-    --text-input: #eee;
+    --text-ui: #cdcfc0;
+    --text-muted: #878a78;
+    --text-input: #e6e8da;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #1a1a1a;
-    --surface-2: #222222;
-    --surface-3: #2a2a2a;
-    --surface-input: #303030;
-    --surface-active: #2e2e2e;
-    --surface-deep: #0d0d0d;
+    --surface-1: #181a13;
+    --surface-2: #1f211a;
+    --surface-3: #272920;
+    --surface-input: #2d2f24;
+    --surface-active: #2b2d22;
+    --surface-deep: #0c0d07;
 
     /* --- Border Hierarchy --- */
-    --border-strong: #0a0a0a;
-    --border-medium: #363636;
-    --border-input: #484848;
+    --border-strong: #090a05;
+    --border-medium: #33352a;
+    --border-input: #454838;
 
     /* --- Overlay (white-based for dark themes) --- */
     --overlay-2: rgba(255, 255, 255, 0.02);
@@ -64,17 +65,17 @@
 
     /* --- Effects --- */
     --shadow-subtle: 0 1px 2px var(--shadow-15), 0 4px 12px var(--shadow-10);
-    --hover-background-color: #b86840;
-    --select-text-bg-color: rgba(212, 135, 92, 0.3);
+    --hover-background-color: #2e625a;
+    --select-text-bg-color: rgba(74, 152, 142, 0.3);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #1a1a1a;
+    --side-bar-bg-color: #181a13;
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
-    --item-hover-bg-color: rgba(212, 135, 92, 0.12);
+    --item-hover-bg-color: rgba(74, 152, 142, 0.12);
     --item-hover-text-color: #fff;
-    --control-text-color: #d4d4d4;
+    --control-text-color: #d3d4c6;
     --control-text-hover-color: #fff;
 
     /* --- Headings --- */
@@ -82,66 +83,68 @@
     --h1-underline-color: var(--primary-color);
 
     /* --- Window & Panel --- */
-    --window-border: 1px solid #363636;
-    --panel-border-color: #363636;
-    --table-border-color: #282828;
-    --search-select-bg-color: rgba(212, 135, 92, 0.25);
+    --window-border: 1px solid #33352a;
+    --panel-border-color: #33352a;
+    --table-border-color: #22251a;
+    --search-select-bg-color: rgba(74, 152, 142, 0.25);
     --search-select-text-color: #fff;
     --focus-ring-color: var(--primary-color);
-    --rawblock-edit-panel-bd: #222222;
-    --menu-divider-color: rgba(212, 135, 92, 0.1);
+    --rawblock-edit-panel-bd: #1f211a;
+    --menu-divider-color: rgba(74, 152, 142, 0.1);
 
-    /* --- Code Highlighting (Dracula-inspired) --- */
-    --code-block-bg: #282a36;
+    /* --- Code Highlighting (#18 warm chrome + #12 Dracula rainbow) --- */
+    --code-block-bg: #2a2520;        /* proto #18 暖褐壳——暖纸下自然合拍 */
     --code-text: #f8f8f2;
-    --code-gutter-border: #44475a;
+    --code-gutter-border: #3a342a;
     --glass-border-color: #ffffff0d;
     --code-keyword: #ff79c6;
     --code-variable: #f8f8f2;
     --code-function: #50fa7b;
     --code-param: #f1fa8c;
     --code-string: #f1fa8c;
-    --code-comment: #6272a4;
+    --code-comment: #857a6a;
     --code-type: #8be9fd;
     --code-property: #66d9ef;
     --code-number: #bd93f9;
     --code-meta: #ffb86c;
-    --code-selected-bg: #44475a;
+    --code-selected-bg: #3d3528;
 
     /* --- Kbd --- */
-    --kbd-bg: #222222;
-    --kbd-border: #303030;
-    --kbd-border-top: #3a3a3a;
-    --kbd-border-bottom: #111;
-    --kbd-shadow: #111;
+    --kbd-bg: #1f211a;
+    --kbd-border: #2d2f24;
+    --kbd-border-top: #3a3d33;
+    --kbd-border-bottom: #0c0d07;
+    --kbd-shadow: #0c0d07;
 
-    /* --- Alert Colors --- */
+    /* --- Alert Colors (family Dracula set) --- */
     --alert-note: #bd93f9;
     --alert-tip: #8be9fd;
     --alert-warning: #ffb86c;
     --alert-caution: #d63031;
 
     /* --- Fonts --- */
-    --font-sans-serif: "Source Code Pro", "LXGW WenKai", sans-serif;
+    --font-serif: "Charter", "Georgia", "Palatino";   /* #14 拉丁 serif 三件套(CJK 仍走文楷) */
+    --font-sans-serif: var(--font-serif), "LXGW WenKai", serif;   /* #14 EN serif 单声 */
     --font-monospace: "Source Code Pro", "LXGW WenKai", monospace;
+    --table-font-family: var(--font-serif), "LXGW WenKai", serif;   /* #14 表格 serif(base hook) */
     --code-font: "Source Code Pro";
 
     /* --- Content Area --- */
-    --texture-mask-color: #d4875c;
+    --texture-mask-color: #4a988e;
     --texture-opacity: 0.03;
-    --bg-style: radial-gradient(rgba(212, 135, 92, 0.6) 1px, transparent 1px);
+    --bg-style: radial-gradient(rgba(74, 152, 142, 0.6) 1px, transparent 1px);
 
     /* --- Markdown --- */
-    --md-char-color: #666;
-    --heading-char-color: #666;
-    --meta-content-color: #777;
-    --blur-text-color: #777;
+    --md-char-color: #61655a;
+    --heading-char-color: #61655a;
+    --meta-content-color: #71765f;
+    --blur-text-color: #71765f;
 
     /* --- Export --- */
-    --export-sidebar-bg: rgba(14, 14, 14, 0.88);
+    --export-sidebar-bg: rgba(12, 13, 7, 0.88);
 
     /* --- Focus Mode --- */
-    --focus-blockquote-border: rgba(85, 85, 85, 0.12);
+    --focus-blockquote-border: rgba(74, 152, 142, 0.12);
 
     /* --- Mermaid --- */
     --mermaid-theme: dark;
@@ -150,7 +153,7 @@
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
     /* --- Academic Typography (defaults: preserve existing behavior) --- */
-    --font-heading: "LXGW WenKai", "Source Code Pro", sans-serif;
+    --font-heading: "LXGW WenKai", var(--font-serif), serif;
     --body-line-height: 1.85;
     --write-padding: 24px 40px;
     --blockquote-left-shadow: none;

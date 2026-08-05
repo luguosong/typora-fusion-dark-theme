@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** [English](README_en.md) | 简体中文
 
-> 🎨 一套面向程序员与研究者的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **4 种配色方案**（含 1 个学术/论文风），全部达到 WCAG AA 以上护眼对比度。
+> 🎨 一套面向程序员与研究者的 [Typora](https://typora.io/) 主题集，融合 **Zeus** 侧栏风格与 **Phycat** 内容区设计，提供 **4 种全暖护眼配色方案**（墨紫 / petrol 绿 / Gruvbox / 枣红），全部达到 WCAG AA 以上对比度。
 
 ---
 
@@ -10,10 +10,10 @@
 
 | 主题 | 配色 | 主色调 | 背景色 | 正文对比度 | 护眼 |
 |---|---|---|---|---|---|
-| **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Teal** | Dark + Teal 🌊 | `#349890` | `#141414` | 11.6:1 AAA | |
+| **Fusion Aubergine** | Dark + Warm Plum 🟣 | `#a06e80` | `#15120e` | ≈13:1 AAA | 🌿 |
+| **Fusion Olive** | Dark + Petrol Green 🫒 | `#4a988e` | `#12150f` | ≈10.5:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#282828` | 10.2:1 AAA | 🌿 |
-| **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
+| **Fusion Maroon** | Dark + Warm Brick 🍂 | `#c47260` | `#15110f` | ≈11:1 AAA | 🌿 |
 
 ---
 
@@ -31,32 +31,18 @@
 
 ---
 
-## 🎓 学术主题特性
-
-`fusion-academic-dark.css` 专为大学生、研究生和研究者设计：
-
-| 特性 | 说明 |
-|---|---|
-| **标题字体** | EB Garamond / Georgia Serif 衬线字体，学术论文质感 |
-| **行高** | 1.95（宽松阅读，适合长时间研究笔记） |
-| **内容边距** | 宽边距（左右各 100px），仿论文排版 |
-| **引用块** | 左侧 5px 强调色竖条，无 Emoji，斜体正式感 |
-| **深色配色** | Nord `#121519` 背景 · 冰川蓝 `#88c0d0` 强调 · 青石蓝 `#81a1c1` 辅色 |
-
----
-
 ## 📁 文件结构
 
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
 │   ├── base.css               # 共享基础样式（所有主题复用）
-│   ├── CascadiaCode.woff2     # 等宽字体（代码块与行内代码）
-│   └── LXGWWenKai-Regular.ttf # 霞鹜文楷（正文段落中文字体）
-├── fusion-dark-orange.css     # Dark + Orange
-├── fusion-teal.css            # Dark + Teal 🌊
+│   ├── LXGWWenKai-Regular.ttf                  # 中文主字体（LXGW 文楷）
+│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 英文/代码字体（等宽·可变字重）
+├── fusion-aubergine.css       # Dark + Warm Plum（旗舰）
+├── fusion-olive.css           # Dark + Petrol Green
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
-└── fusion-academic-dark.css   # Academic Dark (Nord) 🎓
+└── fusion-maroon.css          # Dark + Warm Brick
 ```
 
 ---
@@ -73,7 +59,7 @@ typora-fusion-dark-theme/
 ### 代码
 - **围栏代码块** — macOS 红黄绿交通灯装饰、语言标签、Dracula 风语法着色
 - **行内代码** — 橙色徽章样式，悬停时弹性放大
-- **字体** — [Cascadia Code](https://github.com/microsoft/cascadia-code)（连字等宽字体）
+- **字体** — [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)（等宽·可变字重）
 
 ### 内容元素
 - **引用块** — 圆角卡片 + 💡 Emoji，悬停时橙色发光边框
@@ -124,7 +110,7 @@ typora-fusion-dark-theme/
 ## 🚀 安装方法
 
 1. 打开 Typora → **偏好设置 → 外观 → 打开主题文件夹**
-2. 将你想要的主题文件（如 `fusion-dark-orange.css`）和 `fusion-dark/` 目录复制到主题文件夹中
+2. 将你想要的主题文件（如 `fusion-aubergine.css`）和 `fusion-dark/` 目录复制到主题文件夹中
 3. 重启 Typora（或刷新主题）
 4. 在 **偏好设置 → 外观 → 主题** 中选择对应主题
 
@@ -132,17 +118,17 @@ typora-fusion-dark-theme/
 
 ---
 
-## 🎨 颜色参考（以 Fusion Dark Orange 为例）
+## 🎨 颜色参考（以 Fusion Aubergine 为例）
 
 | 变量 | 值 | 用途 |
 |---|---|---|
-| `--bg-color` | `#1e1e1e` | 页面背景 |
-| `--text-color` | `#d4d4d4` | 主要文字 |
-| `--text-color-secondary` | `#b0b8c4` | 段落、次要文字 |
-| `--primary-color` | `#e8944c` | 橙色强调（标题、链接、边框） |
-| `--secondary-color` | `#9eaffa` | 蓝色强调（斜体、Note 提示块） |
-| `--side-bar-bg-color` | `#252526` | 侧栏背景 |
-| `--code-block-bg` | `#282a36` | 代码块背景（Dracula 风格） |
+| `--bg-color` | `#15120e` | 页面背景（暖纸） |
+| `--text-color` | `#d6d2c9` | 主要文字 |
+| `--text-color-secondary` | `#b8b2a6` | 段落、次要文字 |
+| `--primary-color` | `#a06e80` | 暖墨紫强调（标题、链接、边框） |
+| `--secondary-color` | `#c9b37a` | 暖金辅色 |
+| `--side-bar-bg-color` | `#1a1712` | 侧栏背景 |
+| `--code-block-bg` | `#2a2520` | 代码块背景（暖褐壳） |
 
 > 其他主题的变量值请查阅对应 `fusion-*.css` 文件。
 
@@ -152,9 +138,9 @@ typora-fusion-dark-theme/
 
 | 字体 | 用途 | 来源 |
 |---|---|---|
-| [Cascadia Code](https://github.com/microsoft/cascadia-code) | 代码块、行内代码、kbd | 已内置（`CascadiaCode.woff2`） |
-| [霞鹜文楷 LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | 正文段落（中文与衬线字体回退） | 已内置（`LXGWWenKai-Regular.ttf`） |
-| Open Sans / 系统无衬线字体 | UI 与标题 | 系统回退 |
+| Latin serif（Charter → Georgia → Palatino） | 英文正文 / UI / 表格（#14 Kami 排版气质） | 系统回退 |
+| [霞鹜文楷 LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | 中文正文 / 标题（楷体） | 已内置（`LXGWWenKai-Regular.ttf`） |
+| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | 代码块 / 行内代码 / kbd / YAML（mono 退守） | 已内置（`SourceCodePro-Italic-VariableFont_wght.ttf`） |
 
 ---
 

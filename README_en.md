@@ -2,7 +2,7 @@
 
 > 🌐 **Language / 语言：** English | [简体中文](README.md)
 
-> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — now with **4 color schemes** including an academic/scholarly variant.
+> 🖤 A programmer-focused dark theme for [Typora](https://typora.io/), blending **Zeus** sidebar aesthetics with **Phycat** content styling — **4 warm, eye-friendly color schemes** (plum / petrol green / Gruvbox / brick), all meeting WCAG AA contrast.
 
 ---
 
@@ -10,10 +10,10 @@
 
 | Theme | Palette | Primary | Background | Contrast | Eye-friendly |
 |---|---|---|---|---|---|
-| **Fusion Dark Orange** | Dark + Orange | `#f07830` | `#141414` | 11.6:1 AAA | |
-| **Fusion Teal** | Dark + Teal 🌊 | `#349890` | `#141414` | 11.6:1 AAA | |
+| **Fusion Aubergine** | Dark + Warm Plum 🟣 | `#a06e80` | `#15120e` | ≈13:1 AAA | 🌿 |
+| **Fusion Olive** | Dark + Petrol Green 🫒 | `#4a988e` | `#12150f` | ≈10.5:1 AAA | 🌿 |
 | **Fusion Gruvbox** | Gruvbox Dark | `#fabd2f` | `#282828` | 10.2:1 AAA | 🌿 |
-| **Fusion Academic Dark** | Nord + Academic 🎓 | `#88c0d0` | `#121519` | 8.8:1 AAA | |
+| **Fusion Maroon** | Dark + Warm Brick 🍂 | `#c47260` | `#15110f` | ≈11:1 AAA | 🌿 |
 
 ---
 
@@ -25,7 +25,6 @@
 |---|---|---|
 | **Sidebar** | Zeus | Clean VS Code–inspired dark panel |
 | **Content Area** | Phycat | Rich animations, glass morphism, glow effects |
-| **Academic** | LaTeX | Serif headings, wide margins, scholarly blockquotes |
 
 Architecture: each theme is a variable-only file (~150 lines) that shares a single structural base (`fusion-dark/base.css`).
 
@@ -37,28 +36,13 @@ Architecture: each theme is a variable-only file (~150 lines) that shares a sing
 typora-fusion-dark-theme/
 ├── fusion-dark/
 │   ├── base.css               # Shared structural styles (all themes)
-│   ├── CascadiaCode.woff2     # Monospace font (code blocks)
-│   └── LXGWWenKai-Regular.ttf # Chinese serif font (body)
-├── fusion-dark-orange.css     # Dark + Orange
-├── fusion-teal.css            # Dark + Teal 🌊
+│   ├── LXGWWenKai-Regular.ttf                  # Chinese body/heading font (kaiti)
+│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # Latin / code font (mono·variable)
+├── fusion-aubergine.css       # Dark + Warm Plum (flagship)
+├── fusion-olive.css           # Dark + Petrol Green
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
-└── fusion-academic-dark.css   # Academic Dark (Nord) 🎓
+└── fusion-maroon.css          # Dark + Warm Brick
 ```
-
----
-
-## 🎓 Academic Themes
-
-The two academic themes are designed for university students and researchers writing or reading Markdown notes:
-
-| Feature | Value |
-|---|---|
-| Headings | EB Garamond / Georgia serif font |
-| Line height | 1.95 (comfortable long-read spacing) |
-| Content margins | Wide (100px per side) |
-| Blockquote | Clean left accent bar, no emoji |
-| Colors (light) | Cream `#F8F4ED` background · Burgundy `#9C2F2F` accent · Navy `#1A2A44` secondary |
-| Colors (dark) | Nord `#121519` background · Ice blue `#88c0d0` accent · Slate `#81a1c1` secondary |
 
 ---
 
@@ -75,7 +59,7 @@ The two academic themes are designed for university students and researchers wri
 ### Code
 - **Fenced Code Blocks** — macOS traffic-light dots decoration, language label, Dracula-inspired syntax tokens
 - **Inline Code** — Orange tinted badge, bouncy scale-up on hover
-- **Font** — [Cascadia Code](https://github.com/microsoft/cascadia-code) (ligature-ready monospace)
+- **Font** — [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) (mono, variable weight)
 
 ### Content Elements
 - **Blockquotes** — Rounded card with 💡 emoji, glowing border on hover
@@ -126,9 +110,9 @@ Color-accurate print styles, page-break guards on headings and code blocks, text
 ## 🚀 Installation
 
 1. Open Typora → **Preferences → Appearance → Open Theme Folder**
-2. Copy `fusion-dark-orange.css` and the `fusion-dark/` directory into the theme folder
+2. Copy `fusion-aubergine.css` and the `fusion-dark/` directory into the theme folder
 3. Restart Typora (or refresh themes)
-4. Select **Fusion Dark Orange** from **Preferences → Appearance → Theme**
+4. Select **Fusion Aubergine** (or another Fusion theme) from **Preferences → Appearance → Theme**
 
 ---
 
@@ -136,13 +120,13 @@ Color-accurate print styles, page-break guards on headings and code blocks, text
 
 | Variable | Value | Role |
 |---|---|---|
-| `--bg-color` | `#1e1e1e` | Page background |
-| `--text-color` | `#d4d4d4` | Primary text |
-| `--text-color-secondary` | `#9ca3af` | Paragraphs, muted text |
-| `--primary-color` | `#e8944c` | Orange accent (headings, links, borders) |
-| `--secondary-color` | `#9eaffa` | Blue accent (italic, note callout) |
-| `--side-bar-bg-color` | `#252526` | Sidebar background |
-| `--code-block-bg` | `#282a36` | Code block background (Dracula) |
+| `--bg-color` | `#15120e` | Page background (warm paper) |
+| `--text-color` | `#d6d2c9` | Primary text |
+| `--text-color-secondary` | `#b8b2a6` | Paragraphs, muted text |
+| `--primary-color` | `#a06e80` | Warm plum accent (headings, links, borders) |
+| `--secondary-color` | `#c9b37a` | Warm gold secondary |
+| `--side-bar-bg-color` | `#1a1712` | Sidebar background |
+| `--code-block-bg` | `#2a2520` | Code block background (warm chrome) |
 
 ---
 
@@ -150,9 +134,9 @@ Color-accurate print styles, page-break guards on headings and code blocks, text
 
 | Font | Usage | Source |
 |---|---|---|
-| [Cascadia Code](https://github.com/microsoft/cascadia-code) | Code blocks, inline code, kbd | Bundled (`CascadiaCode.woff2`) |
-| [LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | Body paragraphs (CJK & serif fallback) | Bundled (`LXGWWenKai-Regular.ttf`) |
-| Open Sans / System Sans | UI & headings | System fallback |
+| Latin serif (Charter → Georgia → Palatino) | English body / UI / tables (#14 Kami typography) | System fallback |
+| [LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | Chinese body / headings (kaiti) | Bundled (`LXGWWenKai-Regular.ttf`) |
+| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | Code blocks / inline code / kbd / YAML (mono only) | Bundled (`SourceCodePro-Italic-VariableFont_wght.ttf`) |
 
 ---
 

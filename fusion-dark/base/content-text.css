@@ -9,7 +9,7 @@
 #write h4, #write h5, #write h6 {
     color: var(--primary-color);
     font-family: var(--font-heading, var(--font-sans-serif));
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 #write h1 tt, #write h1 code,
 #write h2 tt, #write h2 code,
@@ -33,7 +33,7 @@
 }
 
 /* H2:强调色 + 整宽粗波浪下划线 */
-#write h2 { font-size: 1.55rem; font-weight: 700; margin-top: 2rem; padding-bottom: 8px; }
+#write h2 { font-size: 1.55rem; font-weight: 500; margin-top: 2rem; padding-bottom: 8px; }
 #write h2::after {
     content: '';
     position: absolute;
@@ -49,7 +49,7 @@
 }
 
 /* H3:强调色 + 左侧手绘竖条笔刷(::after,置于文字左侧 gutter,不占序号位) */
-#write h3 { font-size: 1.35rem; font-weight: 700; margin-top: 1.6rem; padding-left: 16px; }
+#write h3 { font-size: 1.35rem; font-weight: 500; margin-top: 1.6rem; padding-left: 16px; }
 #write h3::after {
     content: '';
     position: absolute;
@@ -62,13 +62,13 @@
     -webkit-mask: var(--sketch-brush) no-repeat center / 100% 100%;
     mask: var(--sketch-brush) no-repeat center / 100% 100%;
     opacity: 0.9;
-    transition: opacity 0.3s ease, height 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 /* H4:暖→中性过渡色 + 直线手绘下划线 */
 #write h4 {
     font-size: 1.18rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 1.4rem;
     padding-bottom: 6px;
     color: color-mix(in srgb, var(--primary-color) 70%, var(--text-color));
@@ -90,7 +90,7 @@
 /* H5:更中性 + 点线手绘下划线 */
 #write h5 {
     font-size: 1.02rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 1.2rem;
     padding-bottom: 6px;
     color: color-mix(in srgb, var(--primary-color) 35%, var(--text-color));
@@ -112,23 +112,18 @@
 /* H6:正文灰 + 无装饰,靠小字号 + 大写 + 字间距(标签体;中文靠字号/字间距/色差) */
 #write h6 {
     font-size: 0.92rem;
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 1.2rem;
     color: var(--text-color-secondary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
 
-/* Hover:轻微上移 + 装饰加深(一次性,无发光) */
-#write h2:hover, #write h3:hover, #write h4:hover,
-#write h5:hover, #write h6:hover {
-    transform: translateY(-1px);
-}
+/* Hover:装饰加深(无上移、无发光) */
 #write h2:hover::after, #write h3:hover::after,
 #write h4:hover::after, #write h5:hover::after {
     opacity: 1;
 }
-#write h3:hover::after { height: 82%; }
 
 /* 编辑模式下隐藏装饰(H2/H3/H4/H5 的 ::after) */
 #write h2.md-focus::after, #write h3.md-focus::after,
@@ -152,99 +147,41 @@ h5.md-focus:before, h6.md-focus:before {
 }
 
 
-/* ======================== Horizontal Rule (Phycat style) ======================== */
+/* ======================== Horizontal Rule ======================== */
+/* #21 裁剪:删中心星涂鸦 + 墨色波浪改虚线(波浪已在标题族 H2 等过载,差异化分隔) */
 #write hr {
-    /* 中心手绘小涂鸦(六角星) */
-    --hr-doodle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M12 4 Q 12.8 12 12 20'/%3E%3Cpath d='M5 8 Q 12 11.5 19 16'/%3E%3Cpath d='M19 8 Q 12 12.5 5 16'/%3E%3C/g%3E%3C/svg%3E");
     border: none;
-    height: 18px;
+    border-top: 1px dashed var(--ink);
+    height: 0;
     margin: 40px 0;
     background: none;
-    position: relative;
-    overflow: visible;
-}
-/* 手绘波浪线(墨色) */
-#write hr::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 7px;
-    background-color: var(--ink);
-    -webkit-mask: var(--sketch-wave) repeat-x center / auto 100%;
-    mask: var(--sketch-wave) repeat-x center / auto 100%;
     opacity: 0.6;
-    transition: opacity 0.3s ease;
 }
-/* 中心涂鸦(强调色) */
-#write hr::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-color);
-    -webkit-mask: var(--hr-doodle) no-repeat center / contain;
-    mask: var(--hr-doodle) no-repeat center / contain;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-#write hr:hover::before { opacity: 0.9; }
-#write hr:hover::after { transform: translate(-50%, -50%) rotate(90deg) scale(1.15); }
 
 
 /* ======================== Links (Phycat style) ======================== */
 #write a {
     color: var(--primary-color);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--primary-color), transparent 45%);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     font-weight: 500;
     padding: 2px 4px;
     margin: 0 -2px;
     border-radius: 4px;
     background: none;
     border-bottom: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
     position: relative;
     display: inline;
 }
-#write p a:not(.md-toc-inner)::before {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-right: 4px;
-    vertical-align: -0.15em;
-    background-color: var(--primary-color);
-    -webkit-mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M477.934459 330.486594A50.844091 50.844091 0 0 1 406.752731 258.796425L512 152.532274a254.220457 254.220457 0 0 1 359.467726 359.467726L762.66137 618.772592a50.844091 50.844091 0 1 1-71.690168-71.690169l106.772591-106.772592a152.532274 152.532274 0 0 0-215.578947-215.578947z m70.164846 361.501489A50.844091 50.844091 0 1 1 619.789474 762.66137l-107.281033 107.281033A254.220457 254.220457 0 0 1 152.532274 512L259.813307 406.752731a50.844091 50.844091 0 1 1 72.19861 69.656405l-107.789474 107.281033a152.532274 152.532274 0 0 0 215.578947 215.578947z m-126.601788-16.77855a50.844091 50.844091 0 1 1-71.690168-71.690169l251.678252-251.678252a50.844091 50.844091 0 0 1 71.690169 71.690169z'/%3E%3C/svg%3E") no-repeat center/contain;
-    mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M477.934459 330.486594A50.844091 50.844091 0 0 1 406.752731 258.796425L512 152.532274a254.220457 254.220457 0 0 1 359.467726 359.467726L762.66137 618.772592a50.844091 50.844091 0 1 1-71.690168-71.690169l106.772591-106.772592a152.532274 152.532274 0 0 0-215.578947-215.578947z m70.164846 361.501489A50.844091 50.844091 0 1 1 619.789474 762.66137l-107.281033 107.281033A254.220457 254.220457 0 0 1 152.532274 512L259.813307 406.752731a50.844091 50.844091 0 1 1 72.19861 69.656405l-107.789474 107.281033a152.532274 152.532274 0 0 0 215.578947 215.578947z m-126.601788-16.77855a50.844091 50.844091 0 1 1-71.690168-71.690169l251.678252-251.678252a50.844091 50.844091 0 0 1 71.690169 71.690169z'/%3E%3C/svg%3E") no-repeat center/contain;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-/* 手绘波浪下划线(强调色):--sketch-wave 遮罩 + 变色 */
-#write a:not(.md-toc-inner)::after {
-    content: '';
-    position: absolute;
-    left: 4px;
-    right: 4px;
-    bottom: -1px;
-    height: 5px;
-    background-color: var(--primary-color);
-    -webkit-mask: var(--sketch-wave) repeat-x left center / auto 100%;
-    mask: var(--sketch-wave) repeat-x left center / auto 100%;
-    opacity: 0.8;
-    transition: opacity 0.25s ease, background-color 0.25s ease;
-}
+/* #21 裁剪:删前缀图标 + 波浪伪元素,改原生直线下划线(颜色/偏移/粗细可独立调) */
 #write a:not(.md-toc-inner):hover {
-    color: var(--text-bright);
+    color: color-mix(in srgb, var(--primary-color), var(--text-bright) 18%);
+    text-decoration-color: var(--primary-color);
     background: none;
     box-shadow: none;
-}
-#write a:not(.md-toc-inner):hover::after { opacity: 1; }
-#write a:hover:not(.md-toc-inner)::before {
-    transform: rotate(180deg);
-    background-color: var(--text-bright);
 }
 #write a:visited { color: var(--primary-color); opacity: 0.9; }
 #write a:visited:hover { color: var(--text-bright); opacity: 1; }
@@ -261,43 +198,24 @@ h5.md-focus:before, h6.md-focus:before {
     border-bottom: 2px solid transparent;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    text-shadow: none;
-    transition: transform 0.2s cubic-bezier(0.5, 1.5, 0.5, 1), border-color 0.3s ease, text-shadow 0.3s ease;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 #write strong:hover {
-    transform: translateY(-2px) scale(1.05);
-    text-shadow: 0 0 10px var(--primary-color);
     border-bottom-color: var(--primary-color);
 }
 
-/* Emphasis — 手绘波浪下划线(次色) */
+/* Emphasis — 斜体 + 次色(#21 删次色波浪下划线;serif 正文下真斜体更易读,不另处理) */
 #write em {
     font-style: italic;
     color: var(--secondary-color);
     text-decoration: none !important;
     padding: 0 1px;
-    position: relative;
     transition: color 0.2s ease;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
 #write em::before { content: none !important; display: none !important; }
-#write em::after {
-    content: '' !important;
-    display: block !important;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 5px;
-    background-color: var(--secondary-color);
-    -webkit-mask: var(--sketch-wave) repeat-x left center / auto 100%;
-    mask: var(--sketch-wave) repeat-x left center / auto 100%;
-    opacity: 0.75;
-    transition: opacity 0.25s ease, background-color 0.25s ease;
-}
 #write em:hover { color: var(--primary-color); }
-#write em:hover::after { background-color: var(--primary-color); opacity: 1; }
 
 /* Mark / Highlight — 手绘马克笔涂划(强调色) */
 #write mark {

@@ -68,11 +68,11 @@ content {
 #write h1 {
     text-align: center;
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 500;
     padding-bottom: 14px;
     position: relative;
     cursor: text;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.3s ease;
 }
 .content-title::after,
 #write h1::after {
@@ -86,7 +86,7 @@ content {
     mask: var(--sketch-wave) repeat-x center / auto 100%;
     transform: scaleX(0.3);
     transform-origin: center;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+    transition: transform 0.4s ease, opacity 0.3s ease;
 }
 .content-title:hover::after,
 #write h1.md-focus::after,
@@ -99,10 +99,7 @@ content {
 #write h1 {
     margin: 20px 0;
     border-bottom: none;
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-}
-#write h1:not(.md-focus):hover {
-    transform: translateY(-1px);
+    transition: color 0.3s ease;
 }
 
 
@@ -154,7 +151,7 @@ content {
 #write p {
     color: var(--text-color-secondary);
     margin: 0 10px;
-    font-family: "Source Code Pro", "LXGW WenKai", sans-serif;
+    /* 字体继承 body 的 --font-sans-serif(serif 单声 #14);不再硬编码 mono */
     font-size: 1rem;
     word-spacing: 1px;
     text-indent: 0;
