@@ -10,7 +10,7 @@
 
 :root {
     /* --- Core Palette --- */
-    --bg-color: #15110f;             /* warm near-black, faint red-brown cast (orange: #15120e) */
+    --bg-color: #111010;             /* 去红趋中性炭灰:与砖红主色/暖文字拉开色相(治"晕"),保留微暖底*/
     --text-color: #d6d0c9;           /* warm off-white */
     --text-color-secondary: #b8aea6; /* warm taupe, red-brown lean */
     --primary-color: #c47260;        /* desaturated warm maroon/brick (Nord #88c0d0 → warm) */
@@ -28,7 +28,7 @@
     --text-input: #ece4da;
 
     /* --- Surface Hierarchy --- */
-    --surface-1: #1a1512;
+    --surface-1: #171716;   /* R=G 根治"泛红"(侧栏 + 引用/表格/YAML/代码等表面);B 微低留一丝暖,不至冷灰 */
     --surface-2: #221b17;
     --surface-3: #2a221d;
     --surface-input: #302622;
@@ -69,7 +69,7 @@
     --select-text-bg-color: rgba(196, 114, 96, 0.3);
 
     /* --- Sidebar (Zeus) --- */
-    --side-bar-bg-color: #1a1512;
+    --side-bar-bg-color: #171716;   /* R=G 根治"泛红":文件树/大纲中性暗灰,与砖红主色形成干净对比 */
     --active-file-bg-color: color-mix(in srgb, var(--primary-color), transparent 85%);
     --active-file-border-color: var(--primary-color);
     --active-file-text-color: #ffffff;
