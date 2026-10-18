@@ -1,12 +1,12 @@
 # Fusion Typora Theme — Copilot 指引
 
-> 📖 项目完整上下文见 [`CLAUDE.md`](../CLAUDE.md)（架构、规范、常用命令等）。本文件仅包含 Copilot 工具特有配置。
+> 📖 项目完整上下文见 [`AGENTS.md`](../AGENTS.md)（架构、规范、常用命令等）。本文件仅包含 Copilot 工具特有配置。
 
 ## 快速导航
 
 | 需求 | 文件 |
 |------|------|
-| 项目架构 & 多主题体系 | `CLAUDE.md`（根目录） |
+| 项目架构 & 多主题体系 | `AGENTS.md`（根目录） |
 | 共享基础样式 | `fusion-dark/base.css` |
 | 主题变量定义 | `fusion-*.css`（根目录） |
 

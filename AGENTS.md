@@ -37,7 +37,7 @@ typora-fusion-dark-theme/
 ├── fusion-maroon.css             # Dark + Warm Brick 暖枣红主题（变量层）
 ├── README.md                     # 中文文档
 ├── README_en.md                  # 英文文档
-└── CLAUDE.md                     # 本文件
+└── AGENTS.md                     # 本文件
 ```
 
 ---
