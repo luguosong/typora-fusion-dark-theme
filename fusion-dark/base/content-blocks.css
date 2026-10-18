@@ -176,50 +176,39 @@ li.md-list-item { margin: 0.25rem 0; }
 #write li.task-list-item:before { left: -6.5px; }
 
 
-/* ======================== Tables (Phycat glass style) ======================== */
-/* 三线表覆盖变量（学术主题在 :root 中设定这些变量即可切换至学术三线表样式）：
-   --table-collapse: collapse; --table-width: auto; --table-margin: 0 auto;
-   --table-outer-border: none; --table-top-border / --table-bottom-border: 1.5pt solid var(--text-color);
-   --table-border-radius: 0; --table-overflow: visible; --table-bg: transparent; --table-backdrop: none;
-   --table-cell-vborder: none; --table-cell-hborder: none;
-   --table-head-bg: transparent; --table-head-color: var(--text-color);
-   --table-head-separator: 0.75pt solid var(--text-color); */
+/* ======================== Tables (Paper surface) ======================== */
 #write table {
-    border-collapse: var(--table-collapse, separate);
+    border-collapse: separate;
     border-spacing: 0;
-    width: var(--table-width, 100%);
-    margin: var(--table-margin, 0);
-    border: var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%));
-    /* border-top/bottom 写在 border 后，academic 三线表可单独覆盖两条横线 */
-    border-top: var(--table-top-border, var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%)));
-    border-bottom: var(--table-bottom-border, var(--table-outer-border, 1.5px solid color-mix(in srgb, var(--ink), transparent 40%)));
-    border-radius: var(--table-border-radius, 10px);
-    overflow: var(--table-overflow, hidden);
-    background-color: var(--table-bg, var(--surface-1));
+    width: 100%;
+    margin: 0;
+    border: 1.5px solid color-mix(in srgb, var(--ink), transparent 40%);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--surface-1);
     font-size: 0.93rem;
-    /* 表格默认等宽字体（数据表风）；回退正文字体在主题 :root 设 --table-font-family: inherit */
+    /* 表格字体由主题分派；未定义时回退到等宽字体。 */
     font-family: var(--table-font-family, var(--font-monospace));
 }
 #write table td, #write table th {
     padding: 10px 15px;
     color: var(--text-color);
-    border-right: var(--table-cell-vborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 92%));
-    border-bottom: var(--table-cell-hborder, 1px solid color-mix(in srgb, var(--text-bright), transparent 92%));
+    border-right: 1px solid color-mix(in srgb, var(--text-bright), transparent 92%);
+    border-bottom: 1px solid color-mix(in srgb, var(--text-bright), transparent 92%);
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 #write table td:last-child, #write table th:last-child { border-right: none; }
 #write table tr:last-child td { border-bottom: none; }
 #write table th {
-    background-color: var(--table-head-bg, var(--overlay-4));
-    color: var(--table-head-color, var(--text-ui));
+    background-color: var(--overlay-4);
+    color: var(--text-ui);
     font-weight: 700;
     white-space: nowrap;
-    /* 表头分割线：三线表模式下此值覆盖 --table-cell-hborder 的 none */
-    border-bottom: var(--table-head-separator, 1px solid var(--border-medium));
+    border-bottom: 1px solid var(--border-medium);
 }
-#write table tbody tr:hover td { background-color: var(--table-row-hover-bg, var(--overlay-3)); }
+#write table tbody tr:hover td { background-color: var(--overlay-3); }
 #write table tbody td:hover {
-    background-color: var(--table-cell-hover-bg, var(--overlay-6));
+    background-color: var(--overlay-6);
     color: var(--text-bright);
     cursor: default;
 }
@@ -263,7 +252,7 @@ li.md-list-item { margin: 0.25rem 0; }
 #write kbd {
     background-color: var(--kbd-bg);
     color: var(--text-color);
-    font-family: "Source Code Pro", "LXGW WenKai", monospace;
+    font-family: var(--font-monospace);
     font-size: 0.9em;
     padding: 3px 9px;
     border: 1.5px solid color-mix(in srgb, var(--ink), transparent 25%);
@@ -285,7 +274,7 @@ li.md-list-item { margin: 0.25rem 0; }
 pre.md-meta-block {
     padding: 30px 20px 20px;
     margin: 20px 0;
-    font-family: "Source Code Pro", "LXGW WenKai", monospace;
+    font-family: var(--font-monospace);
     font-size: 0.87rem;
     color: var(--text-color-secondary);
     line-height: 1.6;
