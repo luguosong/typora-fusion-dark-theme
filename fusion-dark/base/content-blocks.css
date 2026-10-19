@@ -389,8 +389,8 @@ pre.md-meta-block:hover { background-color: var(--surface-2); }
 .md-alert.md-alert-caution::after { content: "💀"; color: var(--alert-caution); }
 
 
-/* ======================== TOC (Phycat glass card) ======================== */
-.md-toc {
+/* ======================== TOC (Paper surface) ======================== */
+#write .md-toc {
     margin: 20px 0;
     padding: 30px;
     background-color: var(--surface-1);
@@ -425,18 +425,14 @@ pre.md-meta-block:hover { background-color: var(--surface-2); }
     cursor: pointer;
 }
 .md-toc-item a { text-decoration: none; color: inherit; display: block; width: 100%; border-bottom: none; }
-.md-toc-h1 { margin-top: 10px; font-weight: 600; counter-reset: toc-h2 toc-h3 toc-h4 toc-h5 toc-h6; }
-.md-toc-h2 { margin-left: 1.5em; font-size: 0.95em; counter-increment: toc-h2; counter-reset: toc-h3 toc-h4 toc-h5 toc-h6; }
-.md-toc-h3 { margin-left: 3em; font-size: 0.9em; opacity: 0.8; counter-increment: toc-h3; counter-reset: toc-h4 toc-h5 toc-h6; }
-.md-toc-h4 { margin-left: 4em; font-size: 0.85em; opacity: 0.8; counter-increment: toc-h4; counter-reset: toc-h5 toc-h6; }
-.md-toc-h5 { margin-left: 5em; font-size: 0.85em; opacity: 0.7; counter-increment: toc-h5; counter-reset: toc-h6; }
-.md-toc-h6 { margin-left: 6em; font-size: 0.85em; opacity: 0.6; counter-increment: toc-h6; }
-/* TOC 编号标签：与正文 h2~h6 编号格式一致（使用 a::before，不影响现有 ::before 小圆点） */
-.md-toc-h2 a::before { content: counter(toc-h2) ". "; color: var(--text-muted); opacity: 0.85; font-variant-numeric: tabular-nums; }
-.md-toc-h3 a::before { content: counter(toc-h2) "." counter(toc-h3) " "; color: var(--text-muted); opacity: 0.85; font-variant-numeric: tabular-nums; }
-.md-toc-h4 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) " "; color: var(--text-muted); opacity: 0.85; font-variant-numeric: tabular-nums; }
-.md-toc-h5 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) " "; color: var(--text-muted); opacity: 0.85; font-variant-numeric: tabular-nums; }
-.md-toc-h6 a::before { content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6) " "; color: var(--text-muted); opacity: 0.85; font-variant-numeric: tabular-nums; }
+.md-toc-h1 { margin-top: 10px; font-weight: 600; }
+.md-toc-h2 { margin-left: 1.5em; font-size: 0.95em; }
+.md-toc-h3 { margin-left: 3em; font-size: 0.9em; opacity: 0.8; }
+.md-toc-h4 { margin-left: 4em; font-size: 0.85em; opacity: 0.8; }
+.md-toc-h5 { margin-left: 5em; font-size: 0.85em; opacity: 0.7; }
+.md-toc-h6 { margin-left: 6em; font-size: 0.85em; opacity: 0.6; }
+/* 目录沿用标题原文与手动序号,不额外生成编号。 */
+#write .md-toc-item a::before { content: none; }
 .md-toc-item:hover {
     background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
     color: var(--text-bright);

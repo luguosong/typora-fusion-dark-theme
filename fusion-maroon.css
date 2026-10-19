@@ -141,6 +141,9 @@
     --blur-text-color: #7a6e64;
 
     /* --- Export --- */
+    --print-text-color: #222;
+    --print-border-color: #777;
+    --print-link-color: #0366d6;
     --export-sidebar-bg: rgba(14, 9, 7, 0.88);
 
     /* --- Focus Mode --- */
@@ -152,10 +155,11 @@
     /* --- Outline Panel --- */
     --outline-line-color: rgba(255, 255, 255, 0.05);
 
-    /* --- Academic Typography (defaults: preserve existing behavior) --- */
+    /* --- Academic Typography --- */
     --font-heading: "LXGW WenKai", var(--font-serif), serif;
-    --body-line-height: 1.85;
-    --write-padding: 24px 40px;
+    --body-font-size: 16px;
+    --body-line-height: 1.8;
+    --write-padding: 24px clamp(20px, 4vw, 40px);
     --blockquote-left-shadow: none;
     --blockquote-icon-display: block;
 }

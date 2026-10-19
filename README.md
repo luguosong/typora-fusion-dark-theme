@@ -24,7 +24,7 @@
 | 区域 | 风格来源 | 特征 |
 |---|---|---|
 | **侧栏** | Zeus | 简洁的 VS Code 风暗色面板 |
-| **内容区** | Phycat | 丰富的动画、玻璃拟态、霓虹发光效果 |
+| **内容区** | 手绘语言 | 暖色纸面、墨色描边、克制的手绘装饰 |
 | **语法高亮** | 各配色方案 | 对比鲜明、护眼的色彩令牌 |
 
 架构：每个主题仅定义变量（~150 行），共享同一套基础样式（`fusion-dark/base.css`），实现一处修改全部生效。
@@ -36,9 +36,12 @@
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css               # 共享基础样式（所有主题复用）
+│   ├── base.css               # 共享样式的 @import 清单
+│   ├── base/                  # 按职责拆分的 8 个基础样式文件
 │   ├── LXGWWenKai-Regular.ttf                  # 中文主字体（LXGW 文楷）
-│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 英文/代码字体（等宽·可变字重）
+│   ├── SourceCodePro-VariableFont_wght.ttf       # 代码正体（等宽·可变字重）
+│   ├── SourceCodePro-Italic-VariableFont_wght.ttf # 代码注释斜体
+│   └── SourceCodePro-OFL.txt                    # Source Code Pro 字体许可
 ├── fusion-aubergine.css       # Dark + Warm Plum（旗舰）
 ├── fusion-olive.css           # Dark + Petrol Green
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
@@ -49,27 +52,26 @@ typora-fusion-dark-theme/
 
 ## 🎨 功能亮点
 
-### 标题系统（自动编号 + 渐变下划线）
+### 标题系统（手绘装饰 + 层级差异）
 - **H1** — 居中排版，聚焦/悬停时下划线动态展开（文档标题，不编号）
-- **H2–H6** — 底部渐变下划线（主色→次色→透明） + CSS 计数器自动编号
-  - H2: `1.` `2.` `3.` — H3: `1.1` `1.2` — H4: `1.1.1` — 以此类推至 5 级
-  - 下划线宽度逐级递减（H2=100%, H3=75%, H4=55%, H5=40%, H6=28%）
-  - 悬停时下划线亮起 + 发光 + 轻微上浮
+- **H2–H5** — 依次使用波浪下划线、左侧笔刷、直线下划线与点线下划线，编辑时隐藏装饰
+- **H6** — 正文字号的标签体，以大写、字间距和段前留白区分
+- 全部标题字重为 500，字号按正文比例递减，H5/H6 不小于正文；标题和目录均保留原文及手动序号
 
 ### 代码
 - **围栏代码块** — macOS 红黄绿交通灯装饰、语言标签、Dracula 风语法着色
-- **行内代码** — 橙色徽章样式，悬停时弹性放大
-- **字体** — [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)（等宽·可变字重）
+- **行内代码** — 次色徽章样式，悬停时加深底色
+- **字体** — [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) 正体等宽字，注释使用同族斜体
 
 ### 内容元素
-- **引用块** — 圆角卡片 + 💡 Emoji，悬停时橙色发光边框
-- **任务列表** — 圆形复选框，勾选时脉冲发光动画
-- **表格** — 玻璃拟态样式，单元格悬停高亮
-- **链接** — 内联 SVG 链接图标悬停旋转，霓虹文字阴影
-- **高亮 / Mark** — 悬停时渐变填充动画
-- **斜体** — 动态针脚下划线纹理
-- **加粗** — 橙色强调色 + 底部发光边框
-- **`<kbd>` 按键** — 3D 键帽样式，可按下动画
+- **引用块** — 纸面、墨色描边与 💡 Emoji，悬停时加深边框
+- **任务列表** — 手绘方框，勾选时对勾弹入
+- **表格** — 纸面底色，单元格悬停高亮
+- **链接** — 主色文字与原生下划线，悬停时提亮
+- **高亮 / Mark** — 手绘马克笔底色
+- **斜体** — 次色文字与斜体
+- **加粗** — 继承周围文字颜色，以字重强调，悬停时出现同色底边
+- **`<kbd>` 按键** — 墨色描边，悬停时轻微下压
 
 ### Callout 提示块（GitHub 风格）
 | 类型 | 颜色 | 图标 |
@@ -81,29 +83,25 @@ typora-fusion-dark-theme/
 | `[!CAUTION]` | 红色 | 💀 |
 
 ### 目录（TOC）
-玻璃拟态卡片，双渐变背景，悬停平滑上浮，带「📑 Contents」标题。
+纸面底色与墨色描边，带「📑 Contents」标题。按层级缩进，仅呈现标题原文，不额外生成编号。
 
 ### YAML 元数据块
-虚线边框卡片，右上角浮动 `YAML` 徽章；悬停时过渡为实线橙色边框。
+纸面底色、墨色描边与右上角 `YAML` 徽章，悬停时加深底色。
 
 ### 侧栏（Zeus 风格）
-- VS Code 风文件树，活动文件带橙色左边框
-- 标签指示器橙色发光
+- VS Code 风文件树，活动文件使用各主题主色标识
+- 标签指示器使用主色下划线
 - 极细滚动条（4px）
 - 快速打开弹窗深色主题
 
 ### Mermaid 流程图
-自定义深色覆盖：Dracula 背景节点、主色调边框、样式化边标签。
+自定义深色覆盖：代码块背景节点、主题色边框、样式化边标签。
 
 ### 响应式布局
-| 视口宽度 | 内容区最大宽度 |
-|---|---|
-| `< 1400px` | 950px |
-| `≥ 1400px` | 1024px |
-| `≥ 1800px` | 1200px |
+正文撑满可用宽度，默认 16px 字号、1.8 倍行高，使用自然字距与词距。两侧留白随窗口宽度在 20–40px 间调整；外壳保留原有字号。
 
 ### 打印支持
-色彩精确的打印样式，标题与代码块防分页，移除文字阴影确保干净输出。
+打印时使用浅色纸面与深色文字，引用、目录和表格同步去除深色底。代码块保留独立语法高亮，标题与代码块设有分页保护。
 
 ---
 
@@ -140,7 +138,7 @@ typora-fusion-dark-theme/
 |---|---|---|
 | Latin serif（Charter → Georgia → Palatino） | 英文正文 / UI / 表格（#14 Kami 排版气质） | 系统回退 |
 | [霞鹜文楷 LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | 中文正文 / 标题（楷体） | 已内置（`LXGWWenKai-Regular.ttf`） |
-| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | 代码块 / 行内代码 / kbd / YAML（mono 退守） | 已内置（`SourceCodePro-Italic-VariableFont_wght.ttf`） |
+| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | 代码块 / 行内代码 / kbd / YAML，注释斜体 | 已内置正体与斜体可变字体，见 `fusion-dark/SourceCodePro-OFL.txt` |
 
 ---
 
@@ -151,9 +149,18 @@ typora-fusion-dark-theme/
 ```css
 :root {
     --primary-color: #你的颜色;
-    --glow-color: rgba(R, G, B, 0.6);   /* 与主色匹配 */
     --hover-background-color: #你的颜色;
     --select-text-bg-color: rgba(R, G, B, 0.3);
+}
+```
+
+调整正文排版（四套主题均提供相同变量）：
+
+```css
+:root {
+    --body-font-size: 16px;
+    --body-line-height: 1.8;
+    --write-padding: 24px clamp(20px, 4vw, 40px);
 }
 ```
 
@@ -161,4 +168,4 @@ typora-fusion-dark-theme/
 
 ## 📄 许可证
 
-MIT License — 欢迎 Fork、修改与再分发。
+主题样式采用 MIT License，欢迎 Fork、修改与再分发。内置字体保留各自许可；Source Code Pro 采用 SIL Open Font License 1.1，完整许可与字体一起分发。

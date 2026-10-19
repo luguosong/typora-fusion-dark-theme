@@ -11,12 +11,18 @@
     font-family: "LXGW WenKai";
     src: url("../LXGWWenKai-Regular.ttf");
 }
-/* 正文英文字体:Source Code Pro(等宽·斜体·可变字重);声明为 normal 使正文默认取用 */
+/* 代码正体与注释斜体分别注册,避免把 Italic 文件当作 normal 使用。 */
+@font-face {
+    font-family: "Source Code Pro";
+    src: url("../SourceCodePro-VariableFont_wght.ttf");
+    font-weight: 200 900;
+    font-style: normal;
+}
 @font-face {
     font-family: "Source Code Pro";
     src: url("../SourceCodePro-Italic-VariableFont_wght.ttf");
     font-weight: 200 900;
-    font-style: normal;
+    font-style: italic;
 }
 
 /* ======================== Hand-drawn Primitives ======================== */
@@ -97,6 +103,7 @@ content {
 }
 /* H1 特有样式 */
 #write h1 {
+    font-size: 1.8em;
     margin: 20px 0;
     border-bottom: none;
     transition: color 0.3s ease;
@@ -109,9 +116,11 @@ content {
     margin: 0 auto;
     padding: var(--write-padding, 24px 40px);
     padding-bottom: 100px;
-    line-height: var(--body-line-height, 1.85);
+    font-size: var(--body-font-size, 16px);
+    line-height: var(--body-line-height, 1.8);
     color: var(--text-color);
-    letter-spacing: 0.5px;
+    letter-spacing: normal;
+    word-spacing: normal;
     word-break: break-word;
     overflow-wrap: break-word;
     text-align: left;
@@ -152,8 +161,7 @@ content {
     color: var(--text-color-secondary);
     margin: 0 10px;
     /* 字体继承 body 的 --font-sans-serif(serif 单声 #14);不再硬编码 mono */
-    font-size: 1rem;
-    word-spacing: 1px;
+    font-size: inherit;
     text-indent: 0;
 }
 

@@ -7,7 +7,7 @@
 为 [Typora](https://typora.io/) Markdown 编辑器打造的 CSS 主题集，融合了：
 
 - **Zeus** 侧栏设计（VS Code 风暗色面板）
-- **Phycat** 内容区设计（玻璃拟态、霓虹发光、丰富动画）
+- **手绘语言**正文设计（暖色纸面、墨色描边、克制的手绘装饰，源自 Phycat）
 - 多种配色方案（Aubergine 墨紫、Olive petrol 绿、Gruvbox、Maroon 枣红）—— 全暖护眼
 
 项目**无构建系统、无包管理器、无 JavaScript**，完全由纯 CSS 构成。
@@ -30,7 +30,9 @@ typora-fusion-dark-theme/
 │   │   ├── chrome-behavior.css   # 专注模式 / 滚动条 / 输入按钮 / 光标 / 表格调整
 │   │   └── export.css            # 打印 / 移动导出
 │   ├── LXGWWenKai-Regular.ttf  # 中文主字体（LXGW 文楷，清晰楷体）
-│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # 英文/代码字体（等宽·斜体·可变字重）
+│   ├── SourceCodePro-VariableFont_wght.ttf       # 代码正体（等宽·可变字重）
+│   ├── SourceCodePro-Italic-VariableFont_wght.ttf # 代码注释斜体
+│   └── SourceCodePro-OFL.txt                    # Source Code Pro 字体许可
 ├── fusion-aubergine.css          # Dark + Warm Plum 暖墨紫主题（变量层，旗舰）
 ├── fusion-olive.css              # Dark + Petrol Green 深 petrol 绿主题（变量层）
 ├── fusion-gruvbox.css            # Gruvbox Dark 护眼主题（变量层）
@@ -93,20 +95,20 @@ typora-fusion-dark-theme/
 | 4 | Paragraph | 段落字体与间距 |
 | 5 | Headings | H1 居中标题 + H2–H6 逐级差异化(两色调渐变 + 每级不同手绘装饰) |
 | 6 | Horizontal Rule | 动态菱形中心装饰分隔线 |
-| 7 | Links | 图标前缀 + 霓虹悬停 |
+| 7 | Links | 主色文字 + 原生下划线 |
 | 8 | Blockquote | 圆角卡片 + Emoji 装饰 |
 | 9 | Inline Styles | `strong`、`em`、`mark`、`del` |
 | 10 | Lists | 无序/有序列表 + 垂直连接线 |
-| 11 | Task List | 动态圆形复选框 |
+| 11 | Task List | 手绘方框 + 勾选对勾 |
 | 12 | Code Blocks | macOS 交通灯头部、Dracula 背景、CodeMirror 覆盖 |
 | 13 | Syntax Tokens | `.cm-*` 颜色分配 |
-| 14 | Inline Code | 徽章样式 + 弹性悬停 |
-| 15 | Tables | 玻璃拟态 + 单元格悬停高亮 |
+| 14 | Inline Code | 次色徽章 + 悬停底色变化 |
+| 15 | Tables | 纸面 + 单元格悬停高亮 |
 | 16 | Images | 圆角 + 悬停缩放 |
 | 17 | Kbd | 3D 键帽 + 按下动画 |
 | 18 | YAML Front Matter | 虚线边框卡片 + 浮动徽签 |
 | 19 | Alerts / Callouts | Note、Tip、Warning、Important、Caution |
-| 20 | TOC | 渐变背景玻璃卡片 |
+| 20 | TOC | 纸面描边 + 层级缩进,不附加编号 |
 | 21 | Footnotes | 注脚引用样式 |
 | 22 | Sidebar | Zeus 风文件树与面板 |
 | 23 | Outline Panel | 活动项高亮、垂直导引线 |
@@ -126,7 +128,7 @@ typora-fusion-dark-theme/
 | 37 | Export Sidebar | 导出视图浮动侧栏 |
 | 38 | Caret & Selection | 光标颜色 |
 | 39 | Table Resize Popover | 插入表格网格弹窗 |
-| 40 | Print Styles | `@media print` 覆盖（含强制浅色文字） |
+| 40 | Print Styles | `@media print` 浅纸深字覆盖;代码保留独立语法配色 |
 | 41 | Mobile Export | `@media screen` 窄视口适配 |
 
 ---
@@ -145,7 +147,7 @@ typora-fusion-dark-theme/
     /* --- Border Hierarchy --- */    边框层级（3 个）
     /* --- Overlay --- */             叠层透明度（9 个）
     /* --- Shadow --- */              阴影透明度（10 个）
-    /* --- Glow Effects --- */        发光效果
+    /* --- Effects --- */             轻量阴影与交互底色
     /* --- Sidebar (Zeus) --- */      侧栏专用
     /* --- Headings --- */            标题装饰
     /* --- Window & Panel --- */      面板边框
@@ -171,15 +173,15 @@ typora-fusion-dark-theme/
 --border-color         /* #3a3a3a  – 默认边框 */
 ```
 
-### 发光系统
+### 纸面与交互
 
 ```css
---glow-color           /* rgba(232, 148, 76, 0.45) */
---glow-shadow-text     /* 0 0 5px var(--glow-color) */
---glow-shadow-box      /* 0 0 8px var(--glow-color) */
+--ink                  /* 中性墨色描边 */
+--shadow-subtle        /* 轻量阴影 */
+--hover-background-color /* 悬停底色 */
 ```
 
-**悬停状态**使用 `--glow-shadow-text` / `--glow-shadow-box`，**不得**硬编码阴影数值。
+正文以纸面与墨色描边保持手绘语言。悬停优先调整已有主题变量对应的颜色和边框;需要阴影时使用现有阴影令牌。旧 `--glow-*` 已退役,见 ADR-0001。
 
 ### 代码语法令牌（Dracula 风格）
 
@@ -206,14 +208,16 @@ typora-fusion-dark-theme/
 
 | 级别 | 字号 | 字重 | 颜色 | 手绘装饰 |
 |------|------|------|------|---------|
-| H1 | 1.8rem | 500 | 主色 | 居中波浪下划线(`.content-title` 合并定义) |
-| H2 | 1.55rem | 500 | 主色 | 整宽波浪下划线(`--sketch-wave`) |
-| H3 | 1.35rem | 500 | 主色 | 左侧竖条笔刷(`--sketch-brush`,置于文字左侧 gutter) |
-| H4 | 1.18rem | 500 | 主色↔正文色 70% 混合 | 直线下划线(`--sketch-line`) |
-| H5 | 1.02rem | 500 | 主色↔正文色 35% 混合 | 点线下划线(`--sketch-dots`) |
-| H6 | 0.92rem | 500 | 正文次要色 | 无装饰,大写 + 字间距(标签体) |
+| H1 | 1.8em | 500 | 主色 | 居中波浪下划线(`.content-title` 合并装饰定义) |
+| H2 | 1.55em | 500 | 主色 | 整宽波浪下划线(`--sketch-wave`) |
+| H3 | 1.35em | 500 | 主色 | 左侧竖条笔刷(`--sketch-brush`,置于文字左侧 gutter) |
+| H4 | 1.18em | 500 | 主色↔正文色 70% 混合 | 直线下划线(`--sketch-line`) |
+| H5 | 1.08em | 500 | 主色↔正文色 35% 混合 | 点线下划线(`--sketch-dots`) |
+| H6 | 1em | 500 | 正文次要色 | 无装饰,大写 + 字间距(标签体) |
 
 颜色渐变用 `color-mix()` 从 `--primary-color`/`--text-color` 派生,**不新增每主题变量**。装饰统一用 `::after`(`::before` 留给 Typora 内置标题标签);编辑模式(`.md-focus`)隐藏装饰。H6 的 `text-transform: uppercase` 仅对英文生效,中文靠字号/字间距/色差区分。设计缘由见 `docs/adr/0002-heading-level-differentiation.md`。
+
+正文由 `--body-font-size: 16px` 与 `--body-line-height: 1.8` 控制,字距和词距采用自然值。标题字号随正文缩放,H5/H6 不小于正文。根字号保留 15px,避免外壳随正文放大。正文继续满宽,`--write-padding` 默认 `24px clamp(20px, 4vw, 40px)`。
 
 ### 变量使用与清理
 
@@ -246,7 +250,7 @@ typora-fusion-dark-theme/
 
 ```css
 element          { /* 默认 */ }
-element:hover    { /* 悬停 — 使用发光变量 */ }
+element:hover    { /* 悬停 — 使用主题颜色/边框/阴影令牌 */ }
 element.md-focus,
 element:focus    { /* Typora 聚焦类 + 原生 focus */ }
 ```
@@ -292,7 +296,7 @@ background: rgba(232, 148, 76, 0.1);
 ## 新增元素样式流程
 
 1. 确认正确的 **Section**（参见上方 Section 排列顺序）
-2. 在 `fusion-dark/base.css` 中添加子节注释：
+2. 在 `fusion-dark/base/` 下对应分文件中添加子节注释：
    ```css
    /* --- 元素名称 --- */
    ```
@@ -323,7 +327,7 @@ background: rgba(232, 148, 76, 0.1);
 | 段落 | 继承 `--font-sans-serif`（#14：英文 serif 单声 + 中文楷体；`#write p` 不再硬编码字体） |
 | 表格 | `--table-font-family` → `--font-serif` + "LXGW WenKai"（serif；触发 base 表格 hook） |
 | 标题 | `var(--font-heading)` → "LXGW WenKai" → `--font-serif` → serif generic |
-| 代码 / kbd / YAML | `var(--font-monospace)` → "Source Code Pro" → CJK 回退 "LXGW WenKai"（mono 退守） |
+| 代码 / kbd / YAML | `var(--font-monospace)` → "Source Code Pro" 正体 → CJK 回退 "LXGW WenKai";代码注释使用同族斜体 |
 
 **不得**添加新的 `@font-face` 声明，除非字体文件已提交至 `fusion-dark/` 文件夹。
 ⚠️ `@font-face` 位于 `fusion-dark/base/foundation.css`（base/ 子目录），字体文件在上级 `fusion-dark/`，故 `src: url()` **必须用 `../` 前缀**（如 `url("../LXGWWenKai-Regular.ttf")`），否则会解析到 `base/` 而 404。

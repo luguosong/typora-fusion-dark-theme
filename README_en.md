@@ -24,7 +24,7 @@
 | Layer | Style Source | Characteristics |
 |---|---|---|
 | **Sidebar** | Zeus | Clean VS Code–inspired dark panel |
-| **Content Area** | Phycat | Rich animations, glass morphism, glow effects |
+| **Content Area** | Hand-drawn language | Warm paper surfaces, ink borders, restrained sketch marks |
 
 Architecture: each theme is a variable-only file (~150 lines) that shares a single structural base (`fusion-dark/base.css`).
 
@@ -35,9 +35,12 @@ Architecture: each theme is a variable-only file (~150 lines) that shares a sing
 ```
 typora-fusion-dark-theme/
 ├── fusion-dark/
-│   ├── base.css               # Shared structural styles (all themes)
+│   ├── base.css               # Shared stylesheet import manifest
+│   ├── base/                  # Eight shared stylesheets, grouped by responsibility
 │   ├── LXGWWenKai-Regular.ttf                  # Chinese body/heading font (kaiti)
-│   └── SourceCodePro-Italic-VariableFont_wght.ttf  # Latin / code font (mono·variable)
+│   ├── SourceCodePro-VariableFont_wght.ttf       # Upright variable monospace
+│   ├── SourceCodePro-Italic-VariableFont_wght.ttf # Italic code comments
+│   └── SourceCodePro-OFL.txt                    # Source Code Pro license
 ├── fusion-aubergine.css       # Dark + Warm Plum (flagship)
 ├── fusion-olive.css           # Dark + Petrol Green
 ├── fusion-gruvbox.css         # Gruvbox Dark 🌿
@@ -48,28 +51,26 @@ typora-fusion-dark-theme/
 
 ## 🎨 Feature Highlights
 
-### Heading System (auto-numbered + gradient underline)
+### Heading System (hand-drawn marks + distinct levels)
 - **H1** — Centered, animated expanding underline bar on hover/focus
-- **H2** — Glass morphism card with radial gradient background
-- **H3** — Left accent bar that grows on hover
-- **H4** — Filled orange dot marker with slide animation
-- **H5** — Circle outline marker with glow
-- **H6** — Dash (`-`) prefix with color transition
+- **H2–H5** — Wave underline, left brush stroke, line underline, and dotted underline; decorations hide while editing
+- **H6** — Body-sized label distinguished by uppercase, letter spacing, and space above
+- All headings use weight 500 and sizes relative to body text. H5/H6 remain at least body-sized; headings and TOC preserve original text and manual numbering
 
 ### Code
 - **Fenced Code Blocks** — macOS traffic-light dots decoration, language label, Dracula-inspired syntax tokens
-- **Inline Code** — Orange tinted badge, bouncy scale-up on hover
-- **Font** — [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) (mono, variable weight)
+- **Inline Code** — Secondary-color badge with a darker background on hover
+- **Font** — Upright [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) monospace, with italic code comments
 
 ### Content Elements
-- **Blockquotes** — Rounded card with 💡 emoji, glowing border on hover
-- **Task Lists** — Animated circular checkbox with glow pulse on check
-- **Tables** — Glass morphism style with per-cell hover highlight
-- **Links** — Inline SVG link icon that rotates on hover, neon text-shadow
-- **Highlights / Mark** — Gradient fill-up animation on hover
-- **Italic** — Animated stitched underline pattern
-- **Bold** — Orange accent color with bottom-border glow
-- **`<kbd>`** — 3D key cap with press-down animation
+- **Blockquotes** — Paper surface with 💡 emoji and an ink border that darkens on hover
+- **Task Lists** — Hand-drawn square checkbox with an appearing check mark
+- **Tables** — Paper surface with per-cell hover highlight
+- **Links** — Primary-color text and native underline, brightening on hover
+- **Highlights / Mark** — Hand-drawn marker background
+- **Italic** — Secondary-color italic text
+- **Bold** — Inherits surrounding text color and uses weight for emphasis, with a matching bottom border on hover
+- **`<kbd>`** — Ink border with a small press-down motion on hover
 
 ### Callouts / Alerts (GitHub-style)
 | Type | Color | Emoji |
@@ -81,29 +82,25 @@ typora-fusion-dark-theme/
 | `[!CAUTION]` | Red | 💀 |
 
 ### Table of Contents (TOC)
-Glass morphism card with a dual-gradient background, smooth hover lift, and a labeled "📑 Contents" header.
+Paper surface with an ink border and a "📑 Contents" header. Entries use hierarchical indentation and preserve the heading text without adding numbers.
 
 ### YAML Front Matter
-Dashed-border card with a floating `YAML` badge; transitions to solid border on hover.
+Paper surface with an ink border and a `YAML` badge; the background darkens on hover.
 
 ### Sidebar (Zeus Style)
-- VS Code–style file tree with active-file orange left border
-- Orange-glowing tab indicators
+- VS Code–style file tree with active-file markers in each theme's primary color
+- Primary-color underline tab indicators
 - Minimal scrollbars (4px)
 - Quick-open popup with dark styling
 
 ### Mermaid Diagrams
-Custom dark overrides: Dracula background nodes, primary-color borders, styled edge labels.
+Custom dark overrides: code-background nodes, theme-colored borders, and styled edge labels.
 
 ### Responsive Layout
-| Viewport | Content Max-Width |
-|---|---|
-| `< 1400px` | 950px |
-| `≥ 1400px` | 1024px |
-| `≥ 1800px` | 1200px |
+Content fills the available width with 16px body text, 1.8 line height, and natural letter and word spacing. Horizontal padding adapts between 20–40px; shell text keeps its existing size.
 
 ### Print Support
-Color-accurate print styles, page-break guards on headings and code blocks, text-shadow removal for clean output.
+Light paper and dark text for printing, with dark surfaces removed from quotes, TOC, and tables. Code blocks retain their syntax palette; headings and code blocks have page-break guards.
 
 ---
 
@@ -136,7 +133,7 @@ Color-accurate print styles, page-break guards on headings and code blocks, text
 |---|---|---|
 | Latin serif (Charter → Georgia → Palatino) | English body / UI / tables (#14 Kami typography) | System fallback |
 | [LXGW WenKai](https://github.com/lxgw/LxgwWenKai) | Chinese body / headings (kaiti) | Bundled (`LXGWWenKai-Regular.ttf`) |
-| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | Code blocks / inline code / kbd / YAML (mono only) | Bundled (`SourceCodePro-Italic-VariableFont_wght.ttf`) |
+| [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) | Code blocks / inline code / kbd / YAML, with italic comments | Upright and italic variable fonts bundled; see `fusion-dark/SourceCodePro-OFL.txt` |
 
 ---
 
@@ -147,9 +144,18 @@ All design tokens are defined as **CSS custom properties** in `:root`. To change
 ```css
 :root {
     --primary-color: #your-color;
-    --glow-color: rgba(R, G, B, 0.6);   /* match primary */
     --hover-background-color: #your-color;
     --select-text-bg-color: rgba(R, G, B, 0.3);
+}
+```
+
+To adjust body typography (all four themes expose the same tokens):
+
+```css
+:root {
+    --body-font-size: 16px;
+    --body-line-height: 1.8;
+    --write-padding: 24px clamp(20px, 4vw, 40px);
 }
 ```
 
@@ -157,4 +163,4 @@ All design tokens are defined as **CSS custom properties** in `:root`. To change
 
 ## 📄 License
 
-MIT License — feel free to fork, modify, and redistribute.
+Theme styles use the MIT License. Bundled fonts retain their own licenses; Source Code Pro uses the SIL Open Font License 1.1, distributed alongside the font files.

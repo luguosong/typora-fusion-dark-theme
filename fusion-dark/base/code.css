@@ -100,13 +100,13 @@ pre.md-fences-advanced.md-focus .md-fences-adv-panel { position: unset; }
 .cm-comment, .md-comment, .md-meta { color: var(--code-comment) !important; font-style: italic; }
 .cm-string { color: var(--code-string) !important; }
 .cm-link { color: var(--code-type) !important; text-decoration: underline; }
-.cm-type { color: var(--code-type) !important; font-style: italic; }
+.cm-type { color: var(--code-type) !important; }
 .cm-property { color: var(--code-property) !important; }
 .cm-tag:not(.cm-bracket) { font-weight: 700 !important; }
 .cm-operator { color: var(--code-keyword) !important; }
 .cm-number { color: var(--code-number) !important; }
 .cm-meta { color: var(--code-meta) !important; }
-.cm-builtin { color: var(--code-type) !important; font-style: italic; }
+.cm-builtin { color: var(--code-type) !important; }
 .cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: var(--code-keyword) !important; font-weight: 700; }
 .CodeMirror-selected, .CodeMirror-selectedtext { background: var(--code-selected-bg) !important; }
 

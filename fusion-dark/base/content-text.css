@@ -33,7 +33,7 @@
 }
 
 /* H2:强调色 + 整宽粗波浪下划线 */
-#write h2 { font-size: 1.55rem; font-weight: 500; margin-top: 2rem; padding-bottom: 8px; }
+#write h2 { font-size: 1.55em; font-weight: 500; margin-top: 2rem; padding-bottom: 8px; }
 #write h2::after {
     content: '';
     position: absolute;
@@ -49,7 +49,7 @@
 }
 
 /* H3:强调色 + 左侧手绘竖条笔刷(::after,置于文字左侧 gutter,不占序号位) */
-#write h3 { font-size: 1.35rem; font-weight: 500; margin-top: 1.6rem; padding-left: 16px; }
+#write h3 { font-size: 1.35em; font-weight: 500; margin-top: 1.6rem; padding-left: 16px; }
 #write h3::after {
     content: '';
     position: absolute;
@@ -67,7 +67,7 @@
 
 /* H4:暖→中性过渡色 + 直线手绘下划线 */
 #write h4 {
-    font-size: 1.18rem;
+    font-size: 1.18em;
     font-weight: 500;
     margin-top: 1.4rem;
     padding-bottom: 6px;
@@ -89,7 +89,7 @@
 
 /* H5:更中性 + 点线手绘下划线 */
 #write h5 {
-    font-size: 1.02rem;
+    font-size: 1.08em;
     font-weight: 500;
     margin-top: 1.2rem;
     padding-bottom: 6px;
@@ -109,9 +109,9 @@
     transition: opacity 0.3s ease;
 }
 
-/* H6:正文灰 + 无装饰,靠小字号 + 大写 + 字间距(标签体;中文靠字号/字间距/色差) */
+/* H6:不小于正文,以留白 + 大写 + 字间距区分(中文靠留白/字间距)。 */
 #write h6 {
-    font-size: 0.92rem;
+    font-size: 1em;
     font-weight: 500;
     margin-top: 1.2rem;
     color: var(--text-color-secondary);
@@ -191,7 +191,7 @@ h5.md-focus:before, h6.md-focus:before {
 /* ======================== Inline Styles (Phycat) ======================== */
 /* Strong */
 #write strong {
-    color: var(--primary-color);
+    color: inherit;
     font-weight: 700;
     display: inline;
     position: relative;
@@ -201,7 +201,7 @@ h5.md-focus:before, h6.md-focus:before {
     transition: border-color 0.3s ease, color 0.3s ease;
 }
 #write strong:hover {
-    border-bottom-color: var(--primary-color);
+    border-bottom-color: currentColor;
 }
 
 /* Emphasis — 斜体 + 次色(#21 删次色波浪下划线;serif 正文下真斜体更易读,不另处理) */
